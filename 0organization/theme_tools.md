@@ -23,7 +23,11 @@
   - WSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wsl.svg" alt="wsl" width="auto" height="25">
 - Cloud:
   - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - Microsoft Azure   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="azure" width="auto" height="25">
+  - Digital Ocean   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" alt="digital_ocean" width="auto" height="25">
+  - Google Cloud Platform (GCP)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="gcp" width="auto" height="25">
   - NextCloud   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nextcloud.png" alt="nextcloud" width="auto" height="25">
+  - Oracle Cloud   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/oracle_cloud.jpeg" alt="oracle_cloud" width="auto" height="25">
 - Servies Cloud:
   - Amazon API Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_api_gateway.svg" alt="aws_api_gateway" width="auto" height="25">
   - Amazon Application Load Balancer (ALB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_alb.svg" alt="aws_alb" width="auto" height="25">
@@ -149,9 +153,13 @@
   - Terraform Registry   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform_registry" width="auto" height="25">
 - Command Line Interpreter (CLI):
   - AWS Command Line Interface (CLI)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cli.svg" alt="aws_cli" width="auto" height="25">
+  - Azure CLI   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="azure_cli" width="auto" height="25">
   - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
+  - Digital Ocean CLI   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" alt="digital_ocean_cli" width="auto" height="25">
+  - Google Cloud CLI (gcloud)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="gcp_cli" width="auto" height="25">
   - MySQL Shell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mysql_shell.png" alt="mysql_shell" width="auto" height="25">
   - Oh My Zshell (Oh My ZSh)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/oh_my_zshell.png" alt="oh_my_zshell" width="auto" height="25">
+  - Oracle Cloud CLI   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/oracle_cloud.jpeg" alt="oracle_cloud_cli" width="auto" height="25">
   - Prompt de Comando (cmd)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cmd_prompt.png" alt="cmd" width="auto" height="25">
   - Systemctl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/systemctl.png" alt="systemctl" width="auto" height="25">
   - Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
@@ -230,7 +238,7 @@
 - Diagramming Software:
   - Draw.io   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/draw.io.png" alt="draw.io" width="auto" height="25">
 - Presentation Program:
-   - PowerPoint   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_powerpoint" alt="power_point" width="auto" height="25">
+   - PowerPoint   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_powerpoint.png" alt="power_point" width="auto" height="25">
 - Artificial Intelligence:
   - Brandmark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ai_brandmark.png" alt="brandmark" width="auto" height="25">
   - ChatGPT   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chatgpt.png" alt="chatgpt" width="auto" height="25">
@@ -250,7 +258,7 @@
   - Rufus   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rufus.jpeg" alt="rufus" width="auto" height="25">
 - Others:
   - Capitalize My Title   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/capitalize_my_title.png" alt="capitalize_my_title" width="auto" height="25">
-  - Explainshell.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/explainshell.wbep" alt="explainshell" width="auto" height="25">
+  - Explainshell.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/explainshell.webp" alt="explainshell" width="auto" height="25">
   - Git Guardian   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/git_guardian.png" alt="git_guardian" width="auto" height="25">
   - Instant Eyedropper   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/instant_eyedropper.png" alt="instant_eyedropper" width="auto" height="25">
   - Invertexto.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/invertexto.jpeg" alt="inverttexto" width="auto" height="25">
