@@ -1,5 +1,6 @@
 ### Theme:
 - Cloud Computing
+- Data
 - Operating System (OS)
 - Programming
 - Programming Logic
@@ -28,7 +29,7 @@
   - Google Cloud Platform (GCP)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="gcp" width="auto" height="25">
   - NextCloud   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nextcloud.png" alt="nextcloud" width="auto" height="25">
   - Oracle Cloud   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/oracle_cloud.jpg" alt="oracle_cloud" width="auto" height="25">
-- Servies Cloud:
+- Cloud Services:
   - Amazon API Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_api_gateway.svg" alt="aws_api_gateway" width="auto" height="25">
   - Amazon Application Load Balancer (ALB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_alb.svg" alt="aws_alb" width="auto" height="25">
   - Amazon Athena  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_athena.svg" alt="aws_athena" width="auto" height="25">
@@ -122,6 +123,7 @@
   - Java   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="auto" height="25"></a>
   - JavaScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="auto" height="25">
   - Linguagem M e Expressões DAX
+  - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
   - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
   - PHP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
   - Python   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" width="auto" height="25">
@@ -138,6 +140,7 @@
 - Integrated Development Environment (IDE) and Text Editor:
   - Google Colaboratory (Google Colab)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_colab.png" alt="google_colab" width="auto" height="25">
   - Microsoft Visual Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_visual_studio.png" alt="microsoft_visual_studio" width="auto" height="25">
+  - Nano   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
   - Portugol Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portugol.png" alt="portugol_studio" width="auto" height="25">
   - Vi   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vi.png" alt="vi" width="auto" height="25">
   - VI iMproved (Vim)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg" alt="vim" width="auto" height="25">
@@ -192,13 +195,12 @@
   - Advanced Package Tool (Apt)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt.png" alt="apt" width="auto" height="25">
   - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
   - Curl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
-  - Nano   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
   - Node Package Manager (npm)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm" width="auto" height="25">
   - Stress   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/stress.webp" alt="stress" width="auto" height="25">
   - Systemctl
-  - Unzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unzip.png" alt="unzip" width="auto" height="25">
   - Tar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tar_gz.jpeg" alt="tar_gz" width="auto" height="25">
   - Unrar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unrar.png" alt="unrar" width="auto" height="25">
+  - Unzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unzip.png" alt="unzip" width="auto" height="25">
   - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
 - Frameworks:
   - Flask   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="flask" width="auto" height="25">
@@ -221,6 +223,7 @@
   - Microsoft Edge   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_edge.png" alt="microsoft_edge" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
   - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
+  - Ping
   - PuTTY   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - PuTTYgen   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
   - PuTTY PSCP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty_pscp" width="auto" height="25">
@@ -284,5 +287,21 @@
 
 
 
+### Theme:
+- Cloud Computing
 
+### Used Tools:
+- Operating System (OS): 
+  - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
+- Cloud Services:
+  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
+- Language:
+  - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
+  - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
+- Integrated Development Environment (IDE) and Text Editor:
+  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+- Versioning: 
+  - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
+- Repository:
+  - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 
