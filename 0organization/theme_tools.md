@@ -49,6 +49,7 @@
   - Amazon Elastic File System (EFS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_efs.svg" alt="aws_efs" width="auto" height="25">
   - Amazon Elastic Kubernetes Service (EKS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_eks.png" alt="aws_eks" width="auto" height="25">
   - Amazon Elastic Load Balancing (ELB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_elb.svg" alt="aws_elb" width="auto" height="25">
+  - Amazon Elastic MapReduce (EMR)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_emr.svg" alt="aws_emr" width="auto" height="25">
   - Amazon Glacier   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_glacier.svg" alt="aws_glacier" width="auto" height="25">
   - Amazon Inspector   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_inspector.svg" alt="aws_inspector" width="auto" height="25">
   - Amazon Kinesis Data Firehose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_kinesis_firehose.svg" alt="aws_kinesis_firehose" width="auto" height="25">
@@ -65,6 +66,7 @@
   - Amazon Simple Notification Service (SNS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sns.svg" alt="aws_sns" width="auto" height="25">
   - Amazon Simple Queue Service (SQS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sqs.svg" alt="aws_sqs" width="auto" height="25">
   - Amazon Simple Storage Service (S3)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_s3.svg" alt="aws_s3" width="auto" height="25">
+  - Amazon Simple Workflow Service (SWF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_swf.svg" alt="aws_swf" width="auto" height="25">
   - Amazon Virtual Private Cloud (VPC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_vpc.svg" alt="aws_vpc" width="auto" height="25">
   - AWS Artifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact" width="auto" height="25">
   - AWS Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.svg" alt="aws_auto_scaling" width="auto" height="25">
