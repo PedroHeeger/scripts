@@ -1,6 +1,9 @@
 ### Theme:
+- Business Intelligence (BI)
 - Cloud Computing
 - Data
+- Data Analysis
+- DevOps
 - Operating System (OS)
 - Programming
 - Programming Logic
@@ -17,13 +20,10 @@
   - RedHat   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg" alt="redhat" width="auto" height="25">
   - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
 - Virtualization: 
-  - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
-  - Docker Swarm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_swarm.png" alt="docker_swarm" width="auto" height="25">
-  - Docker Compose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_compose.png" alt="docker_compose" width="auto" height="25">
   - Oracle VM VirtualBox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
   - WSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wsl.svg" alt="wsl" width="auto" height="25">
 - Cloud:
-  - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - Amazon Web Services (AWS)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
   - Microsoft Azure   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="azure" width="auto" height="25">
   - Digital Ocean   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" alt="digital_ocean" width="auto" height="25">
   - Google Cloud Platform (GCP)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="gcp" width="auto" height="25">
@@ -106,11 +106,23 @@
   - Network Access Control List (NACL)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_nacl.svg" alt="aws_nacl" width="auto" height="25">
 
 
+- Containerization: 
+  - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+  - Docker Compose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_compose.png" alt="docker_compose" width="auto" height="25">
+  - Podman   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/podman/podman-original.svg" alt="podman" width="auto" height="25">
+  - Portainer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/portainer.png" alt="portainer" width="auto" height="25">
 - Cluster Management Software:
+  - Docker Swarm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_swarm.png" alt="docker_swarm" width="auto" height="25">
   - Kubernetes   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes" width="auto" height="25">
   - K3D   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_k3d.png" alt="kubernetes_k3d" width="auto" height="25">
   - K3S   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/k3s/k3s-original.svg" alt="kubernetes_k3s" width="auto" height="25">
   - Kind   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_kind.png" alt="kubernetes_kind" width="auto" height="25">
+  - Kubernetes K0S   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_k0s.png" alt="kubernetes_k0s" width="auto" height="25">
+  - Kubeadm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubeadm.png" alt="kubeadm" width="auto" height="25">
+  - Micro Kubernetes K8S   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes_k8s" width="auto" height="25">
+  - MiniKube   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/minikube.jpg" alt="minikube" width="auto" height="25">
+  - Rancher Kubernetes Engine (RKE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_rke.jpeg" alt="kubernetes_rke" width="auto" height="25">
+  - Rancher Kubernetes Engine 2 (RKE 2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_rke.jpeg" alt="kubernetes_rke2" width="auto" height="25">
 - Configuration Management (CM):
   - Terraform   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform" width="auto" height="25">
   - Vagrant   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
@@ -161,7 +173,9 @@
   - Azure CLI   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="azure_cli" width="auto" height="25">
   - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
   - Digital Ocean CLI   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" alt="digital_ocean_cli" width="auto" height="25">
+  - Eksctl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/eksctl.png" alt="eksctl" width="auto" height="25">
   - Google Cloud CLI (gcloud)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="gcp_cli" width="auto" height="25">
+  - Kubectl   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes" width="auto" height="25">
   - MySQL Shell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mysql_shell.png" alt="mysql_shell" width="auto" height="25">
   - Oh My Zshell (Oh My ZSh)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/oh_my_zshell.png" alt="oh_my_zshell" width="auto" height="25">
   - Oracle Cloud CLI   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/oracle_cloud.jpg" alt="oracle_cloud_cli" width="auto" height="25">
@@ -204,6 +218,7 @@
   - Unrar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unrar.png" alt="unrar" width="auto" height="25">
   - Unzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unzip.png" alt="unzip" width="auto" height="25">
   - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
+  - Zip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zip.png" alt="zip" width="auto" height="25">
 - Frameworks:
   - Flask   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="flask" width="auto" height="25">
   - Serverless Framework   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/serverless_framework.png" alt="serverless_framework" width="auto" height="25">
@@ -222,10 +237,12 @@
   - Google Chrome   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" alt="google_chrome" width="auto" height="25">
   - Filezilla   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filezilla/filezilla-plain.svg" alt="filezilla" width="auto" height="25">
   - Internet Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/internet_explorer.png" alt="internet_explorer" width="auto" height="25">
+  - JSON Web Token (JWT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/jwt.png" alt="jwt" width="auto" height="25">
   - Microsoft Edge   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_edge.png" alt="microsoft_edge" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
   - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
   - Ping
+  - Proton Mail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/proton_mail.png" alt="proton_mail" width="auto" height="25"> 
   - PuTTY   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - PuTTYgen   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
   - PuTTY PSCP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty_pscp" width="auto" height="25">
