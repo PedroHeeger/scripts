@@ -4,6 +4,7 @@
 - Data
 - Data Analysis
 - DevOps
+- Network
 - Operating System (OS)
 - Programming
 - Programming Logic
@@ -53,6 +54,7 @@
   - Amazon Glacier   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_glacier.svg" alt="aws_glacier" width="auto" height="25">
   - Amazon Inspector   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_inspector.svg" alt="aws_inspector" width="auto" height="25">
   - Amazon Kinesis Data Firehose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_kinesis_firehose.svg" alt="aws_kinesis_firehose" width="auto" height="25">
+  - Amazon Lex   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lex.svg" alt="aws_lex" width="auto" height="25">
   - Amazon Lightsail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lightsail.svg" alt="aws_lightsail" width="auto" height="25">
   - Amazon Macie   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_macie.svg" alt="aws_macie" width="auto" height="25">
   - Amazon Neptune   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_neptune.svg" alt="aws_neptune" width="auto" height="25">
@@ -123,6 +125,8 @@
   - MiniKube   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/minikube.jpg" alt="minikube" width="auto" height="25">
   - Rancher Kubernetes Engine (RKE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_rke.jpeg" alt="kubernetes_rke" width="auto" height="25">
   - Rancher Kubernetes Engine 2 (RKE 2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_rke.jpeg" alt="kubernetes_rke2" width="auto" height="25">
+- Observability:
+    - Prometheus   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="prometheus" width="auto" height="25">
 - Configuration Management (CM):
   - Terraform   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform" width="auto" height="25">
   - Vagrant   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
@@ -152,14 +156,41 @@
   - Power BI   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_powerbi.png" alt="powerbi" width="auto" height="25">
   - Power Query   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_power_query.png" alt="power_query" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
+  - Apache NetBeans IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_netbeans_ide.png" alt="apache_netbeans_ide" width="auto" height="25">
+  - Atom   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/atom/atom-original.svg" alt="atom" width="auto" height="25">
+  - Bluefish   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/bluefish.png" alt="bluefish" width="auto" height="25">
+  - Brackets   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/brackets.png" alt="brackets" width="auto" height="25">
+  - Codepen   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codepen/codepen-plain.svg" alt="codepen" width="auto" height="25">
+  - Eclipse   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/eclipse.webp" alt="eclipse" width="auto" height="25">
+  - Ed   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ed.jpg" alt="ed" width="auto" height="25">
+  - Geany   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/geany.png" alt="geany" width="auto" height="25">
+  - Gedit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gedit.svg" alt="gedit" width="auto" height="25">
+  - GNU Editor MAC ro S (GNU Emacs)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gnu_emacs.png" alt="gnu_emacs" width="auto" height="25">
+  - Google Android Studio   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="google_android_studio" width="auto" height="25">
   - Google Colaboratory (Google Colab)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_colab.png" alt="google_colab" width="auto" height="25">
+  - IntelliJ IDEA   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" alt="intellij_idea" width="auto" height="25">
+  - Jdoodle   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/jdoodle.jpeg" alt="jdoodle" width="auto" height="25">
+  - JED   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/jed.png" alt="jed" width="auto" height="25">
+  - Joe's Own Editor (Joe)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/joe.png" alt="joe" width="auto" height="25">
+  - KDE Advanced Text Editor (Kate)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kate.png" alt="kate" width="auto" height="25">
+  - Leafpad   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/leafpad.png" alt="leafpad" width="auto" height="25">
+  - Mcedit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mcedit.jpeg" alt="mcedit" width="auto" height="25">
   - Microsoft Visual Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_visual_studio.png" alt="microsoft_visual_studio" width="auto" height="25">
+  - Microsoft Word   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_word.png" alt="microsoft_word" width="auto" height="25">
+  - Mined   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mined.png" alt="mined" width="auto" height="25">
   - Nano   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
+  - NEdit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nedit.png" alt="nedit" width="auto" height="25">
+  - Note Pad++   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/notepad++.png" alt="notepad++" width="auto" height="25">
+  - Pico   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pico.png" alt="pico" width="auto" height="25">
   - Portugol Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portugol.png" alt="portugol_studio" width="auto" height="25">
+  - PyCharm   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" alt="atom" width="auto" height="25">
+  - Replit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/replit.png" alt="replit" width="auto" height="25">
+  - Sublime Text   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sublime_text.svg" alt="sublime_text" width="auto" height="25">
   - Vi   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vi.png" alt="vi" width="auto" height="25">
   - VI iMproved (Vim)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg" alt="vim" width="auto" height="25">
   - Visualg   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/visualg.png" alt="visualg" width="auto" height="25">
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+  - Xcode   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg" alt="xcode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
@@ -189,7 +220,6 @@
   - MySQL Server   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
   - Network File System (NFS Server)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nfs_server.jpeg" alt="nfs_server" width="auto" height="25">
   - Nginx   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="nginx" width="auto" height="25">
-  - Prometheus   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="prometheus" width="auto" height="25">
   - Samba   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/samba.png" alt="samba" width="auto" height="25">
 - Database Administration Tool:
   - Adminer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/adminer.png" alt="adminer" width="auto" height="25">
@@ -210,14 +240,34 @@
 - Tools:
   - Advanced Package Tool (Apt)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt.png" alt="apt" width="auto" height="25">
   - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
+  - Aptitude   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aptitude.webp" alt="aptitude" width="auto" height="25">
+  - Bzip2/Bunzip2   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/bzip2.png" alt="bzip2" width="auto" height="25">
+  - Chocolatey   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chocolatey.png" alt="chocolatey" width="auto" height="25">
+  - Cpio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cpio.webp" alt="cpio" width="auto" height="25">
   - Curl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
+  - Dandified YUM (DNF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dnf.jpeg" alt="dnf" width="auto" height="25">
+  - DPKG   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dpkg.webp" alt="dpkg" width="auto" height="25">
+  - Gzip/Gunzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gzip.png" alt="gzip" width="auto" height="25">
+  - Helm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/helm.png" alt="helm" width="auto" height="25">
+  - Homebrew   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/homebrew.png" alt="homebrew" width="auto" height="25">
   - Node Package Manager (npm)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm" width="auto" height="25">
+  - NuGet   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuget/nuget-original.svg" alt="nuget" width="auto" height="25">
+  - Package Manager (Pacman)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pacman.webp" alt="pacman" width="auto" height="25">
+  - Performant NPM (PNPM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pnpm.png" alt="pnpm" width="auto" height="25">
+  - Pip Install Packages (Pip)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pip.png" alt="pip" width="auto" height="25">
+  - Portage   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portage.jpeg" alt="portage" width="auto" height="25">
+  - RPM Package Manager (RPM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rpm.png" alt="rpm" width="auto" height="25">
+  - RubyGems   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rubygems.jpeg" alt="rubygems" width="auto" height="25">
   - Stress   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/stress.webp" alt="stress" width="auto" height="25">
-  - Systemctl
+  - Synaptic   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/synaptic.png" alt="synaptic" width="auto" height="25">
   - Tar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tar_gz.jpeg" alt="tar_gz" width="auto" height="25">
   - Unrar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unrar.png" alt="unrar" width="auto" height="25">
   - Unzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unzip.png" alt="unzip" width="auto" height="25">
   - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
+  - XZ Utils/Unxz   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xz.png" alt="xz" width="auto" height="25">
+  - Yarn   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" alt="yarn" width="auto" height="25">
+  - Yellowdog Updater Modified (YUM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/yum.jpeg" alt="yum" width="auto" height="25">
+  - Zen / YaST Packages Patches Patterns Products (Zypp)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zypp.webp" alt="zypp" width="auto" height="25">
   - Zip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zip.png" alt="zip" width="auto" height="25">
 - Frameworks:
   - Flask   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="flask" width="auto" height="25">
@@ -318,7 +368,7 @@
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
-  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+  - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
