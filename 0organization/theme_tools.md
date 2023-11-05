@@ -255,12 +255,12 @@
   - Package Manager (Pacman)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pacman.webp" alt="pacman" width="auto" height="25">
   - Performant NPM (PNPM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pnpm.png" alt="pnpm" width="auto" height="25">
   - Pip Install Packages (Pip)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pip.png" alt="pip" width="auto" height="25">
-  - Portage   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portage.jpeg" alt="portage" width="auto" height="25">
+  - Portage   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portage.jpg" alt="portage" width="auto" height="25">
   - RPM Package Manager (RPM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rpm.png" alt="rpm" width="auto" height="25">
   - RubyGems   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rubygems.jpeg" alt="rubygems" width="auto" height="25">
   - Stress   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/stress.webp" alt="stress" width="auto" height="25">
   - Synaptic   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/synaptic.png" alt="synaptic" width="auto" height="25">
-  - Tar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tar_gz.jpeg" alt="tar_gz" width="auto" height="25">
+  - Tar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tar.jpeg" alt="tar" width="auto" height="25">
   - Unrar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unrar.png" alt="unrar" width="auto" height="25">
   - Unzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unzip.png" alt="unzip" width="auto" height="25">
   - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
