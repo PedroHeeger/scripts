@@ -266,7 +266,7 @@
   - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
   - XZ Utils/Unxz   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xz.png" alt="xz" width="auto" height="25">
   - Yarn   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" alt="yarn" width="auto" height="25">
-  - Yellowdog Updater Modified (YUM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/yum.jpeg" alt="yum" width="auto" height="25">
+  - Yellowdog Updater Modified (YUM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/yum.jpg" alt="yum" width="auto" height="25">
   - Zen / YaST Packages Patches Patterns Products (Zypp)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zypp.webp" alt="zypp" width="auto" height="25">
   - Zip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zip.png" alt="zip" width="auto" height="25">
 - Frameworks:
