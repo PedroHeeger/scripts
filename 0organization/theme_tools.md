@@ -17,7 +17,9 @@
 - Operating System (OS): 
   - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Linux Distribution: 
+- Linux Distribution:
+  - Alpine Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/alpine.png" alt="alpine" width="auto" height="25">
+  - Debian   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg" alt="debian" width="auto" height="25">
   - RedHat   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg" alt="redhat" width="auto" height="25">
   - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
 - Virtualization: 
@@ -111,6 +113,7 @@
 - Containerization: 
   - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
   - Docker Compose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_compose.png" alt="docker_compose" width="auto" height="25">
+  - Docker Playground; Play With Docker (PWD)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/docker_playground.jpg" alt="docker_playground" width="auto" height="25">
   - Podman   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/podman/podman-original.svg" alt="podman" width="auto" height="25">
   - Portainer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/portainer.png" alt="portainer" width="auto" height="25">
 - Cluster Management Software:
@@ -240,6 +243,7 @@
 - Tools:
   - Advanced Package Tool (Apt)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt.png" alt="apt" width="auto" height="25">
   - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
+  - Alpine Package Keeper (APK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apk.webp" alt="apk" width="auto" height="25">
   - Aptitude   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aptitude.webp" alt="aptitude" width="auto" height="25">
   - Bzip2/Bunzip2   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/bzip2.png" alt="bzip2" width="auto" height="25">
   - Chocolatey   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chocolatey.png" alt="chocolatey" width="auto" height="25">
