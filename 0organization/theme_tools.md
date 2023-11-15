@@ -132,10 +132,13 @@
     - Prometheus   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="prometheus" width="auto" height="25">
 - Configuration Management (CM):
   - Terraform   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform" width="auto" height="25">
+  - Terraform Cloud   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/terraform_cloud.png" alt="terraform_cloud" width="auto" height="25">
   - Vagrant   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
 - Build Automation:
   - Apache Maven   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_maven.png" alt="apache_maven" width="auto" height="25">
   - Gradle   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gradle/gradle-plain.svg" alt="gradle" width="auto" height="25">
+- Web Developement:
+  - Heroku   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain.svg" alt="heroku" width="auto" height="25">
 - Language:
   - Comma-Separated Values (CSV)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/csv.png" alt="csv" width="auto" height="25">
   - CSS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="css" width="auto" height="25">
@@ -219,6 +222,7 @@
   - ZShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zshell.png" alt="zshell" width="auto" height="25">
 - Server and Databases:
   - Apache HTTP Server (httpd)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_httpd" width="auto" height="25">
+  - Gunicorn   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gunicorn.svg" alt="gunicorn" width="auto" height="25">
   - MariaDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mariadb.png" alt="mariadb" width="auto" height="25">
   - MySQL Server   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
   - Network File System (NFS Server)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nfs_server.jpeg" alt="nfs_server" width="auto" height="25">
@@ -283,6 +287,7 @@
   - NumPy   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="numpy" width="auto" height="25">
   - Openai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/openai.png" alt="openai" width="auto" height="25">
   - Pandas   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="pandas" width="auto" height="25">
+  - WerkZeug   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/werkzeug.webp" alt="werkzeug" width="auto" height="25">
 
 
 
