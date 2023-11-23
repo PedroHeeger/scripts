@@ -35,11 +35,16 @@
 - Cloud Services:
   - Amazon API Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_api_gateway.svg" alt="aws_api_gateway" width="auto" height="25">
   - Amazon Application Load Balancer (ALB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_alb.svg" alt="aws_alb" width="auto" height="25">
+  - Amazon AppStream 2.0   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/amazon_appstream_20.svg" alt="amazon_appstream_20" width="auto" height="25">
   - Amazon Athena  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_athena.svg" alt="aws_athena" width="auto" height="25">
+  - Amazon Augmented AI (A2I)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_a2i.png" alt="aws_a2i" width="auto" height="25">
+  - Amazon Braket   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_braket.png" alt="aws_braket" width="auto" height="25">
   - Amazon Classic Load Balancer (CLB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_clb.svg" alt="aws_clb" width="auto" height="25">
   - Amazon CloudFront   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudfront.svg" alt="aws_cloudfront" width="auto" height="25">
   - Amazon CloudWatch   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudwatch.svg" alt="aws_cloudwatch" width="auto" height="25">
+  - Amazon CodeWhisperer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codewhisperer.jpeg" alt="aws_codewhisperer" width="auto" height="25">
   - Amazon Cognito   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cognito.svg" alt="aws_cognito" width="auto" height="25">
+  - Amazon Comprehend   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_comprehend.svg" alt="aws_comprehend" width="auto" height="25">
   - Amazon DB Accelerator (DAX)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_dax.svg" alt="aws_dax" width="auto" height="25">
   - Amazon DocumentDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_documentdb.svg" alt="aws_documentdb" width="auto" height="25">
   - Amazon DynamoDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_dynamodb.svg" alt="aws_dynamodb" width="auto" height="25">
@@ -53,12 +58,15 @@
   - Amazon Elastic Kubernetes Service (EKS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_eks.png" alt="aws_eks" width="auto" height="25">
   - Amazon Elastic Load Balancing (ELB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_elb.svg" alt="aws_elb" width="auto" height="25">
   - Amazon Elastic MapReduce (EMR)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_emr.svg" alt="aws_emr" width="auto" height="25">
+  - Amazon Fraud Detector   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_fraud_detector.jpeg" alt="aws_fraud_detector" width="auto" height="25">
   - Amazon Glacier   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_glacier.svg" alt="aws_glacier" width="auto" height="25">
+  - Amazon GuardDuty   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_guardduty.png" alt="aws_guardduty" width="auto" height="25">
   - Amazon Inspector   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_inspector.svg" alt="aws_inspector" width="auto" height="25">
   - Amazon Kinesis Data Firehose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_kinesis_firehose.svg" alt="aws_kinesis_firehose" width="auto" height="25">
   - Amazon Lex   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lex.svg" alt="aws_lex" width="auto" height="25">
   - Amazon Lightsail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lightsail.svg" alt="aws_lightsail" width="auto" height="25">
   - Amazon Macie   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_macie.svg" alt="aws_macie" width="auto" height="25">
+  - Amazon Managed Blockchain   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_blockchain.jpeg" alt="aws_managed_blockchain" width="auto" height="25">
   - Amazon Neptune   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_neptune.svg" alt="aws_neptune" width="auto" height="25">
   - Amazon Network Load Balancer (NLB)
   - Amazon QuickSight   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_quicksight.svg" alt="aws_quicksight" width="auto" height="25">
@@ -71,39 +79,63 @@
   - Amazon Simple Queue Service (SQS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sqs.svg" alt="aws_sqs" width="auto" height="25">
   - Amazon Simple Storage Service (S3)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_s3.svg" alt="aws_s3" width="auto" height="25">
   - Amazon Simple Workflow Service (SWF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_swf.svg" alt="aws_swf" width="auto" height="25">
+  - Amazon Textract   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_textract.png" alt="aws_textract" width="auto" height="25">
+  - Amazon Transcribe   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_transcribe.png" alt="aws_transcribe" width="auto" height="25">
   - Amazon Virtual Private Cloud (VPC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_vpc.svg" alt="aws_vpc" width="auto" height="25">
+  - Amazon WorkLink   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_worklink.jpg" alt="aws_worklink" width="auto" height="25">
+  - Amazon WorkSpaces   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_workspaces.svg" alt="aws_workspaces" width="auto" height="25">
   - AWS Artifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact" width="auto" height="25">
-  - AWS Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.svg" alt="aws_auto_scaling" width="auto" height="25">
+  - AWS Auto Scaling; Amazon EC2 Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.svg" alt="aws_auto_scaling" width="auto" height="25">
+  - AWS Billing   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_billing.svg" alt="aws_billing" width="auto" height="25">
+  - AWS Blog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_blog.jpg" alt="aws_blog" width="auto" height="25">
   - AWS Budgets  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_budgets.png" alt="aws_budget" width="auto" height="25">
+  - AWS Cloud Adoption Framework (CAF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_caf.jpeg" alt="aws_caf" width="auto" height="25">
   - AWS CloudFormation   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudformation.svg" alt="aws_cloudformation" width="auto" height="25">
   - AWS CloudTrail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudtrail.svg" alt="aws_cloud_trail" width="auto" height="25">
   - AWS CodeCommit  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codecommit.svg" alt="aws_codecommit" width="auto" height="25">
   - AWS CodeDeploy  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codedeploy.svg" alt="aws_codedeploy" width="auto" height="25">
   - AWS CodePipeline  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codepipeline.svg" alt="aws_codepipeline" width="auto" height="25">
   - AWS Config   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_config.svg" alt="aws_config" width="auto" height="25">
+  - AWS Console Mobile Application   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws_console_mobile" width="auto" height="25">
+  - AWS Cost and Usage Reports (CUR)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cur.webp" alt="aws_cur" width="auto" height="25">
   - AWS Cost Explorer  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cost_explorer.webp" alt="aws_cost_explorer" width="auto" height="25">
   - AWS Database Migration Service (DMS)  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codecommit.svg" alt="aws_dms" width="auto" height="25">
+  - AWS DeepRacer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_deepracer.png" alt="aws_deepracer" width="auto" height="25">
   - AWS Direct Connect   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_direct_connect.svg" alt="aws_direct_connect" width="auto" height="25">
   - AWS Elastic Beanstalk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_elastic_beanstalk.svg" alt="aws_elastic_beanstalk" width="auto" height="25">
+  - AWS End User Computing (EUC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_euc.png" alt="aws_euc" width="auto" height="25">
   - AWS Fargate   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_fargate.svg" alt="aws_fargate" width="auto" height="25">
+  - AWS Free Tier   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_free_tier.webp" alt="aws_free_tier" width="auto" height="25">
+  - AWS Glossary   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_glossary.jpg" alt="aws_glossary" width="auto" height="25">
   - AWS Glue   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_glue.svg" alt="aws_glue" width="auto" height="25">
+  - AWS Ground Station   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ground_station.png" alt="aws_ground_station" width="auto" height="25">
   - AWS Identity and Access Management (IAM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_iam.svg" alt="aws_iam" width="auto" height="25">
+  - AWS IoT Greengrass   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_iot_greengrass.png" alt="aws_iot_greengrass" width="auto" height="25">
   - AWS Key Management Service (KMS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_kms.svg" alt="aws_kms" width="auto" height="25">
+  - AWS Knowledge Center   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_knowledge_center.png" alt="aws_knowledge_center" width="auto" height="25">
   - AWS Lambda   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lambda.svg" alt="aws_lambda" width="auto" height="25">
   - AWS Managed Services   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_services.svg" alt="aws_managed_services" width="auto" height="25">
   - AWS Management Console   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_management_console.svg" alt="aws_management_console" width="auto" height="25">
-  - AWS Organization  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_organizations.svg" alt="aws_organization" width="auto" height="25">
+  - AWS Marketplace   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_marketplace.jpg" alt="aws_marketplace" width="auto" height="25">
+  - AWS Organizations  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_organizations.svg" alt="aws_organizations" width="auto" height="25">
+  - AWS Outposts   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_outposts.jpeg" alt="aws_outposts" width="auto" height="25">
   - AWS Personal Health Dashboard  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_personal_health_dashboard.png" alt="aws_personal_health_dashboard" width="auto" height="25">
+  - AWS Pricing Calculator   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_pricing_calculator.png" alt="aws_pricing_calculator" width="auto" height="25">
   - AWS PrivateLink   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_private_link.svg" alt="aws_private_link" width="auto" height="25">
+  - AWS Schema Convertion Tool (SCT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sct.jpeg" alt="aws_sct" width="auto" height="25">
   - AWS Shield   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_shield.svg" alt="aws_shield" width="auto" height="25">
   - AWS Snowball  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowball.svg" alt="aws_snowball" width="auto" height="25">
+  - AWS Snowcone  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowcone.webp" alt="aws_snowcone" width="auto" height="25">
   - AWS Snowmobille  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowmobile.png" alt="aws_snowmobile" width="auto" height="25">
   - AWS Software Development Kit (SDK) - Java   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sdk_java.svg" alt="aws_sdk" width="auto" height="25">
   - AWS Software Development Kit (SDK) - Node.js   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sdk_nodejs.svg" alt="aws_sdk" width="auto" height="25">
   - AWS Software Development Kit (SDK) - Python   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sdk_python.svg" alt="aws_sdk" width="auto" height="25">
+  - AWS Storage Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_storage_gateway.svg" alt="aws_storage_gateway" width="auto" height="25">
+  - AWS Support   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_support.png" alt="aws_support" width="auto" height="25">
   - AWS Trusted Advisor   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_trusted_advisor.svg" alt="aws_trusted_advisor" width="auto" height="25">
-  - AWS Web Application Firewall   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_waf.svg" alt="aws_waf" width="auto" height="25">
+  - AWS Web Application Firewall (WAF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_waf.svg" alt="aws_waf" width="auto" height="25">
   - AWS Well-Architected  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_well_architected.png" alt="aws_well_architected" width="auto" height="25">
+  - AWS Whitepaper   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_whitepaper.jpg" alt="aws_whitepaper" width="auto" height="25">
   - EC2 ElasticIP Address   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2_elasticip_address.svg" alt="aws_ec2_elasticip_address" width="auto" height="25">
   - Google Cloud Monitoring <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/gc_monitoring.webp" alt="gc_monitoring" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
