@@ -1,0 +1,34 @@
+---
+- name: Instalação e Configuração do AWS CLI
+  hosts: seu_servidor
+  become: true  # Para executar com privilégios de superusuário
+
+  tasks:
+    - name: Instalação do AWS CLI
+      become: true
+      apt:
+        name: awscli
+        state: present
+      when: ansible_os_family == "Debian"  # Para sistemas Debian/Ubuntu
+
+    - name: Instalação do AWS CLI
+      become: true
+      yum:
+        name: aws-cli
+        state: present
+      when: ansible_os_family == "RedHat"  # Para sistemas Red Hat/CentOS
+
+    - name: Configuração do AWS CLI
+      command: "aws configure set aws_access_key_id {{ sua_access_key }}"
+      when: sua_access_key is defined
+
+    - name: Configuração do AWS CLI
+      command: "aws configure set aws_secret_access_key {{ sua_secret_key }}"
+      when: sua_secret_key is defined
+
+    - name: Configuração do AWS CLI
+      command: "aws configure set region {{ sua_regiao }}"
+      when: sua_regiao is defined
+      
+    - name: Definir o formato de saída padrão
+      command: "aws configure set default.output json"
