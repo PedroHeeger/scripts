@@ -28,4 +28,30 @@ fi
 
 
 
+#!/bin/bash
 
+echo "***********************************************"
+echo "AWS CLI CONFIGURATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Definindo variáveis"
+accessKey="SEU_ACCESS_KEY"
+secretKey="SEU_SECRET_KEY"
+region="us-east-1"
+outputFormat="json"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+read -p "Deseja executar o código? (y/n) " resposta
+if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Configurando as credenciais"
+    aws configure set aws_access_key_id "$accessKey"
+    aws configure set aws_secret_access_key "$secretKey"
+
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Configurando a região e o formato de saída dos dados"
+    aws configure set default.region "$region"
+    aws configure set default.output "$outputFormat"
+else
+    echo "Código não executado"
+fi
