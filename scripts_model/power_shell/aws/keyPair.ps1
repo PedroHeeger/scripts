@@ -6,7 +6,7 @@ Write-Output "KEY PAIR CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$keyPairName = keyPair1
+$keyPairName = "keyPair1"
 $keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws\"  # path
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -21,7 +21,7 @@ if ($resposta.ToLower() -eq 'y') {
     } else {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os pares de chaves criados"
-        aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output text
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando o par de chaves $keyPairName"
@@ -44,7 +44,7 @@ Write-Output "KEY PAIR EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$keyPairName = keyPair1
+$keyPairName = "keyPair1"
 $keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws\"  # path
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -53,6 +53,10 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o par de chaves $keyPairName"
     if ((aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName']").Count -gt 1) {
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Listando todos os pares de chaves criados"
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
+
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Removendo o par de chaves criado de nome $keyPairName e os arquivos pem e ppk"
         aws ec2 delete-key-pair --key-name $keyPairName
@@ -73,5 +77,8 @@ if ($resposta.ToLower() -eq 'y') {
             Remove-Item "$keyPairPath\$keyPairName.ppk"
         } else {Write-Host "Não existe o arquivo de par de chave $keyPairName.ppk"}
 
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Listando todos os pares de chaves criados"
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
     } else {Write-Output "Não existe o par de chaves de nome $keyPairName!"}
 } else {Write-Host "Código não executado"}

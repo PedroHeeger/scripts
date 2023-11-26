@@ -1,1 +1,8 @@
 atividades/
+
+
+scripts_model/terraform/aws/ec2/*
+!scripts_model/terraform/aws/ec2/main.tf
+
+scripts_model/terraform/aws/keyPair/*
+!scripts_model/terraform/aws/keyPair/main.tf

@@ -24,8 +24,3 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 else 
     echo "Código não executado"
 fi
-
-
-
-
-

@@ -21,7 +21,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os pares de chaves criados"
-        aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output text
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o par de chaves $keyPairName"
@@ -47,7 +47,7 @@ echo "KEY PAIR EXCLUSION"
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 keyPairName="keyPair1"
-keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws/"  # path
+keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -55,6 +55,10 @@ if [ "${resposta,,}" == 'y' ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o par de chaves $keyPairName"
     if aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName']" --output json | grep -q "$keyPairName"; then
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Listando todos os pares de chaves criados"
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
+
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Removendo o par de chaves criado de nome $keyPairName e os arquivos pem e ppk"
         aws ec2 delete-key-pair --key-name "$keyPairName"
@@ -78,6 +82,10 @@ if [ "${resposta,,}" == 'y' ]; then
         else
             echo "Não existe o arquivo de par de chave $keyPairName.ppk"
         fi
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Listando todos os pares de chaves criados"
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
     else
         echo "Não existe o par de chaves de nome $keyPairName!"
     fi
