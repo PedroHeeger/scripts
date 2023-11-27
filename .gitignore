@@ -1,8 +1,14 @@
 atividades/
 
+scripts_model/bash/.default/secrets
+scripts_model/power_shell/.default/secrets
+scripts_model/python/.default/secrets
 
 scripts_model/terraform/aws/ec2/*
 !scripts_model/terraform/aws/ec2/main.tf
 
 scripts_model/terraform/aws/keyPair/*
 !scripts_model/terraform/aws/keyPair/main.tf
+
+scripts_model/terraform/aws/sgRule/*
+!scripts_model/terraform/aws/sgRule/main.tf

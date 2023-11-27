@@ -7,7 +7,7 @@ echo "KEY PAIR CREATION"
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 keyPairName="keyPair1"
-keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws/"  # path
+keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -47,7 +47,7 @@ echo "KEY PAIR EXCLUSION"
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 keyPairName="keyPair1"
-keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws"
+keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

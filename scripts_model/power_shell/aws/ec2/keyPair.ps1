@@ -7,7 +7,7 @@ Write-Output "KEY PAIR CREATION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $keyPairName = "keyPair1"
-$keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws\"  # path
+$keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\.default\secrets"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -45,7 +45,7 @@ Write-Output "KEY PAIR EXCLUSION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $keyPairName = "keyPair1"
-$keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws\"  # path
+$keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\.default\secrets"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

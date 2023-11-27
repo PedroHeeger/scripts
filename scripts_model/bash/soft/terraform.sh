@@ -20,7 +20,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Atualizando os pacotes"
-    sudo apt-get -y update
+    sudo apt-get update -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Instalando o pacote"

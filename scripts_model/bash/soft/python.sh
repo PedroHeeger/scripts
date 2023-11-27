@@ -8,11 +8,11 @@ read -p "Deseja executar o código? (y/n): " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Atualizando os pacotes"
-    sudo apt-get -y update
+    sudo apt-get update -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Atualizando o sistema"
-    sudo apt-get -y upgrade
+    sudo apt-get upgrade -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Baixando o pacote"

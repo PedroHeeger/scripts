@@ -8,11 +8,11 @@ read -p "Deseja executar o código? (y/n): " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Atualizando os pacotes"
-    sudo apt-get -y update
+    sudo apt-get update -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Atualizando o sistema"
-    sudo apt-get -y upgrade
+    sudo apt-get upgrade -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Instalando o servidor ssh (sshd)"
@@ -39,8 +39,8 @@ echo "OPENSSH CREATION KEY"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-keyPairName="keyPair1"
-keyPairPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/power_shell/.default"
+keyPairName="keyPairTest"
+keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
