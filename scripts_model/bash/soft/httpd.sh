@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "GIT INSTALLATION"
+echo "APACHE HTTP (HTTPD) INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -16,34 +16,15 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Instalando o pacote"
-    sudo apt-get install -y git
+    sudo apt-get install -y apache2
+
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Reiniciando o serviço"
+    sudo systemctl restart apache2
+
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Habilitando o serviço para que seja executado automaticamente"
+    sudo systemctl enable apache2
 else 
-    echo "Código não executado"
-fi
-
-
-
-
-#!/bin/bash
-
-echo "***********************************************"
-echo "GIT CONFIGURATION"
-
-echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Definindo variáveis"
-userName="PedroHeeger"
-userEmail="pedroheeger19@gmail.com"
-
-echo "-----//-----//-----//-----//-----//-----//-----"
-read -p "Deseja executar o código? (y/n) " resposta
-if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
-    echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Configurando o nome de usuário"
-    git config --global user.name "$userName"
-
-    echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Configurando o email do usuário"
-    git config --global user.email "$userEmail"
-else
     echo "Código não executado"
 fi

@@ -6,7 +6,7 @@ Write-Output "IAM USER CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamUserName = "UserTest"
+$iamUserName = "iamUserTest"
 $userPassword = "SenhaTest123"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -48,7 +48,7 @@ Write-Output "IAM USER EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamUserName = "UserTest"
+$iamUserName = "iamUserTest"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

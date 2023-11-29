@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "PYTHON AND PIP INSTALLATION"
+echo "NODE JS INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -15,12 +15,8 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     sudo apt-get upgrade -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3
-
-    echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3-pip
+    echo "Instalando o pacote"
+    sudo apt-get install -y nodejs
 else 
     echo "Código não executado"
 fi

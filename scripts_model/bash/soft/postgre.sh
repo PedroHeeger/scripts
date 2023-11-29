@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "PYTHON AND PIP INSTALLATION"
+echo "POSTGRESQL INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -15,12 +15,16 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     sudo apt-get upgrade -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3
+    echo "Definindo a versão"
+    version="version"
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3-pip
+    echo "Instalando o pacote na versão determinada"
+    sudo apt-get install -y postgresql-$version
+
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Instalando o pacote cliente na versão determinada"
+    sudo apt-get install -y postgresql-client-$version
 else 
     echo "Código não executado"
 fi

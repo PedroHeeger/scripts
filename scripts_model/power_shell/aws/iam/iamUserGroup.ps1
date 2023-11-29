@@ -6,8 +6,8 @@ Write-Output "IAM USER ADD GROUP"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamGroupName = "GroupTest"
-$iamUserName = "UserTest"
+$iamGroupName = "iamGroupTest"
+$iamUserName = "iamUserTest"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -44,8 +44,8 @@ Write-Output "IAM USER REMOVE GROUP"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamGroupName = "GroupTest"
-$iamUserName = "UserTest"
+$iamGroupName = "iamGroupTest"
+$iamUserName = "iamUserTest"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

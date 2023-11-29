@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "PYTHON AND PIP INSTALLATION"
+echo "KIND INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -16,11 +16,15 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Baixando o pacote"
-    sudo apt-get install -y python3
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3-pip
+    echo "Alterando a permissão da pasta do repositório"
+    sudo chmod +x ./kind
+
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Movendo a pasta do pacote para a pasta criada"
+    sudo mv ./kind /usr/local/bin/kind
 else 
     echo "Código não executado"
 fi

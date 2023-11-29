@@ -7,7 +7,7 @@ print("IAM GROUP ADD POLICY")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_group_name = "GroupTest"
+iam_group_name = "iamGroupTest"
 policy_name = "AdministratorAccess"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -65,7 +65,7 @@ print("IAM GROUP REMOVE POLICY")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_group_name = "GroupTest"
+iam_group_name = "iamGroupTest"
 policy_name = "AdministratorAccess"
 
 print("-----//-----//-----//-----//-----//-----//-----")

@@ -6,7 +6,7 @@ echo "IAM GROUP ADD POLICY"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamGroupName="GroupTest"
+iamGroupName="iamGroupTest"
 policyName="AdministratorAccess"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -50,7 +50,7 @@ echo "IAM GROUP REMOVE POLICY"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamGroupName="GroupTest"
+iamGroupName="iamGroupTest"
 policyName="AdministratorAccess"
 
 echo "-----//-----//-----//-----//-----//-----//-----"

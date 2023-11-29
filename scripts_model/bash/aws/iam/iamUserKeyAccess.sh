@@ -6,7 +6,7 @@ echo "IAM USER KEY ACCESS CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamUserName="UserTest"
+iamUserName="iamUserTest"
 keyAccessFile="keyAccessTest.json"
 keyAccessPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 
@@ -47,7 +47,7 @@ echo "IAM USER KEY ACCESS EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamUserName="UserTest"
+iamUserName="iamUserTest"
 keyAccessFile="keyAccessTest.json"
 keyAccessPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 # keyAccessId="AKIAQCPZALZ6WNXS6ZEJ"

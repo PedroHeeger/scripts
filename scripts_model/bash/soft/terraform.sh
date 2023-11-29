@@ -9,7 +9,7 @@ link="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
-if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Baixando e instalando a chave GPG do HashiCorp"
     wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg

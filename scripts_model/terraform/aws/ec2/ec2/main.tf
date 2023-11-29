@@ -69,6 +69,8 @@ resource "aws_instance" "ec2Test" {
 #   # Defina suas configurações de sub-rede aqui
 # }
 
+
+# Saída
 output "public_ip" {
   value = aws_instance.ec2Test[0].public_ip
 }

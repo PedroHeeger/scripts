@@ -9,7 +9,7 @@ link="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
-if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Baixando o pacote"
     curl "$link" -o "awscliv2.zip"
@@ -42,7 +42,7 @@ outputFormat="json"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
-if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Configurando as credenciais"
     aws configure set aws_access_key_id "$accessKey"

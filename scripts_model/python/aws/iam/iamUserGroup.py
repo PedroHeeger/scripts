@@ -8,8 +8,8 @@ print("IAM USER ADD GROUP")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_group_name = "GroupTest"
-iam_user_name = "UserTest"
+iam_group_name = "iamGroupTest"
+iam_user_name = "iamUserTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -61,8 +61,8 @@ print("IAM USER REMOVE GROUP")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_group_name = "GroupTest"
-iam_user_name = "UserTest"
+iam_group_name = "iamGroupTest"
+iam_user_name = "iamUserTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")

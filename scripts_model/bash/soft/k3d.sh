@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "PYTHON AND PIP INSTALLATION"
+echo "K3D INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -15,12 +15,8 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     sudo apt-get upgrade -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3
-
-    echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3-pip
+    echo "Baixando e executando o script de instalação"
+    wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 else 
     echo "Código não executado"
 fi

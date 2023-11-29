@@ -6,7 +6,7 @@ echo "IAM USER MFA CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamUserName="UserTest"
+iamUserName="iamUserTest"
 deviceName="deviceTest"
 mfaFile="mfaTest.png"
 mfaPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
@@ -69,7 +69,7 @@ echo "IAM USER MFA EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamUserName="UserTest"
+iamUserName="iamUserTest"
 mfaFile="mfaTest.png"
 mfaPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 

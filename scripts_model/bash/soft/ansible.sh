@@ -5,7 +5,7 @@ echo "ANSIBLE INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
-if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Atualizando os pacotes"
     sudo apt-get update -y

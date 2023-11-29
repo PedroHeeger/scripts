@@ -6,7 +6,7 @@ Write-Output "IAM GROUP ADD POLICY"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamGroupName = "GroupTest"
+$iamGroupName = "iamGroupTest"
 $policyName = "AdministratorAccess"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -48,7 +48,7 @@ Write-Output "IAM GROUP REMOVE POLICY"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamGroupName = "GroupTest"
+$iamGroupName = "iamGroupTest"
 $policyName = "AdministratorAccess"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"

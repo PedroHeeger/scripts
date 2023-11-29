@@ -13,7 +13,7 @@ print("IAM USER MFA CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_user_name = "UserTest"
+iam_user_name = "iamUserTest"
 device_name = "deviceTest"
 mfa_file = "mfaTest.png"
 mfa_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/.default/secrets"
@@ -96,7 +96,7 @@ print("IAM USER MFA EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_user_name = "UserTest"
+iam_user_name = "iamUserTest"
 mfa_file = "mfaTest.png"
 mfa_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/.default/secrets"
 

@@ -6,7 +6,7 @@ echo "IAM GROUP CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamGroupName="GroupTest"
+iamGroupName="iamGroupTest"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -45,7 +45,7 @@ echo "IAM GROUP EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamGroupName="GroupTest"
+iamGroupName="iamGroupTest"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

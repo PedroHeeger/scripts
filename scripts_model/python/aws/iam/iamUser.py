@@ -8,7 +8,7 @@ print("IAM USER CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_user_name = "UserTest"
+iam_user_name = "iamUserTest"
 user_password = "SenhaTest123"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -60,7 +60,7 @@ print("IAM USER EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_user_name = "UserTest"
+iam_user_name = "iamUserTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")

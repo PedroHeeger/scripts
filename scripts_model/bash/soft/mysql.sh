@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "PYTHON AND PIP INSTALLATION"
+echo "MYSQL SERVER INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -15,12 +15,12 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     sudo apt-get upgrade -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3
+    echo "Instalando o pacote server"
+    sudo apt-get install -y mysql-server
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
-    sudo apt-get install -y python3-pip
+    echo "Instalando o pacote client"
+    sudo apt-get install -y mysql-clinet
 else 
     echo "Código não executado"
 fi

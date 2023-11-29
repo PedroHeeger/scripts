@@ -8,7 +8,7 @@ print("IAM USER KEY ACCESS CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_user_name = "UserTest"
+iam_user_name = "iamUserTest"
 key_access_file = "keyAccessTest.json"
 key_access_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/.default/secrets"
 
@@ -64,7 +64,7 @@ print("IAM USER KEY ACCESS EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_user_name = "UserTest"
+iam_user_name = "iamUserTest"
 key_access_file = "keyAccessTest.json"
 key_access_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/.default/secrets"
 # key_access_id = "AKIAQCPZALZ6WNXS6ZEJ"

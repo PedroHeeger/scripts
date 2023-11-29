@@ -5,7 +5,7 @@ Write-Output "IAM GROUP CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamGroupName = "GroupTest"
+$iamGroupName = "iamGroupTest"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -42,7 +42,7 @@ Write-Output "IAM GROUP EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamGroupName = "GroupTest"
+$iamGroupName = "iamGroupTest"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

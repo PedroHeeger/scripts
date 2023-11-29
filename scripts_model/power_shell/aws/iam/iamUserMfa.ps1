@@ -6,7 +6,7 @@ Write-Output "IAM USER MFA CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamUserName = "UserTest"
+$iamUserName = "iamUserTest"
 $deviceName = "deviceTest"
 $mfaFile = "mfaTest.png"
 $mfaPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\.default\secrets"
@@ -63,7 +63,7 @@ Write-Output "IAM USER MFA EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamUserName = "UserTest"
+$iamUserName = "iamUserTest"
 $mfaFile = "mfaTest.png"
 $mfaPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\.default\secrets"
 

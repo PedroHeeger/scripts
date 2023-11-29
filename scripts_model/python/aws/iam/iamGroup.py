@@ -8,7 +8,7 @@ print("IAM GROUP CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_group_name = "GroupTest"
+iam_group_name = "iamGroupTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -60,7 +60,7 @@ print("IAM GROUP EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_group_name = "GroupTest"
+iam_group_name = "iamGroupTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")

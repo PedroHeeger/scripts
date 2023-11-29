@@ -6,7 +6,7 @@ echo "IAM USER CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamUserName="UserTest"
+iamUserName="iamUserTest"
 userPassword="SenhaTest123"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -50,7 +50,7 @@ echo "IAM USER EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamUserName="UserTest"
+iamUserName="iamUserTest"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

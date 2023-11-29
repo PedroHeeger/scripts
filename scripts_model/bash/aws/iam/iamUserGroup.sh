@@ -6,8 +6,8 @@ echo "IAM USER ADD GROUP"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamGroupName="GroupTest"
-iamUserName="UserTest"
+iamGroupName="iamGroupTest"
+iamUserName="iamUserTest"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -46,8 +46,8 @@ echo "IAM USER REMOVE GROUP"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iamGroupName="GroupTest"
-iamUserName="UserTest"
+iamGroupName="iamGroupTest"
+iamUserName="iamUserTest"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
