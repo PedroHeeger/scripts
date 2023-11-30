@@ -22,7 +22,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "Verificando se existe a instância $tagNameInstance"
     if [ "$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]" | jq length)" -gt 0 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Já existe uma instância EC2 com o nome de tag $tagNameInstance!"
+        echo "Já existe uma instância EC2 com o nome de tag $tagNameInstance"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name' && Value=='$tagNameInstance'].Value" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -89,7 +89,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "Listando o nome da tag de todas as instâncias EC2 criadas"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
     else
-        echo "Não existe instâncias com o nome de tag $tagNameInstance!"
+        echo "Não existe instâncias com o nome de tag $tagNameInstance"
     fi
 else
     echo "Código não executado"

@@ -1,5 +1,8 @@
 atividades/
 
+scripts_model/.default/awsAccountCreation
+scripts_model/.default/secrets
+
 scripts_model/bash/.default/secrets
 scripts_model/power_shell/.default/secrets
 scripts_model/python/.default/secrets

@@ -10,7 +10,7 @@ $iamUserName = "iamUserTest"
 $deviceName = "deviceTest"
 $mfaFile = "mfaTest.png"
 $mfaPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\.default\secrets"
-$userAccount = "005354053245"
+$userAccount = "001727357081"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

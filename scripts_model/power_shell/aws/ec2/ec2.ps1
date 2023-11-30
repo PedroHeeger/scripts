@@ -22,7 +22,7 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "Verificando se existe a instância $tagNameInstance"
     if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Já existe uma instância EC2 com o nome de tag $tagNameInstance!"
+        Write-Output "Já existe uma instância EC2 com o nome de tag $tagNameInstance"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name' && Value=='$tagNameInstance'].Value" --output text
         
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -86,5 +86,5 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome da tag de todas as instâncias EC2 criadas"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
-    } else {Write-Output "Não existe instâncias com o nome de tag $tagNameInstance!"}
+    } else {Write-Output "Não existe instâncias com o nome de tag $tagNameInstance"}
 } else {Write-Host "Código não executado"}

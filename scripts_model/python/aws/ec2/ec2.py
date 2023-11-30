@@ -31,7 +31,7 @@
 #         instances = list(ec2.instances.filter(Filters=[{'Name': 'tag:Name', 'Values': [tagNameInstance]}]))
 #         if instances:
 #             print("-----//-----//-----//-----//-----//-----//-----")
-#             print(f"Já existe uma instância EC2 com o nome de tag {tagNameInstance}!")
+#             print(f"Já existe uma instância EC2 com o nome de tag {tagNameInstance}")
 #             for instance in instances:
 #                 print(f"ID da Instância: {instance.id}")
 #                 print(f"IP Público: {instance.public_ip_address}")
@@ -139,7 +139,7 @@ if resposta.lower() == 'y':
                         print(f"Nome da Instância: {tag['Value']}")
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Não existe instâncias com o nome de tag {tagNameInstance}!")
+            print(f"Não existe instâncias com o nome de tag {tagNameInstance}")
 
     except ClientError as e:
         print(f"Erro ao interagir com a AWS: {e}")

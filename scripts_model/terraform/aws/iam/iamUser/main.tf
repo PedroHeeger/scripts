@@ -9,10 +9,10 @@ variable "iamUserName" {
   default     = "iamUserTest"
 }
 
-variable "userPassword" {
-  description = "Senha do usuário do IAM"
-  default     = "Senha123!"
-}
+# variable "userPassword" {
+#   description = "Senha do usuário do IAM"
+#   default     = "Senha123!"
+# }
 
 
 # Executando o código
@@ -24,11 +24,10 @@ resource "aws_iam_user" "example_user" {
   name = var.iamUserName
 }
 
-# resource "aws_iam_user_login_profile" "example_user_login_profile" {
-#   user                    = aws_iam_user.example_user.name
-#   password_reset_required = false
-#   password                = var.userPassword
-# }
+resource "aws_iam_user_login_profile" "example_user_login_profile" {
+  user                    = aws_iam_user.example_user.name
+  password_reset_required = true
+}
 
 # resource "aws_iam_user_policy_attachment" "example_user_policy_attachment" {
 #   user       = aws_iam_user.example_user.name
@@ -65,3 +64,14 @@ output "access_key_info" {
   }
   sensitive = true
 }
+
+output "iam_user_password" {
+  value = aws_iam_user_login_profile.example_user_login_profile.password
+  sensitive = true
+}
+
+
+
+# Comandos à executar
+# terraform output access_key_info | Out-File -FilePath "G:\Meu Drive\4_PROJ\scripts\scripts_model\terraform\.default\secrets\keyAccessTest.json" -Append
+# terraform output iam_user_password | Out-File -FilePath "G:\Meu Drive\4_PROJ\scripts\scripts_model\terraform\.default\secrets\iamUserPassword.txt" -Append
