@@ -8,6 +8,9 @@ scripts_model/power_shell/.default/secrets
 scripts_model/python/.default/secrets
 scripts_model/terraform/.default/secrets
 
+scripts_model/terraform/aws/budget/*
+!scripts_model/terraform/aws/budget/main.tf
+
 scripts_model/terraform/aws/ec2/ec2/*
 !scripts_model/terraform/aws/ec2/ec2/main.tf
 

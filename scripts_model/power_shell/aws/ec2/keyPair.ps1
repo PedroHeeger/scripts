@@ -6,7 +6,7 @@ Write-Output "KEY PAIR CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$keyPairName = "keyPair1"
+$keyPairName = "keyPairTest"
 $keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\.default\secrets"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -44,7 +44,7 @@ Write-Output "KEY PAIR EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$keyPairName = "keyPair1"
+$keyPairName = "keyPairTest"
 $keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\.default\secrets"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"

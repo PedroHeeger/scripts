@@ -11,9 +11,9 @@ groupName="default"
 availabilityZone="us-east-1a"
 imageId="ami-0fc5d935ebf8bc3bc"
 instanceType="t2.micro"
-keyPairName="keyPair1"
+keyPairName="keyPairTest"
 userDataPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\test"
-userDataFile="userDataFile.sh"
+userDataFile="udFileTest.sh"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

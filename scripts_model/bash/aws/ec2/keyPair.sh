@@ -6,7 +6,7 @@ echo "KEY PAIR CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-keyPairName="keyPair1"
+keyPairName="keyPairTest"
 keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -46,7 +46,7 @@ echo "KEY PAIR EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-keyPairName="keyPair1"
+keyPairName="keyPairTest"
 keyPairPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\secrets"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
