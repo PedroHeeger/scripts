@@ -2,6 +2,7 @@
 
 import boto3
 from botocore.exceptions import ClientError
+import time
 
 print("***********************************************")
 print("SERVIÇO: AWS EC2")
@@ -71,6 +72,10 @@ if resposta.lower() == 'y':
                 for tag in instance.tags:
                     if tag['Key'] == 'Name':
                         print(f"Nome da Instância: {tag['Value']}")
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print("Aguardando 10 segundos para instância alocar um IP público")
+            time.sleep(10)
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando o IP público da instância {tagNameInstance}")

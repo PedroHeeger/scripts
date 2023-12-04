@@ -6,7 +6,7 @@ variable "region" {
 
 variable "keyPairName" {
   description = "Nome do par de chaves"
-  default     = "keyPair1"
+  default     = "keyPairTest"
 }
 
 variable "keyPairPubPath" {

@@ -21,7 +21,7 @@ variable "instanceType" {
 
 variable "keyPairName" {
   description = "Nome do par de chaves"
-  default     = "keyPair1"
+  default     = "keyPairTest"
 }
 
 variable "userDataPath" {
@@ -31,7 +31,7 @@ variable "userDataPath" {
 
 variable "userDataFile" {
   description = "Arquivo user data"
-  default     = "userDataFile.sh"
+  default     = "udFileTest.sh"
 }
 
 

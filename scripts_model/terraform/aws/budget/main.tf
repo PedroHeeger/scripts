@@ -62,15 +62,6 @@ resource "aws_budgets_budget" "budget_test" {
   time_unit         = "MONTHLY"
 }
 
-# resource "null_resource" "configure_budget_notification" {
-#   provisioner "local-exec" {
-#     command = "aws budgets create-notification --account-id ${var.account_id} --budget-name \"${aws_budgets_budget.budget_test.name}\" --notification \"NotificationType=ACTUAL,ComparisonOperator=GREATER_THAN,Threshold=${var.threshold},ThresholdType=PERCENTAGE,NotificationState=ALARM\" --subscribers \"SubscriptionType=EMAIL,Address=${var.address}\""
-#   }
-
-#   depends_on = [aws_budgets_budget.budget_test]
-# }
-
-
 resource "null_resource" "configure_budget_notification" {
   provisioner "local-exec" {
     command = <<-EOT
