@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 #pip install qrcode[pil]
 #pip install pyotp
 import boto3
@@ -86,7 +85,6 @@ else:
 
 
 #!/usr/bin/env python
-
 import boto3
 import os
 

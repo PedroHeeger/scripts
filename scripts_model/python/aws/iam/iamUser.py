@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import boto3
 
 print("***********************************************")
@@ -51,7 +50,6 @@ else:
 
 
 #!/usr/bin/env python
-
 import boto3
 
 print("***********************************************")

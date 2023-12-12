@@ -1,0 +1,69 @@
+[
+
+    // Política de permissão para acessar os objetos em todos os buckets.
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::seu-bucket/*"
+          }
+          // Adicione outras declarações conforme necessário
+        ]
+      },
+    
+    
+    // Política de confiança (trust policy) usada para definir que um usuário do IAM tem permissão para assumir a função associada.
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Principal": {"AWS": "arn:aws:iam::001727357081:user/test"},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+    },
+    
+    
+    // Política de confiança (trust policy) usada para definir que um grupo do IAM tem permissão para assumir a função associada.
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Principal": {"AWS": "arn:aws:iam::001727357081:group/test"},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+    },
+    
+    
+    // Política de confiança (trust policy) usada para definir que uma outra role tem permissão para assumir a função associada.
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Principal": {"AWS": "arn:aws:iam::001727357081:role/test"},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+    },
+    
+    
+    // Política de confiança (trust policy) usada para definir que um serviço da AWS tem permissão para assumir a função associada.
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {"Service": "ec2.amazonaws.com"},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+    }
+    
+    
+    
+    
+    
+    ]

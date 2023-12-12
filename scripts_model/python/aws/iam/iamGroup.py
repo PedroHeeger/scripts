@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import boto3
 
 print("***********************************************")
@@ -40,8 +39,8 @@ if resposta.lower() == 'y':
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando o grupo de nome {iam_group_name}")
             groups = iam_client.list_groups(PathPrefix='/')['Groups']
-            for group in groups:
-                print(f"GroupName: {group['GroupName']}")
+            if any(group['GroupName'] == iam_group_name for group in groups):
+                print(f"GroupName: {iam_group_name}")
     except iam_client.exceptions.NoSuchEntityException:
         print("Ocorreu um erro ao verificar os grupos.")
 else:
@@ -51,7 +50,6 @@ else:
 
 
 #!/usr/bin/env python
-
 import boto3
 
 print("***********************************************")

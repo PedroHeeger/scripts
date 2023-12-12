@@ -56,7 +56,7 @@ provider "aws" {
 
 resource "aws_budgets_budget" "budget_test" {
   name              = var.budget_name
-  budget_type       = "USAGE"
+  budget_type       = "COST"
   limit_amount      = var.limit_amount
   limit_unit        = "USD"
   time_unit         = "MONTHLY"
