@@ -1,0 +1,165 @@
+[
+    {
+      "name": "string",
+      "image": "string",
+      "repositoryCredentials": {
+        "credentialsParameter": "string"
+      },
+      "cpu": integer,
+      "memory": integer,
+      "memoryReservation": integer,
+      "links": ["string", ...],
+      "portMappings": [
+        {
+          "containerPort": integer,
+          "hostPort": integer,
+          "protocol": "tcp"|"udp",
+          "name": "string",
+          "appProtocol": "http"|"http2"|"grpc",
+          "containerPortRange": "string"
+        }
+        ...
+      ],
+      "essential": true|false,
+      "entryPoint": ["string", ...],
+      "command": ["string", ...],
+      "environment": [
+        {
+          "name": "string",
+          "value": "string"
+        }
+        ...
+      ],
+      "environmentFiles": [
+        {
+          "value": "string",
+          "type": "s3"
+        }
+        ...
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "string",
+          "containerPath": "string",
+          "readOnly": true|false
+        }
+        ...
+      ],
+      "volumesFrom": [
+        {
+          "sourceContainer": "string",
+          "readOnly": true|false
+        }
+        ...
+      ],
+      "linuxParameters": {
+        "capabilities": {
+          "add": ["string", ...],
+          "drop": ["string", ...]
+        },
+        "devices": [
+          {
+            "hostPath": "string",
+            "containerPath": "string",
+            "permissions": ["read"|"write"|"mknod", ...]
+          }
+          ...
+        ],
+        "initProcessEnabled": true|false,
+        "sharedMemorySize": integer,
+        "tmpfs": [
+          {
+            "containerPath": "string",
+            "size": integer,
+            "mountOptions": ["string", ...]
+          }
+          ...
+        ],
+        "maxSwap": integer,
+        "swappiness": integer
+      },
+      "secrets": [
+        {
+          "name": "string",
+          "valueFrom": "string"
+        }
+        ...
+      ],
+      "dependsOn": [
+        {
+          "containerName": "string",
+          "condition": "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
+        }
+        ...
+      ],
+      "startTimeout": integer,
+      "stopTimeout": integer,
+      "hostname": "string",
+      "user": "string",
+      "workingDirectory": "string",
+      "disableNetworking": true|false,
+      "privileged": true|false,
+      "readonlyRootFilesystem": true|false,
+      "dnsServers": ["string", ...],
+      "dnsSearchDomains": ["string", ...],
+      "extraHosts": [
+        {
+          "hostname": "string",
+          "ipAddress": "string"
+        }
+        ...
+      ],
+      "dockerSecurityOptions": ["string", ...],
+      "interactive": true|false,
+      "pseudoTerminal": true|false,
+      "dockerLabels": {"string": "string"
+        ...},
+      "ulimits": [
+        {
+          "name": "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",           "softLimit": integer,
+          "hardLimit": integer
+        }
+        ...
+      ],
+      "logConfiguration": {
+        "logDriver": "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
+        "options": {"string": "string"
+          ...},
+        "secretOptions": [
+          {
+            "name": "string",
+            "valueFrom": "string"
+          }
+          ...
+        ]
+      },
+      "healthCheck": {
+        "command": ["string", ...],
+        "interval": integer,
+        "timeout": integer,
+        "retries": integer,
+        "startPeriod": integer
+      },
+      "systemControls": [
+        {
+          "namespace": "string",
+          "value": "string"
+        }
+        ...
+      ],
+      "resourceRequirements": [
+        {
+          "value": "string",
+          "type": "GPU"|"InferenceAccelerator"
+        }
+        ...
+      ],
+      "firelensConfiguration": {
+        "type": "fluentd"|"fluentbit",
+        "options": {"string": "string"
+          ...}
+      },
+      "credentialSpecs": ["string", ...]
+    }
+    ...
+  ]
