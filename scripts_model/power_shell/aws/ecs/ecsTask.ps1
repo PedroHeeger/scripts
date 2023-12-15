@@ -5,11 +5,10 @@ Write-Output "TASK CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamGroupName = "taskDefinitionTest"
 $taskDefinitionName = "taskDefinitionTest"
+$revision = "2"
 $containerName = "containerTest"
 $dockerImage = "pedroheeger/kube-news:9"
-
 $region = "us-east-1"
 $accountId = "001727357081"
 $taskDefinitionArn = "arn:aws:ecs:${region}:${accountId}:task-definition/${taskDefinitionName}:1"
@@ -18,19 +17,19 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "Verificando se existe o grupo de nome $iamGroupName"
-    if ((aws iam list-groups --query "Groups[?GroupName=='$iamGroupName'].GroupName").Count -gt 1) {
+    Write-Output "Verificando se existe a definição de tarefa de nome $taskDefinitionName"
+    if ((aws ecs describe-task-definition --task-definition $taskDefinitionName --query "taskDefinition.family").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Já existe o grupo de nome $iamGroupName"
-        aws iam list-groups --query "Groups[?GroupName=='$iamGroupName'].GroupName" --output text
+        Write-Output "Já existe a definição de tarefa de nome $taskDefinitionName"
+        aws ecs describe-task-definition --task-definition $taskDefinitionName --query "taskDefinition.family" --output text
     } else {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando todos os grupos criados"
-        aws iam list-groups --query 'Groups[].GroupName' --output text
+        Write-Output "Listando as ARNs de todas as definições de tarefas criadas"
+        aws ecs list-task-definitions --query taskDefinitionArns[] --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Registrando uma definiçao de tarefa de nome $taskDefinitionName"
-        aws ecs register-task-definition --family $taskDefinitionName --network-mode "awsvpc" --requires-compatibilities EC2 --cpu 1024 --memory 3072 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
+        aws ecs register-task-definition --family $taskDefinitionName --network-mode "awsvpc" --requires-compatibilities FARGATE --cpu 1024 --memory 3072 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
             {
               `"name`": `"$containerName`",
               `"image`": `"$dockerImage`",
@@ -43,14 +42,48 @@ if ($resposta.ToLower() -eq 'y') {
                 },
               ]
             }
-          ]"
+          ]" --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Executando a definiçao de tarefa de nome $taskDefinitionName"
         aws ecs run-task --task-definition $taskDefinitionName
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando o grupo de nome $iamGroupName"
-        aws iam list-groups --query "Groups[?GroupName=='$iamGroupName'].GroupName" --output text
+        Write-Output "Listando a definição de tarefa de nome $taskDefinitionName"
+        aws ecs describe-task-definition --task-definition $taskDefinitionName --query "taskDefinition.family" --output text
     }
+} else {Write-Host "Código não executado"}
+
+
+
+
+#!/usr/bin/env powershell
+
+Write-Output "***********************************************"
+Write-Output "SERVIÇO: AWS ECS"
+Write-Output "TASK EXCLUSION"
+
+Write-Output "-----//-----//-----//-----//-----//-----//-----"
+Write-Output "Definindo variáveis"
+$taskDefinitionName = "taskDefinitionTest"
+$revision = "2"
+
+Write-Output "-----//-----//-----//-----//-----//-----//-----"
+$resposta = Read-Host "Deseja executar o código? (y/n) "
+if ($resposta.ToLower() -eq 'y') {
+    Write-Output "-----//-----//-----//-----//-----//-----//-----"
+    Write-Output "Verificando se existe a definição de tarefa de nome $taskDefinitionName"
+    if ((aws ecs describe-task-definition --task-definition $taskDefinitionName --query "taskDefinition.family").Count -gt 0) {
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Listando as ARNs de todas as definições de tarefas criadas"
+        aws ecs list-task-definitions --query taskDefinitionArns[] --output text
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Removendo a definição de tarefa de nome $taskDefinitionName"
+        aws ecs deregister-task-definition --task-definition ${taskDefinitionName}:${revision} --no-cli-pager
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Listando as ARNs de todas as definições de tarefas criadas"
+        aws ecs list-task-definitions --query taskDefinitionArns[] --output text
+    } else {Write-Output "Não existe a definição de tarefa de nome $taskDefinitionName"}
 } else {Write-Host "Código não executado"}
