@@ -2,12 +2,11 @@
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
-Write-Output "CLUSTER CREATION"
+Write-Output "CLUSTER EC2 CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$clusterName = "clusterTest1"
-$launchType = "FARGATE"
+$clusterName = "clusterEC2Test1"
 $region = "us-east-1"
 $accountId = "001727357081"
 $clusterArn = "arn:aws:ecs:${region}:${accountId}:cluster/${clusterName}"
@@ -30,7 +29,7 @@ if ($resposta.ToLower() -eq 'y') {
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando um cluster de nome $clusterName"
-        aws ecs create-cluster --cluster-name $clusterName --settings "name=containerInsights,value=enabled" --capacity-providers $launchType --default-capacity-provider-strategy "capacityProvider=$launchType,weight=1" --no-cli-pager
+        aws ecs create-cluster --cluster-name $clusterName --settings "name=containerInsights,value=enabled" --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o cluster de nome $clusterName"
@@ -47,11 +46,11 @@ if ($resposta.ToLower() -eq 'y') {
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
-Write-Output "CLUSTER EXCLUSION"
+Write-Output "CLUSTER EC2 EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$clusterName = "clusterTest1"
+$clusterName = "clusterEC2Test1"
 $region = "us-east-1"
 $accountId = "001727357081"
 $clusterArn = "arn:aws:ecs:${region}:${accountId}:cluster/${clusterName}"

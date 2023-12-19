@@ -6,8 +6,9 @@ Write-Output "IAM ROLE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamUserName = "iamUserTest"
-$roleName = "roleNameTest"
+$serviceName = "ecs-tasks.amazonaws.com"
+# $roleName = "roleNameTest"
+$roleName = "taskEcsToCloudWatch"
 # $pathTrustPolicyDocument = "G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\aws\iamTrustPolicy.json"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -31,11 +32,11 @@ if ($resposta.ToLower() -eq 'y') {
             `"Statement`": [
               {
                 `"Effect`": `"Allow`",
-                `"Principal`": {`"AWS`": `"arn:aws:iam::001727357081:user/${iamUserName}`"},
+                `"Principal`": {`"Service`": `"$serviceName`"},
                 `"Action`": `"sts:AssumeRole`"
               }
             ]
-          }"
+          }" --no-cli-pager
     
         # Write-Output "-----//-----//-----//-----//-----//-----//-----"
         # Write-Output "Criando a role de nome $roleName com um arquivo JSON"
@@ -58,8 +59,8 @@ Write-Output "IAM ROLE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$iamUserName = "iamUserTest"
-$roleName = "roleNameTest"
+# $roleName = "roleNameTest"
+$roleName = "taskEcsToCloudWatch"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
