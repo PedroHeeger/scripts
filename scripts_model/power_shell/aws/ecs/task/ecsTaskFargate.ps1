@@ -7,7 +7,7 @@ Write-Output "TASK FARGATE CREATION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskFargateTest1"
-$revision = "5"
+$revision = "1"
 $launchType = "FARGATE"
 $containerName1 = "containerTest1"
 $containerName2 = "containerTest2"
@@ -75,6 +75,7 @@ if ($resposta.ToLower() -eq 'y') {
 
 
 #!/usr/bin/env powershell
+
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
 Write-Output "TASK FARGATE EXCLUSION"
@@ -82,7 +83,7 @@ Write-Output "TASK FARGATE EXCLUSION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskFargateTest1"
-$revision = "5"
+$revision = "1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

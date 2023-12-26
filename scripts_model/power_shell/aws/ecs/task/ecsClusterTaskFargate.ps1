@@ -1,4 +1,5 @@
 #!/usr/bin/env powershell
+
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
 Write-Output "TASK EXECUTION ON CLUSTER FARGATE"
@@ -6,7 +7,7 @@ Write-Output "TASK EXECUTION ON CLUSTER FARGATE"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskFargateTest1"
-$revision = "5"
+$revision = "2"
 $clusterName = "clusterFargateTest1"
 $launchType = "FARGATE"
 $region = "us-east-1"
@@ -40,7 +41,7 @@ if ($resposta.ToLower() -eq 'y') {
         aws ecs run-task --task-definition ${taskName}:${revision} --cluster $clusterName --launch-type $launchType --network-configuration "awsvpcConfiguration={subnets=[$subnetId1,$subnetId2],securityGroups=[$sgId],assignPublicIp=ENABLED}" --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando a tarefa de nome $taskName no cluster $clusterName"
+        Write-Output "Listando o Id da tarefa de nome $taskName no cluster $clusterName"
         $taskId = Split-Path (aws ecs list-tasks --cluster $clusterName --query "taskArns[?contains(@, '$taskArn')]" --output text) -Leaf
         Write-Output $taskId
    }
@@ -70,6 +71,7 @@ if ($resposta.ToLower() -eq 'y') {
 
 
 #!/usr/bin/env powershell
+
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
 Write-Output "TASK EXCLUSION ON CLUSTER FARGATE"
@@ -78,7 +80,7 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskFargateTest1"
 $clusterName = "clusterFargateTest1"
-$revision = "1"
+$revision = "2"
 $region = "us-east-1"
 $accountId = "001727357081"
 $taskDefinitionArn = "arn:aws:ecs:${region}:${accountId}:task-definition/${taskName}:${revision}"
@@ -117,6 +119,3 @@ if ($resposta.ToLower() -eq 'y') {
             }}
     } else {Write-Output "Não existe a tarefa $taskName no cluster $clusterName"}
 } else {Write-Host "Código não executado"}
-
-
-
