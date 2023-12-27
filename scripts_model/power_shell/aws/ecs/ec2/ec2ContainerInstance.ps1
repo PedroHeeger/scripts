@@ -6,12 +6,14 @@ Write-Output "EC2 CONTAINER INSTANCE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2ContainerInstanceTest1"
+$tagNameInstance = "ec2ContainerInstanceTest2"
 $groupName = "default"
 $availabilityZone = "us-east-1a"
 $imageId = "ami-079db87dc4c10ac91"    # Amazon Linux 2023 AMI 2023.3.20231218.0 x86_64 HVM kernel-6.1
 $instanceType = "t2.micro"
 $keyPairName = "keyPairTest"
+$instanceProfileName = "ecs-ec2InstanceIProfile"
+$clusterName = "clusterEC2Test1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -38,14 +40,21 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando a instância EC2 de nome de tag $tagNameInstance"
-        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $securityGroupId --subnet-id $subnetId --count 1 --user-data "
-        #!/bin/bash
-        sudo apt-get update -y
-        sudo apt-get upgrade -y
-        sudo apt-get install -y nano
+        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $securityGroupId --subnet-id $subnetId --count 1 --user-data "#!/bin/bash
+        echo 'EXECUTANDO O SCRIPT BASH'
+        sudo yum update -y
+        sudo yum upgrade -y
+        sudo yum install -y nano
+        sudo mkdir -p /etc/ecs
+        echo 'ECS_CLUSTER=$clusterName' | sudo tee -a /etc/ecs/ecs.config
+        echo 'TEMPO 1'
+        sleep 20
         sudo yum install -y ecs-init
+        echo 'TEMPO 2'
+        sleep 60
         sudo systemctl enable ecs
-        sudo systemctl start ecs" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --no-cli-pager
+        sudo systemctl start ecs
+        sudo reboot" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --iam-instance-profile "Name=$instanceProfileName" --no-cli-pager
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome da tag de todas as instâncias EC2 criadas"
@@ -68,7 +77,7 @@ Write-Output "EC2 CONTAINER INSTANCE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2ContainerInstanceTest1"
+$tagNameInstance = "ec2ContainerInstanceTest2"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

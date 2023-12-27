@@ -6,7 +6,7 @@ Write-Output "TASK EXECUTION ON CLUSTER EC2"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskEC2Test1"
-$revision = "1"
+$revision = "4"
 $clusterName = "clusterEC2Test1"
 $launchType = "EC2"
 $region = "us-east-1"
@@ -27,16 +27,20 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "Listando as ARNs de todas as tarefas no cluster $clusterName"
         aws ecs list-tasks --cluster $clusterName --query "taskArns" --output text
     
-        Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo os elementos de rede"
-        $vpcId = aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text
-        $subnetId1 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
-        $subnetId2 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
-        $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=default" --query "SecurityGroups[].GroupId" --output text
+        # Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        # Write-Output "Extraindo os elementos de rede"
+        # $vpcId = aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text
+        # $subnetId1 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
+        # $subnetId2 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
+        # $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=default" --query "SecurityGroups[].GroupId" --output text
+
+        # Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        # Write-Output "Executando a tarefa de nome $taskName no cluster $clusterName"
+        # aws ecs run-task --task-definition ${taskName}:${revision} --cluster $clusterName --launch-type $launchType --network-configuration "awsvpcConfiguration={subnets=[$subnetId1,$subnetId2],securityGroups=[$sgId]}" --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Executando a tarefa de nome $taskName no cluster $clusterName"
-        aws ecs run-task --task-definition ${taskName}:${revision} --cluster $clusterName --launch-type $launchType --network-configuration "awsvpcConfiguration={subnets=[$subnetId1,$subnetId2],securityGroups=[$sgId]}" --no-cli-pager
+        aws ecs run-task --task-definition ${taskName}:${revision} --cluster $clusterName --launch-type $launchType --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando a tarefa de nome $taskName no cluster $clusterName"
@@ -50,7 +54,6 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando uma lista de ARNs das revisões da tarefa de nome $taskName no cluster $clusterName"
         $taskArnsString = aws ecs list-tasks --cluster $clusterName --family $taskName --desired-status RUNNING --query "taskArns" --output text
-        $taskArnsString = aws ecs list-tasks --cluster clusterTest1 --family taskTest1 --desired-status RUNNING --query "taskArns[]" --output text
         $taskArnsList = $taskArnsString -split ' '
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
