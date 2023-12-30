@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import boto3
 import json
 
@@ -79,6 +80,7 @@ else:
 
 
 #!/usr/bin/env python
+    
 import boto3
 import json
 
@@ -88,7 +90,8 @@ print("IAM POLICY EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-policy_name = "policyTest"
+# policy_name = "policyTest"
+policy_name = "QBusiness-Application-147b0"
 policy_arn = "arn:aws:iam::001727357081:policy/policyTest"
 account_id = "001727357081"
 

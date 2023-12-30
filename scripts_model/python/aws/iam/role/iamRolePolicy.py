@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import boto3
 
 print("***********************************************")
@@ -7,7 +8,7 @@ print("IAM ROLE ADD POLICY")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-role_name = "roleNameTest"
+role_name = "roleTest"
 policy_name = "AmazonS3ReadOnlyAccess"
 policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 
@@ -57,6 +58,7 @@ else:
 
 
 #!/usr/bin/env python
+    
 import boto3
 
 print("***********************************************")
@@ -65,7 +67,7 @@ print("IAM ROLE REMOVE POLICY")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-role_name = "roleNameTest"
+role_name = "roleTest"
 policy_name = "AmazonS3ReadOnlyAccess"
 policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 

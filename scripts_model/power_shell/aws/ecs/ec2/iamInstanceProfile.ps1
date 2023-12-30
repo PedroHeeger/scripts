@@ -48,8 +48,8 @@ Write-Output "IAM INSTANCE PROFILE EXCLUSION AND REMOVE ROLE"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$instanceProfileName = "instanceProfileTest"
-$roleName = "roleNameTest"
+$instanceProfileName = "ecs-ec2InstanceIProfile"
+$roleName = "ecs-ec2InstanceRole"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

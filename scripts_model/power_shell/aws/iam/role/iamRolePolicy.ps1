@@ -6,7 +6,7 @@ Write-Output "IAM ROLE ADD POLICY"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$roleName = "roleNameTest"
+$roleName = "roleTest"
 $policyName = "AmazonS3ReadOnlyAccess"
 $policyArn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 
@@ -49,7 +49,7 @@ Write-Output "IAM ROLE REMOVE POLICY"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$roleName = "roleNameTest"
+$roleName = "roleTest"
 $policyName = "AmazonS3ReadOnlyAccess"
 $policyArn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 

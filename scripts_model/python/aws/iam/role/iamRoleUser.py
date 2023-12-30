@@ -1,16 +1,17 @@
 #!/usr/bin/env python
+
 import boto3
 import json
 
 print("***********************************************")
 print("SERVIÇO: AWS IAM")
-print("IAM ROLE CREATION")
+print("IAM ROLE USER CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
+role_name = "roleUserTest"
 iam_user_name = "iamUserTest"
-role_name = "roleNameTest"
-path_trust_policy_document = "G:\\Meu Drive\\4_PROJ\\scripts\\scripts_model\\.default\\aws\\iamTrustPolicy.json"
+# path_trust_policy_document = "G:\\Meu Drive\\4_PROJ\\scripts\\scripts_model\\.default\\aws\\iamTrustPolicy.json"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -76,16 +77,16 @@ else:
 
 
 #!/usr/bin/env python
+    
 import boto3
 
 print("***********************************************")
 print("SERVIÇO: AWS IAM")
-print("IAM ROLE EXCLUSION")
+print("IAM ROLE USER EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-iam_user_name = "iamUserTest"
-role_name = "roleNameTest"
+role_name = "roleUserTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -103,6 +104,20 @@ if resposta.lower() == 'y':
         roles = iam.list_roles()['Roles']
         for r in roles:
             print(r['RoleName'])
+
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Obtendo a lista de ARNs de policies anexadas à role de nome {role_name}")
+        attached_policies = iam.list_attached_role_policies(RoleName=role_name)['AttachedPolicies']
+
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print("Iterando na lista de policies")
+        for policy in attached_policies:
+            policy_arn = policy['PolicyArn']
+            policy_name = iam.list_policies(PolicyArn=policy_arn)['Policies'][0]['PolicyName']
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Removendo a policy {policy_name} da role de nome {role_name}")
+            iam.detach_role_policy(RoleName=role_name, PolicyArn=policy_arn)
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Removendo a role de nome {role_name}")

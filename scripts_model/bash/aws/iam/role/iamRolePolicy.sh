@@ -6,7 +6,7 @@ echo "IAM ROLE ADD POLICY"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-roleName="roleNameTest"
+roleName="roleTest"
 policyName="AmazonS3ReadOnlyAccess"
 policyArn="arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 
@@ -50,7 +50,7 @@ echo "IAM ROLE REMOVE POLICY"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-roleName="roleNameTest"
+roleName="roleTest"
 policyName="AmazonS3ReadOnlyAccess"
 policyArn="arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 

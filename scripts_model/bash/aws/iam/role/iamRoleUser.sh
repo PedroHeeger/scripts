@@ -2,13 +2,13 @@
 
 echo "***********************************************"
 echo "SERVIÇO: AWS IAM"
-echo "IAM ROLE CREATION"
+echo "IAM ROLE USER CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
+roleName="roleUserTest"
 iamUserName="iamUserTest"
-roleName="roleNameTest"
-pathTrustPolicyDocument="G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\aws\iamTrustPolicy.json"
+# pathTrustPolicyDocument="G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\aws\iamTrustPolicy.json"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -57,12 +57,11 @@ fi
 
 echo "***********************************************"
 echo "SERVIÇO: AWS IAM"
-echo "IAM ROLE EXCLUSION"
+echo "IAM ROLE USER EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-iam_user_name="iamUserTest"
-role_name="roleNameTest"
+role_name="roleUserTest"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -74,6 +73,24 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todas as roles criadas"
         aws iam list-roles --query 'Roles[].RoleName' --output text
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Obtendo a lista de ARNs de policies anexadas à role de nome $roleName"
+        attachedPolicies=$(aws iam list-attached-role-policies --role-name $roleName --query 'AttachedPolicies[*].PolicyArn' --output text)
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Iterando na lista de policies"
+        while IFS= read -r policyArn; do
+            if [ -n "$policyArn" ]; then
+                echo "-----//-----//-----//-----//-----//-----//-----"
+                echo "Extraindo o nome da policy vinculada a role"
+                policyName=$(aws iam list-policies --query "Policies[?Arn=='$policyArn'].PolicyName" --output text)
+
+                echo "-----//-----//-----//-----//-----//-----//-----"
+                echo "Removendo a policy $policyName da role de nome $roleName"
+                aws iam detach-role-policy --role-name $roleName --policy-arn $policyArn
+            fi
+        done <<< "$attachedPolicies"
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Removendo a role de nome $role_name"

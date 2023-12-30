@@ -77,6 +77,7 @@ if ($resposta.ToLower() -eq 'y') {
 
 
 #!/usr/bin/env powershell
+
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
 Write-Output "TASK EC2 EXCLUSION"

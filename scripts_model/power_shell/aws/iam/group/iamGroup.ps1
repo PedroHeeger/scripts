@@ -1,4 +1,5 @@
 #!/usr/bin/env powershell
+
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS IAM"
 Write-Output "IAM GROUP CREATION"

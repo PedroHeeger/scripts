@@ -20,13 +20,18 @@ scripts_model/terraform/aws/ec2/keyPair/*
 scripts_model/terraform/aws/iam/iamGroup/*
 !scripts_model/terraform/aws/iam/iamGroup/main.tf
 
-scripts_model/terraform/aws/iam/iamRole/*
-!scripts_model/terraform/aws/iam/iamRole/main.tf
+scripts_model/terraform/aws/iam/iamRoleService/*
+!scripts_model/terraform/aws/iam/iamRoleService/main.tf
+
+scripts_model/terraform/aws/iam/iamRoleUser/*
+!scripts_model/terraform/aws/iam/iamRoleUser/main.tf
 
 scripts_model/terraform/aws/iam/iamUser/*
 !scripts_model/terraform/aws/iam/iamUser/main.tf
 
 scripts_model/terraform/aws/vpc/sgRule/*
 !scripts_model/terraform/aws/vpc/sgRule/main.tf
+
+
 
 scripts_model/power_shell/aws/sageMaker

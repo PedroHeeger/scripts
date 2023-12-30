@@ -4,12 +4,12 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "iamRole" {
+variable "roleName" {
   description = "Nome da role"
-  default     = "roleTest"
+  default     = "roleUserTest"
 }
 
-variable "iamPolicy" {
+variable "policyName" {
   description = "Nome da policy"
   default     = "policyTest"
 }
@@ -26,7 +26,7 @@ provider "aws" {
 }
 
 resource "aws_iam_role" "example_role" {
-  name = var.iamRole
+  name = var.roleName
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -41,7 +41,7 @@ resource "aws_iam_role" "example_role" {
 }
 
 resource "aws_iam_policy" "example_policy" {
-  name        = var.iamPolicy
+  name        = var.policyName
   description = "Exemplo de política criada no Terraform"
 
   policy = jsonencode({

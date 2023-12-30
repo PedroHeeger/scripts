@@ -1,4 +1,5 @@
 #!/usr/bin/env powershell
+
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
 Write-Output "TASK EXECUTION ON CLUSTER EC2"
@@ -73,6 +74,7 @@ if ($resposta.ToLower() -eq 'y') {
 
 
 #!/usr/bin/env powershell
+
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
 Write-Output "TASK EXCLUSION ON CLUSTER EC2"

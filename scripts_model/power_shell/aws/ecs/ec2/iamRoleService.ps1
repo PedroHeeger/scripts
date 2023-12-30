@@ -6,8 +6,8 @@ Write-Output "IAM ROLE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$serviceName = "ec2.amazonaws.com"
 $roleName = "ecs-ec2InstanceRole"
+$serviceName = "ec2.amazonaws.com"
 # $pathTrustPolicyDocument = "G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\aws\iamTrustPolicy.json"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
