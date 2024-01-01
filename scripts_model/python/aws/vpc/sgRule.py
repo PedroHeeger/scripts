@@ -10,7 +10,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 group_name = "default"
 protocol = "tcp"
-port = "22"
+port = "5000"
 cidr_ipv4 = "0.0.0.0/0"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -111,7 +111,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 group_name = "default"
 protocol = "tcp"
-port = 22
+port = 5000
 cidr_ipv4 = "0.0.0.0/0"
 
 print("-----//-----//-----//-----//-----//-----//-----")
