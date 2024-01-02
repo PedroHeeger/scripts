@@ -1,7 +1,25 @@
-echo "Arquivo de Teste"
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get install -y nano curl wget
+#!/bin/bash
 
-sudo apt-get install nginx -y
-sudo systemctl start nginx
+echo "Arquivo de Teste"
+
+echo "***********************************************"
+echo "APACHE HTTP (HTTPD) INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando os pacotes"
+sudo apt-get update -y
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando o sistema"
+sudo apt-get upgrade -y
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando o pacote"
+sudo apt-get install -y apache2
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Reiniciando o serviço"
+sudo systemctl restart apache2
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Habilitando o serviço para que seja executado automaticamente"
