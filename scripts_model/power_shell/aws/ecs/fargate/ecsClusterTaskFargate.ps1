@@ -13,6 +13,7 @@ $launchType = "FARGATE"
 $region = "us-east-1"
 $availabilityZone1 = "us-east-1a"
 $availabilityZone2 = "us-east-1b"
+$groupName = "default"
 $accountId = "001727357081"
 $taskArn = "arn:aws:ecs:${region}:${accountId}:task/${clusterName}"
 $taskDefinitionArn = "arn:aws:ecs:${region}:${accountId}:task-definition/${taskName}:${revision}"
@@ -34,7 +35,7 @@ if ($resposta.ToLower() -eq 'y') {
         $vpcId = aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text
         $subnetId1 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
         $subnetId2 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
-        $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=default" --query "SecurityGroups[].GroupId" --output text
+        $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$groupName" --query "SecurityGroups[].GroupId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Executando a tarefa de nome $taskName no cluster $clusterName"

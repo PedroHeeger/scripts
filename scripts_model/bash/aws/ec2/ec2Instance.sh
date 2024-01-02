@@ -6,13 +6,13 @@ echo "EC2 CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-tagNameInstance="ec2Test"
+tagNameInstance="ec2Test1"
 groupName="default"
 availabilityZone="us-east-1a"
 imageId="ami-0fc5d935ebf8bc3bc"
 instanceType="t2.micro"
 keyPairName="keyPairTest"
-userDataPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\.default\test"
+userDataPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\aws\ec2\"
 userDataFile="udFileTest.sh"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -65,7 +65,7 @@ echo "EC2 EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-tagNameInstance="ec2Test"
+tagNameInstance="ec2Test1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

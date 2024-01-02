@@ -10,13 +10,13 @@ print("EC2 CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-tagNameInstance = "ec2Test"
+tagNameInstance2 = "ec2Test2"
 groupName = "default"
 availabilityZone = "us-east-1a"
 imageId = "ami-0fc5d935ebf8bc3bc"
 instanceType = "t2.micro"
 keyPairName = "keyPairTest"
-userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/bash/.default/test"
+userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/aws/elb/resources/"
 userDataFile = "udFileTest.sh"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -28,11 +28,11 @@ if resposta.lower() == 'y':
         ec2 = boto3.resource('ec2')
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe a instância {tagNameInstance}")
-        instances = list(ec2.instances.filter(Filters=[{'Name': 'tag:Name', 'Values': [tagNameInstance]}]))
+        print(f"Verificando se existe a instância {tagNameInstance2}")
+        instances = list(ec2.instances.filter(Filters=[{'Name': 'tag:Name', 'Values': [tagNameInstance2]}]))
         if instances:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Já existe uma instância EC2 com o nome de tag {tagNameInstance}")
+            print(f"Já existe uma instância EC2 com o nome de tag {tagNameInstance2}")
             for instance in instances:
                 print(f"ID da Instância: {instance.id}")
                 print(f"IP Público: {instance.public_ip_address}")
@@ -50,7 +50,7 @@ if resposta.lower() == 'y':
             subnet_id = list(ec2.subnets.filter(Filters=[{'Name': 'availabilityZone', 'Values': [availabilityZone]}]))[0].id
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando a instância EC2 de nome de tag {tagNameInstance}")
+            print(f"Criando a instância EC2 de nome de tag {tagNameInstance2}")
             instances = ec2.create_instances(
                 ImageId=imageId,
                 InstanceType=instanceType,
@@ -62,7 +62,7 @@ if resposta.lower() == 'y':
                 UserData=open(f"{userDataPath}/{userDataFile}", "r").read(),
                 TagSpecifications=[{
                     'ResourceType': 'instance',
-                    'Tags': [{'Key': 'Name', 'Value': tagNameInstance}]
+                    'Tags': [{'Key': 'Name', 'Value': tagNameInstance2}]
                 }]
             )
 
@@ -78,7 +78,7 @@ if resposta.lower() == 'y':
             time.sleep(10)
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando o IP público da instância {tagNameInstance}")
+            print(f"Listando o IP público da instância {tagNameInstance2}")
             for instance in instances:
                 print(f"ID da Instância: {instance.id}")
                 print(f"IP Público: {instance.public_ip_address}")
@@ -103,7 +103,7 @@ print("EC2 EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-tagNameInstance = "ec2Test"
+tagNameInstance2 = "ec2Test2"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -118,8 +118,8 @@ if resposta.lower() == 'y':
         client = boto3.client('ec2')
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe a instância {tagNameInstance}")
-        instances = list(ec2.instances.filter(Filters=[{'Name': 'tag:Name', 'Values': [tagNameInstance]}]))
+        print(f"Verificando se existe a instância {tagNameInstance2}")
+        instances = list(ec2.instances.filter(Filters=[{'Name': 'tag:Name', 'Values': [tagNameInstance2]}]))
         
         if instances:
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -130,11 +130,11 @@ if resposta.lower() == 'y':
                         print(f"Nome da Instância: {tag['Value']}")
             
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Extraindo o Id da instância de nome de tag {tagNameInstance}")
+            print(f"Extraindo o Id da instância de nome de tag {tagNameInstance2}")
             instance_id = instances[0].id
             
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Removendo a instância de nome de tag {tagNameInstance}")
+            print(f"Removendo a instância de nome de tag {tagNameInstance2}")
             client.terminate_instances(InstanceIds=[instance_id], DryRun=False)
             
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -145,7 +145,7 @@ if resposta.lower() == 'y':
                         print(f"Nome da Instância: {tag['Value']}")
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Não existe instâncias com o nome de tag {tagNameInstance}")
+            print(f"Não existe instâncias com o nome de tag {tagNameInstance2}")
 
     except ClientError as e:
         print(f"Erro ao interagir com a AWS: {e}")
