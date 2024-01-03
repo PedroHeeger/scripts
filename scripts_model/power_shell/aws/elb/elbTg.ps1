@@ -9,12 +9,12 @@ Write-Output "Definindo variáveis"
 $tgName = "tgTest1"
 $tgType = "instance"
 # $tgType = "ip"
-$protocol = "HTTP"
-$protocolVersion = "HTTP1"
-$port = 80
-$healthCheckProtocol = "HTTP"
-$healthCheckPort = "traffic-port"
-$healthCheckPath = "/"
+$tgProtocol = "HTTP"
+$tgProtocolVersion = "HTTP1"
+$tgPort = 80
+$tgHealthCheckProtocol = "HTTP"
+$tgHealthCheckPort = "traffic-port"
+$tgHealthCheckPath = "/"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -36,7 +36,7 @@ if ($resposta.ToLower() -eq 'y') {
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando o target group de nome $tgName"
-        aws elbv2 create-target-group --name $tgName --target-type $tgType --protocol $protocol --protocol-version $protocolVersion --port $port --vpc-id $vpcId --health-check-protocol $healthCheckProtocol --health-check-port $healthCheckPort --health-check-path $healthCheckPath --healthy-threshold 5 --unhealthy-threshold 2 --health-check-timeout-seconds 5 --health-check-interval-seconds 15 --matcher "HttpCode=200-299" --no-cli-pager
+        aws elbv2 create-target-group --name $tgName --target-type $tgType --protocol $tgProtocol --protocol-version $tgProtocolVersion --port $tgPort --vpc-id $vpcId --health-check-protocol $tgHealthCheckProtocol --health-check-port $tgHealthCheckPort --health-check-path $tgHealthCheckPath --healthy-threshold 5 --unhealthy-threshold 2 --health-check-timeout-seconds 5 --health-check-interval-seconds 15 --matcher "HttpCode=200-299" --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o target group de nome $tgName"

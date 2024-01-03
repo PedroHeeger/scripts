@@ -11,12 +11,12 @@ print("Definindo variáveis")
 tg_name = "tgTest1"
 tg_type = "instance"
 # tg_type = "ip"
-protocol = "HTTP"
-protocol_version = "HTTP1"
-port = 80
-health_check_protocol = "HTTP"
-health_check_port = "traffic-port"
-health_check_path = "/"
+tg_protocol = "HTTP"
+tg_protocol_version = "HTTP1"
+tg_port = 80
+tg_health_check_protocol = "HTTP"
+tg_health_check_port = "traffic-port"
+tg_health_check_path = "/"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -50,13 +50,13 @@ if resposta.lower() == 'y':
         response = elbv2_client.create_target_group(
             Name=tg_name,
             TargetType=tg_type,
-            Protocol=protocol,
-            ProtocolVersion=protocol_version,
-            Port=port,
+            Protocol=tg_protocol,
+            ProtocolVersion=tg_protocol_version,
+            Port=tg_port,
             VpcId=vpc_id,
-            HealthCheckProtocol=health_check_protocol,
-            HealthCheckPort=health_check_port,
-            HealthCheckPath=health_check_path,
+            HealthCheckProtocol=tg_health_check_protocol,
+            HealthCheckPort=tg_health_check_port,
+            HealthCheckPath=tg_health_check_path,
             HealthyThresholdCount=5,
             UnhealthyThresholdCount=2,
             HealthCheckTimeoutSeconds=5,

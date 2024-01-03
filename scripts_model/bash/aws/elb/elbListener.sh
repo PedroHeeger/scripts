@@ -7,8 +7,8 @@ echo "LISTENER CREATION"
 echo "-----//-----//-----//-----//-----//-----//-----"
 lbName="lbTest1"
 tgName="tgTest1"
-protocol="HTTP"
-port="80"
+listenerProtocol="HTTP"
+listenerPort="80"
 
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
@@ -35,7 +35,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando um listener para vincular o target group $tgName ao load balancer $lbName"
-        aws elbv2 create-listener --load-balancer-arn $lbArn --protocol $protocol --port $port --default-actions "Type=forward,TargetGroupArn=$tgArn" --no-cli-pager
+        aws elbv2 create-listener --load-balancer-arn $lbArn --protocol $listenerProtocol --port $listenerPort --default-actions "Type=forward,TargetGroupArn=$tgArn" --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o listener que vincula o target group $tgName ao load balancer $lbName"

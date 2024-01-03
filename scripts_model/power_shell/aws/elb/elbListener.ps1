@@ -8,8 +8,8 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $lbName = "lbTest1"
 $tgName = "tgTest1"
-$protocol = "HTTP"
-$port = "80"
+$listenerProtocol = "HTTP"
+$listenerPort = "80"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -37,7 +37,7 @@ if ($resposta.ToLower() -eq 'y') {
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando um listener para vincular o target group $tgName ao load balancer $lbName"
-        aws elbv2 create-listener --load-balancer-arn $lbArn --protocol $protocol --port $port --default-actions "Type=forward,TargetGroupArn=$tgArn" --no-cli-pager
+        aws elbv2 create-listener --load-balancer-arn $lbArn --protocol $listenerProtocol --port $listenerPort --default-actions "Type=forward,TargetGroupArn=$tgArn" --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o listener que vincula o target group $tgName ao load balancer $lbName"

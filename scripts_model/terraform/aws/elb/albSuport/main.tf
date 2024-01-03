@@ -26,12 +26,22 @@ variable "keyPairName" {
 
 variable "userDataPath" {
   description = "Caminho para o arquivo user data"
-  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/bash/.default/test"
+  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/terraform/aws/elb/albSuport/"
 }
 
 variable "userDataFile" {
   description = "Arquivo user data"
   default     = "udFileTest.sh"
+}
+
+variable "tgName" {
+  description = "Nome do Target Group"
+  default     = "tgTest1"
+}
+
+variable "lbName" {
+  description = "Nome do Application Load Balancer"
+  default     = "lbTest1"
 }
 
 
@@ -44,7 +54,7 @@ resource "aws_instance" "ec2Test" {
   ami             = var.imageId
   instance_type   = var.instanceType
   key_name        = var.keyPairName
-  count           = 1
+  count           = 2
 #   security_group_ids = ["${aws_security_group.example.id}"]
 #   subnet_id       = "${aws_subnet.example.id}"
 
@@ -57,20 +67,38 @@ resource "aws_instance" "ec2Test" {
 #               EOF
 
   tags = {
-    Name = var.tagNameInstance
+    Name = "${var.tagNameInstance}${count.index + 1}"
   }
 }
 
-# resource "aws_security_group" "example" {
-#   # Defina suas configurações de grupo de segurança aqui
-# }
+data "aws_lb_target_group" "tgTest1" {
+  name = var.tgName
+}
 
-# resource "aws_subnet" "example" {
-#   # Defina suas configurações de sub-rede aqui
-# }
+resource "aws_lb_target_group_attachment" "instance_attachment_1" {
+  target_group_arn = data.aws_lb_target_group.tgTest1.arn
+  target_id        = aws_instance.ec2Test[0].id
+}
+
+resource "aws_lb_target_group_attachment" "instance_attachment_2" {
+  target_group_arn = data.aws_lb_target_group.tgTest1.arn
+  target_id        = aws_instance.ec2Test[1].id
+}
+
+data "aws_lb" "lbTest1" {
+  name = var.lbName
+}
 
 
 # Saída
-output "public_ip" {
+output "public_ip_instance_1" {
   value = aws_instance.ec2Test[0].public_ip
+}
+
+output "public_ip_instance_2" {
+  value = aws_instance.ec2Test[1].public_ip
+}
+
+output "load_balancer_dns" {
+  value = data.aws_lb.lbTest1.dns_name
 }

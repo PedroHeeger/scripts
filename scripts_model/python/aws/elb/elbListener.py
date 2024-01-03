@@ -10,8 +10,8 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 lb_name = "lbTest1"
 tg_name = "tgTest1"
-protocol = "HTTP"
-port = 80
+listener_protocol = "HTTP"
+listener_port = 80
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -52,8 +52,8 @@ if resposta.lower() == 'y':
         print(f"Criando um listener para vincular o target group {tg_name} ao load balancer {lb_name}")
         elbv2_client.create_listener(
             LoadBalancerArn=lb_arn,
-            Protocol=protocol,
-            Port=port,
+            Protocol=listener_protocol,
+            Port=listener_port,
             DefaultActions=[{'Type': 'forward', 'TargetGroupArn': tg_arn}]
         )
 
