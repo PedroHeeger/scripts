@@ -124,7 +124,9 @@ if resposta.lower() == 'y':
             if any(instance['Target']['Id'] == instance_id for instance in response['TargetHealthDescriptions']):
                 print("-----//-----//-----//-----//-----//-----//-----")
                 print(f"Listando todas as instâncias no target group {tg_name}")
-                print([instance['Target']['Id'] for instance in response['TargetHealthDescriptions']])
+                for target_description in response['TargetHealthDescriptions']:
+                    instance_id = target_description['Target']['Id']
+                    print(f"Instance ID: {instance_id}")
 
                 print("-----//-----//-----//-----//-----//-----//-----")
                 print(f"Removendo a instância {tag_name_instance} no target group {tg_name}")

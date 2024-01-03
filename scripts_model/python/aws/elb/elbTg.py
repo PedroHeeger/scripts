@@ -16,7 +16,7 @@ protocol_version = "HTTP1"
 port = 80
 health_check_protocol = "HTTP"
 health_check_port = "traffic-port"
-health_check_path = "/health"
+health_check_path = "/"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")

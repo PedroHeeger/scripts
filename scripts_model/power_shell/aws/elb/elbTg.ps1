@@ -14,7 +14,7 @@ $protocolVersion = "HTTP1"
 $port = 80
 $healthCheckProtocol = "HTTP"
 $healthCheckPort = "traffic-port"
-$healthCheckPath = "/health"
+$healthCheckPath = "/"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

@@ -74,11 +74,8 @@ if resposta.lower() == 'y':
                         print(f"Nome da Instância: {tag['Value']}")
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print("Aguardando 10 segundos para instância alocar um IP público")
-            time.sleep(10)
-
-            print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando o IP público da instância {tagNameInstance}")
+            instances = list(ec2.instances.filter(Filters=[{'Name': 'tag:Name', 'Values': [tagNameInstance]}]))
             for instance in instances:
                 print(f"ID da Instância: {instance.id}")
                 print(f"IP Público: {instance.public_ip_address}")

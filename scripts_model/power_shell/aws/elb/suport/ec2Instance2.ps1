@@ -12,7 +12,7 @@ $availabilityZone = "us-east-1a"
 $imageId = "ami-0fc5d935ebf8bc3bc"
 $instanceType = "t2.micro"
 $keyPairName = "keyPairTest"
-$userDataPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws\elb\"
+$userDataPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws\elb\suport\"
 $userDataFile = "udFileTest.sh"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"

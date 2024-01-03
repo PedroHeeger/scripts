@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "SERVIÇO: AWS VPC"
+echo "SERVIÇO: AWS EC2-VPC"
 echo "SECURITY GROUP RULE CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -66,7 +66,7 @@ fi
 #!/bin/bash
 
 echo "***********************************************"
-echo "SERVIÇO: AWS VPC"
+echo "SERVIÇO: AWS EC2-VPC"
 echo "SECURITY GROUP RULE EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"

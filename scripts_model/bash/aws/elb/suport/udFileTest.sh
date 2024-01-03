@@ -23,3 +23,4 @@ sudo systemctl restart apache2
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Habilitando o serviço para que seja executado automaticamente"
+sudo systemctl enable apache2

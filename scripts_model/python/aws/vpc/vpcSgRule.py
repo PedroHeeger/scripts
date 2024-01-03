@@ -3,7 +3,7 @@
 import boto3
 
 print("***********************************************")
-print("SERVIÇO: AWS VPC")
+print("SERVIÇO: AWS EC2-VPC")
 print("SECURITY GROUP RULE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -104,7 +104,7 @@ else:
 import boto3
 
 print("***********************************************")
-print("SERVIÇO: AWS VPC")
+print("SERVIÇO: AWS EC2-VPC")
 print("SECURITY GROUP RULE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")

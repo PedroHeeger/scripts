@@ -1,7 +1,7 @@
 #!/usr/bin/env powershell
 
 Write-Output "***********************************************"
-Write-Output "SERVIÇO: AWS VPC"
+Write-Output "SERVIÇO: AWS EC2-VPC"
 Write-Output "SECURITY GROUP RULE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -58,7 +58,7 @@ if ($resposta.ToLower() -eq 'y') {
 #!/usr/bin/env powershell
 
 Write-Output "***********************************************"
-Write-Output "SERVIÇO: AWS VPC"
+Write-Output "SERVIÇO: AWS EC2-VPC"
 Write-Output "SECURITY GROUP RULE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
