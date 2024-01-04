@@ -77,18 +77,26 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         attachedPolicies=$(aws iam list-attached-role-policies --role-name $roleName --query 'AttachedPolicies[*].PolicyArn' --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Iterando na lista de policies"
-        while IFS= read -r policyArn; do
-            if [ -n "$policyArn" ]; then
+        echo "Verificando se a lista de ARNs de policies anexadas à role de nome $roleName está vazia"
+        if [ -n "$attachedPolicies" ] && [ "$attachedPolicies" != "" ]; then
+
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Iterando na lista de policies"
+            IFS=$'\n' # Set Internal Field Separator to newline
+            for policyArn in $(echo "$attachedPolicies" | tr "\n" " "); do
+                if [ "$policyArn" != "" ]; then
                 echo "-----//-----//-----//-----//-----//-----//-----"
                 echo "Extraindo o nome da policy vinculada a role"
                 policyName=$(aws iam list-policies --query "Policies[?Arn=='$policyArn'].PolicyName" --output text)
 
                 echo "-----//-----//-----//-----//-----//-----//-----"
                 echo "Removendo a policy $policyName da role de nome $roleName"
-                aws iam detach-role-policy --role-name $roleName --policy-arn $policyArn
-            fi
-        done <<< "$attachedPolicies"
+                aws iam detach-role-policy --role-name "$roleName" --policy-arn "$policyArn"
+                fi
+            done
+        else
+            echo "Não existe policies anexadas à role de nome $roleName"
+        fi
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Removendo a role de nome $roleName"

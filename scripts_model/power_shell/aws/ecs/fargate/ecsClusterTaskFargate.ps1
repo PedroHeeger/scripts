@@ -11,8 +11,8 @@ $revision = "4"
 $clusterName = "clusterFargateTest1"
 $launchType = "FARGATE"
 $region = "us-east-1"
-$availabilityZone1 = "us-east-1a"
-$availabilityZone2 = "us-east-1b"
+$az1 = "us-east-1a"
+$az2 = "us-east-1b"
 $groupName = "default"
 $accountId = "001727357081"
 $taskArn = "arn:aws:ecs:${region}:${accountId}:task/${clusterName}"
@@ -24,7 +24,7 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Criando uma função para executar a tarefa de nome $taskName se ela não existir no cluster $clusterName"
     function ExecutarTarefa {
-        param([string]$taskName, [string]$revision, [string]$clusterName, [string]$launchType, [string]$availabilityZone1, [string]$availabilityZone2)
+        param([string]$taskName, [string]$revision, [string]$clusterName, [string]$launchType, [string]$az1, [string]$az2)
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando as ARNs de todas as tarefas no cluster $clusterName"
@@ -33,8 +33,8 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo os elementos de rede"
         $vpcId = aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text
-        $subnetId1 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
-        $subnetId2 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
+        $subnetId1 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$az1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
+        $subnetId2 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$az2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
         $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$groupName" --query "SecurityGroups[].GroupId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -64,8 +64,8 @@ if ($resposta.ToLower() -eq 'y') {
                 Write-Output "-----//-----//-----//-----//-----//-----//-----"
                 Write-Output "Já existe a tarefa de nome $taskName no cluster $clusterName na revisão $revision"
                 aws ecs describe-tasks --cluster $clusterName --tasks "$taskArn" --query "tasks[].taskDefinitionArn" --output text
-            } else {ExecutarTarefa $taskName $revision $clusterName $launchType $availabilityZone1 $availabilityZone2}}
-    } else {ExecutarTarefa $taskName $revision $clusterName $launchType $availabilityZone1 $availabilityZone2}
+            } else {ExecutarTarefa $taskName $revision $clusterName $launchType $az1 $az2}}
+    } else {ExecutarTarefa $taskName $revision $clusterName $launchType $az1 $az2}
 } else {Write-Host "Código não executado"}
 
 

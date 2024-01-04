@@ -9,12 +9,12 @@ print("TASK EXECUTION ON CLUSTER FARGATE")
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 task_name = "taskFargateTest1"
-revision = "3"
+revision = "11"
 cluster_name = "clusterFargateTest1"
 launch_type = "FARGATE"
 region = "us-east-1"
-availability_zone1 = "us-east-1a"
-availability_zone2 = "us-east-1b"
+aZ1 = "us-east-1a"
+aZ2 = "us-east-1b"
 account_id = "001727357081"
 task_arn = f"arn:aws:ecs:{region}:{account_id}:task/{cluster_name}"
 task_definition_arn = f"arn:aws:ecs:{region}:{account_id}:task-definition/{task_name}:{revision}"
@@ -29,7 +29,7 @@ if response == 'y':
     
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Criando uma função para executar a tarefa de nome {task_name} se ela não existir no cluster {cluster_name}")
-    def executar_tarefa(task_name, revision, cluster_name, launch_type, availability_zone1, availability_zone2):
+    def executar_tarefa(task_name, revision, cluster_name, launch_type, aZ1, aZ2):
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Listando as ARNs de todas as tarefas no cluster {cluster_name}")
         task_arns = ecs.list_tasks(cluster=cluster_name)["taskArns"]
@@ -40,13 +40,13 @@ if response == 'y':
         vpc_id = ec2.describe_vpcs(Filters=[{"Name": "isDefault", "Values": ["true"]}])["Vpcs"][0]["VpcId"]
         subnet_id1 = ec2.describe_subnets(
             Filters=[
-                {"Name": "availability-zone", "Values": [availability_zone1]},
+                {"Name": "availability-zone", "Values": [aZ1]},
                 {"Name": "vpc-id", "Values": [vpc_id]},
             ]
         )["Subnets"][0]["SubnetId"]
         subnet_id2 = ec2.describe_subnets(
             Filters=[
-                {"Name": "availability-zone", "Values": [availability_zone2]},
+                {"Name": "availability-zone", "Values": [aZ2]},
                 {"Name": "vpc-id", "Values": [vpc_id]},
             ]
         )["Subnets"][0]["SubnetId"]
@@ -95,9 +95,9 @@ if response == 'y':
                 print(f"Já existe a tarefa de nome {task_name} no cluster {cluster_name} na revisão {revision}")
                 print(task_definition_arn_response)
             else:
-                executar_tarefa(task_name, revision, cluster_name, launch_type, availability_zone1, availability_zone2)
+                executar_tarefa(task_name, revision, cluster_name, launch_type, aZ1, aZ2)
     else:
-        executar_tarefa(task_name, revision, cluster_name, launch_type, availability_zone1, availability_zone2)
+        executar_tarefa(task_name, revision, cluster_name, launch_type, aZ1, aZ2)
 else:
     print("Código não executado")
 
@@ -116,7 +116,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 task_name = "taskFargateTest1"
 cluster_name = "clusterFargateTest1"
-revision = "3"
+revision = "11"
 region = "us-east-1"
 account_id = "001727357081"
 task_definition_arn = f"arn:aws:ecs:{region}:{account_id}:task-definition/{task_name}:{revision}"

@@ -5,70 +5,58 @@ import json
 
 print("***********************************************")
 print("SERVIÇO: AWS IAM")
-print("IAM ROLE USER CREATION")
+print("IAM ROLE SERVICE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-role_name = "roleUserTest"
-iam_user_name = "iamUserTest"
-# path_trust_policy_document = "G:\\Meu Drive\\4_PROJ\\scripts\\scripts_model\\.default\\aws\\iamTrustPolicy.json"
+role_name = "ecsTaskExecutionRole"
+service_name = "ecs-tasks.amazonaws.com"
+# path_trust_policy_document = "G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\aws\iamTrustPolicy.json"
 
 print("-----//-----//-----//-----//-----//-----//-----")
-resposta = input("Deseja executar o código? (y/n) ")
-if resposta.lower() == 'y':
+resposta = input("Deseja executar o código? (y/n) ").lower()
+if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Criando um cliente para o serviço IAM")
-    iam = boto3.client('iam')
+    iam_client = boto3.client('iam')
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a role de nome {role_name}")
-    try:
-        role = iam.get_role(RoleName=role_name)
-        print(f"-----//-----//-----//-----//-----//-----//-----\nJá existe uma role de nome {role_name}\n{role}")
-    except iam.exceptions.NoSuchEntityException:
+    roles = iam_client.list_roles(PathPrefix='/')['Roles']
+    role_names = [r['RoleName'] for r in roles]
+    if role_name in role_names:
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Já existe uma role de nome {role_name}")
+        print(role_name)
+    else:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todas as roles criadas")
-        roles = iam.list_roles()['Roles']
-        for r in roles:
-            print(r['RoleName'])
+        print("\n".join(role_names))
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Criando a role de nome {role_name}")
-        # Carrega o documento de política de confiança
-        trust_policy_document = {
+        trust_policy = {
             "Version": "2012-10-17",
             "Statement": [
                 {
                     "Effect": "Allow",
-                    "Principal": {"AWS": f"arn:aws:iam::001727357081:user/{iam_user_name}"},
+                    "Principal": {"Service": service_name},
                     "Action": "sts:AssumeRole"
                 }
             ]
         }
-
-        # Cria a role
-        iam.create_role(
-            RoleName=role_name,
-            AssumeRolePolicyDocument=json.dumps(trust_policy_document)
-        )
-
+        trust_policy_json = json.dumps(trust_policy)
+        iam_client.create_role(RoleName=role_name, AssumeRolePolicyDocument=str(trust_policy_json))
+        
         # print("-----//-----//-----//-----//-----//-----//-----")
         # print(f"Criando a role de nome {role_name} com um arquivo JSON")
-
-        # # Carrega o documento de política de confiança do arquivo JSON
-        # with open(path_trust_policy_document, 'r') as trust_policy_file:
-        #     trust_policy_document = json.load(trust_policy_file)
-
-        # # Cria a role
-        # iam.create_role(
-        #     RoleName=role_name,
-        #     AssumeRolePolicyDocument=json.dumps(trust_policy_document)
-        # )
+        # with open(path_trust_policy_document, 'r') as file:
+        #     trust_policy_json = file.read()
+        # iam_client.create_role(RoleName=role_name, AssumeRolePolicyDocument=trust_policy_json)
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Listando a role de nome {role_name}")
-        role = iam.get_role(RoleName=role_name)['Role']['RoleName']
-        print(role)
+        print(role_name)
 else:
     print("Código não executado")
 
@@ -76,58 +64,55 @@ else:
 
 
 #!/usr/bin/env python
-    
+
 import boto3
 
 print("***********************************************")
 print("SERVIÇO: AWS IAM")
-print("IAM ROLE USER EXCLUSION")
+print("IAM ROLE SERVICE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-role_name = "roleUserTest"
+role_name = "ecsTaskExecutionRole"
 
 print("-----//-----//-----//-----//-----//-----//-----")
-resposta = input("Deseja executar o código? (y/n) ")
-if resposta.lower() == 'y':
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço IAM")
-    iam = boto3.client('iam')
-
+resposta = input("Deseja executar o código? (y/n) ").lower()
+if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a role de nome {role_name}")
-    try:
-        role = iam.get_role(RoleName=role_name)
+    iam_client = boto3.client('iam')
+    roles = iam_client.list_roles(PathPrefix='/')['Roles']
+    role_names = [r['RoleName'] for r in roles]
+    
+    if role_name in role_names:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todas as roles criadas")
-        roles = iam.list_roles()['Roles']
-        for r in roles:
-            print(r['RoleName'])
+        print("\n".join(role_names))
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Obtendo a lista de ARNs de policies anexadas à role de nome {role_name}")
-        attached_policies = iam.list_attached_role_policies(RoleName=role_name)['AttachedPolicies']
+        attached_policies = iam_client.list_attached_role_policies(RoleName=role_name)['AttachedPolicies']
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Iterando na lista de policies")
         for policy in attached_policies:
             policy_arn = policy['PolicyArn']
-            policy_name = iam.list_policies(PolicyArn=policy_arn)['Policies'][0]['PolicyName']
+            policy_name = iam_client.get_policy(PolicyArn=policy_arn)['Policy']['PolicyName']
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Removendo a policy {policy_name} da role de nome {role_name}")
-            iam.detach_role_policy(RoleName=role_name, PolicyArn=policy_arn)
+            iam_client.detach_role_policy(RoleName=role_name, PolicyArn=policy_arn)
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Removendo a role de nome {role_name}")
-        iam.delete_role(RoleName=role_name)
+        iam_client.delete_role(RoleName=role_name)
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todas as roles criadas")
-        roles = iam.list_roles()['Roles']
-        for r in roles:
-            print(r['RoleName'])
-    except iam.exceptions.NoSuchEntityException:
-        print(f"-----//-----//-----//-----//-----//-----//-----\nNão existe a role de nome {role_name}")
+        roles_after_deletion = iam_client.list_roles(PathPrefix='/')['Roles']
+        role_names_after_deletion = [r['RoleName'] for r in roles_after_deletion]
+        print("\n".join(role_names_after_deletion))
+    else:
+        print(f"Não existe a role de nome {role_name}")
 else:
     print("Código não executado")

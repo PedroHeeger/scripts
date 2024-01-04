@@ -2,12 +2,12 @@
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS IAM"
-Write-Output "IAM ROLE USER CREATION"
+Write-Output "IAM ROLE SERVICE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$roleName = "roleUserTest"
-$iamUserName = "iamUserTest"
+$roleName = "ecsTaskExecutionRole"
+$serviceName = "ecs-tasks.amazonaws.com"
 # $pathTrustPolicyDocument = "G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\aws\iamTrustPolicy.json"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -31,11 +31,11 @@ if ($resposta.ToLower() -eq 'y') {
             `"Statement`": [
               {
                 `"Effect`": `"Allow`",
-                `"Principal`": {`"AWS`": `"arn:aws:iam::001727357081:user/${iamUserName}`"},
+                `"Principal`": {`"Service`": `"$serviceName`"},
                 `"Action`": `"sts:AssumeRole`"
               }
             ]
-          }"
+          }" --no-cli-pager
     
         # Write-Output "-----//-----//-----//-----//-----//-----//-----"
         # Write-Output "Criando a role de nome $roleName com um arquivo JSON"
@@ -54,11 +54,11 @@ if ($resposta.ToLower() -eq 'y') {
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS IAM"
-Write-Output "IAM ROLE USER EXCLUSION"
+Write-Output "IAM ROLE SERVICE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$roleName = "roleUserTest"
+$roleName = "ecsTaskExecutionRole"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

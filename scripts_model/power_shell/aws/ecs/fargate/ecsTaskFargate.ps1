@@ -7,12 +7,15 @@ Write-Output "TASK FARGATE CREATION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskFargateTest1"
-$revision = "5"
+$executionRoleName = "ecsTaskExecutionRole"
+$revision = "10"
 $launchType = "FARGATE"
 $containerName1 = "containerTest1"
 $containerName2 = "containerTest2"
 $dockerImage1 = "docker.io/fabricioveronez/conversao-temperatura:latest"
 $dockerImage2 = "docker.io/library/httpd:latest"
+$logGroupName = "/aws/ecs/fargate/taskFargateTest1"
+$region = "us-east-1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -36,20 +39,32 @@ if ($resposta.ToLower() -eq 'y') {
         # aws ecs describe-task-definition --task-definition $taskName --query "taskDefinition.taskArn" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Extraindo o ARN da role $executionRoleName"
+        $executionRoleArn = aws iam list-roles --query "Roles[?RoleName=='$executionRoleName'].Arn" --output text
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Registrando uma definição de tarefa de nome $taskName na revisão $revision"
-        aws ecs register-task-definition --family $taskName --network-mode "awsvpc" --requires-compatibilities $launchType --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
+        aws ecs register-task-definition --family $taskName --network-mode "awsvpc" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
             {
-            `"name`": `"$containerName1`",
-            `"image`": `"$dockerImage1`",
-            `"cpu`": 128,
-            `"memory`": 256,
-            `"portMappings`": [
-                {
-                `"containerPort`": 8080,
-                `"hostPort`": 8080
+                `"name`": `"$containerName1`",
+                `"image`": `"$dockerImage1`",
+                `"cpu`": 128,
+                `"memory`": 256,
+                `"portMappings`": [
+                    {
+                    `"containerPort`": 8080,
+                    `"hostPort`": 8080
+                    }
+                ],
+                `"essential`": false,
+                `"logConfiguration`": {
+                    `"logDriver`": `"awslogs`",
+                    `"options`": {
+                        `"awslogs-group`": `"$logGroupName`",
+                        `"awslogs-region`": `"$region`",
+                        `"awslogs-stream-prefix`": `"$containerName1`"
+                    }        
                 }
-            ],
-            `"essential`": false
             },
             {
                 `"name`": `"$containerName2`",
@@ -57,11 +72,19 @@ if ($resposta.ToLower() -eq 'y') {
                 `"cpu`": 128,
                 `"memory`": 256,
                 `"portMappings`": [
-                {
+                    {
                     `"containerPort`": 80,
                     `"hostPort`": 80
+                    }
+                ],
+                `"logConfiguration`": {
+                    `"logDriver`": `"awslogs`",
+                    `"options`": {
+                        `"awslogs-group`": `"$logGroupName`",
+                        `"awslogs-region`": `"$region`",
+                        `"awslogs-stream-prefix`": `"$containerName2`"
+                    }  
                 }
-                ]
             }
         ]" --no-cli-pager
 
@@ -83,7 +106,7 @@ Write-Output "TASK FARGATE EXCLUSION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskFargateTest1"
-$revision = "5"
+$revision = "10"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -103,7 +126,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando as ARNs de todas as definições de tarefas criadas inativas"
-        aws ecs list-task-definitions  --status INACTIVE --query taskDefinitionArns[] --output text
+        aws ecs list-task-definitions --status INACTIVE --query taskDefinitionArns[] --output text
 
         # Write-Output "-----//-----//-----//-----//-----//-----//-----"
         # Write-Output "Listando a ARN da reivsão atual da definição de tarefa de nome $taskName"

@@ -11,8 +11,8 @@ revision="2"
 clusterName="clusterFargateTest1"
 launchType="FARGATE"
 region="us-east-1"
-availabilityZone1="us-east-1a"
-availabilityZone2="us-east-1b"
+aZ1="us-east-1a"
+aZ2="us-east-1b"
 accountId="001727357081"
 taskArn="arn:aws:ecs:${region}:${accountId}:task/${clusterName}"
 taskDefinitionArn="arn:aws:ecs:${region}:${accountId}:task-definition/${taskName}:${revision}"
@@ -27,8 +27,8 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         local revision=$2
         local clusterName=$3
         local launchType=$4
-        local availabilityZone1=$5
-        local availabilityZone2=$6
+        local aZ1=$5
+        local aZ2=$6
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando as ARNs de todas as tarefas no cluster $clusterName"
@@ -37,8 +37,8 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os elementos de rede"
         vpcId=$(aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text)
-        subnetId1=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
-        subnetId2=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
+        subnetId1=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
+        subnetId2=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
         sgId=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=default" --query "SecurityGroups[].GroupId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -68,11 +68,11 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
                 echo "Já existe a tarefa de nome $taskName no cluster $clusterName na revisão $revision"
                 aws ecs describe-tasks --cluster $clusterName --tasks "$taskArn" --query "tasks[].taskDefinitionArn" --output text
             else
-                ExecutarTarefa $taskName $revision $clusterName $launchType $availabilityZone1 $availabilityZone2
+                ExecutarTarefa $taskName $revision $clusterName $launchType $aZ1 $aZ2
             fi
         done
     else
-        ExecutarTarefa $taskName $revision $clusterName $launchType $availabilityZone1 $availabilityZone2
+        ExecutarTarefa $taskName $revision $clusterName $launchType $aZ1 $aZ2
     fi
 else
     echo "Código não executado"

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import boto3
+import json
 
 print("***********************************************")
 print("SERVIÇO: AWS IAM")
@@ -44,7 +45,7 @@ if resposta == 'y':
                 }
             ]
         }
-        iam_client.create_role(RoleName=role_name, AssumeRolePolicyDocument=str(trust_policy))
+        iam_client.create_role(RoleName=role_name, AssumeRolePolicyDocument=str(json.dumps(trust_policy)))
         
         # print("-----//-----//-----//-----//-----//-----//-----")
         # print(f"Criando a role de nome {role_name} com um arquivo JSON")

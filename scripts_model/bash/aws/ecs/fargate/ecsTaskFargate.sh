@@ -7,12 +7,15 @@ echo "TASK FARGATE CREATION"
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 taskName="taskFargateTest1"
+executionRoleName="ecsTaskExecutionRole"
 revision="1"
 launchType="FARGATE"
 containerName1="containerTest1"
 containerName2="containerTest2"
 dockerImage1="docker.io/fabricioveronez/conversao-temperatura:latest"
 dockerImage2="docker.io/library/httpd:latest"
+logGroupName="/aws/ecs/fargate/taskFargateTest1"
+region="us-east-1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -38,22 +41,34 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "Listando as ARNs de todas as definições de tarefas criadas"
         task_definition_arns=$(aws ecs list-task-definitions --query taskDefinitionArns[] --output text)
         echo "$task_definition_arns"
-    
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Extraindo o ARN da role $executionRoleName"
+        executionRoleArn=$(aws iam list-roles --query "Roles[?RoleName=='$executionRoleName'].Arn" --output text)
+            
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Registrando uma definição de tarefa de nome $taskName na revisão $revision"
-        aws ecs register-task-definition --family $taskName --network-mode "awsvpc" --requires-compatibilities $launchType --cpu 256 --memory 512 --runtime-platform cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
+        aws ecs register-task-definition --family $taskName --network-mode "awsvpc" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
             {
-            \"name\": \"$containerName1\",
-            \"image\": \"$dockerImage1\",
-            \"cpu\": 128,
-            \"memory\": 256,
-            \"portMappings\": [
-                {
-                \"containerPort\": 8080,
-                \"hostPort\": 8080
+                \"name\": \"$containerName1\",
+                \"image\": \"$dockerImage1\",
+                \"cpu\": 128,
+                \"memory\": 256,
+                \"portMappings\": [
+                    {
+                    \"containerPort\": 8080,
+                    \"hostPort\": 8080
+                    }
+                ],
+                \"essential\": false,
+                \"logConfiguration\": {
+                    \"logDriver\": \"awslogs\",
+                    \"options\": {
+                        \"awslogs-group\": \"$logGroupName\",
+                        \"awslogs-region\": \"$region\",
+                        \"awslogs-stream-prefix\": \"$containerName1\"
+                    }        
                 }
-            ],
-            \"essential\": false
             },
             {
                 \"name\": \"$containerName2\",
@@ -65,7 +80,15 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
                     \"containerPort\": 80,
                     \"hostPort\": 80
                 }
-                ]
+                ],
+                \"logConfiguration\": {
+                    \"logDriver\": \"awslogs\",
+                    \"options\": {
+                        \"awslogs-group\": \"$logGroupName\",
+                        \"awslogs-region\": \"$region\",
+                        \"awslogs-stream-prefix\": \"$containerName2\"
+                    }  
+                }
             }
         ]" --no-cli-pager
 
@@ -108,12 +131,16 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "Verificando se existe a definição de tarefa de nome $taskName na revisão $revision"
     if [ "$condition" -eq "$revision" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando as ARNs de todas as definições de tarefas criadas"
+        echo "Listando as ARNs de todas as definições de tarefas criadas ativas"
         aws ecs list-task-definitions --query taskDefinitionArns[] --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando a ARN da reivsão atual da definição de tarefa de nome $taskName"
-        aws ecs describe-task-definition --task-definition "$taskName" --query "taskDefinition.taskDefinitionArn" --output text
+        echo "Listando as ARNs de todas as definições de tarefas criadas inativas"
+        aws ecs list-task-definitions --status INACTIVE --query taskDefinitionArns[] --output text
+
+        # echo "-----//-----//-----//-----//-----//-----//-----"
+        # echo "Listando a ARN da reivsão atual da definição de tarefa de nome $taskName"
+        # aws ecs describe-task-definition --task-definition "$taskName" --query "taskDefinition.taskDefinitionArn" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Removendo o registro da definição de tarefa de nome $taskName na revisão $revision"
@@ -124,8 +151,12 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws ecs delete-task-definitions --task-definition "${taskName}:${revision}" --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando as ARNs de todas as definições de tarefas criadas"
+        echo "Listando as ARNs de todas as definições de tarefas criadas ativas"
         aws ecs list-task-definitions --query taskDefinitionArns[] --output text
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Listando as ARNs de todas as definições de tarefas criadas inativas"
+        aws ecs list-task-definitions --status INACTIVE --query taskDefinitionArns[] --output text
     else
         echo "Não existe a definição de tarefa de nome $taskName na revisão $revision"
     fi

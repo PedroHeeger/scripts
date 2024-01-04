@@ -8,9 +8,9 @@ print("IAM ROLE ADD POLICY")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-role_name = "roleTest"
-policy_name = "AmazonS3ReadOnlyAccess"
-policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+role_name = "ecsTaskExecutionRole"
+policy_name = "AmazonECSTaskExecutionRolePolicy"
+policy_arn = "arn:aws:iam::aws:policy/AmazonECSTaskExecutionRolePolicy"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -67,9 +67,9 @@ print("IAM ROLE REMOVE POLICY")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-role_name = "roleTest"
-policy_name = "AmazonS3ReadOnlyAccess"
-policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+role_name = "ecsTaskExecutionRole"
+policy_name = "AmazonECSTaskExecutionRolePolicy"
+policy_arn = "arn:aws:iam::aws:policy/AmazonECSTaskExecutionRolePolicy"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
