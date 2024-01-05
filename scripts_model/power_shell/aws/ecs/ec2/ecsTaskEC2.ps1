@@ -7,6 +7,7 @@ Write-Output "TASK EC2 CREATION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $taskName = "taskEC2Test1"
+$executionRoleName = "ecsTaskExecutionRole"
 $revision = "4"
 $launchType = "EC2"
 $containerName1 = "containerTest1"
@@ -38,20 +39,32 @@ if ($resposta.ToLower() -eq 'y') {
         # aws ecs describe-task-definition --task-definition $taskName --query "taskDefinition.taskArn" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Extraindo o ARN da role $executionRoleName"
+        $executionRoleArn = aws iam list-roles --query "Roles[?RoleName=='$executionRoleName'].Arn" --output text
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Registrando uma definição de tarefa de nome $taskName na revisão $revision"
-        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
+        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
             {
-            `"name`": `"$containerName1`",
-            `"image`": `"$dockerImage1`",
-            `"cpu`": 128,
-            `"memory`": 256,
-            `"portMappings`": [
-                {
-                `"containerPort`": 8080,
-                `"hostPort`": 8080
+                `"name`": `"$containerName1`",
+                `"image`": `"$dockerImage1`",
+                `"cpu`": 128,
+                `"memory`": 256,
+                `"portMappings`": [
+                    {
+                    `"containerPort`": 8080,
+                    `"hostPort`": 8080
+                    }
+                ],
+                `"essential`": false,
+                `"logConfiguration`": {
+                    `"logDriver`": `"awslogs`",
+                    `"options`": {
+                        `"awslogs-group`": `"$logGroupName`",
+                        `"awslogs-region`": `"$region`",
+                        `"awslogs-stream-prefix`": `"$containerName1`"
+                    }        
                 }
-            ],
-            `"essential`": false
             },
             {
                 `"name`": `"$containerName2`",
@@ -59,11 +72,19 @@ if ($resposta.ToLower() -eq 'y') {
                 `"cpu`": 128,
                 `"memory`": 256,
                 `"portMappings`": [
-                {
+                    {
                     `"containerPort`": 80,
                     `"hostPort`": 80
+                    }
+                ],
+                `"logConfiguration`": {
+                    `"logDriver`": `"awslogs`",
+                    `"options`": {
+                        `"awslogs-group`": `"$logGroupName`",
+                        `"awslogs-region`": `"$region`",
+                        `"awslogs-stream-prefix`": `"$containerName2`"
+                    }  
                 }
-                ]
             }
         ]" --no-cli-pager
 

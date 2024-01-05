@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import boto3
-# import json
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("SERVIÇO: AWS ECS")
@@ -180,8 +179,8 @@ if resposta == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Removendo a definição de tarefa de nome {task_name} na revisão {revision}")
-        boto3.client('ecs').delete_task_definition(
-            taskDefinition=f"{task_name}:{revision}"
+        boto3.client('ecs').delete_task_definitions(
+            taskDefinitions=[f"{task_name}:{revision}",]
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")
