@@ -11,7 +11,7 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     sudo apt-get update -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Instalando os pacotes necessários para realizar: download seguro (SSL) (ca-certificates), operações de transferência de dados (curl), e manipulação de chaves GPG (gnupg)"
+    echo "Instalando os pacotes necessários para realizar: download seguro (SSL) (ca-certificates), operações de transferência de dados (curl) e manipulação de chaves GPG (gnupg)"
     sudo apt-get install -y ca-certificates curl gnupg
 
     echo "-----//-----//-----//-----//-----//-----//-----"
@@ -65,6 +65,29 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Confirmando as alterações realizadas no grupo"
     sudo newgrp docker
+else 
+    echo "Código não executado"
+fi
+
+
+
+
+#!/bin/bash
+
+echo "***********************************************"
+echo "DOCKER AUTHENTICATION WITH AWS ECR"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Definindo variáveis"
+region="us-east-1"
+accountId="001727357081"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+read -p "Deseja executar o código? (y/n): " resposta
+if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Autenticando o Docker com AWS ECR"
+    aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com
 else 
     echo "Código não executado"
 fi

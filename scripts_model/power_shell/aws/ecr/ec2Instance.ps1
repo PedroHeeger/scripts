@@ -2,18 +2,22 @@
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS EC2"
-Write-Output "EC2 CONTAINER INSTANCE CREATION"
+Write-Output "EC2 CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2ContainerInstanceTest"
+$tagNameInstance = "ec2Test1"
 $groupName = "default"
 $availabilityZone = "us-east-1a"
-$imageId = "ami-079db87dc4c10ac91"    # Amazon Linux 2023 AMI 2023.3.20231218.0 x86_64 HVM kernel-6.1
+$imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 $instanceType = "t2.micro"
-$keyPairName = "keyPairTest"
-$instanceProfileName = "ecs-ec2InstanceIProfile"
-$clusterName = "clusterEC2Test1"
+$keyPairPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\secrets\awsKeyPair\"
+$keyPairName = "keyPairUniversal"
+$userDataPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\power_shell\aws\ecr\"
+$userDataFile = "udFileTest.sh"
+$awsCliPath = "G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\secrets\awscli\iamUserWorker\"
+$awsCliFolder = ".aws"
+$vmPath = "/home/ubuntu"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -40,21 +44,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando a instância EC2 de nome de tag $tagNameInstance"
-        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $securityGroupId --subnet-id $subnetId --count 2 --user-data "#!/bin/bash
-        echo 'EXECUTANDO O SCRIPT BASH'
-        sudo yum update -y
-        sudo yum upgrade -y
-        sudo yum install -y nano
-        sudo mkdir -p /etc/ecs
-        echo 'ECS_CLUSTER=$clusterName' | sudo tee -a /etc/ecs/ecs.config
-        echo 'TEMPO 1'
-        sleep 20
-        sudo yum install -y ecs-init
-        echo 'TEMPO 2'
-        sleep 60
-        sudo systemctl enable ecs
-        sudo systemctl start ecs
-        sudo reboot" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${tagNameInstance}1,{Key=Name,Value=${tagNameInstance}2]" --iam-instance-profile "Name=$instanceProfileName" --no-cli-pager
+        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $securityGroupId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --no-cli-pager
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome da tag de todas as instâncias EC2 criadas"
@@ -63,6 +53,27 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o IP público da instância $tagNameInstance"
         aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Aguardando alguns segundos para realizar o acesso remoto..."
+        Start-Sleep -Seconds 60    
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Extraindo o IP público da instância de nome de tag $tagNameInstance"
+        $ipEc2 = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Verificando se a pasta $awsCliFolder já existe na instância de nome de tag $tagNameInstance"
+        $folderExists = ssh -i "$keyPairPath\$keyPairName.pem" -o StrictHostKeyChecking=no ubuntu@ec2-$ipEc2.compute-1.amazonaws.com "test -d \"$vmPath/$awsCliFolder\" && echo 'true' || echo 'false'"
+    
+        if ($folderExists -eq 'true') {
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "A pasta $awsCliFolder já existe na instância de nome de tag $tagNameInstance. Transferência cancelada."
+        } else {
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "Transferindo a pasta $awsCliFolder para a instância de nome de tag $tagNameInstance"
+            scp -i "$keyPairPath\$keyPairName.pem" -o StrictHostKeyChecking=no -r "$awsCliPath\$awsCliFolder" ubuntu@ec2-${ipEc2}:${vmPath}
+        }
     }
 } else {Write-Host "Código não executado"}
 
@@ -73,11 +84,11 @@ if ($resposta.ToLower() -eq 'y') {
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS EC2"
-Write-Output "EC2 CONTAINER INSTANCE EXCLUSION"
+Write-Output "EC2 EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2ContainerInstanceTest2"
+$tagNameInstance = "ec2Test1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

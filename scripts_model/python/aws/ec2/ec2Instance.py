@@ -13,9 +13,9 @@ print("Definindo variáveis")
 tagNameInstance = "ec2Test1"
 groupName = "default"
 availabilityZone = "us-east-1a"
-imageId = "ami-0fc5d935ebf8bc3bc"
+imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instanceType = "t2.micro"
-keyPairName = "keyPairTest"
+keyPairName = "keyPairUniversal"
 userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/aws/ec2/"
 userDataFile = "udFileTest.sh"
 
