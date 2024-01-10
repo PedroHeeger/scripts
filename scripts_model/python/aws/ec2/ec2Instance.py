@@ -2,7 +2,6 @@
 
 import boto3
 from botocore.exceptions import ClientError
-import time
 
 print("***********************************************")
 print("SERVIÇO: AWS EC2")
@@ -12,11 +11,11 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 tagNameInstance = "ec2Test1"
 groupName = "default"
-availabilityZone = "us-east-1a"
+aZ = "us-east-1a"
 imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instanceType = "t2.micro"
 keyPairName = "keyPairUniversal"
-userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/aws/ec2/"
+userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic"
 userDataFile = "udFileTest.sh"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -47,7 +46,7 @@ if resposta.lower() == 'y':
             print("-----//-----//-----//-----//-----//-----//-----")
             print("Extraindo os Ids do grupo de segurança e sub-redes padrões")
             security_group_id = list(ec2.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [groupName]}]))[0].id
-            subnet_id = list(ec2.subnets.filter(Filters=[{'Name': 'availabilityZone', 'Values': [availabilityZone]}]))[0].id
+            subnet_id = list(ec2.subnets.filter(Filters=[{'Name': 'availabilityZone', 'Values': [aZ]}]))[0].id
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Criando a instância EC2 de nome de tag {tagNameInstance}")
@@ -82,7 +81,6 @@ if resposta.lower() == 'y':
 
     except ClientError as e:
         print(f"Erro ao interagir com a AWS: {e}")
-
 else:
     print("Código não executado")
 
@@ -146,6 +144,5 @@ if resposta.lower() == 'y':
 
     except ClientError as e:
         print(f"Erro ao interagir com a AWS: {e}")
-
 else:
     print("Código não executado")

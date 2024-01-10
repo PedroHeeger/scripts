@@ -11,11 +11,18 @@ scripts_model/terraform/.default/secrets
 scripts_model/terraform/aws/budget/*
 !scripts_model/terraform/aws/budget/main.tf
 
+scripts_model/terraform/aws/cloudwatch/logGroup/*
+!scripts_model/terraform/aws/cloudwatch/logGroup/main.tf
+
 scripts_model/terraform/aws/ec2/ec2Instance/*
 !scripts_model/terraform/aws/ec2/ec2Instance/main.tf
 
 scripts_model/terraform/aws/ec2/ec2KeyPair/*
 !scripts_model/terraform/aws/ec2/ec2KeyPair/main.tf
+
+scripts_model/terraform/aws/ecr/ecrRepository/*
+!scripts_model/terraform/aws/ecr/ecrRepository/main.tf
+!scripts_model/terraform/aws/ecr/ecrRepository/udFileTest.sh
 
 scripts_model/terraform/aws/elb/alb/*
 !scripts_model/terraform/aws/elb/alb/main.tf

@@ -8,11 +8,11 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 tagNameInstance="ec2Test1"
 groupName="default"
-availabilityZone="us-east-1a"
+aZ="us-east-1a"
 imageId="ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instanceType="t2.micro"
 keyPairName="keyPairUniversal"
-userDataPath="G:\Meu Drive\4_PROJ\scripts\scripts_model\bash\aws\ec2\"
+userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic"
 userDataFile="udFileTest.sh"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -20,7 +20,7 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe a instância $tagNameInstance"
-    if [ "$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]" | jq length)" -gt 0 ]; then
+    if [ "$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]" --output text | wc -l)" -gt 1 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe uma instância EC2 com o nome de tag $tagNameInstance"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name' && Value=='$tagNameInstance'].Value" --output text
@@ -36,7 +36,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os Ids do grupo de segurança e sub-redes padrões"
         securityGroupId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
-        subnetId=$(aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$availabilityZone'].SubnetId" --output text)
+        subnetId=$(aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando a instância EC2 de nome de tag $tagNameInstance"
@@ -72,7 +72,7 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe a instância $tagNameInstance"
-    if [ "$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]" | jq length)" -gt 0 ]; then
+    if [ "$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]" --output text | wc -l)" -gt 1 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o nome da tag de todas as instâncias EC2 criadas"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text

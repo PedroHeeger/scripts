@@ -4,9 +4,14 @@ variable "region" {
   default     = "us-east-1"
 }
 
+variable "repositoryName" {
+  description = "Nome do repositório do Amazon ECR"
+  default     = "repository_test1"
+}
+
 variable "tagNameInstance" {
   description = "Nome da tag da instância"
-  default     = "ec2Test1"
+  default     = "ec2Test2"
 }
 
 variable "imageId" {
@@ -26,7 +31,7 @@ variable "keyPairName" {
 
 variable "userDataPath" {
   description = "Caminho para o arquivo user data"
-  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic/"
+  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/docker_awsCli"
 }
 
 variable "userDataFile" {
@@ -40,34 +45,23 @@ provider "aws" {
   region = var.region
 }
 
+resource "aws_ecr_repository" "meu_repositorio_ecr" {
+  name = var.repositoryName
+  image_tag_mutability = "MUTABLE"  # As tags podem ser sobrescritas ou "IMMUTABLE" para que não sejam
+}
+
 resource "aws_instance" "ec2Test" {
   ami             = var.imageId
   instance_type   = var.instanceType
   key_name        = var.keyPairName
   count           = 1
-#   security_group_ids = ["${aws_security_group.example.id}"]
-#   subnet_id       = "${aws_subnet.example.id}"
 
-#   user_data = file(var.userDataPath/var.userDataFile)
   user_data = file(pathexpand("${var.userDataPath}/${var.userDataFile}"))
-#   user_data = <<-EOF
-#               #!/bin/bash
-#               echo "Hello, World!" > index.html
-#               nohup python -m SimpleHTTPServer 80 &
-#               EOF
 
   tags = {
     Name = var.tagNameInstance
   }
 }
-
-# resource "aws_security_group" "example" {
-#   # Defina suas configurações de grupo de segurança aqui
-# }
-
-# resource "aws_subnet" "example" {
-#   # Defina suas configurações de sub-rede aqui
-# }
 
 
 # Saída

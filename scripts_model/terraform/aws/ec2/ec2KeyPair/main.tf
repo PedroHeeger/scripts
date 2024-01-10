@@ -11,7 +11,7 @@ variable "keyPairName" {
 
 variable "keyPairPubPath" {
   description = "Caminho para a chave pública"
-  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/power_shell/.default/test/keyPair1.pem.pub"
+  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/terraform/.default/secrets"
 }
 
 

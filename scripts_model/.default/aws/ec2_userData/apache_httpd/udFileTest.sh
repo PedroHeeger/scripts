@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Arquivo de Teste"
-
 echo "***********************************************"
 echo "APACHE HTTP (HTTPD) INSTALLATION"
 

@@ -1,6 +1,25 @@
 #!/bin/bash
 
 echo "***********************************************"
+echo "LINUX TOOLS INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando os pacotes"
+sudo apt-get update -y
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando o sistema"
+sudo apt-get upgrade -y
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Baixando o pacote"
+sudo apt-get install -y nano vim curl wget unzip zip
+sudo apt-get install -y unzip
+
+
+
+
+echo "***********************************************"
 echo "AWS CLI INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -77,17 +96,21 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Confirmando as alterações realizadas no grupo"
 sudo newgrp docker
 
-
-
-
-echo "***********************************************"
-echo "DOCKER AUTHENTICATION WITH AWS ECR"
-
 echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Definindo variáveis"
-region="us-east-1"
-accountId="001727357081"
+echo "Reiniciando o sistema"  
+sudo reboot
 
-echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Autenticando o Docker com AWS ECR"
-aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com
+
+
+
+# echo "***********************************************"
+# echo "DOCKER AUTHENTICATION WITH AWS ECR"
+
+# echo "-----//-----//-----//-----//-----//-----//-----"
+# echo "Definindo variáveis"
+# region="us-east-1"
+# accountId="001727357081"
+
+# echo "-----//-----//-----//-----//-----//-----//-----"
+# echo "Autenticando o Docker com AWS ECR"
+# aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com
