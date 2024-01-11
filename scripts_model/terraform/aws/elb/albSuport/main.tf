@@ -26,12 +26,12 @@ variable "keyPairName" {
 
 variable "userDataPath" {
   description = "Caminho para o arquivo user data"
-  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/terraform/aws/elb/albSuport/"
+  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/apache_httpd"
 }
 
 variable "userDataFile" {
   description = "Arquivo user data"
-  default     = "udFileTest.sh"
+  default     = "udFile.sh"
 }
 
 variable "tgName" {

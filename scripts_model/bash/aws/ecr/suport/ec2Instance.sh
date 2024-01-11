@@ -12,8 +12,8 @@ aZ="us-east-1a"
 imageId="ami-0c7217cdde317cfec"  # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instanceType="t2.micro"
 keyPairName="keyPairUniversal"
-userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/docker_awsCli"
-userDataFile="udFileTest.sh"
+userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/aws_dock"
+userDataFile="udFile.sh"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

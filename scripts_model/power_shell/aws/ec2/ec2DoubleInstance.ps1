@@ -15,7 +15,7 @@ $imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jamm
 $instanceType = "t2.micro"
 $keyPairName = "keyPairUniversal"
 $userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic"
-$userDataFile = "udFileTest.sh"
+$userDataFile = "udFile.sh"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

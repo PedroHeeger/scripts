@@ -14,7 +14,6 @@ sudo apt-get upgrade -y
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Baixando o pacote"
 sudo apt-get install -y nano vim curl wget unzip zip
-sudo apt-get install -y unzip
 
 
 
@@ -103,14 +102,14 @@ sudo reboot
 
 
 
-# echo "***********************************************"
-# echo "DOCKER AUTHENTICATION WITH AWS ECR"
+echo "***********************************************"
+echo "DOCKER AUTHENTICATION WITH AWS ECR"
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Definindo variáveis"
-# region="us-east-1"
-# accountId="001727357081"
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Definindo variáveis"
+region="us-east-1"
+accountId="001727357081"
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Autenticando o Docker com AWS ECR"
-# aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Autenticando o Docker com AWS ECR"
+aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com

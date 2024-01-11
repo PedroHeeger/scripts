@@ -15,7 +15,7 @@ imageId="ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy i
 instanceType="t2.micro"
 keyPairName="keyPairUniveral"
 userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/apache_httpd"
-userDataFile="udFileTest.sh"
+userDataFile="udFile.sh"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

@@ -31,12 +31,12 @@ variable "keyPairName" {
 
 variable "userDataPath" {
   description = "Caminho para o arquivo user data"
-  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/docker_awsCli"
+  default     = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/aws_dock"
 }
 
 variable "userDataFile" {
   description = "Arquivo user data"
-  default     = "udFileTest.sh"
+  default     = "udFile.sh"
 }
 
 

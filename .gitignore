@@ -22,14 +22,12 @@ scripts_model/terraform/aws/ec2/ec2KeyPair/*
 
 scripts_model/terraform/aws/ecr/ecrRepository/*
 !scripts_model/terraform/aws/ecr/ecrRepository/main.tf
-!scripts_model/terraform/aws/ecr/ecrRepository/udFileTest.sh
 
 scripts_model/terraform/aws/elb/alb/*
 !scripts_model/terraform/aws/elb/alb/main.tf
 
 scripts_model/terraform/aws/elb/albSuport/*
 !scripts_model/terraform/aws/elb/albSuport/main.tf
-!scripts_model/terraform/aws/elb/albSuport/udFileTest.sh
 
 scripts_model/terraform/aws/iam/iamGroup/*
 !scripts_model/terraform/aws/iam/iamGroup/main.tf

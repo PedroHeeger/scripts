@@ -31,7 +31,7 @@ variable "userDataPath" {
 
 variable "userDataFile" {
   description = "Arquivo user data"
-  default     = "udFileTest.sh"
+  default     = "udFile.sh"
 }
 
 
