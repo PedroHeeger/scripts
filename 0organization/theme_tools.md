@@ -50,6 +50,7 @@
   - Amazon DB Accelerator (DAX)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_dax.svg" alt="aws_dax" width="auto" height="25">
   - Amazon DocumentDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_documentdb.svg" alt="aws_documentdb" width="auto" height="25">
   - Amazon DynamoDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_dynamodb.svg" alt="aws_dynamodb" width="auto" height="25">
+  - Amazon EC2 Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2_auto_scaling.svg" alt="aws_ec2_auto_scaling" width="auto" height="25">
   - Amazon EC2 Systems Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2_systems_manager.svg" alt="aws_ec2_systems_manager" width="auto" height="25">
   - Amazon ElastiCache   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_elasticache.svg" alt="aws_elasticache" width="auto" height="25">
   - Amazon Elastic Block Store (EBS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ebs.svg" alt="aws_ebs" width="auto" height="25">
@@ -90,7 +91,7 @@
   - Amazon WorkSpaces   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_workspaces.svg" alt="aws_workspaces" width="auto" height="25">
   - AWS Application Composer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_application_composer.webp" alt="aws_application_composer" width="auto" height="25">
   - AWS Artifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact" width="auto" height="25">
-  - AWS Auto Scaling; Amazon EC2 Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.svg" alt="aws_auto_scaling" width="auto" height="25">
+  - AWS Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.png" alt="aws_auto_scaling" width="auto" height="25">
   - AWS Billing   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_billing.svg" alt="aws_billing" width="auto" height="25">
   - AWS Blog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_blog.jpg" alt="aws_blog" width="auto" height="25">
   - AWS Budgets  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_budgets.png" alt="aws_budget" width="auto" height="25">

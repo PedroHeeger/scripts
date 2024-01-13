@@ -7,8 +7,8 @@ echo "APPLICATION LOAD BALANCER (ALB) CREATION"
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 lbName="lbTest1"
-availabilityZone1="us-east-1a"
-availabilityZone2="us-east-1b"
+aZ1="us-east-1a"
+aZ2="us-east-1b"
 groupName="default"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -28,8 +28,8 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os elementos de rede"
         vpcId=$(aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text)
-        subnetId1=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
-        subnetId2=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
+        subnetId1=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
+        subnetId2=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
         sgId=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$groupName" --query "SecurityGroups[].GroupId" --output text)
     
         echo "-----//-----//-----//-----//-----//-----//-----"

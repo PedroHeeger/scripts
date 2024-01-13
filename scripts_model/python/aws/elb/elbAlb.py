@@ -10,8 +10,8 @@ print("APPLICATION LOAD BALANCER (ALB) CREATION")
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 lb_name = "lbTest1"
-availability_zone1 = "us-east-1a"
-availability_zone2 = "us-east-1b"
+az1 = "us-east-1a"
+az2 = "us-east-1b"
 group_name = "default"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -40,8 +40,8 @@ if resposta.lower() == 'y':
             print("-----//-----//-----//-----//-----//-----//-----")
             print("Extraindo os elementos de rede")
             vpc_id = boto3.client('ec2').describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
-            subnet_id1 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [availability_zone1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
-            subnet_id2 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [availability_zone2]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
+            subnet_id1 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
+            subnet_id2 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az2]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
             sg_id = boto3.client('ec2').describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpc_id]}, {'Name': 'group-name', 'Values': [group_name]}])['SecurityGroups'][0]['GroupId']
         
             print("-----//-----//-----//-----//-----//-----//-----")

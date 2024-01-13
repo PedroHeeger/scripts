@@ -1,0 +1,1 @@
+# NÃO EXISTE: Como o Classic Load Balancer (CLB) é mais antigo e está sendo substituído pelo Application Load Balancer (ALB) ou Network Load Balancer (NLB), o Boto3 não consegue interagir com o CLB, portanto recomendo utilizar ou o ALB ou o NLB.
