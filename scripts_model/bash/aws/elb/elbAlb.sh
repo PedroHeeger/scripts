@@ -6,7 +6,7 @@ echo "APPLICATION LOAD BALANCER (ALB) CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-lbName="lbTest1"
+albName="albTest1"
 aZ1="us-east-1a"
 aZ2="us-east-1b"
 groupName="default"
@@ -15,11 +15,11 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o load balancer de nome $lbName"
-    if [ $(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$lbName'].LoadBalancerName" --output text | wc -l) -gt 0 ]; then
+    echo "Verificando se existe o load balancer de nome $albName"
+    if [ $(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].LoadBalancerName" --output text | wc -l) -gt 0 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Já existe o load balancer de nome $lbName"
-        aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$lbName'].LoadBalancerName" --output text
+        echo "Já existe o load balancer de nome $albName"
+        aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].LoadBalancerName" --output text
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os load balancers criados"
@@ -33,12 +33,12 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         sgId=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$groupName" --query "SecurityGroups[].GroupId" --output text)
     
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando o load balancer de nome $lbName"
-        aws elbv2 create-load-balancer --name $lbName --type application --scheme internet-facing --ip-address-type ipv4 --subnets $subnetId1 $subnetId2 --security-groups $sgId --no-cli-pager
+        echo "Criando o load balancer de nome $albName"
+        aws elbv2 create-load-balancer --name $albName --type application --scheme internet-facing --ip-address-type ipv4 --subnets $subnetId1 $subnetId2 --security-groups $sgId --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando o load balancer de nome $lbName"
-        aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$lbName'].LoadBalancerName" --output text
+        echo "Listando o load balancer de nome $albName"
+        aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].LoadBalancerName" --output text
     fi
 else
     echo "Código não executado"
@@ -55,31 +55,31 @@ echo "APPLICATION LOAD BALANCER (ALB) EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-lbName="lbTest1"
+albName="albTest1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o load balancer de nome $lbName"
-    if [ $(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$lbName'].LoadBalancerName" --output text | wc -l) -gt 0 ]; then
+    echo "Verificando se existe o load balancer de nome $albName"
+    if [ $(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].LoadBalancerName" --output text | wc -l) -gt 0 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os load balancers criados"
         aws elbv2 describe-load-balancers --query "LoadBalancers[].LoadBalancerName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo a ARN do load balancer de nome $lbName"
-        lbArn=$(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$lbName'].LoadBalancerArn" --output text)
+        echo "Extraindo a ARN do load balancer de nome $albName"
+        lbArn=$(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].LoadBalancerArn" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Removendo o load balancer de nome $lbName"
+        echo "Removendo o load balancer de nome $albName"
         aws elbv2 delete-load-balancer --load-balancer-arn $lbArn
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os load balancers criados"
         aws elbv2 describe-load-balancers --query "LoadBalancers[].LoadBalancerName" --output text
     else
-        echo "Não existe o load balancer de nome $lbName"
+        echo "Não existe o load balancer de nome $albName"
     fi
 else
     echo "Código não executado"

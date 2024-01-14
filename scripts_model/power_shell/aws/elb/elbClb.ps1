@@ -35,11 +35,15 @@ if ($resposta.ToLower() -eq 'y') {
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando o classic load balancer de nome $clbName"
-        aws elb create-load-balancer --load-balancer-name $clbName --listeners "Protocol=$listenerProtocol,LoadBalancerPort=$listenerPort,InstanceProtocol=$instanceProtocol,InstancePort=$instancePort" --availability-zones $aZ1 $aZ2 --security-groups $sgId --health-check "Target=${listenerProtocol}:${listenerPort}/index.html,Interval=15,UnhealthyThreshold=2,HealthyThreshold=5,Timeout=5"
+        aws elb create-load-balancer --load-balancer-name $clbName --listeners "Protocol=$listenerProtocol,LoadBalancerPort=$listenerPort,InstanceProtocol=$instanceProtocol,InstancePort=$instancePort" --availability-zones $aZ1 $aZ2 --security-groups $sgId
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Criando a verificação de integridade do classic load balancer de nome $clbName"
+        aws elb configure-health-check --load-balancer-name $clbName --health-check "Target=${listenerProtocol}:${listenerPort}/index.html,Interval=15,UnhealthyThreshold=2,HealthyThreshold=5,Timeout=5"
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o classic load balancer de nome $clbName"
-        aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$clbName'].LoadBalancerName" --output text
+        aws elb describe-load-balancers --query "LoadBalancerDescriptions[?LoadBalancerName=='$clbName'].LoadBalancerName" --output text
     }
 } else {Write-Host "Código não executado"}
 

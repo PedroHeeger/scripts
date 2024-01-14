@@ -45,7 +45,7 @@ if resposta.lower() == 'y':
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print("Extraindo os Ids do grupo de segurança e sub-redes padrões")
-            security_group_id = list(ec2.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [groupName]}]))[0].id
+            sg_id = list(ec2.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [groupName]}]))[0].id
             subnet_id = list(ec2.subnets.filter(Filters=[{'Name': 'availabilityZone', 'Values': [aZ]}]))[0].id
 
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -54,7 +54,7 @@ if resposta.lower() == 'y':
                 ImageId=imageId,
                 InstanceType=instanceType,
                 KeyName=keyPairName,
-                SecurityGroupIds=[security_group_id],
+                SecurityGroupIds=[sg_id],
                 SubnetId=subnet_id,
                 MinCount=1,
                 MaxCount=1,

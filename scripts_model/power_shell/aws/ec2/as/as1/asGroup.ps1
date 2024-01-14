@@ -7,9 +7,9 @@ Write-Output "AUTO SCALING GROUP CREATION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $asgName = "asgTest1"
-$launchConfigurationName = "launchConfigurationTest1"
-$availabilityZone1 = "us-east-1a"
-$availabilityZone2 = "us-east-1b"
+$launchTempName = "launchTempTest1"
+$versionNumber = 1
+$tgName = "tgTest1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -24,17 +24,18 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os auto scaling groups existentes"
         aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[].AutoScalingGroupName" --output text
-    
-        Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo os IDs dos elementos de rede"
-        $vpcId = aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text
-        $subnetId1 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
-        $subnetId2 = aws ec2 describe-subnets --filters "Name=availability-zone,Values=$availabilityZone2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
-        # $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=default" --query "SecurityGroups[].GroupId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Criando um auto scaling group de nome $asgName"
-        aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-configuration-name $launchConfigurationName --min-size 1 --max-size 1 --desired-capacity 1 --vpc-zone-identifier "$subnetId1,$subnetId2"
+        Write-Output "Extraindo o ARN do target group $tgName"
+        $tgArn = aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text
+    
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Criando o auto scaling group de nome $asgName"
+        aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-template "LaunchTemplateName=$launchTempName,Version=$versionNumber" --min-size 1 --max-size 4 --desired-capacity 1 --default-cooldown 300 --health-check-type EC2 --health-check-grace-period 300 --target-group-arns $tgArn
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Habilitando a coleta de métricas do auto scaling group de nome $asgName"
+        aws autoscaling enable-metrics-collection --auto-scaling-group-name $asgName --metrics "GroupMinSize" "GroupMaxSize" "GroupDesiredCapacity" "GroupInServiceInstances" "GroupPendingInstances" "GroupStandbyInstances" "GroupTerminatingInstances" "GroupTotalInstances" --granularity "1Minute"
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o auto scaling group de nome $asgName"

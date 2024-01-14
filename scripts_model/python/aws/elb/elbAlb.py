@@ -9,7 +9,7 @@ print("APPLICATION LOAD BALANCER (ALB) CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-lb_name = "lbTest1"
+alb_name = "albTest1"
 az1 = "us-east-1a"
 az2 = "us-east-1b"
 group_name = "default"
@@ -22,13 +22,13 @@ if resposta.lower() == 'y':
     elbv2_client = boto3.client('elbv2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o load balancer de nome {lb_name}")
+    print(f"Verificando se existe o load balancer de nome {alb_name}")
     try:
-        response = elbv2_client.describe_load_balancers(Names=[lb_name])
-        existing_lb_name = response['LoadBalancers'][0]['LoadBalancerName']
+        response = elbv2_client.describe_load_balancers(Names=[alb_name])
+        existing_alb_name = response['LoadBalancers'][0]['LoadBalancerName']
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe o load balancer de nome {lb_name}")
-        print(existing_lb_name)
+        print(f"Já existe o load balancer de nome {alb_name}")
+        print(existing_alb_name)
 
     except ClientError as e:
         if e.response['Error']['Code'] == 'LoadBalancerNotFound':
@@ -45,9 +45,9 @@ if resposta.lower() == 'y':
             sg_id = boto3.client('ec2').describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpc_id]}, {'Name': 'group-name', 'Values': [group_name]}])['SecurityGroups'][0]['GroupId']
         
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando o load balancer de nome {lb_name}")
+            print(f"Criando o load balancer de nome {alb_name}")
             elbv2_client.create_load_balancer(
-                Name=lb_name,
+                Name=alb_name,
                 Type='application',
                 Scheme='internet-facing',
                 IpAddressType='ipv4',
@@ -56,8 +56,8 @@ if resposta.lower() == 'y':
             )
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando o load balancer de nome {lb_name}")
-            response = elbv2_client.describe_load_balancers(Names=[lb_name])
+            print(f"Listando o load balancer de nome {alb_name}")
+            response = elbv2_client.describe_load_balancers(Names=[alb_name])
             print(response['LoadBalancers'][0]['LoadBalancerName'])
         else:
             raise  # Re-raise outras exceções
@@ -76,7 +76,7 @@ print("APPLICATION LOAD BALANCER (ALB) EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-lb_name = "lbTest1"
+alb_name = "albTest1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -86,9 +86,9 @@ if resposta.lower() == 'y':
     elbv2_client = boto3.client('elbv2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o load balancer de nome {lb_name}")
+    print(f"Verificando se existe o load balancer de nome {alb_name}")
     response = elbv2_client.describe_load_balancers(
-        Names=[lb_name]
+        Names=[alb_name]
     )
 
     if len(response['LoadBalancers']) > 0:
@@ -98,11 +98,11 @@ if resposta.lower() == 'y':
         print([lb['LoadBalancerName'] for lb in response['LoadBalancers']])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo a ARN do load balancer de nome {lb_name}")
+        print(f"Extraindo a ARN do load balancer de nome {alb_name}")
         lb_arn = response['LoadBalancers'][0]['LoadBalancerArn']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo o load balancer de nome {lb_name}")
+        print(f"Removendo o load balancer de nome {alb_name}")
         elbv2_client.delete_load_balancer(LoadBalancerArn=lb_arn)
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -110,6 +110,6 @@ if resposta.lower() == 'y':
         response = elbv2_client.describe_load_balancers()
         print([lb['LoadBalancerName'] for lb in response['LoadBalancers']])
     else:
-        print(f"Não existe o load balancer de nome {lb_name}")
+        print(f"Não existe o load balancer de nome {alb_name}")
 else:
     print("Código não executado")
