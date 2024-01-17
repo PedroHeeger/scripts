@@ -13,6 +13,7 @@ instanceType="t2.micro"
 keyPair="keyPairUniversal"
 userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 userDataFile="udFile.sh"
+groupName="default"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -34,6 +35,10 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws ec2 describe-launch-template-versions --launch-template-name $launchTempName --query "LaunchTemplateVersions[].[LaunchTemplateName,VersionNumber]" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Extraindo os IDs dos elementos de rede"
+        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Codificando o arquivo user data em Base64"
         udFileBase64=$(base64 -w 0 "$userDataPath/$userDataFile")
 
@@ -44,6 +49,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
             "InstanceType": "'"$instanceType"'",
             "KeyName": "'"$keyPair"'",
             "UserData": "'"$udFileBase64"'",
+            "SecurityGroupIds": ["'"$sgId"'"],
             "BlockDeviceMappings": [
             {
                 "DeviceName": "/dev/xvda",
@@ -68,6 +74,10 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws ec2 describe-launch-templates --query 'LaunchTemplates[].[LaunchTemplateName,DefaultVersionNumber]' --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Extraindo os IDs dos elementos de rede"
+        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Codificando o arquivo user data em Base64"
         udFileBase64=$(base64 -w 0 "$userDataPath/$userDataFile")
 
@@ -78,6 +88,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
             "InstanceType": "'"$instanceType"'",
             "KeyName": "'"$keyPair"'",
             "UserData": "'"$udFileBase64"'",
+            "SecurityGroupIds": ["'"$sgId"'"],
             "BlockDeviceMappings": [
                 {
                 "DeviceName": "/dev/xvda",

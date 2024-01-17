@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import boto3
-import json
 
 print("***********************************************")
 print("SERVIÇO: AWS EC2-AUTO SCALING")

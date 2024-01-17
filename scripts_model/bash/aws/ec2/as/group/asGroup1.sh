@@ -10,10 +10,10 @@ asgName="asgTest1"
 launchConfigName="launchConfigTest1"
 launchTempName="launchTempTest1"
 versionNumber=1
+tgName="tgTest1"
 aZ1="us-east-1a"
 aZ2="us-east-1b"
 tagNameInstance="ec2Test"
-clbName="clbTest1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -30,18 +30,22 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[].AutoScalingGroupName" --output text
     
         echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Extraindo o ARN do target group $tgName"
+        tgArn=$(aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text)
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os IDs dos elementos de rede"
         vpcId=$(aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text)
         subnetId1=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
         subnetId2=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando o auto scaling group de nome $asgName"
-        aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-template "LaunchTemplateName=$launchTempName,Version=$versionNumber" --min-size 1 --max-size 4 --desired-capacity 1 --default-cooldown 300 --health-check-type EC2 --health-check-grace-period 300 --vpc-zone-identifier "$subnetId1,$subnetId2" --tags "Key=Name,Value=$tagNameInstance,PropagateAtLaunch=true" --load-balancer-names $clbName
-
         # echo "-----//-----//-----//-----//-----//-----//-----"
         # echo "Criando o auto scaling group de nome $asgName"
-        # aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-configuration-name $launchConfigName --min-size 1 --max-size 4 --desired-capacity 1 --default-cooldown 300 --health-check-type EC2 --health-check-grace-period 300 --vpc-zone-identifier "$subnetId1,$subnetId2" --tags "Key=Name,Value=$tagNameInstance,PropagateAtLaunch=true" --load-balancer-names $clbName
+        # aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-configuration-name $launchConfigName --min-size 1 --max-size 4 --desired-capacity 1 --default-cooldown 300 --health-check-type EC2 --health-check-grace-period 300 --vpc-zone-identifier "$subnetId1,$subnetId2" --tags "Key=Name,Value=$tagNameInstance,PropagateAtLaunch=true" --target-group-arn $tgArn
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Criando o auto scaling group de nome $asgName"
+        aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-template "LaunchTemplateName=$launchTempName,Version=$versionNumber" --min-size 1 --max-size 4 --desired-capacity 1 --default-cooldown 300 --health-check-type EC2 --health-check-grace-period 300 --vpc-zone-identifier "$subnetId1,$subnetId2" --tags "Key=Name,Value=$tagNameInstance,PropagateAtLaunch=true" --target-group-arn $tgArn
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Habilitando a coleta de métricas do auto scaling group de nome $asgName"

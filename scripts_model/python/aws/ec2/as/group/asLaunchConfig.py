@@ -14,6 +14,7 @@ instance_type = "t2.micro"
 key_pair = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 user_data_file = "udFile.sh"
+group_name = "default"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
@@ -48,7 +49,7 @@ if response.lower() == 'y':
             sg_id = ec2_client.describe_security_groups(
                 Filters=[
                     {'Name': 'vpc-id', 'Values': [vpc_id]},
-                    {'Name': 'group-name', 'Values': ['default']}
+                    {'Name': 'group-name', 'Values': [group_name]}
                 ]
             )['SecurityGroups'][0]['GroupId']
 

@@ -31,6 +31,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ID do grupo de segurança"
+        $vpcId = aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text
         $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$groupName" --query "SecurityGroups[].GroupId" --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"

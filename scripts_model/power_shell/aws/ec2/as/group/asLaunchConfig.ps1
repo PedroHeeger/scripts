@@ -12,6 +12,7 @@ $instanceType = "t2.micro"
 $keyPair = "keyPairUniversal"
 $userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 $userDataFile = "udFile.sh"
+$groupName = "default"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

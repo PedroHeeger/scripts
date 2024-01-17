@@ -19,7 +19,6 @@ threshold2 = 40
 comparison_operator1 = "GreaterThanThreshold"
 comparison_operator2 = "LessThanThreshold"
 asg_name = "asgTest1"
-# ass_scaling_policy_name = "assScalingPolicy1"    # STEP SCALING POLICY
 as_scaling_policy_name1 = "asScalingPolicy1"    # SIMPLE SCALING POLICY
 as_scaling_policy_name2 = "asScalingPolicy2"    # SIMPLE SCALING POLICY
 
@@ -51,27 +50,8 @@ if response.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Extraindo o ARN da scaling policy do grupo de auto scaling {asg_name}")
-        # arn_scaling_policy = autoscaling_client.describe_policies(AutoScalingGroupName=asg_name, PolicyNames=[ass_scaling_policy_name])['ScalingPolicies'][0]['PolicyARN']
         arn_scaling_policy1 = autoscaling_client.describe_policies(AutoScalingGroupName=asg_name, PolicyNames=[as_scaling_policy_name1])['ScalingPolicies'][0]['PolicyARN']
         arn_scaling_policy2 = autoscaling_client.describe_policies(AutoScalingGroupName=asg_name, PolicyNames=[as_scaling_policy_name2])['ScalingPolicies'][0]['PolicyARN']
-
-        # print("-----//-----//-----//-----//-----//-----//-----")
-        # print(f"Criando o metric alarm de nome {metric_alarm_name1}")
-        # cloudwatch_client.put_metric_alarm(
-        #     AlarmName=metric_alarm_name1,
-        #     AlarmDescription=metric_alarm_description,
-        #     MetricName=metric_name,
-        #     Namespace=namespace,
-        #     Statistic=statistic,
-        #     Period=300,
-        #     Threshold=threshold1,
-        #     ComparisonOperator=comparison_operator1,
-        #     Unit='Percent',
-        #     EvaluationPeriods=2,
-        #     ActionsEnabled=True,
-        #     Dimensions=[{'Name': 'AutoScalingGroupName', 'Value': asg_name}],
-        #     AlarmActions=[arn_scaling_policy]
-        # )
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Criando o metric alarm de nome {metric_alarm_name1}")

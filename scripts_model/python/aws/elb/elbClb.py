@@ -100,7 +100,7 @@ print("CLASSIC LOAD BALANCER (CLB) EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-clb_name = "clbTest2"
+clb_name = "clbTest1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")

@@ -89,6 +89,7 @@
   - Amazon Virtual Private Cloud (VPC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_vpc.svg" alt="aws_vpc" width="auto" height="25">
   - Amazon WorkLink   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_worklink.jpg" alt="aws_worklink" width="auto" height="25">
   - Amazon WorkSpaces   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_workspaces.svg" alt="aws_workspaces" width="auto" height="25">
+  - AWS Application Auto Scaling  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.png" alt="aws_auto_scaling" width="auto" height="25">
   - AWS Application Composer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_application_composer.webp" alt="aws_application_composer" width="auto" height="25">
   - AWS Artifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact" width="auto" height="25">
   - AWS Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.png" alt="aws_auto_scaling" width="auto" height="25">

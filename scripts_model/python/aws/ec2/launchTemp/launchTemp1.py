@@ -10,12 +10,13 @@ print("LAUNCH TEMPLATE CREATION")
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 launch_temp_name = "launchTempTest1"
-version_description = "My version 3"
+version_description = "My version 1"
 ami_id = "ami-0c7217cdde317cfec"
 instance_type = "t2.micro"
 key_pair = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 user_data_file = "udFile.sh"
+group_name = "default"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
@@ -50,6 +51,10 @@ if response.lower() == 'y':
             print(f"{version['LaunchTemplateName']} {version['VersionNumber']}")
 
         print("-----//-----//-----//-----//-----//-----//-----")
+        print("Extraindo o ID do security group")
+        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
+
+        print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
         with open(f"{user_data_path}/{user_data_file}", 'rb') as file:
             ud_file_base64 = base64.b64encode(file.read()).decode('utf-8')
@@ -64,6 +69,7 @@ if response.lower() == 'y':
                 "InstanceType": instance_type,
                 "KeyName": key_pair,
                 "UserData": ud_file_base64,
+                "SecurityGroupIds": [sg_id],
                 "BlockDeviceMappings": [
                     {
                         "DeviceName": "/dev/xvda",
@@ -102,6 +108,10 @@ if response.lower() == 'y':
             print(f"{template['LaunchTemplateName']} {template['DefaultVersionNumber']}")
 
         print("-----//-----//-----//-----//-----//-----//-----")
+        print("Extraindo o ID do security group")
+        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
+
+        print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
         with open(f"{user_data_path}/{user_data_file}", 'rb') as file:
             ud_file_base64 = base64.b64encode(file.read()).decode('utf-8')
@@ -116,6 +126,7 @@ if response.lower() == 'y':
                 "InstanceType": instance_type,
                 "KeyName": key_pair,
                 "UserData": ud_file_base64,
+                "SecurityGroupIds": [sg_id],
                 "BlockDeviceMappings": [
                     {
                         "DeviceName": "/dev/xvda",

@@ -14,11 +14,31 @@ scripts_model/terraform/aws/budget/*
 scripts_model/terraform/aws/cloudwatch/logGroup/*
 !scripts_model/terraform/aws/cloudwatch/logGroup/main.tf
 
+scripts_model/terraform/aws/cloudwatch/metricAlarm/*
+!scripts_model/terraform/aws/cloudwatch/metricAlarm/main.tf
+
+
+
+
+scripts_model/terraform/aws/ec2/as/asg/*
+!scripts_model/terraform/aws/ec2/as/asg/main.tf
+
+scripts_model/terraform/aws/ec2/as/asg2/*
+!scripts_model/terraform/aws/ec2/as/asg2/main.tf
+
+scripts_model/terraform/aws/ec2/as/policy/*
+!scripts_model/terraform/aws/ec2/as/policy/main.tf
+
 scripts_model/terraform/aws/ec2/ec2Instance/*
 !scripts_model/terraform/aws/ec2/ec2Instance/main.tf
 
 scripts_model/terraform/aws/ec2/ec2KeyPair/*
 !scripts_model/terraform/aws/ec2/ec2KeyPair/main.tf
+
+scripts_model/terraform/aws/ec2/launchTemp/*
+!scripts_model/terraform/aws/ec2/launchTemp/main.tf
+
+
 
 scripts_model/terraform/aws/ecr/ecrRepository/*
 !scripts_model/terraform/aws/ecr/ecrRepository/main.tf
@@ -29,8 +49,14 @@ scripts_model/terraform/aws/elb/alb/*
 scripts_model/terraform/aws/elb/albSuport/*
 !scripts_model/terraform/aws/elb/albSuport/main.tf
 
+scripts_model/terraform/aws/elb/clb/*
+!scripts_model/terraform/aws/elb/clb/main.tf
+
 scripts_model/terraform/aws/iam/iamGroup/*
 !scripts_model/terraform/aws/iam/iamGroup/main.tf
+
+scripts_model/terraform/aws/iam/iamInstanceProfile/*
+!scripts_model/terraform/aws/iam/iamInstanceProfile/main.tf
 
 scripts_model/terraform/aws/iam/iamRoleService/*
 !scripts_model/terraform/aws/iam/iamRoleService/main.tf

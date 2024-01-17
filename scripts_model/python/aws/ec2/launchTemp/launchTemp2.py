@@ -10,15 +10,15 @@ print("LAUNCH TEMPLATE CREATION")
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 launch_temp_name = "launchTempTest1"
-version_description = "My version 3"
+version_description = "My version 1"
 ami_id = "ami-0c7217cdde317cfec"
 instance_type = "t2.micro"
 key_pair = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 user_data_file = "udFile.sh"
-tag_name_instance = "ec2Test"
-groupName = "default"
+group_name = "default"
 az1 = "us-east-1a"
+tag_name_instance = "ec2Test"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
@@ -56,7 +56,7 @@ if response.lower() == 'y':
         print("Extraindo os IDs dos elementos de rede")
         vpc_id = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
         subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
-        sg_id = list(ec2_client.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [groupName]}]))[0].id
+        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
@@ -129,6 +129,12 @@ if response.lower() == 'y':
             print(f"{template['LaunchTemplateName']} {template['DefaultVersionNumber']}")
 
         print("-----//-----//-----//-----//-----//-----//-----")
+        print("Extraindo os IDs dos elementos de rede")
+        vpc_id = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
+        subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
+        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
+
+        print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
         with open(f"{user_data_path}/{user_data_file}", 'rb') as file:
             ud_file_base64 = base64.b64encode(file.read()).decode('utf-8')
@@ -143,6 +149,16 @@ if response.lower() == 'y':
                 "InstanceType": instance_type,
                 "KeyName": key_pair,
                 "UserData": ud_file_base64,
+                "TagSpecifications": [
+                    {"ResourceType": "instance",
+                        "Tags": [
+                            {
+                                "Key": "Name",
+                                "Value": tag_name_instance
+                            }
+                        ]
+                    }
+                ],
                 "BlockDeviceMappings": [
                     {
                         "DeviceName": "/dev/xvda",
@@ -150,6 +166,14 @@ if response.lower() == 'y':
                             "VolumeSize": 8,
                             "VolumeType": "gp2"
                         }
+                    }
+                ],
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": True,
+                        "DeviceIndex": 0,
+                        "SubnetId": subnet_id1,
+                        "Groups": [sg_id]
                     }
                 ]
             }

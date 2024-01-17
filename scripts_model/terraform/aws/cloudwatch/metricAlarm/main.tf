@@ -1,0 +1,1 @@
+# Como não era possível recuperar o ARN das policies do grupo de auto scaling, pois não há suporte do terraform para o bloco de data "aws_autoscaling_policy", os alarmes foram criados juntos com suas respectivas políticas

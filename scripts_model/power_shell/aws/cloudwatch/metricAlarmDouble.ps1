@@ -17,7 +17,6 @@ $threshold2 = 40
 $comparisonOperator1 = "GreaterThanThreshold"
 $comparisonOperator2 = "LessThanThreshold"
 $asgName = "asgTest1"
-# $assScalingPolicyName = "assScalingPolicy1"    # STEP SCALING POLICY
 $asScalingPolicyName1 = "asScalingPolicy1"    # SIMPLE SCALING POLICY
 $asScalingPolicyName2 = "asScalingPolicy2"    # SIMPLE SCALING POLICY
 
@@ -37,14 +36,9 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ARN da scaling policy do grupo de auto scaling $asgName"
-        # $arnScalingPolicy = aws autoscaling describe-policies --auto-scaling-group-name $asgName --query "ScalingPolicies[?PolicyName=='$assScalingPolicyName'].PolicyARN" --output text
         $arnScalingPolicy1 = aws autoscaling describe-policies --auto-scaling-group-name $asgName --query "ScalingPolicies[?PolicyName=='$asScalingPolicyName1'].PolicyARN" --output text
         $arnScalingPolicy2 = aws autoscaling describe-policies --auto-scaling-group-name $asgName --query "ScalingPolicies[?PolicyName=='$asScalingPolicyName2'].PolicyARN" --output text
 
-        # Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        # Write-Output "Criando o metric alarm de nome $metricAlarmName1"
-        # aws cloudwatch put-metric-alarm --alarm-name $metricAlarmName1 --alarm-description $metricAlarmDescription --metric-name $metricName --namespace $namespace --statistic $statistic --period 300 --threshold $threshold1 --comparison-operator $comparisonOperator1 --unit Percent --evaluation-periods 2 --actions-enabled --dimensions "Name=AutoScalingGroupName,Value=$asgName" --alarm-actions $arnScalingPolicy
-    
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando o metric alarm de nome $metricAlarmName1"
         aws cloudwatch put-metric-alarm --alarm-name $metricAlarmName1 --alarm-description $metricAlarmDescription --metric-name $metricName --namespace $namespace --statistic $statistic --period 300 --threshold $threshold1 --comparison-operator $comparisonOperator1 --unit Percent --evaluation-periods 2 --actions-enabled --dimensions "Name=AutoScalingGroupName,Value=$asgName" --alarm-actions $arnScalingPolicy1

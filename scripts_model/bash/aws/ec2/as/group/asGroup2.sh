@@ -9,7 +9,7 @@ echo "Definindo variáveis"
 asgName="asgTest1"
 launchTempName="launchTempTest1"
 versionNumber=1
-tgName="tgTest1"
+clbName="clbTest1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -26,12 +26,8 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[].AutoScalingGroupName" --output text
     
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo o ARN do target group $tgName"
-        tgArn=$(aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text)
-
-        echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o auto scaling group de nome $asgName"
-        aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-template "LaunchTemplateName=$launchTempName,Version=$versionNumber" --min-size 1 --max-size 4 --desired-capacity 1 --default-cooldown 300 --health-check-type EC2 --health-check-grace-period 300 --target-group-arn $tgArn
+        aws autoscaling create-auto-scaling-group --auto-scaling-group-name $asgName --launch-template "LaunchTemplateName=$launchTempName,Version=$versionNumber" --min-size 1 --max-size 4 --desired-capacity 1 --default-cooldown 300 --health-check-type EC2 --health-check-grace-period 300 --load-balancer-names $clbName
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Habilitando a coleta de métricas do auto scaling group de nome $asgName"

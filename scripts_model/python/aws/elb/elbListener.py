@@ -8,7 +8,7 @@ print("LISTENER CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-alb_name = "lbTest1"
+alb_name = "albTest1"
 tg_name = "tgTest1"
 listener_protocol = "HTTP"
 listener_port = 80
@@ -30,11 +30,18 @@ if resposta.lower() == 'y':
     tg_response = elbv2_client.describe_target_groups(Names=[tg_name])
     tg_arn = tg_response['TargetGroups'][0]['TargetGroupArn']
 
-    condition = len(elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']) > 1 or \
-                len(elbv2_client.describe_listeners(LoadBalancerArn=lb_arn, Query='Listeners[].DefaultActions[?TargetGroupArn==`{}`]'.format(tg_arn))['Listeners']) > 1
+    print("-----//-----//-----//-----//-----//-----//-----")
+    print(f"Obtendo todos os listeners do load balancer {alb_name}")
+    listeners_response = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)
+    all_listeners = listeners_response['Listeners']
+
+    print("-----//-----//-----//-----//-----//-----//-----")
+    print(f"Filtrando os listeners associados ao target group {tg_name}")
+    filtered_listeners = [listener for listener in all_listeners if any(action.get('TargetGroupArn') == tg_arn for action in listener.get('DefaultActions', []))]
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe um listener vinculando o target group {tg_name} ao load balancer {alb_name}")
+    condition = len(all_listeners) > 0 or len(filtered_listeners) > 0
     if condition:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Já existe um listener vinculando o target group {tg_name} ao load balancer {alb_name}")

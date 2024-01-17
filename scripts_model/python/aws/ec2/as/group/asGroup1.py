@@ -12,18 +12,19 @@ asg_name = "asgTest1"
 launch_config_name = "launchConfigTest1"
 launch_temp_name = "launchTempTest1"
 version_number = 1
+tg_name = "tgTest1"
 az1 = "us-east-1a"
 az2 = "us-east-1b"
 tag_name_instance = "ec2Test"
-clb_name = "clbTest2"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ").lower()
 if response == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço EC2 e outro para o Auto Scaling")
-    autoscaling_client = boto3.client('autoscaling')
+    print(f"Criando um cliente para o serviço EC2, outro para o Auto Scaling e outro para o ELB")
     ec2_client = boto3.client('ec2')
+    autoscaling_client = boto3.client('autoscaling')
+    elbv2_client = boto3.client('elbv2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o auto scaling group de nome {asg_name}")
@@ -43,6 +44,13 @@ if response == 'y':
             print(group['AutoScalingGroupName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
+        print("Extraindo o ARN do target group")
+        response = elbv2_client.describe_target_groups(
+        Names=[tg_name]
+        )
+        tg_arn = response['TargetGroups'][0]['TargetGroupArn']
+
+        print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo os IDs dos elementos de rede")
         vpc_id = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
         subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
@@ -52,10 +60,7 @@ if response == 'y':
         # print(f"Criando o auto scaling group de nome {asg_name}")
         # autoscaling_client.create_auto_scaling_group(
         #     AutoScalingGroupName=asg_name,
-        #     LaunchTemplate={
-        #         'LaunchTemplateName': launch_temp_name,
-        #         'Version': str(version_number)
-        #     },
+        #     LaunchConfigurationName=launch_config_name,
         #     MinSize=1,
         #     MaxSize=4,
         #     DesiredCapacity=1,
@@ -70,14 +75,17 @@ if response == 'y':
         #             'PropagateAtLaunch': True
         #         }
         #     ],
-        #     LoadBalancerNames=[clb_name]
+        #     TargetGroupARNs=[tg_arn]
         # )
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Criando o auto scaling group de nome {asg_name}")
         autoscaling_client.create_auto_scaling_group(
             AutoScalingGroupName=asg_name,
-            LaunchConfigurationName=launch_config_name,
+            LaunchTemplate={
+                'LaunchTemplateName': launch_temp_name,
+                'Version': str(version_number)
+            },
             MinSize=1,
             MaxSize=4,
             DesiredCapacity=1,
@@ -92,7 +100,7 @@ if response == 'y':
                     'PropagateAtLaunch': True
                 }
             ],
-            LoadBalancerNames=[clb_name]
+            TargetGroupARNs=[tg_arn]
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")

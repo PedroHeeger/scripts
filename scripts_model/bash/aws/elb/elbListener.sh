@@ -20,10 +20,9 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "Extraindo a ARN do target group $tgName"
     tgArn=$(aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text)
 
-    condition=$([ "$(aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].ListenerArn" | wc -l)" -gt 1 ] || [ "$(aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].DefaultActions[?TargetGroupArn=='$tgArn']" | wc -l)" -gt 1 ])
-
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe um listener vinculando o target group $tgName ao load balancer $albName"
+    condition=$([ "$(aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].ListenerArn" | wc -l)" -gt 1 ] || [ "$(aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].DefaultActions[?TargetGroupArn=='$tgArn']" | wc -l)" -gt 1 ])
     if [ "$condition" = true ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe um listener vinculando o target group $tgName ao load balancer $albName"

@@ -11,16 +11,15 @@ print("Definindo variáveis")
 asg_name = "asgTest1"
 launch_temp_name = "launchTempTest1"
 version_number = 1
-tg_name = "tgTest1"
+clb_name = "clbTest1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ").lower()
 if response == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço EC2, outro para o Auto Scaling e outro para o ELB")
-    ec2_client = boto3.client('ec2')
+    print(f"Criando um cliente para o serviço EC2 e outro para o Auto Scaling")
     autoscaling_client = boto3.client('autoscaling')
-    elbv2_client = boto3.client('elbv2')
+    ec2_client = boto3.client('ec2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o auto scaling group de nome {asg_name}")
@@ -40,13 +39,6 @@ if response == 'y':
             print(group['AutoScalingGroupName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Extraindo o ARN do target group")
-        response = elbv2_client.describe_target_groups(
-        Names=[tg_name]
-        )
-        tg_arn = response['TargetGroups'][0]['TargetGroupArn']
-
-        print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Criando o auto scaling group de nome {asg_name}")
         autoscaling_client.create_auto_scaling_group(
             AutoScalingGroupName=asg_name,
@@ -60,7 +52,7 @@ if response == 'y':
             DefaultCooldown=300,
             HealthCheckType='EC2',
             HealthCheckGracePeriod=300,
-            TargetGroupArn=tg_arn
+            LoadBalancerNames=[clb_name]
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")

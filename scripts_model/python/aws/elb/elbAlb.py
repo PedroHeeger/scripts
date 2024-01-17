@@ -38,7 +38,7 @@ if resposta.lower() == 'y':
             print([lb['LoadBalancerName'] for lb in response['LoadBalancers']])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print("Extraindo os elementos de rede")
+            print("Extraindo o Id dos elementos de rede")
             vpc_id = boto3.client('ec2').describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
             subnet_id1 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
             subnet_id2 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az2]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']

@@ -13,9 +13,9 @@ instanceType="t2.micro"
 keyPair="keyPairUniversal"
 userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 userDataFile="udFile.sh"
-tagNameInstance="ec2Test"
 groupName="default"
 aZ1="us-east-1a"
+tagNameInstance="ec2Test"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -95,6 +95,12 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws ec2 describe-launch-templates --query 'LaunchTemplates[].[LaunchTemplateName,DefaultVersionNumber]' --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Extraindo os IDs dos elementos de rede"
+        vpcId=$(aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text)
+        subnetId1=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
+        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Codificando o arquivo user data em Base64"
         udFileBase64=$(base64 -w 0 "$userDataPath/$userDataFile")
 
@@ -105,16 +111,34 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
             "InstanceType": "'"$instanceType"'",
             "KeyName": "'"$keyPair"'",
             "UserData": "'"$udFileBase64"'",
+            "TagSpecifications": [
+                {"ResourceType": "instance",
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "'"$tagNameInstance"'"
+                        }
+                    ]
+                }
+            ],
             "BlockDeviceMappings": [
-                {
+            {
                 "DeviceName": "/dev/xvda",
                 "Ebs": {
-                    "VolumeSize": 8,
-                    "VolumeType": "gp2"
+                "VolumeSize": 8,
+                "VolumeType": "gp2"
                 }
+            }
+            ],
+            "NetworkInterfaces": [
+                {
+                    "AssociatePublicIpAddress": true,
+                    "DeviceIndex": 0,
+                    "SubnetId": "'"$subnetId1"'",
+                    "Groups": ["'"$sgId"'"]
                 }
             ]
-            }' --no-cli-pager
+        }' --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o modelo de implantação de nome $launchTempName na versão $versionNumber"

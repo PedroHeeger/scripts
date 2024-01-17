@@ -22,10 +22,9 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "Extraindo a ARN do target group $tgName"
     $tgArn = aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text
 
-    $condition = ((aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].ListenerArn").Count -gt 1 || (aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].DefaultActions[?TargetGroupArn=='$tgArn']").Count -gt 1)
-
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe um listener vinculando o target group $tgName ao load balancer $albName"
+    $condition = ((aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].ListenerArn").Count -gt 1 || (aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].DefaultActions[?TargetGroupArn=='$tgArn']").Count -gt 1)
     if ($condition) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe um listener vinculando o target group $tgName ao load balancer $albName"
