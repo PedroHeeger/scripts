@@ -73,6 +73,11 @@ data "aws_vpcs" "default_vpc" {
   }
 }
 
+data "aws_security_group" "default" {
+  name        = "default"
+  vpc_id      = data.aws_vpcs.default_vpc.ids[0]
+}
+
 data "aws_subnets" "default_subnet" {
   filter {
     name   = "vpc-id"
@@ -94,16 +99,12 @@ data "aws_subnet" "selected_default_subnet" {
 #   value = [for s in data.aws_subnet.selected_default_subnet : s.id]
 # }
 
-# resource "aws_security_group" "lb_sg" {
-#   name        = "lb_sg"
-#   description = "Security group for Load Balancer"
-# }
 
 resource "aws_lb" "lbTest1" {
   name               = var.lbName
   internal           = false
   load_balancer_type = "application"
-  # security_groups    = [aws_default_vpc.default.security_group_ids]
+  security_groups    = [data.aws_security_group.default.id]
   subnets            = [for s in data.aws_subnet.selected_default_subnet : s.id]
 
   enable_deletion_protection = false // Define como true se você deseja proteção contra exclusão

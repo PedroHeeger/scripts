@@ -15,7 +15,7 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     sudo apt-get upgrade -y
 
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Baixando o pacote"
+    echo "Instalando os pacotes"
     sudo apt-get install -y nano vim curl wget unzip zip
     sudo apt-get install -y nano vim curl wget unzip zip unrar neovim aptitude net-tools iptables iputils-ping tree synaptic xman yelp build-essential
     sudo apt-get install -y nano

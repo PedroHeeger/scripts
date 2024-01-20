@@ -21,6 +21,10 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Alterando o Shell padrão do usuário ubuntu"
     sudo chsh -s /usr/bin/zsh ubuntu
+
+    echo "-----//-----//-----//-----//-----//-----//-----"
+    echo "Indicando que esse Shell deve ser iniciado"
+    echo "zsh" >> /home/ubuntu/.bashrc
 else 
     echo "Código não executado"
 fi
@@ -32,7 +36,7 @@ fi
 #!/bin/bash
 
 echo "***********************************************"
-echo "OH MY ZSHELL INSTALLATION "
+echo "OH MY ZSHELL INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"

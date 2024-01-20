@@ -25,6 +25,7 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "Extraindo o IP público da instância de nome de tag $tagNameInstance"
         $ipEc2 = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
 
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Exibindo o comando para acesso remoto via OpenSSH"
         # $ipEc2 = $ipEc2.Replace(".", "-")
         Write-Output "ssh -i `"$keyPairPath\$keyPairName.pem`" ubuntu@$ipEc2"
