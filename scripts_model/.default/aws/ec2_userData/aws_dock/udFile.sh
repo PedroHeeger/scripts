@@ -96,8 +96,8 @@ echo "Confirmando as alterações realizadas no grupo"
 sudo newgrp docker
 
 echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Reiniciando o sistema"  
-sudo reboot
+echo "Reiniciando o serviço"  
+sudo systemctl restart docker
 
 
 

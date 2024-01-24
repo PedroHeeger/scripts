@@ -200,8 +200,8 @@ echo "Confirmando as alterações realizadas no grupo"
 sudo newgrp docker
 
 echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Reiniciando o sistema"  
-sudo reboot
+echo "Reiniciando o serviço"  
+sudo systemctl restart docker
 
 
 
@@ -217,3 +217,55 @@ sudo reboot
 # echo "-----//-----//-----//-----//-----//-----//-----"
 # echo "Autenticando o Docker com AWS ECR"
 # aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com
+
+
+
+
+echo "***********************************************"
+echo "K3D INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Definindo variáveis"
+link="https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Baixando e executando o script de instalação"
+wget -q -O - $link | bash
+
+
+
+
+echo "***********************************************"
+echo "KUBECTL INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando os pacotes de dependência"
+sudo apt-get install -y apt-transport-https ca-certificates curl
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Criando um diretório para armazenar chaves de repositórios"
+sudo install -m 0755 -d /etc/apt/keyrings
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Baixando a chave de assinatura pública para os repositórios de pacotes Kubernetes"
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Adicionando o repositório do pacote à lista de fontes de pacotes do sistema"
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando os pacotes"
+sudo apt-get update -y
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando o pacote"
+sudo apt-get install -y kubectl
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Exibindo a versão"
+kubectl version --client
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Alterando o proprietario e grupo da pasta .kube para o usuario ubuntu"
+sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube

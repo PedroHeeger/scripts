@@ -93,7 +93,7 @@
   - AWS Application Composer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_application_composer.webp" alt="aws_application_composer" width="auto" height="25">
   - AWS Artifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact" width="auto" height="25">
   - AWS Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.png" alt="aws_auto_scaling" width="auto" height="25">
-  - AWS Billing   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_billing.svg" alt="aws_billing" width="auto" height="25">
+  - AWS Billing and Cost Management   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_billing.svg" alt="aws_billing_cost_management" width="auto" height="25">
   - AWS Blog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_blog.jpg" alt="aws_blog" width="auto" height="25">
   - AWS Budgets  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_budgets.png" alt="aws_budget" width="auto" height="25">
   - AWS Cloud9   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloud9.png" alt="aws_cloud9" width="auto" height="25">
@@ -271,6 +271,7 @@
   - MySQL Server   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
   - Network File System (NFS Server)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nfs_server.jpeg" alt="nfs_server" width="auto" height="25">
   - Nginx   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="nginx" width="auto" height="25">
+  - PostgreSQL   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="postgresql" width="auto" height="25">
   - Samba   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/samba.png" alt="samba" width="auto" height="25">
 - Database Administration Tool:
   - Adminer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/adminer.png" alt="adminer" width="auto" height="25">
