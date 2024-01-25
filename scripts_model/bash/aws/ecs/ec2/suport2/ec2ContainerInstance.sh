@@ -9,7 +9,7 @@ echo "Definindo variáveis"
 tagNameInstance="ec2ContainerInstanceTest"
 instanceA="1"
 instanceB="2"
-groupName="default"
+sgName="default"
 aZ="us-east-1a"
 imageId="ami-079db87dc4c10ac91"    # Amazon Linux 2023 AMI 2023.3.20231218.0 x86_64 HVM kernel-6.1
 instanceType="t2.micro"
@@ -40,12 +40,12 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os Ids do grupo de segurança e das sub-redes padrões"
-        securityGroupId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
+        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
         subnetId=$(aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando a instância EC2 de nome de tag ${tagNameInstance}${instanceA}"
-        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $securityGroupId --subnet-id $subnetId --count 1 --user-data "#!/bin/bash
+        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "#!/bin/bash
         echo 'EXECUTANDO O SCRIPT BASH'
         echo '-----//-----//-----//-----//-----//-----//-----'
         echo 'Atualizando os pacotes'
@@ -80,7 +80,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando a instância EC2 de nome de tag ${tagNameInstance}${instanceB}"
-        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $securityGroupId --subnet-id $subnetId --count 1 --user-data "#!/bin/bash
+        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "#!/bin/bash
         echo 'EXECUTANDO O SCRIPT BASH'
         echo '-----//-----//-----//-----//-----//-----//-----'
         echo 'Atualizando os pacotes'

@@ -13,7 +13,7 @@ $instanceType = "t2.micro"
 $keyPair = "keyPairUniversal"
 $userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 $userDataFile = "udFile.sh"
-$groupName = "default"
+$sgName = "default"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -36,7 +36,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ID do security group"
-        $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text
+        $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Codificando o arquivo user data em Base64"
@@ -75,7 +75,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ID do security group"
-        $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text
+        $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Codificando o arquivo user data em Base64"

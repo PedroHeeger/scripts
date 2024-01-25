@@ -8,16 +8,16 @@ print("EC2 CONTAINER INSTANCE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-tagNameInstance = "ec2ContainerInstanceTest"
+tag_name_instance = "ec2ContainerInstanceTest"
 instanceA = "7"
 instanceB = "8"
-groupName = "default"
+sg_name = "default"
 aZ = "us-east-1a"
-imageId = "ami-079db87dc4c10ac91"    # Amazon Linux 2023 AMI 2023.3.20231218.0 x86_64 HVM kernel-6.1
-instanceType = "t2.micro"
-keyPairName = "keyPairUniversal"
-instanceProfileName = "ecs-ec2InstanceIProfile"
-clusterName = "clusterEC2Test1"
+image_id = "ami-079db87dc4c10ac91"    # Amazon Linux 2023 AMI 2023.3.20231218.0 x86_64 HVM kernel-6.1
+instance_type = "t2.micro"
+key_pair_name = "keyPairUniversal"
+instance_profile_name = "ecs-ec2InstanceIProfile"
+cluster_name = "clusterEC2Test1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input(f"Deseja executar o código? (y/n) ")
@@ -27,19 +27,19 @@ if resposta.lower() == 'y':
     ec2 = boto3.resource('ec2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe as instâncias {tagNameInstance}{instanceA} e {tagNameInstance}{instanceB}")
+    print(f"Verificando se existe as instâncias {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
     instances = list(ec2.instances.filter(Filters=[
-        {'Name': 'tag:Name', 'Values': [f'{tagNameInstance}{instanceA}', f'{tagNameInstance}{instanceB}']}
+        {'Name': 'tag:Name', 'Values': [f'{tag_name_instance}{instanceA}', f'{tag_name_instance}{instanceB}']}
     ]))
 
     if instances:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe uma instância EC2 com o nome de tag {tagNameInstance}{instanceA} e {tagNameInstance}{instanceB}")
+        print(f"Já existe uma instância EC2 com o nome de tag {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
         for instance in instances:
             print(instance.tags[0]['Value'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o IP público das instâncias {tagNameInstance}{instanceA} e {tagNameInstance}{instanceB}")
+        print(f"Listando o IP público das instâncias {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
         for instance in instances:
             print(instance.public_ip_address)
     else:
@@ -51,16 +51,16 @@ if resposta.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo os Ids do grupo de segurança e das sub-redes padrões")
-        security_group_id = list(ec2.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [groupName]}]))[0].id
+        sg_id = list(ec2.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [sg_name]}]))[0].id
         subnet_id = list(ec2.subnets.filter(Filters=[{'Name': 'availability-zone', 'Values': [aZ]}]))[0].id
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando a instância EC2 de nome de tag {tagNameInstance}{instanceA}")
+        print(f"Criando a instância EC2 de nome de tag {tag_name_instance}{instanceA}")
         instance_a = ec2.create_instances(
-            ImageId=imageId,
-            InstanceType=instanceType,
-            KeyName=keyPairName,
-            SecurityGroupIds=[security_group_id],
+            ImageId=image_id,
+            InstanceType=instance_type,
+            KeyName=key_pair_name,
+            SecurityGroupIds=[sg_id],
             SubnetId=subnet_id,
             MinCount=1,
             MaxCount=1,
@@ -77,7 +77,7 @@ if resposta.lower() == 'y':
                         sudo mkdir -p /etc/ecs
                         echo '-----//-----//-----//-----//-----//-----//-----'
                         echo 'Configurando o ECS'  
-                        echo "ECS_CLUSTER={clusterName}" | sudo tee -a /etc/ecs/ecs.config
+                        echo "ECS_CLUSTER={cluster_name}" | sudo tee -a /etc/ecs/ecs.config
                         echo '-----//-----//-----//-----//-----//-----//-----'
                         echo 'Aguardando alguns segundos (TEMPO 1)'  
                         sleep 20
@@ -97,17 +97,17 @@ if resposta.lower() == 'y':
                         echo 'Reiniciando o sistema'  
                         sudo reboot
                         """,
-            TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tagNameInstance}{instanceA}'}]}],
-            IamInstanceProfile={'Name': instanceProfileName}
+            TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tag_name_instance}{instanceA}'}]}],
+            IamInstanceProfile={'Name': instance_profile_name}
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando a instância EC2 de nome de tag {tagNameInstance}{instanceB}")
+        print(f"Criando a instância EC2 de nome de tag {tag_name_instance}{instanceB}")
         instance_b = ec2.create_instances(
-            ImageId=imageId,
-            InstanceType=instanceType,
-            KeyName=keyPairName,
-            SecurityGroupIds=[security_group_id],
+            ImageId=image_id,
+            InstanceType=instance_type,
+            KeyName=key_pair_name,
+            SecurityGroupIds=[sg_id],
             SubnetId=subnet_id,
             MinCount=1,
             MaxCount=1,
@@ -124,7 +124,7 @@ if resposta.lower() == 'y':
                         sudo mkdir -p /etc/ecs
                         echo '-----//-----//-----//-----//-----//-----//-----'
                         echo 'Configurando o ECS'  
-                        echo "ECS_CLUSTER={clusterName}" | sudo tee -a /etc/ecs/ecs.config
+                        echo "ECS_CLUSTER={cluster_name}" | sudo tee -a /etc/ecs/ecs.config
                         echo '-----//-----//-----//-----//-----//-----//-----'
                         echo 'Aguardando alguns segundos (TEMPO 1)'  
                         sleep 20
@@ -141,8 +141,8 @@ if resposta.lower() == 'y':
                         echo 'Reiniciando o sistema'  
                         sudo reboot
                         """,
-            TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tagNameInstance}{instanceB}'}]}],
-            IamInstanceProfile={'Name': instanceProfileName}
+            TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tag_name_instance}{instanceB}'}]}],
+            IamInstanceProfile={'Name': instance_profile_name}
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -152,9 +152,9 @@ if resposta.lower() == 'y':
             print(instance.tags[0]['Value'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o IP público das instâncias {tagNameInstance}{instanceA} e {tagNameInstance}{instanceB}")
+        print(f"Listando o IP público das instâncias {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
         instances = list(ec2.instances.filter(Filters=[
-                {'Name': 'tag:Name', 'Values': [f'{tagNameInstance}{instanceA}', f'{tagNameInstance}{instanceB}']}
+                {'Name': 'tag:Name', 'Values': [f'{tag_name_instance}{instanceA}', f'{tag_name_instance}{instanceB}']}
             ]))
         for instance in instances:
             # instance.wait_until_running()
@@ -175,7 +175,7 @@ print("EC2 CONTAINER INSTANCE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-tagNameInstance = "ec2ContainerInstanceTest"
+tag_name_instance = "ec2ContainerInstanceTest"
 instanceA = "7"
 instanceB = "8"
 
@@ -188,12 +188,12 @@ if resposta.lower() == 'y':
 
     condition = ec2.instances.filter(
         Filters=[
-            {'Name': 'tag:Name', 'Values': [f'{tagNameInstance}{instanceA}', f'{tagNameInstance}{instanceB}']}
+            {'Name': 'tag:Name', 'Values': [f'{tag_name_instance}{instanceA}', f'{tag_name_instance}{instanceB}']}
         ]
     )
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe as instâncias {tagNameInstance}{instanceA} e {tagNameInstance}{instanceB}")
+    print(f"Verificando se existe as instâncias {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
     if condition:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando o nome da tag de todas as instâncias EC2 criadas")
@@ -202,11 +202,11 @@ if resposta.lower() == 'y':
             print(instance.tags[0]['Value'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo o Id das instâncias de nome de tag {tagNameInstance}{instanceA} e {tagNameInstance}{instanceB}")
+        print(f"Extraindo o Id das instâncias de nome de tag {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
         instance_ids = [instance.id for instance in condition]
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo as instâncias de nome de tag {tagNameInstance}{instanceA} e {tagNameInstance}{instanceB}")
+        print(f"Removendo as instâncias de nome de tag {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
         ec2.instances.filter(InstanceIds=instance_ids).terminate()
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -215,6 +215,6 @@ if resposta.lower() == 'y':
         for instance in all_instances:
             print(instance.tags[0]['Value'])
     else:
-        print(f"Não existe instâncias com o nome de tag {tagNameInstance}{instanceA} ou {tagNameInstance}{instanceB}")
+        print(f"Não existe instâncias com o nome de tag {tag_name_instance}{instanceA} ou {tag_name_instance}{instanceB}")
 else:
     print("Código não executado")

@@ -9,9 +9,9 @@ print("INTERACTION WITH FOUNDATION MODEL (FM)")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-modelId = "amazon.titan-text-express-v1"
-# modelId = "ai21.j2-ultra-v1"
-contentType='application/json'  # Tipo de conteúdo correto
+model_id = "amazon.titan-text-express-v1"
+# model_id = "ai21.j2-ultra-v1"
+content_type='application/json'  # Tipo de conteúdo correto
 accept='application/json'       # Tipo de resposta esperado
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -22,7 +22,7 @@ if resposta.lower() == 'y':
     client = boto3.client("bedrock-runtime", region_name="us-east-1")
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando o body da API request do modelo: {modelId}")
+    print(f"Criando o body da API request do modelo: {model_id}")
     body = json.dumps(
         {"inputText": "What is capital of Brazil?",
          "textGenerationConfig": {
@@ -47,9 +47,9 @@ if resposta.lower() == 'y':
     print(f"Invocando o modelo de inferência")
     response = client.invoke_model(
         body=body, 
-        contentType=contentType,
+        contentType=content_type,
         accept=accept,  
-        modelId=modelId
+        modelId=model_id
     )
 
     print("-----//-----//-----//-----//-----//-----//-----")

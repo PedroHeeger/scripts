@@ -9,7 +9,7 @@ echo "Definindo variáveis"
 tagNameInstance="ec2ContainerInstanceTest"
 instanceA="1"
 instanceB="2"
-groupName="default"
+sgName="default"
 aZ="us-east-1a"
 imageId="ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instanceType="t2.micro"
@@ -40,7 +40,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os Ids do grupo de segurança e das sub-redes padrões"
-        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
+        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
         subnetId=$(aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"

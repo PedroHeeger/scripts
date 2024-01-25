@@ -13,8 +13,8 @@ launch_config_name = "launchConfigTest1"
 launch_temp_name = "launchTempTest1"
 version_number = 1
 tg_name = "tgTest1"
-az1 = "us-east-1a"
-az2 = "us-east-1b"
+aZ1 = "us-east-1a"
+aZ2 = "us-east-1b"
 tag_name_instance = "ec2Test"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -53,8 +53,8 @@ if response == 'y':
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo os IDs dos elementos de rede")
         vpc_id = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
-        subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
-        subnet_id2 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az2]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
+        subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
+        subnet_id2 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ2]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
 
         # print("-----//-----//-----//-----//-----//-----//-----")
         # print(f"Criando o auto scaling group de nome {asg_name}")

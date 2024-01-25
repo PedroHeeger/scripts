@@ -13,7 +13,7 @@ $instanceProtocol = "HTTP"
 $instancePort = "80"
 $aZ1 = "us-east-1a"
 $aZ2 = "us-east-1b"
-$groupName = "default"
+$sgName = "default"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -32,7 +32,7 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ID do grupo de segurança"
         $vpcId = aws ec2 describe-vpcs --filters "Name=isDefault,Values=true" --query "Vpcs[].VpcId" --output text
-        $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$groupName" --query "SecurityGroups[].GroupId" --output text
+        $sgId = aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupId" --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando o classic load balancer de nome $clbName"

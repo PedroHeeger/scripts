@@ -6,14 +6,17 @@ Write-Output "EC2 CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2Test1"
-$groupName = "default"
+$tagNameInstance = "ec2Test4"
+$sgName = "default"
 $aZ = "us-east-1a"
 $imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 $instanceType = "t2.micro"
 $keyPairName = "keyPairUniversal"
 $userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic/"
 $userDataFile = "udFile.sh"
+$volumeSize = 8
+$volumeType = "gp2"
+$instanceProfileName = "instanceProfileTest"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -35,12 +38,16 @@ if ($resposta.ToLower() -eq 'y') {
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo os Ids do grupo de segurança e sub-redes padrões"
-        $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text
+        $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
         $subnetId = aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text
 
-        Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Criando a instância EC2 de nome de tag $tagNameInstance"
-        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --no-cli-pager
+        # Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        # Write-Output "Criando a instância EC2 de nome de tag $tagNameInstance"
+        # aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --no-cli-pager
+
+        aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --block-device-mappings "[{`"DeviceName`":`"/dev/xvda`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":`"$volumeType`",`"DeleteOnTermination`":true}}]" --no-cli-pager
+
+        # aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --block-device-mappings "[{`"DeviceName`":`"/dev/xvda`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":$volumeType}}]" --iam-instance-profile Name=$instance_profile_name --no-cli-pager
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome da tag de todas as instâncias EC2 criadas"
@@ -63,7 +70,7 @@ Write-Output "EC2 EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2Test1"
+$tagNameInstance = "ec2Test4"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

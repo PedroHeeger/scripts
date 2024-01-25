@@ -13,7 +13,7 @@ instanceType="t2.micro"
 keyPair="keyPairUniversal"
 userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 userDataFile="udFile.sh"
-groupName="default"
+sgName="default"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -36,7 +36,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os IDs dos elementos de rede"
-        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
+        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Codificando o arquivo user data em Base64"
@@ -75,7 +75,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo os IDs dos elementos de rede"
-        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$groupName'].GroupId" --output text)
+        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Codificando o arquivo user data em Base64"

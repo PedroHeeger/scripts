@@ -8,12 +8,12 @@ print("SERVICE EC2 CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-serviceName = "svcEC2Test1"
-clusterName = "clusterEC2Test1"
-taskName = "taskEC2Test1"
-taskVersion = "7"
-taskAmount = 3
-launchType = "EC2"
+service_name = "svcEC2Test1"
+cluster_name = "clusterEC2Test1"
+task_name = "taskEC2Test1"
+task_version = "7"
+task_amount = 3
+launch_type = "EC2"
 # aZ1 = "us-east-1a"
 # aZ2 = "us-east-1b"
 
@@ -21,21 +21,21 @@ resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
     try:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o serviço de nome {serviceName} no cluster {clusterName} (Ignorando erro)...")
+        print(f"Verificando se existe o serviço de nome {service_name} no cluster {cluster_name} (Ignorando erro)...")
         erro = "ClientException"
-        response = boto3.client('ecs').describe_services(cluster=clusterName, services=[serviceName])
+        response = boto3.client('ecs').describe_services(cluster=cluster_name, services=[service_name])
         services = response.get('services', [])
-        active_services = [s for s in services if s.get('status') == 'ACTIVE' and s.get('serviceName') == serviceName]
+        active_services = [s for s in services if s.get('status') == 'ACTIVE' and s.get('service_name') == service_name]
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o serviço de nome {serviceName} no cluster {clusterName}")
+        print(f"Verificando se existe o serviço de nome {service_name} no cluster {cluster_name}")
         if active_services:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Já existe o serviço de nome {serviceName} no cluster {clusterName}")
-            print(active_services[0]['serviceName'])
+            print(f"Já existe o serviço de nome {service_name} no cluster {cluster_name}")
+            print(active_services[0]['service_name'])
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando todos os serviços ativos no cluster {clusterName}")
+            print(f"Listando todos os serviços ativos no cluster {cluster_name}")
             active_service_arns = [s['serviceArn'] for s in services if s.get('status') == 'ACTIVE']
         
             # print("-----//-----//-----//-----//-----//-----//-----")
@@ -46,21 +46,21 @@ if resposta.lower() == 'y':
             # sgId = boto3.client('ec2').describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpcId]}, {'Name': 'group-name', 'Values': ['default']}])['SecurityGroups'][0]['GroupId']
         
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando o serviço de nome {serviceName} no cluster {clusterName}")
+            print(f"Criando o serviço de nome {service_name} no cluster {cluster_name}")
             boto3.client('ecs').create_service(
-                cluster=clusterName,
-                serviceName=serviceName,
-                taskDefinition=f"{taskName}:{taskVersion}",
-                desiredCount=taskAmount,
-                launchType=launchType,
+                cluster=cluster_name,
+                serviceName=service_name,
+                taskDefinition=f"{task_name}:{task_version}",
+                desiredCount=task_amount,
+                launchType=launch_type,
                 schedulingStrategy="REPLICA",
                 deploymentConfiguration={'minimumHealthyPercent': 25, 'maximumPercent': 200}
             )
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando o serviço de nome {serviceName} no cluster {clusterName}")
-            response = boto3.client('ecs').describe_services(cluster=clusterName, services=[serviceName])
-            print(response['services'][0]['serviceName'])
+            print(f"Listando o serviço de nome {service_name} no cluster {cluster_name}")
+            response = boto3.client('ecs').describe_services(cluster=cluster_name, services=[service_name])
+            print(response['services'][0]['service_name'])
     except Exception as e:
         print(f"Erro: {e}")
 else:
@@ -77,44 +77,44 @@ print("SERVICE EC2 EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-serviceName = "svcEC2Test1"
-clusterName = "clusterEC2Test1"
+service_name = "svcEC2Test1"
+cluster_name = "clusterEC2Test1"
 
 resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
     try:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o cluster de nome {clusterName}")
-        response = boto3.client('ecs').describe_services(cluster=clusterName, services=[serviceName])
+        print(f"Verificando se existe o cluster de nome {cluster_name}")
+        response = boto3.client('ecs').describe_services(cluster=cluster_name, services=[service_name])
         services = response.get('services', [])
         
         if services:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando as ARNs de todos os serviços criados no {clusterName}")
+            print(f"Listando as ARNs de todos os serviços criados no {cluster_name}")
             service_arns = [s['serviceArn'] for s in services]
             print("\n".join(service_arns))
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Atualizando a quantidade desejada de tarefas do serviço de nome {serviceName} para 0")
+            print(f"Atualizando a quantidade desejada de tarefas do serviço de nome {service_name} para 0")
             boto3.client('ecs').update_service(
-                cluster=clusterName,
-                service=serviceName,
+                cluster=cluster_name,
+                service=service_name,
                 desiredCount=0
             )
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Removendo o serviço de nome {serviceName} do cluster {clusterName}")
+            print(f"Removendo o serviço de nome {service_name} do cluster {cluster_name}")
             boto3.client('ecs').delete_service(
-                cluster=clusterName,
-                service=serviceName
+                cluster=cluster_name,
+                service=service_name
             )
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando as ARNs de todos os serviços criados no {clusterName}")
-            service_arns_after_deletion = boto3.client('ecs').list_services(cluster=clusterName)['serviceArns']
+            print(f"Listando as ARNs de todos os serviços criados no {cluster_name}")
+            service_arns_after_deletion = boto3.client('ecs').list_services(cluster=cluster_name)['serviceArns']
             print("\n".join(service_arns_after_deletion))
         else:
-            print(f"Não existe o cluster de nome {clusterName}")
+            print(f"Não existe o cluster de nome {cluster_name}")
     except Exception as e:
         print(f"Erro: {e}")
 else:

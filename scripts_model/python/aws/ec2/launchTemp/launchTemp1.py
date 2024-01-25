@@ -16,7 +16,7 @@ instance_type = "t2.micro"
 key_pair = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 user_data_file = "udFile.sh"
-group_name = "default"
+sg_name = "default"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
@@ -52,7 +52,7 @@ if response.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo o ID do security group")
-        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
+        sg_id = ec2_client.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
@@ -109,7 +109,7 @@ if response.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo o ID do security group")
-        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
+        sg_id = ec2_client.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")

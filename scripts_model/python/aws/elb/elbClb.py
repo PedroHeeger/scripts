@@ -13,9 +13,9 @@ listener_protocol = "HTTP"
 listener_port = 80
 instance_protocol = "HTTP"
 instance_port = 80
-az1 = "us-east-1a"
-az2 = "us-east-1b"
-group_name = "default"
+aZ1 = "us-east-1a"
+aZ2 = "us-east-1b"
+sg_name = "default"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
@@ -47,7 +47,7 @@ if response.lower() == 'y':
         sg_id = ec2_client.describe_security_groups(
             Filters=[
                 {'Name': 'vpc-id', 'Values': [vpc_id]},
-                {'Name': 'group-name', 'Values': [group_name]}
+                {'Name': 'group-name', 'Values': [sg_name]}
             ]
         )['SecurityGroups'][0]['GroupId']
 
@@ -63,7 +63,7 @@ if response.lower() == 'y':
                     'InstancePort': instance_port
                 }
             ],
-            AvailabilityZones=[az1, az2],
+            AvailabilityZones=[aZ1, aZ2],
             SecurityGroups=[sg_id]
         )
 

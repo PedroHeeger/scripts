@@ -13,7 +13,7 @@ instanceProtocol="HTTP"
 instancePort="80"
 aZ1="us-east-1a"
 aZ2="us-east-1b"
-groupName="default"
+sgName="default"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -32,7 +32,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo o ID do grupo de segurança"
         vpcId=$(aws ec2 describe-instances --query "Reservations[].Instances[].VpcId" --output text)
-        sgId=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$groupName" --query "SecurityGroups[].GroupId" --output text)
+        sgId=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o classic load balancer de nome $clbName"

@@ -16,8 +16,8 @@ instance_type = "t2.micro"
 key_pair = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 user_data_file = "udFile.sh"
-group_name = "default"
-az1 = "us-east-1a"
+sg_name = "default"
+aZ1 = "us-east-1a"
 tag_name_instance = "ec2Test"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -55,8 +55,8 @@ if response.lower() == 'y':
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo os IDs dos elementos de rede")
         vpc_id = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
-        subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
-        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
+        subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
+        sg_id = ec2_client.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
@@ -131,8 +131,8 @@ if response.lower() == 'y':
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo os IDs dos elementos de rede")
         vpc_id = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
-        subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
-        sg_id = ec2_client.describe_security_groups(GroupNames=[group_name])['SecurityGroups'][0]['GroupId']
+        subnet_id1 = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ1]}, {'Name': 'vpc-id', 'Values': [vpc_id]}])['Subnets'][0]['SubnetId']
+        sg_id = ec2_client.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
