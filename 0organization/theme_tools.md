@@ -96,6 +96,7 @@
   - AWS Billing and Cost Management   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_billing.svg" alt="aws_billing_cost_management" width="auto" height="25">
   - AWS Blog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_blog.jpg" alt="aws_blog" width="auto" height="25">
   - AWS Budgets  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_budgets.png" alt="aws_budget" width="auto" height="25">
+  - AWS Certificate Manager (ACM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_certificate_manager.svg" alt="aws_certificate_manager" width="auto" height="25">
   - AWS Cloud9   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloud9.png" alt="aws_cloud9" width="auto" height="25">
   - AWS CloudFormation   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudformation.svg" alt="aws_cloudformation" width="auto" height="25">
   - AWS CloudTrail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudtrail.svg" alt="aws_cloud_trail" width="auto" height="25">
@@ -104,6 +105,7 @@
   - AWS CodePipeline  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codepipeline.svg" alt="aws_codepipeline" width="auto" height="25">
   - AWS Cloud Adoption Framework (CAF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_caf.jpeg" alt="aws_caf" width="auto" height="25">
   - AWS Cloud Development Kit (CDK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cdk.png" alt="aws_cdk" width="auto" height="25">
+  - AWS CloudShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudshell_jpeg" alt="aws_cloudshell" width="auto" height="25">
   - AWS Config   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_config.svg" alt="aws_config" width="auto" height="25">
   - AWS Console Mobile Application   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws_console_mobile" width="auto" height="25">
   - AWS Cost and Usage Reports (CUR)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cur.webp" alt="aws_cur" width="auto" height="25">

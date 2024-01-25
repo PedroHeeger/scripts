@@ -8,89 +8,106 @@ print("SECURITY GROUP RULE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-group_name = "default"
+sg_name = "sgTest1"
+# sg_name = "default"
+vpc_name = "vpcTest1"
+# vpc_name = "default"
+port = "22"
 protocol = "tcp"
-port = 80
 cidr_ipv4 = "0.0.0.0/0"
 
 print("-----//-----//-----//-----//-----//-----//-----")
-resposta = input("Deseja executar o código? (y/n) ").lower()
-if resposta == 'y':
+resposta = input("Deseja executar o código? (y/n) ")
+if resposta.lower() == 'y':
+    print("-----//-----//-----//-----//-----//-----//-----")
+    print("Verificando se a VPC é a padrão ou não")
+    if vpc_name == "default":
+        condition = "isDefault"
+        vpc_name_control = "true"
+    else:
+        condition = "tag:Name"
+        vpc_name_control = vpc_name
+
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Criando um cliente para o serviço EC2")
     ec2_client = boto3.client('ec2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print("Verificando se existe a VPC padrão")
-    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs']
+    print(f"Verificando se existe a VPC {vpc_name}")
+    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': condition, 'Values': [vpc_name_control]}])['Vpcs']
 
     if len(vpcs) > 0:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Extraindo o Id da VPC padrão")
-        vpc_default_id = vpcs[0]['VpcId']
+        print(f"Extraindo o Id da VPC {vpc_name}")
+        vpc_id = vpcs[0]['VpcId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Verificando se existe o Security Group padrão da VPC padrão")
-        sgs = ec2_client.describe_security_groups(
-            Filters=[{'Name': 'vpc-id', 'Values': [vpc_default_id]}, {'Name': 'group-name', 'Values': [group_name]}]
-        )['SecurityGroups']
+        print(f"Verificando se existe o security group {sg_name} na VPC {vpc_name}")
+        sg_groups = ec2_client.describe_security_groups(Filters=[
+            {'Name': 'vpc-id', 'Values': [vpc_id]},
+            {'Name': 'group-name', 'Values': [sg_name]}
+        ])['SecurityGroups']
 
-        if len(sgs) > 0:
+        if len(sg_groups) > 0:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print("Extraindo o Id do Security Group padrão")
-            sg_default_id = sgs[0]['GroupId']
+            print(f"Extraindo o Id do security group {sg_name} da VPC {vpc_name}")
+            sg_id = sg_groups[0]['GroupId']
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Verificando se existe uma regra liberando a porta {port} do Security Group padrão")
-            # exist_rule = ec2_client.describe_security_group_rules(
-            #     Filters=[
-            #         {'Name': 'group-id', 'Values': [sg_default_id]},
-            #         # {'Name': 'ip-permission.protocol', 'Values': ["-1"]},
-            #         {'Name': 'ip-permission.from-port', 'Values': [str(22)]},
-            #         {'Name': 'ip-permission.to-port', 'Values': [str(port)]},
-            #         {'Name': 'ip-permission.cidr', 'Values': [cidr_ipv4]}
-            #     ]
-            # )['SecurityGroupRules']
+            print(f"Verificando se existe uma regra de entrada liberando a porta {port} do security group {sg_name} da VPC {vpc_name}")     
+            exist_rule = []
+            for sg_group in sg_groups:
+                for rule in sg_group.get('IpPermissions', []):
+                    if (
+                        rule.get('IpProtocol') == protocol and
+                        rule.get('FromPort') == int(port) and
+                        rule.get('ToPort') == int(port) and
+                        any(ip_range['CidrIp'] == cidr_ipv4 for ip_range in rule.get('IpRanges', []))
+                    ):
+                        exist_rule.append(sg_group['GroupId'])
 
-            exist_rule = [rule for rule in sgs[0].get('IpPermissions', []) if
-                rule.get('IpProtocol') == protocol and
-                rule.get('FromPort') == port and
-                rule.get('ToPort') == port and
-                any(ip_range['CidrIp'] == cidr_ipv4 for ip_range in rule.get('IpRanges', []))]
-
-            if exist_rule:
+            if len(exist_rule) > 0:
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print(f"Já existe a regra de entrada liberando a porta {port} do Security Group padrão")
+                print(f"Já existe a regra de entrada liberando a porta {port} do security group {sg_name} da VPC {vpc_name}")
                 print(exist_rule)
             else:
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print("Listando o Id de todas as regras de entrada e saída do Security Group padrão")
-                rules = ec2_client.describe_security_group_rules(
-                    Filters=[{'Name': 'group-id', 'Values': [sg_default_id]}]
+                print(f"Listando o Id de todas as regras de entrada do security group {sg_name} da VPC {vpc_name}")
+                all_rules = ec2_client.describe_security_group_rules(
+                    Filters=[{'Name': 'group-id', 'Values': [sg_id]}]
                 )['SecurityGroupRules']
-
-                for rule in rules:
-                    print(rule['SecurityGroupRuleId'])
+                ingress_rules = [rule['SecurityGroupRuleId'] for rule in all_rules if not rule['IsEgress']]
+                print(ingress_rules)
 
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print(f"Adicionando uma regra de entrada ao Security Group padrão para liberação da porta {port}")
+                print(f"Adicionando uma regra de entrada ao security group {sg_name} da VPC {vpc_name} para liberação da porta {port}")
                 ec2_client.authorize_security_group_ingress(
-                    GroupId=sg_default_id,
-                    IpPermissions=[
-                        {'IpProtocol': protocol, 'FromPort': int(port), 'ToPort': int(port), 'IpRanges': [{'CidrIp': cidr_ipv4}]}
-                    ]
+                    GroupId=sg_id,
+                    IpPermissions=[{'IpProtocol': protocol, 'FromPort': int(port), 'ToPort': int(port), 'IpRanges': [{'CidrIp': cidr_ipv4}]}]
                 )
 
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print("Listando o Id de todas as regras de entrada e saída do Security Group padrão")
-                rules_after = ec2_client.describe_security_group_rules(
-                    Filters=[{'Name': 'group-id', 'Values': [sg_default_id]}]
-                )['SecurityGroupRules']
-
-                for rule in rules_after:
-                    print(rule['SecurityGroupRuleId'])
+                print(f"Listando o Id da regra de entrada do security group {sg_name} da VPC {vpc_name} que libera a porta {port}")
+                sg_groups = ec2_client.describe_security_groups(Filters=[
+                    {'Name': 'vpc-id', 'Values': [vpc_id]},
+                    {'Name': 'group-name', 'Values': [sg_name]}
+                ])['SecurityGroups']
+                
+                exist_rule = []
+                for sg_group in sg_groups:
+                    for rule in sg_group.get('IpPermissions', []):
+                        if (
+                            rule.get('IpProtocol') == protocol and
+                            rule.get('FromPort') == int(port) and
+                            rule.get('ToPort') == int(port) and
+                            any(ip_range['CidrIp'] == cidr_ipv4 for ip_range in rule.get('IpRanges', []))
+                        ):
+                            exist_rule.append(sg_group['GroupId'])
+                print(exist_rule)
+        else:
+            print(f"Não existe o security group {sg_name} na VPC {vpc_name}")
     else:
-        print("VPC padrão não encontrada")
+        print(f"Não existe a VPC {vpc_name}")
 else:
     print("Código não executado")
 
@@ -107,76 +124,88 @@ print("SECURITY GROUP RULE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-group_name = "default"
+sg_name = "sgTest1"
+# sg_name = "default"
+vpc_name = "vpcTest1"
+# vpc_name = "default"
 protocol = "tcp"
-port = 5000
+port = "22"
 cidr_ipv4 = "0.0.0.0/0"
 
 print("-----//-----//-----//-----//-----//-----//-----")
-resposta = input("Deseja executar o código? (y/n) ").lower()
-if resposta == 'y':
+resposta = input("Deseja executar o código? (y/n) ")
+if resposta.lower() == 'y':
+    print("-----//-----//-----//-----//-----//-----//-----")
+    print("Verificando se a VPC é a padrão ou não")
+    if vpc_name == "default":
+        condition = "isDefault"
+        vpc_name_control = "true"
+    else:
+        condition = "tag:Name"
+        vpc_name_control = vpc_name
 
-
+    print("-----//-----//-----//-----//-----//-----//-----")
+    print(f"Criando um cliente para o serviço EC2")
     ec2_client = boto3.client('ec2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print("Verificando se existe a VPC padrão")
-    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs']
+    print(f"Verificando se existe a VPC {vpc_name}")
+    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': condition, 'Values': [vpc_name_control]}])['Vpcs']
 
     if len(vpcs) > 0:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Extraindo o Id da VPC padrão")
-        vpc_default_id = vpcs[0]['VpcId']
+        print(f"Extraindo o Id da VPC {vpc_name}")
+        vpc_id = vpcs[0]['VpcId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Verificando se existe o Security Group padrão da VPC padrão")
-        sgs = ec2_client.describe_security_groups(
-            Filters=[{'Name': 'vpc-id', 'Values': [vpc_default_id]}, {'Name': 'group-name', 'Values': [group_name]}]
-        )['SecurityGroups']
+        print(f"Verificando se existe o security group {sg_name} na VPC {vpc_name}")
+        sg_groups = ec2_client.describe_security_groups(Filters=[
+            {'Name': 'vpc-id', 'Values': [vpc_id]},
+            {'Name': 'group-name', 'Values': [sg_name]}
+        ])['SecurityGroups']
 
-        if len(sgs) > 0:
+        if len(sg_groups) > 0:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print("Extraindo o Id do Security Group padrão")
-            sg_default_id = sgs[0]['GroupId']
+            print(f"Extraindo o Id do security group {sg_name}")
+            sg_id = sg_groups[0]['GroupId']
 
-            print(f"-----//-----//-----//-----//-----//-----//-----")
-            print(f"Verificando se existe uma regra liberando a porta {port} no Security Group padrão")
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Verificando se existe uma regra liberando a porta {port} no security group {sg_name}")
+            exist_rule = [rule for rule in sg_groups[0].get('IpPermissions', []) if
+                rule.get('IpProtocol') == protocol and
+                rule.get('FromPort') == int(port) and
+                rule.get('ToPort') == int(port) and
+                any(ip_range['CidrIp'] == cidr_ipv4 for ip_range in rule.get('IpRanges', []))]
 
-            exist_rule = [rule for rule in sgs[0].get('IpPermissions', []) if
-               rule.get('IpProtocol') == protocol and
-               rule.get('FromPort') == port and
-               rule.get('ToPort') == port and
-               any(ip_range['CidrIp'] == cidr_ipv4 for ip_range in rule.get('IpRanges', []))]
-
-            if exist_rule:
-                print("Listando o Id de todas as regras de entrada e saída do Security Group padrão")
-                rules = ec2_client.describe_security_group_rules(
-                    Filters=[{'Name': 'group-id', 'Values': [sg_default_id]}]
+            if len(exist_rule) > 0:
+                print("-----//-----//-----//-----//-----//-----//-----")
+                print(f"Listando o Id de todas as regras de entrada do security group {sg_name}")
+                all_rules = ec2_client.describe_security_group_rules(
+                    Filters=[{'Name': 'group-id', 'Values': [sg_id]}]
                 )['SecurityGroupRules']
+                ingress_rules = [rule['SecurityGroupRuleId'] for rule in all_rules if not rule['IsEgress']]
+                print(ingress_rules)
 
-                for rule in rules:
-                    print(rule['SecurityGroupRuleId'])
-
-                print(f"Removendo a regra de entrada do Security Group padrão para liberação da porta {port}")
+                print("-----//-----//-----//-----//-----//-----//-----")
+                print(f"Removendo a regra de entrada do security group {sg_name} para liberação da porta {port}")
                 ec2_client.revoke_security_group_ingress(
-                    GroupId=sg_default_id,
-                    IpPermissions=[
-                        {'IpProtocol': protocol, 'FromPort': port, 'ToPort': port, 'IpRanges': [{'CidrIp': cidr_ipv4}]}
-                    ]
+                    GroupId=sg_id,
+                    IpPermissions=[{'IpProtocol': protocol, 'FromPort': int(port), 'ToPort': int(port), 'IpRanges': [{'CidrIp': cidr_ipv4}]}]
                 )
 
-                print("Listando o Id de todas as regras de entrada e saída do Security Group padrão")
-                updated_rules = ec2_client.describe_security_group_rules(
-                    Filters=[{'Name': 'group-id', 'Values': [sg_default_id]}]
+                print("-----//-----//-----//-----//-----//-----//-----")
+                print(f"Listando o Id de todas as regras de entrada do security group {sg_name}")
+                all_rules = ec2_client.describe_security_group_rules(
+                    Filters=[{'Name': 'group-id', 'Values': [sg_id]}]
                 )['SecurityGroupRules']
+                ingress_rules = [rule['SecurityGroupRuleId'] for rule in all_rules if not rule['IsEgress']]
+                print(ingress_rules)
 
-                for rule in updated_rules:
-                    print(rule['SecurityGroupRuleId'])
             else:
-                print(f"Não existe a regra de entrada liberando a porta {port} no Security Group padrão")
+                print(f"Não existe a regra de entrada liberando a porta {port} no security group {sg_name}")
         else:
-            print(f"Security Group padrão com o nome {group_name} não encontrado na VPC padrão")
+            print(f"Não existe o security group {sg_name}")
     else:
-        print("VPC padrão não encontrada")
+        print(f"Não existe a VPC {vpc_name}")
 else:
     print("Código não executado")
