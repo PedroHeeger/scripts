@@ -14,8 +14,6 @@ task_name = "taskEC2Test1"
 task_version = "7"
 task_amount = 3
 launch_type = "EC2"
-# aZ1 = "us-east-1a"
-# aZ2 = "us-east-1b"
 
 resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
@@ -37,14 +35,7 @@ if resposta.lower() == 'y':
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando todos os serviços ativos no cluster {cluster_name}")
             active_service_arns = [s['serviceArn'] for s in services if s.get('status') == 'ACTIVE']
-        
-            # print("-----//-----//-----//-----//-----//-----//-----")
-            # print("Extraindo os elementos de rede")
-            # vpcId = boto3.client('ec2').describe_vpcs(Filters=[{'Name': 'isDefault', 'Values': ['true']}])['Vpcs'][0]['VpcId']
-            # subnetId1 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ1]}, {'Name': 'vpc-id', 'Values': [vpcId]}])['Subnets'][0]['SubnetId']
-            # subnetId2 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ2]}, {'Name': 'vpc-id', 'Values': [vpcId]}])['Subnets'][0]['SubnetId']
-            # sgId = boto3.client('ec2').describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpcId]}, {'Name': 'group-name', 'Values': ['default']}])['SecurityGroups'][0]['GroupId']
-        
+               
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Criando o serviço de nome {service_name} no cluster {cluster_name}")
             boto3.client('ecs').create_service(

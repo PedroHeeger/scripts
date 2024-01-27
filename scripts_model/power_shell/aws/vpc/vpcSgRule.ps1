@@ -34,7 +34,7 @@ if ($resposta.ToLower() -eq 'y') {
         if ((aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName").Count -gt 1) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Extraindo o Id do security group $sgName da VPC $vpcName"
-            $sId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
+            $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
            
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Verificando se existe uma regra de entrada liberando a porta $port do security group $sgName da VPC $vpcName"
@@ -99,23 +99,23 @@ if ($resposta.ToLower() -eq 'y') {
         if ((aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName").Count -gt 1) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Extraindo o Id do security group $sgName"
-            $sId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
+            $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
    
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Verificando se existe uma regra liberando a porta $port no security group $sgName"
-            $existRule = aws ec2 describe-security-group-rules --query "SecurityGroupRules[?GroupId=='$sId' && !IsEgress && IpProtocol=='$protocol' && to_string(FromPort)=='$port' && to_string(ToPort)=='$port' && CidrIpv4=='$cidrIpv4']"
+            $existRule = aws ec2 describe-security-group-rules --query "SecurityGroupRules[?GroupId=='$sgId' && !IsEgress && IpProtocol=='$protocol' && to_string(FromPort)=='$port' && to_string(ToPort)=='$port' && CidrIpv4=='$cidrIpv4']"
             if (($existRule).Count -gt 1) {
                 Write-Output "-----//-----//-----//-----//-----//-----//-----"
                 Write-Output "Listando o Id de todas as regras de entrada do security group $sgName"
-                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
+                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sgId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
     
                 Write-Output "-----//-----//-----//-----//-----//-----//-----"
                 Write-Output "Removendo a regra de entrada do security group $sgName para liberação da porta $port"
-                aws ec2 revoke-security-group-ingress --group-id $sId --protocol $protocol --port $port --cidr $cidrIpv4
+                aws ec2 revoke-security-group-ingress --group-id $sgId --protocol $protocol --port $port --cidr $cidrIpv4
     
                 Write-Output "-----//-----//-----//-----//-----//-----//-----"
                 Write-Output "Listando o Id de todas as regras de entrada do security group $sgName"
-                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
+                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sgId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
 
             } else {Write-Output "Não existe a regra de entrada liberando a porta $port no security group $sgName"}
         } else {Write-Host "Não existe o security group $sgName"}

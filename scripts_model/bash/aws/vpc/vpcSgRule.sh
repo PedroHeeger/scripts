@@ -39,7 +39,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         if [ $(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text | wc -l) -gt 1 ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Extraindo o Id do security group $sgName da VPC $vpcName"
-            sId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
+            sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
            
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Verificando se existe uma regra liberando a porta $port no security group $sgName"
@@ -115,23 +115,23 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         if [ $(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text | wc -l) -gt 1 ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Extraindo o Id do security group $sgName"
-            sId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
+            sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
    
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Verificando se existe uma regra liberando a porta $port no security group $sgName"
-            existRule=$(aws ec2 describe-security-group-rules --query "SecurityGroupRules[?GroupId=='$sId' && !IsEgress && IpProtocol=='$protocol' && to_string(FromPort)=='$port' && to_string(ToPort)=='$port' && CidrIpv4=='$cidrIpv4']" --output text)
+            existRule=$(aws ec2 describe-security-group-rules --query "SecurityGroupRules[?GroupId=='$sgId' && !IsEgress && IpProtocol=='$protocol' && to_string(FromPort)=='$port' && to_string(ToPort)=='$port' && CidrIpv4=='$cidrIpv4']" --output text)
             if [ -n "$existRule" ]; then
                 echo "-----//-----//-----//-----//-----//-----//-----"
                 echo "Listando o Id de todas as regras de entrada do security group $sgName"
-                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
+                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sgId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
     
                 echo "-----//-----//-----//-----//-----//-----//-----"
                 echo "Removendo a regra de entrada do security group $sgName para liberação da porta $port"
-                aws ec2 revoke-security-group-ingress --group-id $sId --protocol $protocol --port $port --cidr $cidrIpv4
+                aws ec2 revoke-security-group-ingress --group-id $sgId --protocol $protocol --port $port --cidr $cidrIpv4
     
                 echo "-----//-----//-----//-----//-----//-----//-----"
                 echo "Listando o Id de todas as regras de entrada do security group $sgName"
-                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
+                aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$sgId" --query "SecurityGroupRules[?!IsEgress].SecurityGroupRuleId" --output text
 
             else
                 echo "Não existe a regra de entrada liberando a porta $port no security group $sgName"
