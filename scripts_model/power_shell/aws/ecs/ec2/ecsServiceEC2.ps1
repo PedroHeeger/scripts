@@ -52,7 +52,7 @@ if ($resposta.ToLower() -eq 'y') {
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AWS ECS"
-Write-Output "SERVICE FARGATE EXCLUSION"
+Write-Output "SERVICE EC2 EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
