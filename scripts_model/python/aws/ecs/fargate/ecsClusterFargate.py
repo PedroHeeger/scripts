@@ -68,6 +68,7 @@ cluster_name = "clusterFargateTest1"
 region = "us-east-1"
 account_id = "001727357081"
 cluster_arn = f"arn:aws:ecs:{region}:{account_id}:cluster/{cluster_name}"
+log_group_name = f"/aws/ecs/containerinsights/{cluster_name}/performance"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").lower()
@@ -90,6 +91,10 @@ if resposta == 'y':
         ecs_client.delete_cluster(
             cluster=cluster_name
         )
+
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Removendo o log group de nome {log_group_name}")
+        boto3.client('logs').delete_log_group(logGroupName=log_group_name)
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando as ARNs de todos os clusters criados")

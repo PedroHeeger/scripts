@@ -16,6 +16,9 @@ taskAmount = 2
 launchType = "FARGATE"
 aZ1 = "us-east-1a"
 aZ2 = "us-east-1b"
+tg_name = "tgTest1"
+container_name1 = "containerTest1"
+container_port1 = 8080
 
 resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
@@ -44,6 +47,10 @@ if resposta.lower() == 'y':
             subnetId1 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ1]}, {'Name': 'vpc-id', 'Values': [vpcId]}])['Subnets'][0]['SubnetId']
             subnetId2 = boto3.client('ec2').describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [aZ2]}, {'Name': 'vpc-id', 'Values': [vpcId]}])['Subnets'][0]['SubnetId']
             sgId = boto3.client('ec2').describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpcId]}, {'Name': 'group-name', 'Values': ['default']}])['SecurityGroups'][0]['GroupId']
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Extraindo a ARN do target group {tg_name}")
+            tg_arn = boto3.client('elbv2').describe_target_groups(Names=[tg_name])['TargetGroups'][0]['TargetGroupArn']
         
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Criando o serviço de nome {serviceName} no cluster {clusterName}")
@@ -58,6 +65,21 @@ if resposta.lower() == 'y':
                 deploymentConfiguration={'minimumHealthyPercent': 25, 'maximumPercent': 200},
                 networkConfiguration={'awsvpcConfiguration': {'subnets': [subnetId1, subnetId2], 'securityGroups': [sgId], 'assignPublicIp': 'ENABLED'}}
             )
+
+            # print("-----//-----//-----//-----//-----//-----//-----")
+            # print(f"Criando o serviço de nome {serviceName} no cluster {clusterName} com load balancer")
+            # boto3.client('ecs').create_service(
+            #     cluster=clusterName,
+            #     serviceName=serviceName,
+            #     taskDefinition=f"{taskName}:{taskVersion}",
+            #     desiredCount=taskAmount,
+            #     launchType=launchType,
+            #     platformVersion="LATEST",
+            #     schedulingStrategy="REPLICA",
+            #     deploymentConfiguration={'minimumHealthyPercent': 25, 'maximumPercent': 200},
+            #     networkConfiguration={'awsvpcConfiguration': {'subnets': [subnetId1, subnetId2], 'securityGroups': [sgId], 'assignPublicIp': 'ENABLED'}},
+            #     loadBalancers=[{'targetGroupArn': tg_arn, 'containerName': container_name1, 'containerPort': container_port1}]
+            # )
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando o serviço de nome {serviceName} no cluster {clusterName}")

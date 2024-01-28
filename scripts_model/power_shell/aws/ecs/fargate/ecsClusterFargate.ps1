@@ -55,6 +55,7 @@ $clusterName = "clusterFargateTest1"
 $region = "us-east-1"
 $accountId = "001727357081"
 $clusterArn = "arn:aws:ecs:${region}:${accountId}:cluster/${clusterName}"
+$logGroupName = "/aws/ecs/containerinsights/${clusterName}/performance"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -69,6 +70,10 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Removendo o cluster de nome $clusterName"
         aws ecs delete-cluster --cluster $clusterName --no-cli-pager
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Removendo o log group de nome $logGroupName"
+        aws logs delete-log-group --log-group-name $logGroupName
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando as ARNs de todos os clusters criados"

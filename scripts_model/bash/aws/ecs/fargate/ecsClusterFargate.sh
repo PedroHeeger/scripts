@@ -57,6 +57,7 @@ cluster_name="clusterFargateTest1"
 region="us-east-1"
 account_id="001727357081"
 cluster_arn="arn:aws:ecs:${region}:${account_id}:cluster/${cluster_name}"
+logGroupName="/aws/ecs/containerinsights/${clusterName}/performance"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -71,6 +72,10 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Removendo o cluster de nome $cluster_name"
         aws ecs delete-cluster --cluster $cluster_name --no-cli-pager
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Removendo o log group de nome $logGroupName"
+        aws logs delete-log-group --log-group-name "$logGroupName"
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando as ARNs de todos os clusters criados"

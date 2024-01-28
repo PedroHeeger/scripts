@@ -14,6 +14,9 @@ taskAmount=2
 launchType="FARGATE"
 aZ1="us-east-1a"
 aZ2="us-east-1b"
+tgName="tgTest1"
+containerName1="containerTest1"
+containerPort1=8080
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -43,10 +46,18 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         subnetId1=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ1" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
         subnetId2=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$aZ2" "Name=vpc-id,Values=$vpcId" --query "Subnets[].SubnetId" --output text)
         sgId=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=default" --query "SecurityGroups[].GroupId" --output text
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Extraindo a ARN do target group $tgName"
+        tgArn=$(aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text)
     
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o serviço de nome $serviceName no cluster $clusterName"
         aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --platform-version "LATEST" --scheduling-strategy REPLICA --deployment-configuration minimumHealthyPercent=25,maximumPercent=200 --network-configuration "awsvpcConfiguration={subnets=[$subnetId1,$subnetId2],securityGroups=[$sgId],assignPublicIp=ENABLED}" --no-cli-pager
+
+        # echo "-----//-----//-----//-----//-----//-----//-----"
+        # echo "Criando o serviço de nome $serviceName no cluster $clusterName com load balancer"
+        # aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --platform-version "LATEST" --scheduling-strategy REPLICA --deployment-configuration minimumHealthyPercent=25,maximumPercent=200 --network-configuration "awsvpcConfiguration={subnets=[$subnetId1,$subnetId2],securityGroups=[$sgId],assignPublicIp=ENABLED}" --load-balancers targetGroupArn=$tgArn,containerName=$containerName1,containerPort=$containerPort1 --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o serviço de nome $serviceName no cluster $clusterName"
