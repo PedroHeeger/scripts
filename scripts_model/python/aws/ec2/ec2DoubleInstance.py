@@ -16,8 +16,11 @@ aZ = "us-east-1a"
 image_id = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instance_type = "t2.micro"
 key_pair_name = "keyPairUniversal"
-user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basci"
+user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic"
 user_data_file = "udFile.sh"
+device_name = "/dev/sda1"
+volume_size = 8
+volume_type = "gp2"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input(f"Deseja executar o código? (y/n) ")
@@ -65,6 +68,15 @@ if resposta.lower() == 'y':
             MinCount=1,
             MaxCount=1,
             UserData=open(f"{user_data_path}/{user_data_file}", "r").read(),
+            BlockDeviceMappings=[
+                {
+                    'DeviceName': device_name,
+                    'Ebs': {
+                        'VolumeSize': volume_size,
+                        'VolumeType': volume_type,
+                    },
+                },
+            ],
             TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tag_name_instance}{instanceA}'}]}]
         )
 
@@ -79,6 +91,15 @@ if resposta.lower() == 'y':
             MinCount=1,
             MaxCount=1,
             UserData=open(f"{user_data_path}/{user_data_file}", "r").read(),
+            BlockDeviceMappings=[
+                {
+                    'DeviceName': device_name,
+                    'Ebs': {
+                        'VolumeSize': volume_size,
+                        'VolumeType': volume_type,
+                    },
+                },
+            ],
             TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tag_name_instance}{instanceB}'}]}]
         )
 

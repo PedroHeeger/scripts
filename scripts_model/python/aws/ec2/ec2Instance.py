@@ -17,9 +17,11 @@ instance_type = "t2.micro"
 key_pair_name = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic"
 user_data_file = "udFile.sh"
+# $device_name = "/dev/xvda" 
+device_name = "/dev/sda1"
 volume_size = 8
 volume_type = "gp2"
-# instance_profile_name = "instanceProfileTest"
+instance_profile_name = "instanceProfileTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -64,21 +66,47 @@ if resposta.lower() == 'y':
                 UserData=open(f"{user_data_path}/{user_data_file}", "r").read(),
                 BlockDeviceMappings=[
                     {
-                        'DeviceName': '/dev/xvda',
+                        'DeviceName': device_name,
                         'Ebs': {
                             'VolumeSize': volume_size,
                             'VolumeType': volume_type,
                         },
                     },
                 ],
-                # IamInstanceProfile={
-                #     'Name': instance_profile_name,
-                # },
                 TagSpecifications=[{
                     'ResourceType': 'instance',
                     'Tags': [{'Key': 'Name', 'Value': tag_name_instance}]
                 }]
             )
+
+            # print("-----//-----//-----//-----//-----//-----//-----")
+            # print(f"Criando a instância EC2 de nome de tag {tag_name_instance}")
+            # instances = ec2.create_instances(
+            #     ImageId=image_id,
+            #     InstanceType=instance_type,
+            #     KeyName=key_pair_name,
+            #     SecurityGroupIds=[sg_id],
+            #     SubnetId=subnet_id,
+            #     MinCount=1,
+            #     MaxCount=1,
+            #     UserData=open(f"{user_data_path}/{user_data_file}", "r").read(),
+            #     BlockDeviceMappings=[
+            #         {
+            #             'DeviceName': '/dev/xvda',
+            #             'Ebs': {
+            #                 'VolumeSize': volume_size,
+            #                 'VolumeType': volume_type,
+            #             },
+            #         },
+            #     ],
+            #     IamInstanceProfile={
+            #         'Name': instance_profile_name,
+            #     },
+            #     TagSpecifications=[{
+            #         'ResourceType': 'instance',
+            #         'Tags': [{'Key': 'Name', 'Value': tag_name_instance}]
+            #     }]
+            # )
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print("Listando o nome da tag de todas as instâncias EC2 criadas")
