@@ -8,10 +8,11 @@ print("SECURITY GROUP RULE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-sg_name = "sgTest1"
-# sg_name = "default"
-vpc_name = "vpcTest1"
-# vpc_name = "default"
+sg_name = "default"
+vpc_name = "default"
+# sg_name = "sgTest1"
+# vpc_name = "vpcTest1"
+sg_rule_description = "sgRuleDescriptionTest1"
 port = "22"
 protocol = "tcp"
 cidr_ipv4 = "0.0.0.0/0"
@@ -124,10 +125,10 @@ print("SECURITY GROUP RULE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-sg_name = "sgTest1"
-# sg_name = "default"
-vpc_name = "vpcTest1"
-# vpc_name = "default"
+sg_name = "default"
+vpc_name = "default"
+# sg_name = "sgTest1"
+# vpc_name = "vpcTest1"
 protocol = "tcp"
 port = "22"
 cidr_ipv4 = "0.0.0.0/0"
