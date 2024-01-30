@@ -9,12 +9,12 @@ variable "lbName" {
   default     = "lbTest1"
 }
 
-variable "availabilityZone1" {
+variable "aZ1" {
   description = "Nome da zona de disponibilidade 1"
   default     = "us-east-1a"
 }
 
-variable "availabilityZone2" {
+variable "aZ2" {
   description = "Nome da zona de disponibilidade 2"
   default     = "us-east-1b"
 }
@@ -86,7 +86,7 @@ data "aws_subnets" "default_subnet" {
 
   filter {
     name   = "availability-zone"
-    values = [var.availabilityZone1, var.availabilityZone2]
+    values = [var.aZ1, var.aZ2]
   }
 }
 

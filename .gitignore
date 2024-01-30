@@ -8,6 +8,12 @@ scripts_model/power_shell/.default/secrets
 scripts_model/python/.default/secrets
 scripts_model/terraform/.default/secrets
 
+
+
+
+scripts_model/terraform/aws/acm/certificate/*
+!scripts_model/terraform/aws/acm/certificate/main.tf
+
 scripts_model/terraform/aws/budget/*
 !scripts_model/terraform/aws/budget/main.tf
 
@@ -67,8 +73,19 @@ scripts_model/terraform/aws/iam/iamRoleUser/*
 scripts_model/terraform/aws/iam/iamUser/*
 !scripts_model/terraform/aws/iam/iamUser/main.tf
 
-scripts_model/terraform/aws/vpc/vpcSgRule/*
-!scripts_model/terraform/aws/vpc/vpcSgRule/main.tf
+
+
+scripts_model/terraform/aws/rds/rdsDB/*
+!scripts_model/terraform/aws/rds/rdsDB/main.tf
+
+scripts_model/terraform/aws/route53/hostedZone/*
+!scripts_model/terraform/aws/route53/hostedZone/main.tf
+
+scripts_model/terraform/aws/vpc/vpc/*
+!scripts_model/terraform/aws/vpc/vpc/main.tf
+
+scripts_model/terraform/aws/vpc/sgRule/*
+!scripts_model/terraform/aws/vpc/sgRule/main.tf
 
 
 scripts_model/power_shell/aws/sageMaker
