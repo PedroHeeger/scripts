@@ -45,7 +45,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Registrando uma definição de tarefa de nome $taskName na revisão $revision"
-        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
+        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --placement-constraints "type=spread,field=attribute:ecs.availability-zone" --container-definitions "[
             {
                 `"name`": `"$containerName1`",
                 `"image`": `"$dockerImage1`",

@@ -60,13 +60,23 @@ variable "tgHealthCheckPath" {
   default     = "/"
 }
 
+variable "listenerProtocol" {
+  description = "Protocolo do Listener"
+  default     = "HTTP"
+}
+
+variable "listenerPort" {
+  description = "Porta do Listener"
+  default     = 80
+}
+
 
 # Executando o código
 provider "aws" {
   region = var.region
 }
 
-data "aws_vpcs" "default_vpc" {
+data "aws_vpcs" "default" {
   filter {
     name   = "isDefault"
     values = ["true"]
@@ -75,13 +85,13 @@ data "aws_vpcs" "default_vpc" {
 
 data "aws_security_group" "default" {
   name        = "default"
-  vpc_id      = data.aws_vpcs.default_vpc.ids[0]
+  vpc_id      = data.aws_vpcs.default.ids[0]
 }
 
-data "aws_subnets" "default_subnet" {
+data "aws_subnets" "default" {
   filter {
     name   = "vpc-id"
-    values = [data.aws_vpcs.default_vpc.ids[0]]
+    values = [data.aws_vpcs.default.ids[0]]
   }
 
   filter {
@@ -91,7 +101,7 @@ data "aws_subnets" "default_subnet" {
 }
 
 data "aws_subnet" "selected_default_subnet" {
-  for_each = toset(data.aws_subnets.default_subnet.ids)
+  for_each = toset(data.aws_subnets.default.ids)
   id       = each.value
 }
 
@@ -100,7 +110,7 @@ data "aws_subnet" "selected_default_subnet" {
 # }
 
 
-resource "aws_lb" "lbTest1" {
+resource "aws_lb" "example" {
   name               = var.lbName
   internal           = false
   load_balancer_type = "application"
@@ -110,13 +120,13 @@ resource "aws_lb" "lbTest1" {
   enable_deletion_protection = false // Define como true se você deseja proteção contra exclusão
 }
 
-resource "aws_lb_target_group" "tgTest1" {
+resource "aws_lb_target_group" "example" {
   name        = var.tgName
   port        = var.tgPort
   protocol    = var.tgProtocol
   target_type = var.tgType
   protocol_version = var.tgProtocolVersion
-  vpc_id      = data.aws_vpcs.default_vpc.ids[0]
+  vpc_id      = data.aws_vpcs.default.ids[0]
   
   health_check {
     enabled             = true
@@ -131,10 +141,10 @@ resource "aws_lb_target_group" "tgTest1" {
   }
 }
 
-resource "aws_lb_listener" "listenerTest1" {
-  load_balancer_arn = aws_lb.lbTest1.arn
-  port              = 80
-  protocol          = "HTTP"
+resource "aws_lb_listener" "example" {
+  load_balancer_arn = aws_lb.example.arn
+  port              = var.listenerPort
+  protocol          = var.listenerProtocol
 
   # default_action {
   #   type             = "fixed-response"
@@ -146,10 +156,10 @@ resource "aws_lb_listener" "listenerTest1" {
   # }
 
   dynamic "default_action" {
-    for_each = aws_lb_target_group.tgTest1.arn != null ? [1] : []
+    for_each = aws_lb_target_group.example.arn != null ? [1] : []
     content {
       type             = "forward"
-      target_group_arn = aws_lb_target_group.tgTest1.arn
+      target_group_arn = aws_lb_target_group.example.arn
     }
   }
 }

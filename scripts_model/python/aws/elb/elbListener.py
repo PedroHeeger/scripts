@@ -8,67 +8,54 @@ print("LISTENER CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-alb_name = "albTest1"
-tg_name = "tgTest1"
-listener_protocol = "HTTP"
-listener_port = 80
+albName = "albTest1"
+tgName = "tgTest1"
+listenerProtocol = "HTTP"
+listenerPort = "80"
 
-print("-----//-----//-----//-----//-----//-----//-----")
-resposta = input("Deseja executar o código? (y/n) ")
+resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Criando um cliente para o serviço ELB")
     elbv2_client = boto3.client('elbv2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Extraindo a ARN do load balancer {alb_name}")
-    lb_response = elbv2_client.describe_load_balancers(Names=[alb_name])
-    lb_arn = lb_response['LoadBalancers'][0]['LoadBalancerArn']
+    print(f"Extraindo a ARN do load balancer {albName}")
+    lbArn = elbv2_client.describe_load_balancers(Names=[albName])['LoadBalancers'][0]['LoadBalancerArn']
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Extraindo a ARN do target group {tg_name}")
-    tg_response = elbv2_client.describe_target_groups(Names=[tg_name])
-    tg_arn = tg_response['TargetGroups'][0]['TargetGroupArn']
+    print(f"Extraindo a ARN do target group {tgName}")
+    tgArn = elbv2_client.describe_target_groups(Names=[tgName])['TargetGroups'][0]['TargetGroupArn']
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Obtendo todos os listeners do load balancer {alb_name}")
-    listeners_response = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)
-    all_listeners = listeners_response['Listeners']
+    print(f"Verificando se existe um listener vinculando o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
+    listeners = elbv2_client.describe_listeners(LoadBalancerArn=lbArn)['Listeners']
+    matching_listeners = [listener for listener in listeners if listener['Port'] == int(listenerPort) and listener['Protocol'] == listenerProtocol and any(action['TargetGroupArn'] == tgArn for action in listener['DefaultActions'])]
 
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Filtrando os listeners associados ao target group {tg_name}")
-    filtered_listeners = [listener for listener in all_listeners if any(action.get('TargetGroupArn') == tg_arn for action in listener.get('DefaultActions', []))]
-
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe um listener vinculando o target group {tg_name} ao load balancer {alb_name}")
-    condition = len(all_listeners) > 0 or len(filtered_listeners) > 0
-    if condition:
+    if matching_listeners:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe um listener vinculando o target group {tg_name} ao load balancer {alb_name}")
-        listeners = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']
-        for listener in listeners:
-            print(listener['ListenerArn'])
+        print(f"Já existe um listener vinculando o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
+        print(matching_listeners[0]['ListenerArn'])
     else:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando todos os listeners do load balancer {alb_name}")
-        listeners = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']
-        for listener in listeners:
-            print(listener['ListenerArn'])
+        print(f"Listando todos os listeners do load balancer {albName}")
+        all_listeners = [listener['ListenerArn'] for listener in listeners]
+        print(all_listeners)
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando um listener para vincular o target group {tg_name} ao load balancer {alb_name}")
+        print(f"Criando um listener para vincular o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
         elbv2_client.create_listener(
-            LoadBalancerArn=lb_arn,
-            Protocol=listener_protocol,
-            Port=listener_port,
-            DefaultActions=[{'Type': 'forward', 'TargetGroupArn': tg_arn}]
+            LoadBalancerArn=lbArn,
+            Protocol=listenerProtocol,
+            Port=int(listenerPort),
+            DefaultActions=[{'Type': 'forward', 'TargetGroupArn': tgArn}]
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o listener que vincula o target group {tg_name} ao load balancer {alb_name}")
-        listeners = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']
-        for listener in listeners:
-            print(listener['ListenerArn'])
+        print(f"Listando o listener que vincula o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
+        new_listeners = elbv2_client.describe_listeners(LoadBalancerArn=lbArn)['Listeners']
+        new_matching_listener = [listener['ListenerArn'] for listener in new_listeners if listener['Port'] == int(listenerPort) and listener['Protocol'] == listenerProtocol and any(action['TargetGroupArn'] == tgArn for action in listener['DefaultActions'])]
+        print(new_matching_listener[0])
 else:
     print("Código não executado")
 
@@ -85,52 +72,50 @@ print("LISTENER EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-alb_name = "albTest1"
-tg_name = "tgTest1"
+albName = "albTest1"
+tgName = "tgTest1"
+listenerProtocol = "HTTP"
+listenerPort = "80"
 
-print("-----//-----//-----//-----//-----//-----//-----")
-resposta = input("Deseja executar o código? (y/n) ")
+resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Criando um cliente para o serviço ELB")
     elbv2_client = boto3.client('elbv2')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Extraindo a ARN do load balancer {alb_name}")
-    lb_response = elbv2_client.describe_load_balancers(Names=[alb_name])
-    lb_arn = lb_response['LoadBalancers'][0]['LoadBalancerArn']
+    print(f"Extraindo a ARN do load balancer {albName}")
+    lbArn = elbv2_client.describe_load_balancers(Names=[albName])['LoadBalancers'][0]['LoadBalancerArn']
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Extraindo a ARN do target group {tg_name}")
-    tg_response = elbv2_client.describe_target_groups(Names=[tg_name])
-    tg_arn = tg_response['TargetGroups'][0]['TargetGroupArn']
-
-    listeners = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']
-    condition = len(listeners) > 0 and any(listener['DefaultActions'][0]['TargetGroupArn'] == tg_arn for listener in listeners)
+    print(f"Extraindo a ARN do target group {tgName}")
+    tgArn = elbv2_client.describe_target_groups(Names=[tgName])['TargetGroups'][0]['TargetGroupArn']
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe um listener vinculando o target group {tg_name} ao load balancer {alb_name}")
-    if condition:
+    print(f"Verificando se existe um listener vinculando o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
+    listeners = elbv2_client.describe_listeners(LoadBalancerArn=lbArn)['Listeners']
+    matching_listeners = [listener for listener in listeners if listener['Port'] == int(listenerPort) and listener['Protocol'] == listenerProtocol and any(action['TargetGroupArn'] == tgArn for action in listener['DefaultActions'])]
+
+    if matching_listeners:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando todos os listeners do load balancer {alb_name}")
-        listeners = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']
-        for listener in listeners:
-            print(listener['ListenerArn'])
+        print(f"Listando todos os listeners do load balancer {albName}")
+        all_listeners = [listener['ListenerArn'] for listener in listeners]
+        print(all_listeners)
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo a ARN do listener que vincula o target group {tg_name} ao load balancer {alb_name}")
-        listener_arn = listeners[0]['ListenerArn']
+        print(f"Extraindo a ARN do listener que vincula o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
+        listenerArn = matching_listeners[0]['ListenerArn']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo listener que vincula o target group {tg_name} ao load balancer {alb_name}")
-        elbv2_client.delete_listener(ListenerArn=listener_arn)
+        print(f"Removendo listener que vincula o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
+        elbv2_client.delete_listener(ListenerArn=listenerArn)
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando todos os listeners do load balancer {alb_name}")
-        listeners = elbv2_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']
-        for listener in listeners:
-            print(listener['ListenerArn'])
+        print(f"Listando todos os listeners do load balancer {albName}")
+        updated_listeners = elbv2_client.describe_listeners(LoadBalancerArn=lbArn)['Listeners']
+        updated_listener_arns = [listener['ListenerArn'] for listener in updated_listeners]
+        print(updated_listener_arns)
     else:
-        print(f"Não existe um listener que vincula o target group {tg_name} ao load balancer {alb_name}")
+        print(f"Não existe um listener que vincula o target group {tgName} ao load balancer {albName} na porta {listenerPort} do protocolo {listenerProtocol}")
 else:
     print("Código não executado")

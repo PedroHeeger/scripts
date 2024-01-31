@@ -88,4 +88,9 @@ scripts_model/terraform/aws/vpc/sgRule/*
 !scripts_model/terraform/aws/vpc/sgRule/main.tf
 
 
+
+
+
+
+
 scripts_model/power_shell/aws/sageMaker
