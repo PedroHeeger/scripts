@@ -2,12 +2,14 @@
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AMAZON ROUTE 53"
-Write-Output "RECORD-HOSTED ZONE CREATION"
+Write-Output "RECORD LOAD BALANCER-HOSTED ZONE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $hostedZoneName = "hosted-zone-test1.com.br."
 $domainName = "hosted-zone-test1.com.br"
+$resourceRecordName = "recordNameLbTest1"
+$albName = "albTest1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -20,20 +22,8 @@ if ($resposta.ToLower() -eq 'y') {
         $hostedZoneId = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Id" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Verificando se existe um certificado para o domínio $domainName"
-        if ((aws acm list-certificates --query "CertificateSummaryList[?DomainName=='$domainName'].DomainName").Count -gt 1) {
-            Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Extraindo o ARN do certificado para o domínio $domainName"
-            $certificateArn = aws acm list-certificates --query "CertificateSummaryList[?DomainName=='$domainName'].CertificateArn" --output text
-
-            Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Extraindo o nome do recurso de registro do certificado para o domínio $domainName"
-            $resourceRecordName = aws acm describe-certificate --certificate-arn $certificateArn --query "Certificate.DomainValidationOptions[?DomainName=='$domainName'].ResourceRecord.Name" --output text
-
-            Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Extraindo o valor do recurso de registro do certificado para o domínio $domainName"
-            $resourceRecordValue = aws acm describe-certificate --certificate-arn $certificateArn --query "Certificate.DomainValidationOptions[?DomainName=='$domainName'].ResourceRecord.Value" --output text
-        } else {Write-Output "Não existe o certificado para o domínio $domainName"}
+        Write-Output "Extraindo o DNS do load balancer $albName"
+        $lbDNS = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].DNSName" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
@@ -57,7 +47,7 @@ if ($resposta.ToLower() -eq 'y') {
                     `"Type`": `"CNAME`",
                     `"TTL`": 300,
                     `"ResourceRecords`": [
-                        {`"Value`": `"${resourceRecordValue}`"}
+                        {`"Value`": `"${lbDNS}`"}
                     ]
                     }
                 }
@@ -78,12 +68,14 @@ if ($resposta.ToLower() -eq 'y') {
 
 Write-Output "***********************************************"
 Write-Output "SERVIÇO: AMAZON ROUTE 53"
-Write-Output "RECORD-HOSTED ZONE EXCLUSION"
+Write-Output "RECORD LOAD BALANCER-HOSTED ZONE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $hostedZoneName = "hosted-zone-test1.com.br."
 $domainName = "hosted-zone-test1.com.br"
+$resourceRecordName = "recordNameLbTest1"
+$albName = "albTest1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -96,20 +88,8 @@ if ($resposta.ToLower() -eq 'y') {
         $hostedZoneId = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Id" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Verificando se existe um certificado para o domínio $domainName"
-        if ((aws acm list-certificates --query "CertificateSummaryList[?DomainName=='$domainName'].DomainName").Count -gt 1) {
-            Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Extraindo o ARN do certificado para o domínio $domainName"
-            $certificateArn = aws acm list-certificates --query "CertificateSummaryList[?DomainName=='$domainName'].CertificateArn" --output text
-
-            Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Extraindo o nome do recurso de registro do certificado para o domínio $domainName"
-            $resourceRecordName = aws acm describe-certificate --certificate-arn $certificateArn --query "Certificate.DomainValidationOptions[?DomainName=='$domainName'].ResourceRecord.Name" --output text
-
-            Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Extraindo o valor do recurso de registro do certificado para o domínio $domainName"
-            $resourceRecordValue = aws acm describe-certificate --certificate-arn $certificateArn --query "Certificate.DomainValidationOptions[?DomainName=='$domainName'].ResourceRecord.Value" --output text
-        } else {Write-Output "Não existe o certificado para o domínio $domainName"}
+        Write-Output "Extraindo o DNS do load balancer $albName"
+        $lbDNS = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].DNSName" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
@@ -129,7 +109,7 @@ if ($resposta.ToLower() -eq 'y') {
                     `"Type`": `"CNAME`",
                     `"TTL`": 300,
                     `"ResourceRecords`": [
-                        {`"Value`": `"${resourceRecordValue}`"}
+                        {`"Value`": `"${lbDNS}`"}
                     ]
                     }
                 }

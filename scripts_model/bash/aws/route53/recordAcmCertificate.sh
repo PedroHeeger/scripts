@@ -2,7 +2,7 @@
 
 echo "***********************************************"
 echo "SERVIÇO: AMAZON ROUTE 53"
-echo "RECORD-HOSTED ZONE CREATION"
+echo "RECORD ACM CERTIFICATE-HOSTED ZONE CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
@@ -84,7 +84,7 @@ fi
 
 echo "***********************************************"
 echo "SERVIÇO: AMAZON ROUTE 53"
-echo "RECORD-HOSTED ZONE EXCLUSION"
+echo "RECORD ACM CERTIFICATE-HOSTED ZONE EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"

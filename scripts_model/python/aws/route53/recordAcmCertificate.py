@@ -4,7 +4,7 @@ import boto3
 
 print("***********************************************")
 print("SERVIÇO: AMAZON ROUTE 53")
-print("RECORD-HOSTED ZONE CREATION")
+print("RECORD ACM CERTIFICATE-HOSTED ZONE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
@@ -108,7 +108,7 @@ import boto3
 
 print("***********************************************")
 print("SERVIÇO: AMAZON ROUTE 53")
-print("RECORD-HOSTED ZONE EXCLUSION")
+print("RECORD ACM CERTIFICATE-HOSTED ZONE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
