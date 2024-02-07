@@ -14,6 +14,9 @@ task_name = "taskEC2Test1"
 task_version = "7"
 task_amount = 3
 launch_type = "EC2"
+tg_name = "tgTest1"
+container_name1 = "containerTest1"
+container_port1 = 8080
 
 resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
@@ -35,7 +38,14 @@ if resposta.lower() == 'y':
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando todos os serviços ativos no cluster {cluster_name}")
             active_service_arns = [s['serviceArn'] for s in services if s.get('status') == 'ACTIVE']
-               
+
+            # print("-----//-----//-----//-----//-----//-----//-----")
+            # print(f"Extraindo o ARN do target group {tg_name}")
+            # tg_arn = boto3.client('elbv2').describe_target_groups(
+            #     query=f"TargetGroups[?TargetGroupName=='{tg_name}'].TargetGroupArn",
+            #     output='text'
+            # )
+
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Criando o serviço de nome {service_name} no cluster {cluster_name}")
             boto3.client('ecs').create_service(
@@ -47,6 +57,26 @@ if resposta.lower() == 'y':
                 schedulingStrategy="REPLICA",
                 deploymentConfiguration={'minimumHealthyPercent': 25, 'maximumPercent': 200}
             )
+               
+            # print("-----//-----//-----//-----//-----//-----//-----")
+            # print(f"Criando o serviço de nome {service_name} no cluster {cluster_name}")
+            # boto3.client('ecs').create_service(
+            #     cluster=cluster_name,
+            #     serviceName=service_name,
+            #     taskDefinition=f"{task_name}:{task_version}",
+            #     desiredCount=task_amount,
+            #     launchType=launch_type,
+            #     schedulingStrategy="REPLICA",
+            #     deploymentConfiguration={'minimumHealthyPercent': 25, 'maximumPercent': 200},
+            #     loadBalancers=[
+            #         {
+            #             'targetGroupArn': tg_arn,
+            #             'containerName': container_name1,
+            #             'containerPort': container_port1
+            #         }
+            #     ],
+            #     placementConstraints=[{'type': 'distinctInstance'}]
+            # )
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando o serviço de nome {service_name} no cluster {cluster_name}")
@@ -56,6 +86,8 @@ if resposta.lower() == 'y':
         print(f"Erro: {e}")
 else:
     print("Código não executado")
+
+
 
 
 #!/usr/bin/env python

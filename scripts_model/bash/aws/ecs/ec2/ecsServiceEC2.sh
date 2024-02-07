@@ -12,6 +12,9 @@ taskName="taskEC2Test1"
 taskVersion="1"
 taskAmount=2
 launchType="EC2"
+tgName="tgTest1"
+containerName1="containerTest1"
+containerPort1=8080
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n): " resposta
@@ -35,10 +38,18 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os serviços no cluster $clusterName"
         aws ecs list-services --cluster $clusterName --query "serviceArns" --output text
+
+        # echo "-----//-----//-----//-----//-----//-----//-----"
+        # echo "Extraindo o ARN do target group $tgName"
+        # tgArn=$(aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text)
    
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o serviço de nome $serviceName no cluster $clusterName"
-        aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --scheduling-strategy REPLICA --deployment-configuration minimumHealthyPercent=25,maximumPercent=200 --no-cli-pager
+        aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --scheduling-strategy REPLICA --deployment-configuration "minimumHealthyPercent=25,maximumPercent=200" --no-cli-pager
+
+        # echo "-----//-----//-----//-----//-----//-----//-----"
+        # echo "Criando o serviço de nome $serviceName no cluster $clusterName"
+        # aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --scheduling-strategy REPLICA --deployment-configuration "minimumHealthyPercent=25,maximumPercent=200" --load-balancers "targetGroupArn=$tgArn,containerName=$containerName1,containerPort=$containerPort1" --placement-constraints "type=distinctInstance" --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o serviço de nome $serviceName no cluster $clusterName"

@@ -12,7 +12,9 @@ $taskName = "taskEC2Test1"
 $taskVersion = "6"
 $taskAmount = 2
 $launchType = "EC2"
-
+$tgName = "tgTest1"
+$containerName1 = "containerTest1"
+$containerPort1 = 8080
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -34,10 +36,18 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os serviços no cluster $clusterName"
         aws ecs list-services --cluster $clusterName --query "serviceArns" --output text
+
+        # Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        # Write-Output "Extraindo o ARN do target group $tgName"
+        # $tgArn = aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName=='$tgName'].TargetGroupArn" --output text
    
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando o serviço de nome $serviceName no cluster $clusterName"
-        aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --scheduling-strategy REPLICA --deployment-configuration minimumHealthyPercent=25,maximumPercent=200 --no-cli-pager
+        aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --scheduling-strategy REPLICA --deployment-configuration "minimumHealthyPercent=25,maximumPercent=200" --no-cli-pager
+
+        # Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        # Write-Output "Criando o serviço de nome $serviceName no cluster $clusterName"
+        # aws ecs create-service --cluster $clusterName --service-name $serviceName --task-definition "${taskName}:${taskVersion}" --desired-count $taskAmount --launch-type $launchType --scheduling-strategy REPLICA --deployment-configuration "minimumHealthyPercent=25,maximumPercent=200" --load-balancers "targetGroupArn=$tgArn,containerName=$containerName1,containerPort=$containerPort1" --placement-constraints "type=distinctInstance" --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o serviço de nome $serviceName no cluster $clusterName"
