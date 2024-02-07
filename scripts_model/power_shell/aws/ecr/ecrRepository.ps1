@@ -56,6 +56,28 @@ if ($resposta.ToLower() -eq 'y') {
         aws ecr describe-repositories --query "repositories[].repositoryName" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Verificando se existe a imagem do repositório de nome $repositoryName"
+        if ((aws ecr describe-images --repository-name $repositoryName --query "imageDetails[].imageTags").Count -gt 1) {
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "Obtendo a lista de tags da imagem do repositório de nome $repositoryName"
+            $imageTags = aws ecr describe-images --repository-name $repositoryName --query "imageDetails[].imageTags" --output text
+
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "Iterando na lista de tags"
+            foreach ($imageTag in $imageTags.Split()) {
+                if ($imageTag -ne "") {
+                #   Write-Output "-----//-----//-----//-----//-----//-----//-----"
+                #   Write-Output "Extraindo a tag da imagem"
+                #   $tag = aws ecr describe-images --repository-name $repositoryName --query "imageDetails[?imageTags=='$imageTag'].imageTags" --output text
+  
+                  Write-Output "-----//-----//-----//-----//-----//-----//-----"
+                  Write-Output "Removendo a imagem de tag $imageTag do repositório de nome $repositoryName"
+                  aws ecr batch-delete-image --repository-name $repositoryName --image-ids imageTag=$imageTag
+                }
+            }
+        } else {Write-Output "Não existe imagens no repositório $repositoryName"}
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Removendo o repositório de nome $repositoryName"
         aws ecr delete-repository --repository-name $repositoryName
 

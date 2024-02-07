@@ -19,7 +19,7 @@ if resposta == 'y':
     client = boto3.client('ecr')
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe a image de tag {image_tag} do repositório {repository_name}")
+    print(f"Verificando se existe a imagem de tag {image_tag} do repositório {repository_name}")
     images = client.describe_images(repositoryName=repository_name, filter={'tagStatus': 'TAGGED'})
     filtered_images = [image['imageTags'] for image in images['imageDetails'] if image_tag in image.get('imageTags', [])]
 
@@ -31,7 +31,7 @@ if resposta == 'y':
         print("\n".join(all_tags))
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo a image de tag {image_tag} do repositório {repository_name}")
+        print(f"Removendo a imagem de tag {image_tag} do repositório {repository_name}")
         response = client.batch_delete_image(repositoryName=repository_name, imageIds=[{'imageTag': image_tag}])
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -40,6 +40,6 @@ if resposta == 'y':
         all_tags_after_delete = [tag for image in all_images_after_delete for tag in image.get('imageTags', [])]
         print("\n".join(all_tags_after_delete))
     else:
-        print(f"Não existe a image de tag {image_tag} do repositório {repository_name}")
+        print(f"Não existe a imagem de tag {image_tag} do repositório {repository_name}")
 else:
     print("Código não executado")
