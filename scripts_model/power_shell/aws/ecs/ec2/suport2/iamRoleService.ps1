@@ -63,19 +63,41 @@ $roleName = "ecs-ec2InstanceRole"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
-    Write-Output "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "Verificando se existe a role de nome $roleName"
-    if ((aws iam list-roles --query "Roles[?RoleName=='$roleName'].RoleName").Count -gt 1) {
-        Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando todas as roles criadas"
-        aws iam list-roles --query 'Roles[].RoleName' --output text
+  Write-Output "-----//-----//-----//-----//-----//-----//-----"
+  Write-Output "Verificando se existe a role de nome $roleName"
+  if ((aws iam list-roles --query "Roles[?RoleName=='$roleName'].RoleName").Count -gt 1) {
+      Write-Output "-----//-----//-----//-----//-----//-----//-----"
+      Write-Output "Listando todas as roles criadas"
+      aws iam list-roles --query 'Roles[].RoleName' --output text
 
-        Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Removendo a role de nome $roleName"
-        aws iam delete-role --role-name $roleName
+      Write-Output "-----//-----//-----//-----//-----//-----//-----"
+      Write-Output "Obtendo a lista de ARNs de policies anexadas à role de nome $roleName"
+      $attachedPolicies = aws iam list-attached-role-policies --role-name $roleName --query 'AttachedPolicies[*].PolicyArn' --output text
 
+      Write-Output "-----//-----//-----//-----//-----//-----//-----"
+      Write-Output "Verificando se a lista de ARNs de policies anexadas à role de nome $roleName está vazia"
+      if ($null -ne $attachedPolicies -and $attachedPolicies -ne "") {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando todas as roles criadas"
-        aws iam list-roles --query 'Roles[].RoleName' --output text
-    } else {Write-Output "Não existe a role de nome $roleName"}
+        Write-Output "Iterando na lista de policies"
+        foreach ($policyArn in $attachedPolicies.Split("`n")) {
+            if ($policyArn -ne "") {
+              Write-Output "-----//-----//-----//-----//-----//-----//-----"
+              Write-Output "Extraindo o nome da policy vinculada a role"
+              $policyName = aws iam list-policies --query "Policies[?Arn=='$policyArn'].PolicyName" --output text
+
+              Write-Output "-----//-----//-----//-----//-----//-----//-----"
+              Write-Output "Removendo a policy $policyName da role de nome $roleName"
+              aws iam detach-role-policy --role-name $roleName --policy-arn $policyArn
+            }
+        }
+      } else {Write-Output "Não existe policies anexadas à role de nome $roleName"}
+
+      Write-Output "-----//-----//-----//-----//-----//-----//-----"
+      Write-Output "Removendo a role de nome $roleName"
+      aws iam delete-role --role-name $roleName
+
+      Write-Output "-----//-----//-----//-----//-----//-----//-----"
+      Write-Output "Listando todas as roles criadas"
+      aws iam list-roles --query 'Roles[].RoleName' --output text
+  } else {Write-Output "Não existe a role de nome $roleName"}
 } else {Write-Host "Código não executado"}
