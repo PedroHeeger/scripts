@@ -17,6 +17,8 @@ key_pair = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 user_data_file = "udFile.sh"
 sg_name = "default"
+instance_profile_name = "instanceProfileTest"
+cluster_name = "clusterEC2Test1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
@@ -37,64 +39,79 @@ if response.lower() == 'y':
         print(launch_templates[0]['LaunchTemplateName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo a última versão do modelo de implantação de nome {launch_temp_name}")
-        latest_version = int(launch_templates[0]['DefaultVersionNumber']) + 1
-        version_number = str(latest_version)
+        response = input("Quer implementar uma nova versão? (y/n) ")
+        if response.lower() == 'y':
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Extraindo a última versão do modelo de implantação de nome {launch_temp_name}")
+            latest_version = int(launch_templates[0]['DefaultVersionNumber']) + 1
+            version_number = str(latest_version)
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando todas as versões do modelo de implantação de nome {launch_temp_name}")
-        launch_template_versions = ec2_client.describe_launch_template_versions(
-            LaunchTemplateName=launch_temp_name
-        )['LaunchTemplateVersions']
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Listando todas as versões do modelo de implantação de nome {launch_temp_name}")
+            launch_template_versions = ec2_client.describe_launch_template_versions(
+                LaunchTemplateName=launch_temp_name
+            )['LaunchTemplateVersions']
 
-        for version in launch_template_versions:
-            print(f"{version['LaunchTemplateName']} {version['VersionNumber']}")
+            for version in launch_template_versions:
+                print(f"{version['LaunchTemplateName']} {version['VersionNumber']}")
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print("Extraindo o ID do security group")
-        sg_id = ec2_client.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print("Extraindo o ID do security group")
+            sg_id = ec2_client.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print("Codificando o arquivo user data em Base64")
-        with open(f"{user_data_path}/{user_data_file}", 'rb') as file:
-            ud_file_base64 = base64.b64encode(file.read()).decode('utf-8')
+            # print("-----//-----//-----//-----//-----//-----//-----")
+            # print("Extraindo a ARN do instance profile")
+            # instance_profile_arn = boto3.client('iam').list_instance_profiles(InstanceProfileName=instance_profile_name)['InstanceProfiles'][0]['Arn']
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando o launch template (modelo de implantação) de nome {launch_temp_name} na versão {version_number}")
-        ec2_client.create_launch_template_version(
-            LaunchTemplateName=launch_temp_name,
-            VersionDescription=version_description,
-            LaunchTemplateData={
-                "ImageId": ami_id,
-                "InstanceType": instance_type,
-                "KeyName": key_pair,
-                "UserData": ud_file_base64,
-                "SecurityGroupIds": [sg_id],
-                "BlockDeviceMappings": [
-                    {
-                        "DeviceName": "/dev/xvda",
-                        "Ebs": {
-                            "VolumeSize": 8,
-                            "VolumeType": "gp2"
+            # print("-----//-----//-----//-----//-----//-----//-----")
+            # print("Codificando o arquivo user data em Base64")
+            # ud_file = "#!/bin/bash\necho ECS_CLUSTER={} >> /etc/ecs/ecs.config".format(cluster_name)
+            # ud_file_base64 = base64.b64encode(ud_file.encode('utf-8')).decode('utf-8')
+
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print("Codificando o arquivo user data em Base64")
+            with open(f"{user_data_path}/{user_data_file}", 'rb') as file:
+                ud_file_base64 = base64.b64encode(file.read()).decode('utf-8')
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Criando o launch template (modelo de implantação) de nome {launch_temp_name} na versão {version_number}")
+            ec2_client.create_launch_template_version(
+                LaunchTemplateName=launch_temp_name,
+                VersionDescription=version_description,
+                LaunchTemplateData={
+                    "ImageId": ami_id,
+                    "InstanceType": instance_type,
+                    "KeyName": key_pair,
+                    "UserData": ud_file_base64,
+                    "SecurityGroupIds": [sg_id],
+                    # "IamInstanceProfile": {
+                    #     "Arn": instance_profile_arn
+                    # },
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "VolumeSize": 8,
+                                "VolumeType": "gp2"
+                            }
                         }
-                    }
-                ]
-            }
-        )
+                    ]
+                }
+            )
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o modelo de implantação de nome {launch_temp_name} na versão {version_number}")
-        launch_template_versions = ec2_client.describe_launch_template_versions(
-            LaunchTemplateName=launch_temp_name
-        )['LaunchTemplateVersions']
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Listando o modelo de implantação de nome {launch_temp_name} na versão {version_number}")
+            launch_template_versions = ec2_client.describe_launch_template_versions(
+                LaunchTemplateName=launch_temp_name
+            )['LaunchTemplateVersions']
 
-        latest_version = max(
-            launch_template_versions,
-            key=lambda x: int(x['VersionNumber'])
-        )
+            latest_version = max(
+                launch_template_versions,
+                key=lambda x: int(x['VersionNumber'])
+            )
 
-        print(f"{latest_version['LaunchTemplateName']} {latest_version['VersionNumber']}")
-
+            print(f"{latest_version['LaunchTemplateName']} {latest_version['VersionNumber']}")
     else:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Definindo a versão como primeira do modelo de implantação de nome {launch_temp_name}")
@@ -110,6 +127,15 @@ if response.lower() == 'y':
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Extraindo o ID do security group")
         sg_id = ec2_client.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
+
+        # print("-----//-----//-----//-----//-----//-----//-----")
+        # print("Extraindo a ARN do instance profile")
+        # instance_profile_arn = boto3.client('iam').list_instance_profiles(InstanceProfileName=instance_profile_name)['InstanceProfiles'][0]['Arn']
+
+        # print("-----//-----//-----//-----//-----//-----//-----")
+        # print("Codificando o arquivo user data em Base64")
+        # ud_file = "#!/bin/bash\necho ECS_CLUSTER={} >> /etc/ecs/ecs.config".format(cluster_name)
+        # ud_file_base64 = base64.b64encode(ud_file.encode('utf-8')).decode('utf-8')
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Codificando o arquivo user data em Base64")
@@ -127,6 +153,9 @@ if response.lower() == 'y':
                 "KeyName": key_pair,
                 "UserData": ud_file_base64,
                 "SecurityGroupIds": [sg_id],
+                # "IamInstanceProfile": {
+                #     "Arn": instance_profile_arn
+                # },
                 "BlockDeviceMappings": [
                     {
                         "DeviceName": "/dev/xvda",

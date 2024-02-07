@@ -14,6 +14,8 @@ keyPair="keyPairUniversal"
 userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
 userDataFile="udFile.sh"
 sgName="default"
+instanceProfileName="instanceProfileTest"
+clusterName="clusterEC2Test1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -26,44 +28,59 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws ec2 describe-launch-templates --query "LaunchTemplates[?LaunchTemplateName=='$launchTempName'].LaunchTemplateName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo a última versão do modelo de implantação de nome $launchTempName"
-        latestVersion=$(aws ec2 describe-launch-templates --query "LaunchTemplates[?LaunchTemplateName=='$launchTempName'].LatestVersionNumber" --output text)
-        versionNumber=$((latestVersion + 1))
+        read -p "Quer implementar uma nova versão? (y/n) " resposta
+        if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Extraindo a última versão do modelo de implantação de nome $launchTempName"
+            latestVersion=$(aws ec2 describe-launch-templates --query "LaunchTemplates[?LaunchTemplateName=='$launchTempName'].LatestVersionNumber" --output text)
+            versionNumber=$((latestVersion + 1))
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando todas as versões do modelo de implantação de nome $launchTempName"
-        aws ec2 describe-launch-template-versions --launch-template-name $launchTempName --query "LaunchTemplateVersions[].[LaunchTemplateName,VersionNumber]" --output text
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando todas as versões do modelo de implantação de nome $launchTempName"
+            aws ec2 describe-launch-template-versions --launch-template-name $launchTempName --query "LaunchTemplateVersions[].[LaunchTemplateName,VersionNumber]" --output text
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo os IDs dos elementos de rede"
-        sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Extraindo os IDs dos elementos de rede"
+            sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Codificando o arquivo user data em Base64"
-        udFileBase64=$(base64 -w 0 "$userDataPath/$userDataFile")
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Extraindo a ARN do instance profile"
+            instanceProfileArn=$(aws iam list-instance-profiles --query "InstanceProfiles[?InstanceProfileName=='$instanceProfileName'].Arn" --output text)
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando o launch template (modelo de implantação) de nome $launchTempName na versão $versionNumber"
-        aws ec2 create-launch-template-version --launch-template-name $launchTempName --version-description "$versionDescription" --launch-template-data '{
-            "ImageId": "'"$amiId"'",
-            "InstanceType": "'"$instanceType"'",
-            "KeyName": "'"$keyPair"'",
-            "UserData": "'"$udFileBase64"'",
-            "SecurityGroupIds": ["'"$sgId"'"],
-            "BlockDeviceMappings": [
-            {
-                "DeviceName": "/dev/xvda",
-                "Ebs": {
-                "VolumeSize": 8,
-                "VolumeType": "gp2"
+            # echo "-----//-----//-----//-----//-----//-----//-----"
+            # echo "Codificando o arquivo user data em Base64"
+            # udFileBase64=$(echo -e "#!/bin/bash\necho ECS_CLUSTER=$clusterName >> /etc/ecs/ecs.config" | base64 -w 0)
+
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Codificando o arquivo user data em Base64"
+            udFileBase64=$(base64 -w 0 "$userDataPath/$userDataFile")
+
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Criando o launch template (modelo de implantação) de nome $launchTempName na versão $versionNumber"
+            aws ec2 create-launch-template-version --launch-template-name $launchTempName --version-description "$versionDescription" --launch-template-data '{
+                "ImageId": "'"$amiId"'",
+                "InstanceType": "'"$instanceType"'",
+                "KeyName": "'"$keyPair"'",
+                "UserData": "'"$udFileBase64"'",
+                "SecurityGroupIds": ["'"$sgId"'"],
+                # "IamInstanceProfile": {
+                #     "Arn": "'"$instanceProfileArn"'"
+                # },
+                "BlockDeviceMappings": [
+                {
+                    "DeviceName": "/dev/xvda",
+                    "Ebs": {
+                    "VolumeSize": 8,
+                    "VolumeType": "gp2"
+                    }
                 }
-            }
-            ]
-        }' --no-cli-pager
+                ]
+            }' --no-cli-pager
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando o modelo de implantação de nome $launchTempName na versão $versionNumber"
-        aws ec2 describe-launch-template-versions --launch-template-name $launchTempName --query "LaunchTemplateVersions[?to_string(VersionNumber)=='$versionNumber'].[LaunchTemplateName,VersionNumber]" --output text
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando o modelo de implantação de nome $launchTempName na versão $versionNumber"
+            aws ec2 describe-launch-template-versions --launch-template-name $launchTempName --query "LaunchTemplateVersions[?to_string(VersionNumber)=='$versionNumber'].[LaunchTemplateName,VersionNumber]" --output text
+        fi
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Definindo a versão como primeira do modelo de implantação de nome $launchTempName"
@@ -77,6 +94,14 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "Extraindo os IDs dos elementos de rede"
         sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
 
+        # echo "-----//-----//-----//-----//-----//-----//-----"
+        # echo "Extraindo a ARN do instance profile"
+        # instanceProfileArn=$(aws iam list-instance-profiles --query "InstanceProfiles[?InstanceProfileName=='$instanceProfileName'].Arn" --output text)
+
+        # echo "-----//-----//-----//-----//-----//-----//-----"
+        # echo "Codificando o arquivo user data em Base64"
+        # udFileBase64=$(echo -e "#!/bin/bash\necho ECS_CLUSTER=$clusterName >> /etc/ecs/ecs.config" | base64 -w 0)
+
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Codificando o arquivo user data em Base64"
         udFileBase64=$(base64 -w 0 "$userDataPath/$userDataFile")
@@ -89,6 +114,9 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
             "KeyName": "'"$keyPair"'",
             "UserData": "'"$udFileBase64"'",
             "SecurityGroupIds": ["'"$sgId"'"],
+            # "IamInstanceProfile": {
+            #     "Arn": "'"$instanceProfileArn"'"
+            # },
             "BlockDeviceMappings": [
                 {
                 "DeviceName": "/dev/xvda",
