@@ -29,7 +29,7 @@ if ($resposta.ToLower() -eq 'y') {
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando um fornecedor de capacidade de nome $capacityProviderName"
-        aws ecs create-capacity-provider --name $capacityProviderName --auto-scaling-group-provider "autoScalingGroupArn=$asgArn,managedScaling={status=ENABLED,targetCapacity=1},managedTerminationProtection=DISABLED" --no-cli-pager
+        aws ecs create-capacity-provider --name $capacityProviderName --auto-scaling-group-provider "autoScalingGroupArn=$asgArn,managedScaling={status=ENABLED,targetCapacity=100},managedTerminationProtection=DISABLED" --no-cli-pager
       
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o fornecedor de capacidade de nome $capacityProviderName"
