@@ -37,7 +37,6 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando as ARNs de todas as definições de tarefas criadas"
         aws ecs list-task-definitions --query taskDefinitionArns[] --output text
-        # aws ecs describe-task-definition --task-definition $taskName --query "taskDefinition.taskArn" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ARN da role $executionRoleName"
@@ -45,7 +44,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Registrando uma definição de tarefa de nome $taskName na revisão $revision"
-        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --placement-constraints "type=spread,field=attribute:ecs.availability-zone" --container-definitions "[
+        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform  cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
             {
                 `"name`": `"$containerName1`",
                 `"image`": `"$dockerImage1`",
@@ -122,12 +121,12 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "Verificando se existe a definição de tarefa de nome $taskName na revisão $revision"
     if ($condition -eq $revision) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando as ARNs de todas as definições de tarefas criadas"
+        Write-Output "Listando as ARNs de todas as definições de tarefas criadas ativas"
         aws ecs list-task-definitions --query taskDefinitionArns[] --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando a ARN da reivsão atual da definição de tarefa de nome $taskName"
-        aws ecs describe-task-definition --task-definition $taskName --query "taskDefinition.taskDefinitionArn" --output text
+        Write-Output "Listando as ARNs de todas as definições de tarefas criadas inativas"
+        aws ecs list-task-definitions --status INACTIVE --query taskDefinitionArns[] --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Removendo o registro da definição de tarefa de nome $taskName na revisão $revision"
@@ -138,7 +137,11 @@ if ($resposta.ToLower() -eq 'y') {
         aws ecs delete-task-definitions --task-definition ${taskName}:${revision} --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando as ARNs de todas as definições de tarefas criadas"
+        Write-Output "Listando as ARNs de todas as definições de tarefas criadas ativas"
         aws ecs list-task-definitions --query taskDefinitionArns[] --output text
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Listando as ARNs de todas as definições de tarefas criadas inativas"
+        aws ecs list-task-definitions --status INACTIVE --query taskDefinitionArns[] --output text
     } else {Write-Output "Não existe a definição de tarefa de nome $taskName na revisão $revision"}
 } else {Write-Host "Código não executado"}

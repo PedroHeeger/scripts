@@ -40,8 +40,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando as ARNs de todas as definições de tarefas criadas"
-        task_definition_arns=$(aws ecs list-task-definitions --query taskDefinitionArns[] --output text)
-        echo "$task_definition_arns"
+        aws ecs list-task-definitions --query taskDefinitionArns[] --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo o ARN da role $executionRoleName"
@@ -49,7 +48,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
             
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Registrando uma definição de tarefa de nome $taskName na revisão $revision"
-        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --placement-constraints "type=spread,field=attribute:ecs.availability-zone" --container-definitions "[
+        aws ecs register-task-definition --family $taskName --network-mode "bridge" --requires-compatibilities $launchType --execution-role-arn $executionRoleArn --cpu 256 --memory 512 --runtime-platform cpuArchitecture='X86_64',operatingSystemFamily='LINUX' --container-definitions "[
             {
                 \"name\": \"$containerName1\",
                 \"image\": \"$dockerImage1\",
@@ -138,10 +137,6 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando as ARNs de todas as definições de tarefas criadas inativas"
         aws ecs list-task-definitions --status INACTIVE --query taskDefinitionArns[] --output text
-
-        # echo "-----//-----//-----//-----//-----//-----//-----"
-        # echo "Listando a ARN da reivsão atual da definição de tarefa de nome $taskName"
-        # aws ecs describe-task-definition --task-definition "$taskName" --query "taskDefinition.taskDefinitionArn" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Removendo o registro da definição de tarefa de nome $taskName na revisão $revision"
