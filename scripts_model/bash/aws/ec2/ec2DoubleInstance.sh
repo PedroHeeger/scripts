@@ -13,7 +13,8 @@ sgName="default"
 aZ="us-east-1a"
 imageId="ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instanceType="t2.micro"
-keyPairName="keyPairUniveral"
+keyPairPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair"
+keyPairName="keyPairUniversal"
 userDataPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic"
 userDataFile="udFile.sh"
 device_name="/dev/sda1"
@@ -36,6 +37,16 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "Listando o IP público das instâncias ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceA}"
+        ipEc2A=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2A"
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceB}"
+        ipEc2B=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2B"
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o nome da tag de todas as instâncias EC2 criadas"
@@ -62,6 +73,16 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "Listando o IP público das instâncias ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceA}"
+        ipEc2A=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2A"
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceB}"
+        ipEc2B=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2B"
     fi
 else
     echo "Código não executado"

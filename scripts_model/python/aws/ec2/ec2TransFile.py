@@ -32,36 +32,36 @@ if resposta.lower() == 'y':
         instance = instances[0]
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Extraindo o IP público da instância de nome de tag {tag_name_instance}")
-        ipEc2 = instance.public_ip_address
+        ip_ec2 = instance.public_ip_address
 
         print("Exibindo o comando para acesso remoto via OpenSSH")
-        print(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" ubuntu@{ipEc2}')
+        print(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" ubuntu@{ip_ec2}')
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se a pasta {aws_cli_folder} já existe na instância de nome de tag {tag_name_instance}")
         cmd = f'test -d "{vm_path}/{aws_cli_folder}" && echo "true" || echo "false"'
-        folderExists = subprocess.getoutput(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no ubuntu@{ipEc2} "{cmd}"')
+        folder_exists = subprocess.getoutput(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no ubuntu@{ip_ec2} "{cmd}"')
 
-        if folderExists == 'true':
+        if folder_exists == 'true':
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"A pasta {aws_cli_folder} já existe na instância de nome de tag {tag_name_instance}. Transferência cancelada.")
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Transferindo a pasta {aws_cli_folder} para a instância de nome de tag {tag_name_instance}")
-            subprocess.run(f'scp -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no -r "{aws_cli_path}/{aws_cli_folder}" ubuntu@{ipEc2}:{vm_path}')
+            subprocess.run(f'scp -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no -r "{aws_cli_path}/{aws_cli_folder}" ubuntu@{ip_ec2}:{vm_path}')
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se a pasta {docker_folder} já existe na instância de nome de tag {tag_name_instance}")
         cmd = f'test -d "{vm_path}/{docker_folder}" && echo "true" || echo "false"'
-        folderExists = subprocess.getoutput(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no ubuntu@{ipEc2} "{cmd}"')
+        folder_exists = subprocess.getoutput(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no ubuntu@{ip_ec2} "{cmd}"')
 
-        if folderExists == 'true':
+        if folder_exists == 'true':
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"A pasta {docker_folder} já existe na instância de nome de tag {tag_name_instance}. Transferência cancelada.")
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Transferindo a pasta {docker_folder} para a instância de nome de tag {tag_name_instance}")
-            subprocess.run(f'scp -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no -r "{docker_path}/{docker_folder}" ubuntu@{ipEc2}:{vm_path}')
+            subprocess.run(f'scp -i "{key_pair_path}/{key_pair_name}.pem" -o StrictHostKeyChecking=no -r "{docker_path}/{docker_folder}" ubuntu@{ip_ec2}:{vm_path}')
     else:
         print(f"Não existe instâncias com o nome de tag {tag_name_instance}")
 else:

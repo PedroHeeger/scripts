@@ -14,6 +14,7 @@ sg_name = "default"
 aZ = "us-east-1a"
 image_id = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instance_type = "t2.micro"
+key_pair_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair"
 key_pair_name = "keyPairUniversal"
 user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic"
 user_data_file = "udFile.sh"
@@ -40,6 +41,11 @@ if resposta.lower() == 'y':
             for instance in instances:
                 print(f"ID da Instância: {instance.id}")
                 print(f"IP Público: {instance.public_ip_address}")
+
+                print("-----//-----//-----//-----//-----//-----//-----")
+                print("Exibindo o comando para acesso remoto via OpenSSH")
+                ip_ec2 = instance.public_ip_address
+                print(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" ubuntu@{ip_ec2}')
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
             print("Listando o nome da tag de todas as instâncias EC2 criadas")
@@ -121,6 +127,11 @@ if resposta.lower() == 'y':
             for instance in instances:
                 print(f"ID da Instância: {instance.id}")
                 print(f"IP Público: {instance.public_ip_address}")
+
+                print("-----//-----//-----//-----//-----//-----//-----")
+                print("Exibindo o comando para acesso remoto via OpenSSH")
+                ip_ec2 = instance.public_ip_address
+                print(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" ubuntu@{ip_ec2}')
 
     except ClientError as e:
         print(f"Erro ao interagir com a AWS: {e}")
