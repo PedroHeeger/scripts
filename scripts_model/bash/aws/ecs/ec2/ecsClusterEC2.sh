@@ -16,26 +16,46 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o cluster de nome $clusterName"
-    if [ "$(aws ecs list-clusters --query "clusterArns[?contains(@, '${clusterArn}')]" --output text | wc -l)" -gt 1 ]; then
+    if [ $(aws ecs list-clusters --query "clusterArns[?contains(@, '${clusterArn}')]" | wc -l) -gt 1 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Já existe o cluster de nome $clusterName"
-        aws ecs describe-clusters --clusters $clusterArn --query "clusters[].clusterName[]" --output text
-        # Split-Path (aws ecs list-clusters --query "clusterArns[?clusterArns==`"${clusterArn}`"]" --output text) -Leaf
-        # aws ecs list-clusters --query "clusterArns[?contains(@, '${clusterArn}')]" --output text
+        echo "Verificando se o cluster de nome $clusterName está ativo"
+        if [ $(aws ecs describe-clusters --clusters $clusterArn --query "clusters[?status=='ACTIVE'].clusterName" | wc -l) -gt 1 ]; then
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Já existe o cluster de nome $clusterName"
+            aws ecs describe-clusters --clusters $clusterArn --query "clusters[].clusterName[]" --output text
+        else
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando as ARNs de todos os clusters criados"
+            aws ecs list-clusters --query clusterArns[] --output text
+        
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Criando um cluster de nome $clusterName"
+            aws ecs create-cluster --cluster-name $clusterName --settings "name=containerInsights,value=enabled" --no-cli-pager
+
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando o cluster de nome $clusterName"
+            aws ecs describe-clusters --clusters $clusterArn --query "clusters[].clusterName[]" --output text
+        fi
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando as ARNs de todos os clusters criados"
-        aws ecs list-clusters --query clusterArns[] --output text
-    
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando um cluster de nome $clusterName"
-        aws ecs create-cluster --cluster-name $clusterName --settings "name=containerInsights,value=enabled" --no-cli-pager
+        echo "Verificando se o cluster de nome $clusterName está ativo"
+        if [ $(aws ecs describe-clusters --clusters $clusterArn --query "clusters[?status=='ACTIVE'].clusterName" | wc -l) -gt 1 ]; then
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Já existe o cluster de nome $clusterName"
+            aws ecs describe-clusters --clusters $clusterArn --query "clusters[].clusterName[]" --output text
+        else
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando as ARNs de todos os clusters criados"
+            aws ecs list-clusters --query clusterArns[] --output text
+        
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Criando um cluster de nome $clusterName"
+            aws ecs create-cluster --cluster-name $clusterName --settings "name=containerInsights,value=enabled" --no-cli-pager
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando o cluster de nome $clusterName"
-        aws ecs describe-clusters --clusters $clusterArn --query "clusters[].clusterName[]" --output text
-        # Split-Path (aws ecs list-clusters --query "clusterArns[?clusterArns==`"${clusterArn}`"]" --output text) -Leaf
-        # aws ecs list-clusters --query "clusterArns[?contains(@, '${clusterArn}')]" --output text
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando o cluster de nome $clusterName"
+            aws ecs describe-clusters --clusters $clusterArn --query "clusters[].clusterName[]" --output text
+        fi
     fi
 else
     echo "Código não executado"
@@ -52,30 +72,47 @@ echo "CLUSTER EC2 EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-cluster_name="clusterEC2Test1"
+clusterName="clusterEC2Test1"
 region="us-east-1"
-account_id="001727357081"
-cluster_arn="arn:aws:ecs:${region}:${account_id}:cluster/${cluster_name}"
+accountId="001727357081"
+clusterArn="arn:aws:ecs:${region}:${accountId}:cluster/${clusterName}"
+logGroupName="/aws/ecs/containerinsights/${clusterName}/performance"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o cluster de nome $cluster_name"
-    if [ $(aws ecs list-clusters --query "clusterArns[?contains(@, '${cluster_arn}')]" --output text | wc -w) -gt 1 ]; then
+    echo "Verificando se existe o cluster de nome $clusterName"
+    if [ $(aws ecs list-clusters --query "clusterArns[?contains(@, '${clusterArn}')]" | wc -l) -gt 1 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando as ARNs de todos os clusters criados"
-        aws ecs list-clusters --query clusterArns[] --output text
+        echo "Verificando se o cluster de nome $clusterName está ativo"
+        if [ $(aws ecs describe-clusters --clusters $clusterArn --query "clusters[?status=='ACTIVE'].clusterName" | wc -l) -gt 1 ]; then
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando as ARNs de todos os clusters criados"
+            aws ecs list-clusters --query clusterArns[] --output text
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Removendo o cluster de nome $cluster_name"
-        aws ecs delete-cluster --cluster $cluster_name --no-cli-pager
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Removendo o cluster de nome $clusterName"
+            aws ecs delete-cluster --cluster $clusterName --no-cli-pager
 
-        echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando as ARNs de todos os clusters criados"
-        aws ecs list-clusters --query clusterArns[] --output text
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Verificando se existe o log group de nome $logGroupName"
+            if [ $(aws logs describe-log-groups --query "logGroups[?logGroupName=='$logGroupName'].logGroupName" | wc -l) -gt 1 ]; then
+                echo "-----//-----//-----//-----//-----//-----//-----"
+                echo "Removendo o log group de nome $logGroupName"
+                aws logs delete-log-group --log-group-name $logGroupName
+            else
+                echo "Não existe o log group de nome $logGroupName"
+            fi
+
+            echo "-----//-----//-----//-----//-----//-----//-----"
+            echo "Listando as ARNs de todos os clusters criados"
+            aws ecs list-clusters --query clusterArns[] --output text
+        else
+            echo "O cluster de nome $clusterName não está ativo"
+        fi
     else
-        echo "Não existe o cluster de nome $cluster_name"
+        echo "Não existe o cluster de nome $clusterName"
     fi
 else
     echo "Código não executado"
