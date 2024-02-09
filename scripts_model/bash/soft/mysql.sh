@@ -20,7 +20,7 @@ if [ "$resposta" = "y" ] || [ "$resposta" = "Y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Instalando o pacote client"
-    sudo apt-get install -y mysql-clinet
+    sudo apt-get install -y mysql-client
 else 
     echo "Código não executado"
 fi
