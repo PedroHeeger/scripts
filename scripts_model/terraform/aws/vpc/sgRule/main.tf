@@ -66,6 +66,7 @@ data "aws_vpcs" "default" {
 data "aws_security_group" "default" {
   vpc_id = data.aws_vpcs.default.ids[0]                   # PARA VPC DEFAULT
 #   vpc_id = data.aws_vpcs.existing.ids[0]                    # PARA VPC CREATED
+  name = "default"
 }
 
 # # SG CREATED

@@ -46,6 +46,26 @@ scripts_model/terraform/aws/ec2/launchTemp/*
 
 
 
+scripts_model/terraform/aws/ecs/ec2/cluster/*
+!scripts_model/terraform/aws/ecs/ec2/cluster/main.tf
+
+scripts_model/terraform/aws/ecs/ec2/containerInstance/*
+!scripts_model/terraform/aws/ecs/ec2/containerInstance/main.tf
+
+scripts_model/terraform/aws/ecs/ec2/service/*
+!scripts_model/terraform/aws/ecs/ec2/service/main.tf
+
+scripts_model/terraform/aws/ecs/ec2/suport1/*
+!scripts_model/terraform/aws/ecs/ec2/suport1/main.tf
+
+scripts_model/terraform/aws/ecs/ec2/suport2/*
+!scripts_model/terraform/aws/ecs/ec2/suport2/main.tf
+
+scripts_model/terraform/aws/ecs/ec2/task/*
+!scripts_model/terraform/aws/ecs/ec2/task/main.tf
+
+
+
 scripts_model/terraform/aws/ecr/ecrRepository/*
 !scripts_model/terraform/aws/ecr/ecrRepository/main.tf
 
