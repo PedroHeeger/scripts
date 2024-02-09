@@ -4,17 +4,32 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "hosted_zone_name" {
+# variable "hostedZoneName" {
+#   description = "Nome da Zona de Hospedagem"
+#   default = "hosted-zone-test1.com.br."
+# }
+
+# variable "domainName" {
+#   description = "Nome de Domínio"
+#   default = "hosted-zone-test1.com.br"
+# }
+
+# variable "hostedZoneComment" {
+#   description = "Comentário da Zona de Hospedagem"
+#   default = "hostedZoneCommentTest1"
+# }
+
+variable "hostedZoneName" {
   description = "Nome da Zona de Hospedagem"
-  default = "hosted-zone-test1.com.br."
+  default = "pedroheeger.dev.br."
 }
 
-variable "domain_name" {
+variable "domainName" {
   description = "Nome de Domínio"
-  default = "hosted-zone-test1.com.br"
+  default = "pedroheeger.dev.br"
 }
 
-variable "hosted_zone_comment" {
+variable "hostedZoneComment" {
   description = "Comentário da Zona de Hospedagem"
   default = "hostedZoneCommentTest1"
 }
@@ -26,8 +41,8 @@ provider "aws" {
 }
 
 resource "aws_route53_zone" "main" {
-  name              = var.hosted_zone_name
-  comment           = var.hosted_zone_comment
+  name              = var.hostedZoneName
+  comment           = var.hostedZoneComment
 }
 
 

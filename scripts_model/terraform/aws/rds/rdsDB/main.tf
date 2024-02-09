@@ -71,11 +71,11 @@ provider "aws" {
 }
 
 
-data "aws_security_group" "sg" {
+data "aws_security_group" "default" {
   name = var.sg_name
 }
 
-data "aws_subnet" "subnet" {
+data "aws_subnet" "default" {
   availability_zone = var.az
 }
 
@@ -89,7 +89,7 @@ resource "aws_db_instance" "example" {
   password                = var.master_password
   allocated_storage       = var.allocated_storage
   storage_type            = var.storage_type
-  vpc_security_group_ids = [data.aws_security_group.sg.id]
+  vpc_security_group_ids = [data.aws_security_group.default.id]
   availability_zone       = var.az
   backup_retention_period = var.period_backup
   skip_final_snapshot     = true
