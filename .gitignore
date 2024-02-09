@@ -45,6 +45,8 @@ scripts_model/terraform/aws/ec2/launchTemp/*
 !scripts_model/terraform/aws/ec2/launchTemp/main.tf
 
 
+scripts_model/terraform/aws/ecs/ec2/capacityProvider/*
+!scripts_model/terraform/aws/ecs/ec2/capacityProvider/main.tf
 
 scripts_model/terraform/aws/ecs/ec2/cluster/*
 !scripts_model/terraform/aws/ecs/ec2/cluster/main.tf
