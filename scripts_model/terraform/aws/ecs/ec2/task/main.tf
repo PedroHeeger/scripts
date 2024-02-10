@@ -105,3 +105,9 @@ resource "aws_ecs_task_definition" "example" {
     }
   ])
 }
+
+resource "null_resource" "remove_old_task_definition" {
+  provisioner "local-exec" {
+    command = "aws ecs delete-task-definitions --task-definition ${aws_ecs_task_definition.example.family}:${aws_ecs_task_definition.example.revision}"
+  }
+}
