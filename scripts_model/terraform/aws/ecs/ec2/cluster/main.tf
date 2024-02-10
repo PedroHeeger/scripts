@@ -16,4 +16,9 @@ provider "aws" {
 
 resource "aws_ecs_cluster" "example" {
   name = var.clusterName
+  
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
 }
