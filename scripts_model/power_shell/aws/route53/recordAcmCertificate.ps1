@@ -6,8 +6,11 @@ Write-Output "RECORD ACM CERTIFICATE-HOSTED ZONE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$hostedZoneName = "hosted-zone-test1.com.br."
-$domainName = "hosted-zone-test1.com.br"
+# $hostedZoneName = "hosted-zone-test1.com.br."
+# $domainName = "hosted-zone-test1.com.br"
+$hostedZoneName = "pedroheeger.dev.br."
+$domainName = "pedroheeger.dev.br"
+
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -82,8 +85,10 @@ Write-Output "RECORD ACM CERTIFICATE-HOSTED ZONE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$hostedZoneName = "hosted-zone-test1.com.br."
-$domainName = "hosted-zone-test1.com.br"
+# $hostedZoneName = "hosted-zone-test1.com.br."
+# $domainName = "hosted-zone-test1.com.br"
+$hostedZoneName = "pedroheeger.dev.br."
+$domainName = "pedroheeger.dev.br"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

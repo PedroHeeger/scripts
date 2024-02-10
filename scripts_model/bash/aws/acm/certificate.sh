@@ -6,7 +6,8 @@ echo "CERTIFICATE CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-domainName="hosted-zone-test1.com.br"
+# domainName="hosted-zone-test1.com.br"
+domainName="pedroheeger.dev.br"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -45,7 +46,8 @@ echo "CERTIFICATE EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-domainName="hosted-zone-test1.com.br"
+# domainName="hosted-zone-test1.com.br"
+domainName="pedroheeger.dev.br"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

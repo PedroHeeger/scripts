@@ -8,7 +8,8 @@ print("CERTIFICATE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-domain_name = "hosted-zone-test2.com.br"
+# domain_name = "hosted-zone-test2.com.br"
+domain_name = "pedroheeger.dev.br"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -63,7 +64,8 @@ print("CERTIFICATE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-domain_name = "hosted-zone-test2.com.br"
+# domain_name = "hosted-zone-test2.com.br"
+domain_name = "pedroheeger.dev.br"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")

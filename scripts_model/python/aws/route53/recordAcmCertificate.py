@@ -8,8 +8,10 @@ print("RECORD ACM CERTIFICATE-HOSTED ZONE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-hosted_zone_name = "hosted-zone-test2.com.br."
-domain_name = "hosted-zone-test2.com.br"
+# hosted_zone_name = "hosted-zone-test2.com.br."
+# domain_name = "hosted-zone-test2.com.br"
+hosted_zone_name = "pedroheeger.dev.br."
+domain_name = "pedroheeger.dev.br"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
@@ -112,8 +114,10 @@ print("RECORD ACM CERTIFICATE-HOSTED ZONE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-hosted_zone_name = "hosted-zone-test2.com.br."
-domain_name = "hosted-zone-test2.com.br"
+# hosted_zone_name = "hosted-zone-test2.com.br."
+# domain_name = "hosted-zone-test2.com.br"
+hosted_zone_name = "pedroheeger.dev.br."
+domain_name = "pedroheeger.dev.br"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")

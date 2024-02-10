@@ -6,7 +6,8 @@ Write-Output "CERTIFICATE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$domainName = "hosted-zone-test1.com.br"
+# $domainName = "hosted-zone-test1.com.br"
+$domainName = "pedroheeger.dev.br"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -43,7 +44,8 @@ Write-Output "CERTIFICATE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$domainName = "hosted-zone-test1.com.br"
+# $domainName = "hosted-zone-test1.com.br"
+$domainName = "pedroheeger.dev.br"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

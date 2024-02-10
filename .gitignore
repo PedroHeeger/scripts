@@ -45,6 +45,10 @@ scripts_model/terraform/aws/ec2/launchTemp/*
 !scripts_model/terraform/aws/ec2/launchTemp/main.tf
 
 
+
+scripts_model/terraform/aws/ecs/complete/ec2/*
+!scripts_model/terraform/aws/ecs/complete/ec2/main.tf
+
 scripts_model/terraform/aws/ecs/ec2/capacityProvider/*
 !scripts_model/terraform/aws/ecs/ec2/capacityProvider/main.tf
 
@@ -102,6 +106,9 @@ scripts_model/terraform/aws/rds/rdsDB/*
 
 scripts_model/terraform/aws/route53/hostedZone/*
 !scripts_model/terraform/aws/route53/hostedZone/main.tf
+
+scripts_model/terraform/aws/route53/recordLb/*
+!scripts_model/terraform/aws/route53/recordLb/main.tf
 
 scripts_model/terraform/aws/vpc/vpc/*
 !scripts_model/terraform/aws/vpc/vpc/main.tf

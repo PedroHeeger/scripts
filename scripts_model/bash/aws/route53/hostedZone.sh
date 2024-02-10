@@ -6,8 +6,10 @@ echo "HOSTED ZONE CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-hostedZoneName="hosted-zone-test1.com.br."
-domainName="hosted-zone-test1.com.br"
+# hostedZoneName="hosted-zone-test1.com.br."
+# domainName="hosted-zone-test1.com.br"
+hostedZoneName="pedroheeger.dev.br."
+domainName="pedroheeger.dev.br"
 hostedZoneReference="hostedZoneReferenceTest1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -47,7 +49,8 @@ echo "HOSTED ZONE EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-hostedZoneName="hosted-zone-test1.com.br."
+# hostedZoneName="hosted-zone-test1.com.br."
+hostedZoneName="pedroheeger.dev.br."
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

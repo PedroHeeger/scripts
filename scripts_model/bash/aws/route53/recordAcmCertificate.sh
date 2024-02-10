@@ -6,8 +6,10 @@ echo "RECORD ACM CERTIFICATE-HOSTED ZONE CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-hostedZoneName="hosted-zone-test1.com.br."
-domainName="hosted-zone-test1.com.br"
+# hostedZoneName="hosted-zone-test1.com.br."
+# domainName="hosted-zone-test1.com.br"
+hostedZoneName="pedroheeger.dev.br."
+domainName="pedroheeger.dev.br"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -88,8 +90,10 @@ echo "RECORD ACM CERTIFICATE-HOSTED ZONE EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-hostedZoneName="hosted-zone-test1.com.br."
-domainName="hosted-zone-test1.com.br"
+# hostedZoneName="hosted-zone-test1.com.br."
+# domainName="hosted-zone-test1.com.br"
+hostedZoneName="pedroheeger.dev.br."
+domainName="pedroheeger.dev.br"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
