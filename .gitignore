@@ -71,6 +71,28 @@ scripts_model/terraform/aws/ecs/ec2/task/*
 !scripts_model/terraform/aws/ecs/ec2/task/main.tf
 
 
+scripts_model/terraform/aws/ecs/fargate/cluster/*
+!scripts_model/terraform/aws/ecs/fargate/cluster/main.tf
+
+scripts_model/terraform/aws/ecs/fargate/service/*
+!scripts_model/terraform/aws/ecs/fargate/service/main.tf
+
+scripts_model/terraform/aws/ecs/fargate/suport1/*
+!scripts_model/terraform/aws/ecs/fargate/suport1/main.tf
+
+scripts_model/terraform/aws/ecs/fargate/task/*
+!scripts_model/terraform/aws/ecs/fargate/task/main.tf
+
+
+
+
+
+
+
+
+
+
+
 
 scripts_model/terraform/aws/ecr/ecrRepository/*
 !scripts_model/terraform/aws/ecr/ecrRepository/main.tf

@@ -1,3 +1,4 @@
+# Definindo Variáveis
 variable "region" {
   description = "Região da AWS"
   default     = "us-east-1"
@@ -7,6 +8,7 @@ variable "clusterName" {
   description = "Nome da cluster"
   default     = "clusterEC2Test1"
 }
+
 
 
 # Executando o código
