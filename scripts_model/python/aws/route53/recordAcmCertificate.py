@@ -51,7 +51,7 @@ if resposta.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe o registro de nome {resource_record_name} na hosted zone {hosted_zone_name}")
-        response_resource_record_sets = route53.list_resource_record_sets(HostedZoneId=hosted_zone_id, StartRecordName=resource_record_name, StartRecordType='CNAME', MaxItems='1')
+        response_resource_record_sets = route53.list_resource_record_sets(HostedZoneId=hosted_zone_id, StartRecordName=f"{resource_record_name}.", StartRecordType='CNAME', MaxItems='1')
 
         if response_resource_record_sets['ResourceRecordSets']:
             existing_record_name = response_resource_record_sets['ResourceRecordSets'][0]['Name']
@@ -92,7 +92,7 @@ if resposta.lower() == 'y':
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando o registro de nome {resource_record_name} na hosted zone {hosted_zone_name}")
-            response_created_record = route53.list_resource_record_sets(HostedZoneId=hosted_zone_id, StartRecordName=resource_record_name, StartRecordType='CNAME', MaxItems='1')
+            response_created_record = route53.list_resource_record_sets(HostedZoneId=hosted_zone_id, StartRecordName=f"{resource_record_name}.", StartRecordType='CNAME', MaxItems='1')
 
             created_record_name = response_created_record['ResourceRecordSets'][0]['Name']
             print(created_record_name)
@@ -157,7 +157,7 @@ if resposta.lower() == 'y':
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe o registro de nome {resource_record_name} na hosted zone {hosted_zone_name}")
 
-        response_resource_record_sets = route53.list_resource_record_sets(HostedZoneId=hosted_zone_id, StartRecordName=resource_record_name, StartRecordType='CNAME', MaxItems='1')
+        response_resource_record_sets = route53.list_resource_record_sets(HostedZoneId=hosted_zone_id, StartRecordName=f"{resource_record_name}.", StartRecordType='CNAME', MaxItems='1')
 
         if response_resource_record_sets['ResourceRecordSets']:
             existing_record_name = response_resource_record_sets['ResourceRecordSets'][0]['Name']

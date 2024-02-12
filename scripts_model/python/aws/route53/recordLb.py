@@ -34,7 +34,7 @@ if resposta.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe o registro de nome {resource_record_name} na hosted zone {hosted_zone_name}")
-        resource_records = route53_client.list_resource_record_sets(HostedZoneId=hostedZoneId, StartRecordName=resource_record_name, StartRecordType='CNAME')['ResourceRecordSets']
+        resource_records = route53_client.list_resource_record_sets(HostedZoneId=hostedZoneId, StartRecordName=f"{resource_record_name}.", StartRecordType='CNAME')['ResourceRecordSets']
 
         if resource_records:
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -66,7 +66,7 @@ if resposta.lower() == 'y':
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando o registro de nome {resource_record_name} na hosted zone {hosted_zone_name}")
-            new_resource_records = route53_client.list_resource_record_sets(HostedZoneId=hostedZoneId, StartRecordName=resource_record_name, StartRecordType='CNAME')['ResourceRecordSets']
+            new_resource_records = route53_client.list_resource_record_sets(HostedZoneId=hostedZoneId, StartRecordName=f"{resource_record_name}.", StartRecordType='CNAME')['ResourceRecordSets']
             print(new_resource_records[0]['Name'])
     else:
         print(f"Não existe a hosted zone de nome {hosted_zone_name}")
@@ -113,7 +113,7 @@ if resposta.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe o registro de nome {resource_record_name} na hosted zone {hosted_zone_name}")
-        resource_records = route53_client.list_resource_record_sets(HostedZoneId=hostedZoneId, StartRecordName=resource_record_name, StartRecordType='CNAME')['ResourceRecordSets']
+        resource_records = route53_client.list_resource_record_sets(HostedZoneId=hostedZoneId, StartRecordName=f"{resource_record_name}.", StartRecordType='CNAME')['ResourceRecordSets']
 
         if resource_records:
             print("-----//-----//-----//-----//-----//-----//-----")

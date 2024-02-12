@@ -27,10 +27,10 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Verificando se existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
-        if [ $(aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName'].Name" --output text | wc -l) -gt 1 ]; then
+        if [ $(aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text | wc -l) -gt 1 ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Já existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
-            aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName'].Name" --output text
+            aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text
         else
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Listando todos os registros da hosted zone $hostedZoneName"
@@ -56,7 +56,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Listando o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
-            aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName'].Name" --output text
+            aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text
         fi
     else
         echo "Não existe a hosted zone de nome $hostedZoneName"
@@ -97,7 +97,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Verificando se existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
-        if [ $(aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName'].Name" --output text | wc -l) -gt 1 ]; then
+        if [ $(aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text | wc -l) -gt 1 ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Listando todos os registros da hosted zone $hostedZoneName"
             aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[].Name" --output text
