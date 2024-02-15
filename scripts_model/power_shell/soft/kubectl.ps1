@@ -4,13 +4,6 @@ Write-Output "***********************************************"
 Write-Output "KUBECTL INSTALLATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
-Write-Output "Definindo variáveis"
-$link = "https://winscp.net/download/WinSCP-6.1.2-Setup.exe"
-$downloadFolder = "C:\zProgramsTI\zdownloads"
-$file = "WinSCP-6.1.2-Setup.exe"
-$installDir = "C:\zProgramsTI\winscp"
-
-Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
