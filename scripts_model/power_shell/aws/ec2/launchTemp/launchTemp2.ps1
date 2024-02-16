@@ -16,6 +16,9 @@ $userDataFile = "udFile.sh"
 $sgName = "default"
 $aZ1 = "us-east-1a"
 $tagNameInstance = "ec2Test"
+$deviceName = "/dev/xvda"
+$volumeSize = 8
+$volumeType = "gp2"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -65,10 +68,10 @@ if ($resposta.ToLower() -eq 'y') {
             ],
             `"BlockDeviceMappings`": [
               {
-                `"DeviceName`": `"/dev/xvda`",
+                `"DeviceName`": `"$deviceName`",
                 `"Ebs`": {
-                  `"VolumeSize`": 8,
-                  `"VolumeType`": `"gp2`"
+                  `"VolumeSize`": $volumeSize,
+                  `"VolumeType`": `"$volumeType`"
                 }
               }
             ],
@@ -124,10 +127,10 @@ if ($resposta.ToLower() -eq 'y') {
             ],
             `"BlockDeviceMappings`": [
               {
-                `"DeviceName`": `"/dev/xvda`",
+                `"DeviceName`": `"$deviceName`",
                 `"Ebs`": {
-                  `"VolumeSize`": 8,
-                  `"VolumeType`": `"gp2`"
+                  `"VolumeSize`": $volumeSize,
+                  `"VolumeType`": `"$volumeType`"
                 }
               }
             ],

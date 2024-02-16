@@ -16,6 +16,9 @@ userDataFile="udFile.sh"
 sgName="default"
 instanceProfileName="instanceProfileTest"
 clusterName="clusterEC2Test1"
+deviceName="/dev/xvda"
+volumeSize=8
+volumeType="gp2"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -68,10 +71,10 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
                 # },
                 "BlockDeviceMappings": [
                 {
-                    "DeviceName": "/dev/xvda",
+                    "DeviceName": "'"$deviceName"'",
                     "Ebs": {
-                    "VolumeSize": 8,
-                    "VolumeType": "gp2"
+                    "VolumeSize": "'"$volumeSize"'",
+                    "VolumeType": "'"$volumeType"'"
                     }
                 }
                 ]
@@ -119,10 +122,10 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
             # },
             "BlockDeviceMappings": [
                 {
-                "DeviceName": "/dev/xvda",
+                "DeviceName": "'"$deviceName"'",
                 "Ebs": {
-                    "VolumeSize": 8,
-                    "VolumeType": "gp2"
+                    "VolumeSize": "'"$volumeSize"'",
+                    "VolumeType": "'"$volumeType"'"
                 }
                 }
             ]

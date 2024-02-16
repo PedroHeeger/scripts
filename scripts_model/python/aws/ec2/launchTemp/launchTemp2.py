@@ -19,6 +19,9 @@ user_data_file = "udFile.sh"
 sg_name = "default"
 aZ1 = "us-east-1a"
 tag_name_instance = "ec2Test"
+device_name = "/dev/xvda"
+volume_size = 8
+volume_type = "gp2"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
@@ -85,10 +88,10 @@ if response.lower() == 'y':
                 ],
                 "BlockDeviceMappings": [
                     {
-                        "DeviceName": "/dev/xvda",
+                        "DeviceName": device_name,
                         "Ebs": {
-                            "VolumeSize": 8,
-                            "VolumeType": "gp2"
+                            "VolumeSize": volume_size,
+                            "VolumeType": volume_type
                         }
                     }
                 ],
@@ -161,10 +164,10 @@ if response.lower() == 'y':
                 ],
                 "BlockDeviceMappings": [
                     {
-                        "DeviceName": "/dev/xvda",
+                        "DeviceName": device_name,
                         "Ebs": {
-                            "VolumeSize": 8,
-                            "VolumeType": "gp2"
+                            "VolumeSize": volume_size,
+                            "VolumeType": volume_type
                         }
                     }
                 ],
