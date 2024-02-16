@@ -24,7 +24,8 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o cluster de nome $clusterName"
-    if ($condition -eq "ACTIVE" || $condition -eq "CREATING") {
+    $excludedStatus = "ACTIVE", "CREATING", 0
+    if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe o cluster de nome $clusterName"
         aws eks describe-cluster --name $clusterName --query "cluster.name" --output text
@@ -78,7 +79,8 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o cluster de nome $clusterName"
-    if ($condition -eq "ACTIVE" || $condition -eq "CREATING") {
+    $excludedStatus = "ACTIVE", "CREATING", 0
+    if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os clusters criados"
         aws eks list-clusters --query "clusters[]" --output text

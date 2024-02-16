@@ -28,7 +28,8 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o cluster de nome $clusterName"
-    if [ "$condition" == "ACTIVE" ] || [ "$condition" == "CREATING" ]; then
+    excludedStatus=("ACTIVE" "CREATING" "0")
+    if [[ " ${excludedStatus[@]} " =~ " $condition " ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe o cluster de nome $clusterName"
         aws eks describe-cluster --name "$clusterName" --query "cluster.name" --output text
@@ -87,7 +88,8 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o cluster de nome $clusterName"
-    if [ "$condition" == "ACTIVE" ] || [ "$condition" == "CREATING" ]; then
+    excludedStatus=("ACTIVE" "CREATING" "0")
+    if [[ " ${excludedStatus[@]} " =~ " $condition " ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os clusters criados"
         aws eks list-clusters --query "clusters[]" --output text

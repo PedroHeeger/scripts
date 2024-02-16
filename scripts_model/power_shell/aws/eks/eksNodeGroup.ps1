@@ -28,7 +28,8 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    if ($condition -eq "ACTIVE" || $condition -eq "CREATING" || $condition -eq "UPDATING" || $condition -eq "DELETE_FAILED") {
+    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0
+    if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe o node group de nome $nodeGroupName no cluster $clusterName"
         aws eks describe-nodegroup --cluster-name $clusterName --nodegroup-name $nodeGroupName --query "nodegroup.nodegroupName" --output text
@@ -82,7 +83,8 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    if ($condition -eq "ACTIVE" || $condition -eq "CREATING" || $condition -eq "UPDATING" || $condition -eq "DELETE_FAILED") {
+    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0
+    if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os node groups do cluster $clusterName"
         aws eks list-nodegroups --cluster-name $clusterName --query "nodegroups" --output text

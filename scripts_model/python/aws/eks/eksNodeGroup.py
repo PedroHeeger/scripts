@@ -33,7 +33,8 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o node group de nome {nodegroup_name} no cluster {cluster_name}")
-    if condition in ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"]:
+    excluded_status = ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0]
+    if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Já existe o node group de nome {nodegroup_name} no cluster {cluster_name}")
         print(response['nodegroup']['nodegroupName'])
@@ -106,7 +107,8 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o node group de nome {nodegroup_name} no cluster {cluster_name}")
-    if condition in ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"]:
+    excluded_status = ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0]
+    if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Listando todos os node groups do cluster {cluster_name}")
         nodegroups = eks_client.list_nodegroups(clusterName=cluster_name)['nodegroups']

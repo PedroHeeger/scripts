@@ -29,7 +29,8 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o cluster de nome {cluster_name}")
-    if condition in ["ACTIVE", "CREATING"]:
+    excluded_status = ["ACTIVE", "CREATING", 0]
+    if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Já existe o cluster de nome {cluster_name}")
         print(response['cluster']['name'])
@@ -99,7 +100,8 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o cluster de nome {cluster_name}")
-    if condition in ["ACTIVE", "CREATING"]:
+    excluded_status = ["ACTIVE", "CREATING", 0]
+    if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todos os clusters criados")
         clusters = eks_client.list_clusters()['clusters']
