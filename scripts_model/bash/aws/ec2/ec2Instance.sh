@@ -45,7 +45,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo os Ids do grupo de segurança e sub-redes padrões"
+        echo "Extraindo o Id dos elementos de rede"
         sgId=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text)
         subnetId=$(aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text)
 
@@ -92,7 +92,7 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe a instância $tagNameInstance"
-    if [ "$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]" --output text | wc -l)" -gt 1 ]; then
+    if [ "$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[]" --output text | wc -l)" -gt 1 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o nome da tag de todas as instâncias EC2 criadas"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text

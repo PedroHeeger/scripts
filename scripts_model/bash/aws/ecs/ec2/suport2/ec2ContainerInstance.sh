@@ -13,7 +13,11 @@ sgName="default"
 aZ="us-east-1a"
 imageId="ami-079db87dc4c10ac91"    # Amazon Linux 2023 AMI 2023.3.20231218.0 x86_64 HVM kernel-6.1
 instanceType="t2.micro"
+keyPairPath="G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair"
 keyPairName="keyPairUniveral"
+device_name="/dev/xvda"
+volumeSize=8
+volumeType="gp2"
 instanceProfileName="ecs-ec2InstanceIProfile"
 clusterName="clusterEC2Test1"
 
@@ -33,6 +37,16 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "Listando o IP público das instâncias ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceA}"
+        ipEc2A=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2A"
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceB}"
+        ipEc2B=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2B"
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o nome da tag de todas as instâncias EC2 criadas"
@@ -76,7 +90,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         sleep 60
         echo '-----//-----//-----//-----//-----//-----//-----'
         echo 'Reiniciando o sistema'  
-        sudo reboot" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${tagNameInstance}${instanceA}}]" --iam-instance-profile "Name=$instanceProfileName" --no-cli-pager
+        sudo reboot" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${tagNameInstance}${instanceA}}]" --block-device-mappings "[{\"DeviceName\":\"$deviceName\",\"Ebs\":{\"VolumeSize\":$volumeSize,\"VolumeType\":\"$volumeType\"}}]" --iam-instance-profile "Name=$instanceProfileName" --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando a instância EC2 de nome de tag ${tagNameInstance}${instanceB}"
@@ -111,7 +125,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         sleep 60
         echo '-----//-----//-----//-----//-----//-----//-----'
         echo 'Reiniciando o sistema'  
-        sudo reboot" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${tagNameInstance}${instanceB}}]" --iam-instance-profile "Name=$instanceProfileName" --no-cli-pager
+        sudo reboot" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${tagNameInstance}${instanceB}}]" --block-device-mappings "[{\"DeviceName\":\"$deviceName\",\"Ebs\":{\"VolumeSize\":$volumeSize,\"VolumeType\":\"$volumeType\"}}]" --iam-instance-profile "Name=$instanceProfileName" --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o nome da tag de todas as instâncias EC2 criadas"
@@ -121,6 +135,16 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         echo "Listando o IP público das instâncias ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceA}"
+        ipEc2A=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2A"
+
+        echo "-----//-----//-----//-----//-----//-----//-----"
+        echo "Exibindo o comando para acesso remoto via OpenSSH na instância ${tagNameInstance}${instanceB}"
+        ipEc2B=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text)
+        echo "ssh -i \"$keyPairPath/$keyPairName.pem\" ubuntu@$ipEc2B"
     fi
 else
     echo "Código não executado"
@@ -144,7 +168,7 @@ instanceB="6"
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
-    condition=$(aws ec2 describe-instances --query "Reservations[].Instances[?(Tags[?Key=='Name' && (Value=='${tagNameInstance}${instanceA}' || Value=='${tagNameInstance}${instanceB}')])].[Tags[?Key=='Name'].Value | [0]]" --output text)
+    condition=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[?(Tags[?Key=='Name' && (Value=='${tagNameInstance}${instanceA}' || Value=='${tagNameInstance}${instanceB}')])].[Tags[?Key=='Name'].Value | [0]]" --output text)
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe as instâncias ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
     if [ $(echo "$condition" | wc -l) -gt 0 ]; then

@@ -15,7 +15,11 @@ sg_name = "default"
 aZ = "us-east-1a"
 image_id = "ami-079db87dc4c10ac91"    # Amazon Linux 2023 AMI 2023.3.20231218.0 x86_64 HVM kernel-6.1
 instance_type = "t2.micro"
+key_pair_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair"
 key_pair_name = "keyPairUniversal"
+device_name = "/dev/xvda"
+volume_size = 8
+volume_type = "gp2"
 instance_profile_name = "ecs-ec2InstanceIProfile"
 cluster_name = "clusterEC2Test1"
 
@@ -37,11 +41,12 @@ if resposta.lower() == 'y':
         print(f"Já existe uma instância EC2 com o nome de tag {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
         for instance in instances:
             print(instance.tags[0]['Value'])
+            print(f"IP Público: {instance.public_ip_address}")
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o IP público das instâncias {tag_name_instance}{instanceA} e {tag_name_instance}{instanceB}")
-        for instance in instances:
-            print(instance.public_ip_address)
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print("Exibindo o comando para acesso remoto via OpenSSH")
+            ip_ec2 = instance.public_ip_address
+            print(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" ubuntu@{ip_ec2}')
     else:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando o nome da tag de todas as instâncias EC2 criadas")
@@ -50,7 +55,7 @@ if resposta.lower() == 'y':
             print(instance.tags[0]['Value'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Extraindo os Ids do grupo de segurança e das sub-redes padrões")
+        print("Extraindo o Id dos elementos de rede")
         sg_id = list(ec2.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [sg_name]}]))[0].id
         subnet_id = list(ec2.subnets.filter(Filters=[{'Name': 'availability-zone', 'Values': [aZ]}]))[0].id
 
@@ -97,6 +102,15 @@ if resposta.lower() == 'y':
                         echo 'Reiniciando o sistema'  
                         sudo reboot
                         """,
+            BlockDeviceMappings=[
+                {
+                    'DeviceName': device_name,
+                    'Ebs': {
+                        'VolumeSize': volume_size,
+                        'VolumeType': volume_type,
+                    },
+                },
+            ],
             TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tag_name_instance}{instanceA}'}]}],
             IamInstanceProfile={'Name': instance_profile_name}
         )
@@ -141,6 +155,15 @@ if resposta.lower() == 'y':
                         echo 'Reiniciando o sistema'  
                         sudo reboot
                         """,
+            BlockDeviceMappings=[
+                {
+                    'DeviceName': device_name,
+                    'Ebs': {
+                        'VolumeSize': volume_size,
+                        'VolumeType': volume_type,
+                    },
+                },
+            ],
             TagSpecifications=[{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': f'{tag_name_instance}{instanceB}'}]}],
             IamInstanceProfile={'Name': instance_profile_name}
         )
@@ -159,6 +182,12 @@ if resposta.lower() == 'y':
         for instance in instances:
             # instance.wait_until_running()
             print(instance.public_ip_address)
+            print(f"IP Público: {instance.public_ip_address}")
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print("Exibindo o comando para acesso remoto via OpenSSH")
+            ip_ec2 = instance.public_ip_address
+            print(f'ssh -i "{key_pair_path}/{key_pair_name}.pem" ubuntu@{ip_ec2}')
 else:
     print("Código não executado")
 
@@ -188,7 +217,8 @@ if resposta.lower() == 'y':
 
     condition = ec2.instances.filter(
         Filters=[
-            {'Name': 'tag:Name', 'Values': [f'{tag_name_instance}{instanceA}', f'{tag_name_instance}{instanceB}']}
+            {'Name': 'tag:Name', 'Values': [f'{tag_name_instance}{instanceA}', f'{tag_name_instance}{instanceB}']},
+            {'Name': 'instance-state-name', 'Values': 'running'}            
         ]
     )
 

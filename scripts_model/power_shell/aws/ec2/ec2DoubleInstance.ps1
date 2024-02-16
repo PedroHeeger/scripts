@@ -53,7 +53,7 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo os Ids do grupo de segurança e das sub-redes padrões"
+        Write-Output "Extraindo o Id dos elementos de rede"
         $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
         $subnetId = aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text
 
@@ -104,7 +104,7 @@ $instanceB = "2"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
-    $condition = aws ec2 describe-instances --query "Reservations[].Instances[?(Tags[?Key=='Name' && (Value=='${tagNameInstance}${instanceA}' || Value=='${tagNameInstance}${instance}2')])].[Tags[?Key=='Name'].Value | [0]]" --output text
+    $condition = aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[?(Tags[?Key=='Name' && (Value=='${tagNameInstance}${instanceA}' || Value=='${tagNameInstance}${instance}2')])].[Tags[?Key=='Name'].Value | [0]]" --output text
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe as instâncias ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
     if (($condition).Count -gt 0) {

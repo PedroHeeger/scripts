@@ -59,7 +59,7 @@ if resposta.lower() == 'y':
             print(instance.tags[0]['Value'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Extraindo os Ids do grupo de segurança e das sub-redes padrões")
+        print("Extraindo o Id dos elementos de rede")
         sg_id = list(ec2.security_groups.filter(Filters=[{'Name': 'group-name', 'Values': [sg_name]}]))[0].id
         subnet_id = list(ec2.subnets.filter(Filters=[{'Name': 'availability-zone', 'Values': [aZ]}]))[0].id
 
@@ -157,7 +157,8 @@ if resposta.lower() == 'y':
 
     condition = ec2.instances.filter(
         Filters=[
-            {'Name': 'tag:Name', 'Values': [f'{tag_name_instance}{instanceA}', f'{tag_name_instance}{instanceB}']}
+            {'Name': 'tag:Name', 'Values': [f'{tag_name_instance}{instanceA}', f'{tag_name_instance}{instanceB}']},
+            {'Name': 'instance-state-name', 'Values': 'running'}
         ]
     )
 

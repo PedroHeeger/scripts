@@ -17,7 +17,7 @@ $userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_user
 $userDataFile = "udFile.sh"
 # $deviceName = "/dev/xvda" 
 $deviceName = "/dev/sda1" 
-$volumeSize = 12
+$volumeSize = 8
 $volumeType = "gp2"
 $instanceProfileName = "instanceProfileTest"
 
@@ -45,7 +45,7 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo os Ids do grupo de segurança e sub-redes padrões"
+        Write-Output "Extraindo o Id dos elementos de rede"
         $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
         $subnetId = aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text
 
@@ -90,7 +90,7 @@ $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a instância $tagNameInstance"
-    if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[]").Count -gt 1) {
+    if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[]").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome da tag de todas as instâncias EC2 criadas"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
