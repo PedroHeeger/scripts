@@ -4,6 +4,7 @@
 - Data
 - Data Analysis
 - DevOps
+- Distributed Computing
 - Network
 - Operating System (OS)
 - Programming

@@ -287,3 +287,21 @@ curl -LO $link
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Instalando o pacote"
 sudo dpkg -i minikube_latest_amd64.deb
+
+
+
+
+echo "***********************************************"
+echo "ORACLE VM VIRTUAL BOX INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando os pacotes"
+sudo apt-get update -y
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando o pacote"
+sudo apt install -y virtualbox virtualbox-ext-pack
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Adicionando o usuário ao grupo"
+sudo usermod -aG vboxusers $USER
