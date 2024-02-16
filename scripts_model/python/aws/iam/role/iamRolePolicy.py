@@ -50,7 +50,8 @@ if resposta.lower() == 'y':
         print(f"Listando a policy {policy_name} anexada a role de nome {role_name}")
         attached_policies = iam.list_attached_role_policies(RoleName=role_name)['AttachedPolicies']
         for p in attached_policies:
-            print(p['PolicyName'])
+            if p['PolicyName'] == policy_name:
+                print(p['PolicyName'])
 else:
     print("Código não executado")
 
