@@ -22,13 +22,14 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o serviço de nome $serviceName no cluster $clusterName (Ignorando erro)..."
     $erro = "ClientException"
-    if ((aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[?serviceName=='$serviceName' && status=='ACTIVE'].serviceName" 2>&1) -match $erro)
+    if ((aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[].status" 2>&1) -match $erro)
     {$condition = 0} 
-    else{$condition = (aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[?serviceName=='$serviceName' && status=='ACTIVE'].serviceName").Count}
+    else{$condition = (aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[].status" --output text)}
     
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o serviço de nome $serviceName no cluster $clusterName"
-    if ($condition -gt 1) {
+    $excludedStatus = "ACTIVE", 0
+    if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe o serviço de nome $serviceName no cluster $clusterName"
         aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[?serviceName=='$serviceName'].serviceName" --output text
@@ -73,8 +74,16 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "Verificando se existe o cluster de nome $clusterName"
-    if ((aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[].serviceName").Count -gt 1) {
+    Write-Output "Verificando se existe o serviço de nome $serviceName no cluster $clusterName (Ignorando erro)..."
+    $erro = "InvalidParameterException"
+    if ((aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[].status" 2>&1) -match $erro)
+    {$condition = 0} 
+    else{$condition = (aws ecs describe-services --cluster $clusterName --services $serviceName --query "services[].status" --output text)}
+    
+    Write-Output "-----//-----//-----//-----//-----//-----//-----"
+    Write-Output "Verificando se existe o serviço de nome $serviceName no cluster $clusterName"
+    $excludedStatus = "ACTIVE", 0
+    if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando as ARNs de todos os serviços criados no $clusterName"
         aws ecs list-services --cluster $clusterName --query "serviceArns" --output text
