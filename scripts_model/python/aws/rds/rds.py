@@ -27,17 +27,17 @@ resposta = input("Deseja executar o código? (y/n) ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a instância de banco de nome {db_instance_name} (Ignorando erro)...")
-    erro = "DBInstanceNotFound"
     try:
         client = boto3.client('rds')
         response = client.describe_db_instances(DBInstanceIdentifier=db_instance_name)
-        condition = len(response['DBInstances'])
+        condition = response['DBInstances'][0]['DBInstanceStatus']
     except client.exceptions.DBInstanceNotFoundFault:
         condition = 0
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a instância de banco de nome {db_instance_name}")
-    if condition > 0:
+    excluded_status = ["deleting", "failed", "stopped", "stopping", 0]
+    if condition not in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Já existe a instância de banco de nome {db_instance_name}")
         print(response['DBInstances'][0]['DBInstanceIdentifier'])
@@ -52,7 +52,6 @@ if resposta.lower() == 'y':
         print("Extraindo o Id dos elementos de rede")
         client_ec2 = boto3.client('ec2')
         sg_id = client_ec2.describe_security_groups(GroupNames=[sg_name])['SecurityGroups'][0]['GroupId']
-        subnet_id = client_ec2.describe_subnets(Filters=[{'Name': 'availabilityZone', 'Values': [aZ]}])['Subnets'][0]['SubnetId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Criando a instância de banco de nome {db_instance_name}")
@@ -99,17 +98,17 @@ resposta = input("Deseja executar o código? (y/n) ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a instância de banco de nome {db_instance_name} (Ignorando erro)...")
-    erro = "DBInstanceNotFound"
     try:
         client = boto3.client('rds')
         response = client.describe_db_instances(DBInstanceIdentifier=db_instance_name)
-        condition = len(response['DBInstances'])
+        condition = response['DBInstances'][0]['DBInstanceStatus']
     except client.exceptions.DBInstanceNotFoundFault:
         condition = 0
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a instância de banco de nome {db_instance_name}")
-    if condition > 0:
+    excluded_status = ["deleting", "failed", "stopped", "stopping", 0]
+    if condition not in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todas as instâncias de banco criadas")
         response = client.describe_db_instances()

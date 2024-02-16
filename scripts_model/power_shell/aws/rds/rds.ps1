@@ -25,13 +25,14 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a instância de banco de nome $dbInstanceName (Ignorando erro)..."
     $erro = "DBInstanceNotFound"
-    if ((aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceIdentifier" 2>&1) -match $erro)
+    if ((aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceStatus" 2>&1) -match $erro)
     {$condition = 0} 
-    else{$condition = (aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceIdentifier").Count}
+    else{$condition = (aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceStatus" --output text)}
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a instância de banco de nome $dbInstanceName"
-    if ($condition -gt 1) {
+    $excludedStatus = "deleting", "failed", "stopped", "stopping", 0
+    if ($condition -notin $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe a instância de banco de nome $dbInstanceName"
         aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceIdentifier" --output text
@@ -43,7 +44,6 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o Id dos elementos de rede"
         $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
-        $subnetId = aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando a instância de banco de nome $dbInstanceName"
@@ -74,13 +74,14 @@ if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a instância de banco de nome $dbInstanceName (Ignorando erro)..."
     $erro = "DBInstanceNotFound"
-    if ((aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceIdentifier" 2>&1) -match $erro)
+    if ((aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceStatus" 2>&1) -match $erro)
     {$condition = 0} 
-    else{$condition = (aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceIdentifier").Count}
+    else{$condition = (aws rds describe-db-instances --db-instance-identifier $dbInstanceName --query "DBInstances[].DBInstanceStatus" --output text)}
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a instância de banco de nome $dbInstanceName"
-    if ($condition -gt 1) {
+    $excludedStatus = "deleting", "failed", "stopped", "stopping", 0
+    if ($condition -notin $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todas as instâncias de banco criadas"
         aws rds describe-db-instances --query "DBInstances[].DBInstanceIdentifier" --output text
