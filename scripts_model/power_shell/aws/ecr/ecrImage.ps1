@@ -14,7 +14,7 @@ $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a imagem de tag $imageTag do repositório $repositoryName"
-    if ((aws ecr describe-images --repository-name $repositoryName --query "imageDetails[?contains(imageTags, '$imageTag')].imageTags").Count -gt 1) {
+    if ((aws ecr describe-images --repository-name $repositoryName --query "imageDetails[?imageTags && contains(imageTags, '$imageTag')].imageTags").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todas as imagens do repositório $repositoryName"
         aws ecr describe-images --repository-name $repositoryName --query "imageDetails[].imageTags" --output text

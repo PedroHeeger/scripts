@@ -64,15 +64,11 @@ if ($resposta.ToLower() -eq 'y') {
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Iterando na lista de tags"
-            foreach ($imageTag in $imageTags.Split()) {
-                if ($imageTag -ne "") {
-                #   Write-Output "-----//-----//-----//-----//-----//-----//-----"
-                #   Write-Output "Extraindo a tag da imagem"
-                #   $tag = aws ecr describe-images --repository-name $repositoryName --query "imageDetails[?imageTags=='$imageTag'].imageTags" --output text
-  
+            foreach ($imageId in $imageTags.Split()) {
+                if ($imageId -ne "") {  
                   Write-Output "-----//-----//-----//-----//-----//-----//-----"
-                  Write-Output "Removendo a imagem de tag $imageTag do repositório de nome $repositoryName"
-                  aws ecr batch-delete-image --repository-name $repositoryName --image-ids imageTag=$imageTag
+                  Write-Output "Removendo a imagem de tag $imageId do repositório de nome $repositoryName"
+                  aws ecr batch-delete-image --repository-name $repositoryName --image-ids "imageDigest=$imageId"
                 }
             }
         } else {Write-Output "Não existe imagens no repositório $repositoryName"}

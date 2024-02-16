@@ -79,6 +79,25 @@ if resposta.lower() == 'y':
             print(repo['repositoryName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Verificando se existe a imagem do repositório de nome {repository_name}")
+        response = ecr_client.describe_images(repositoryName=repository_name)
+        image_tags = response['imageDetails'][0]['imageTags']
+        if image_tags and len(image_tags) > 1:
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Obtendo a lista de tags da imagem do repositório de nome {repository_name}")
+            print(image_tags)
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print("Iterando na lista de tags")
+            for image_id in image_tags:
+                if image_id:
+                    print("-----//-----//-----//-----//-----//-----//-----")
+                    print(f"Removendo a imagem de tag {image_id} do repositório de nome {repository_name}")
+                    ecr_client.batch_delete_image(repositoryName=repository_name, imageIds=[{'imageDigest': image_id}])
+        else:
+            print(f"Não existe imagens no repositório {repository_name}")
+
+        print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Removendo o repositório de nome {repository_name}")
         ecr_client.delete_repository(repositoryName=repository_name, force=True)
 

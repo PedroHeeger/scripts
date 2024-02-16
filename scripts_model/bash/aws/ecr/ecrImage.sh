@@ -14,7 +14,7 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe a imagem de tag $imageTag do repositório $repositoryName"
-    if [ $(aws ecr describe-images --repository-name $repositoryName --query "imageDetails[?contains(imageTags, '$imageTag')].imageTags" | wc -l) -gt 0 ]; then
+    if [ $(aws ecr describe-images --repository-name $repositoryName --query "imageDetails[?imageTags && contains(imageTags, '$imageTag')].imageTags" | wc -l) -gt 1 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todas as imagens do repositório $repositoryName"
         aws ecr describe-images --repository-name $repositoryName --query "imageDetails[].imageTags" --output text
