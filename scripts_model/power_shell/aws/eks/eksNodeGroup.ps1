@@ -15,6 +15,8 @@ $diskSize = 10
 $minSize = 2
 $maxSize = 2
 $desiredSize = 2
+$aZ1 = "us-east-1a"
+$aZ2 = "us-east-1b"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
