@@ -110,7 +110,7 @@
   - AWS Cloud Adoption Framework (CAF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_caf.jpeg" alt="aws_caf" width="auto" height="25">
   - AWS Cloud Development Kit (CDK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cdk.png" alt="aws_cdk" width="auto" height="25">
   - AWS CloudFormation   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudformation.svg" alt="aws_cloudformation" width="auto" height="25">
-  - AWS CloudShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudshell_jpeg" alt="aws_cloudshell" width="auto" height="25">
+  - AWS CloudShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudshell.jpeg" alt="aws_cloudshell" width="auto" height="25">
   - AWS CloudTrail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudtrail.svg" alt="aws_cloud_trail" width="auto" height="25">
   - AWS CodeArtifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codeartifact.png" alt="aws_codeartifact" width="auto" height="25">
   - AWS CodeCommit  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codecommit.svg" alt="aws_codecommit" width="auto" height="25">
@@ -118,7 +118,7 @@
   - AWS CodePipeline  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codepipeline.svg" alt="aws_codepipeline" width="auto" height="25">
   - AWS CodeStar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codestar.svg" alt="aws_codestar" width="auto" height="25">
   - AWS Config   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_config.svg" alt="aws_config" width="auto" height="25">
-  - AWS Console Mobile Application   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws_console_mobile" width="auto" height="25">
+  - AWS Console Mobile Application   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws_console_mobile" width="auto" height="25">
   - AWS Control Tower   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_control_tower.jpg" alt="aws_control_tower" width="auto" height="25">
   - AWS Cost and Usage Reports (CUR)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cur.webp" alt="aws_cur" width="auto" height="25">
   - AWS Cost Explorer  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cost_explorer.webp" alt="aws_cost_explorer" width="auto" height="25">
@@ -227,7 +227,7 @@
   - Vagrant   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
 - Build Automation:
   - Apache Maven   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_maven.png" alt="apache_maven" width="auto" height="25">
-  - Gradle   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gradle/gradle-plain.svg" alt="gradle" width="auto" height="25">
+  - Gradle   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gradle/gradle-original.svg" alt="gradle" width="auto" height="25">
 - Web Developement:
   - Heroku   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain.svg" alt="heroku" width="auto" height="25">
 - Language:
@@ -257,7 +257,7 @@
   - Atom   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/atom/atom-original.svg" alt="atom" width="auto" height="25">
   - Bluefish   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/bluefish.png" alt="bluefish" width="auto" height="25">
   - Brackets   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/brackets.png" alt="brackets" width="auto" height="25">
-  - Codepen   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codepen/codepen-plain.svg" alt="codepen" width="auto" height="25">
+  - Codepen   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/codepen/codepen-original.svg" alt="codepen" width="auto" height="25">
   - Eclipse   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/eclipse.webp" alt="eclipse" width="auto" height="25">
   - Ed   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ed.jpg" alt="ed" width="auto" height="25">
   - Geany   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/geany.png" alt="geany" width="auto" height="25">
@@ -295,7 +295,7 @@
   - Docker Hub   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_hub.png" alt="docker_hub" width="auto" height="25">
   - Docker Registry   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_registry.png" alt="docker_registry" width="auto" height="25">
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
-  - GitLab   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="gitlab" width="auto" height="25">
+  - GitLab CI/CD   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gitlab_cicd.png" alt="gitlab_cicd" width="auto" height="25">
   - Kaggle   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg" alt="kaggle" width="auto" height="25">
   - Terraform Registry   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform_registry" width="auto" height="25">
 - Command Line Interpreter (CLI):
@@ -393,14 +393,14 @@
 
 - Network:
   - Cisco Packet Tracer <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_packet_tracer.webp" alt="cisco_packet_tracer" width="auto" height="25">
-  - DNS Checker   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/dns_checker.png" alt="dns_checker" width="auto" height="25">
+  - DNS Checker   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dns_checker.png" alt="dns_checker" width="auto" height="25">
   - Google Chrome   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" alt="google_chrome" width="auto" height="25">
   - Filezilla   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filezilla/filezilla-plain.svg" alt="filezilla" width="auto" height="25">
   - Internet Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/internet_explorer.png" alt="internet_explorer" width="auto" height="25">
-  - intoDNS   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/intodns.png" alt="intodns" width="auto" height="25">
+  - intoDNS   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/intodns.png" alt="intodns" width="auto" height="25">
   - JSON Web Token (JWT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/jwt.png" alt="jwt" width="auto" height="25">
   - Microsoft Edge   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_edge.png" alt="microsoft_edge" width="auto" height="25">
-  - MX Toolbox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/mx_toolbox.png" alt="mx_toolbox" width="auto" height="25">
+  - MX Toolbox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/mx_toolbox.png" alt="mx_toolbox" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
   - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
   - Ping
@@ -408,10 +408,10 @@
   - PuTTY   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - PuTTYgen   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
   - PuTTY PSCP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty_pscp" width="auto" height="25">
-  - SSL Server Test   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/ssl_server_test.webp" alt="ssl_server_test" width="auto" height="25">
+  - SSL Server Test   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ssl_server_test.webp" alt="ssl_server_test" width="auto" height="25">
   - Registro .br   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/registro.br.png" alt="registro.br" width="auto" height="25">
   - V8 Engine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/v8_engine.png" alt="v8_engine" width="auto" height="25">
-  - Whatsmydns.net   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/whatsmydns_net.png" alt="whatsmydns_net" width="auto" height="25">
+  - Whatsmydns.net   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/whatsmydns_net.png" alt="whatsmydns_net" width="auto" height="25">
   - WeTransfer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/wetransfer.png" alt="wetransfer" width="auto" height="25">
   - WinSCP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/winscp.png" alt="winscp" width="auto" height="25">
 - Application Programming Interface:
@@ -421,7 +421,7 @@
   - Microsoft Power Apps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_power_apps.png" alt="power_apps" width="auto" height="25">
   - Sequelize   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg" alt="sequelize" width="auto" height="25">
 - Software Development Testing:
-  - Apache Bench (ab)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_bench.png" alt="apache_bench" width="auto" height="25">
+  - Apache Bench (ab)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache.png" alt="apache_bench" width="auto" height="25">
   - Loader.io   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
   - Pytest   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytest/pytest-original.svg" alt="pytest" width="auto" height="25">
   - Robot FrameWork   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/robot_framework.png" alt="robot_framework" width="auto" height="25">
