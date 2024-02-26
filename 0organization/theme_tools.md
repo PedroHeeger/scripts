@@ -24,7 +24,10 @@
   - RedHat   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg" alt="redhat" width="auto" height="25">
   - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
 - Virtualization: 
+  - Microsoft Hyper-V   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_hyper-v.png" alt="microsoft_hyper-v" width="auto" height="25">
   - Oracle VM VirtualBox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
+  - Vmware   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vmware.png" alt="vmware" width="auto" height="25">
+  - VMware ESXi   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vmware_esxi.png" alt="vmware_esxi" width="auto" height="25">
   - WSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wsl.svg" alt="wsl" width="auto" height="25">
 - Cloud:
   - Amazon Web Services (AWS)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
@@ -72,8 +75,11 @@
   - Amazon Lightsail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lightsail.svg" alt="aws_lightsail" width="auto" height="25">
   - Amazon Macie   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_macie.svg" alt="aws_macie" width="auto" height="25">
   - Amazon Managed Blockchain   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_blockchain.jpeg" alt="aws_managed_blockchain" width="auto" height="25">
+  - Amazon Managed Grafana   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_grafana.png" alt="aws_managed_grafana" width="auto" height="25">
+  - Amazon Managed Service for Prometheus   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_prometheus.png" alt="aws_managed_prometheus" width="auto" height="25">
   - Amazon Neptune   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_neptune.svg" alt="aws_neptune" width="auto" height="25">
   - Amazon Network Load Balancer (NLB)
+  - Amazon OpenSearch Service   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_opensearch_service.jpg" alt="aws_opensearch_service" width="auto" height="25">
   - Amazon Q   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_q.png" alt="aws_q" width="auto" height="25">
   - Amazon QuickSight   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_quicksight.svg" alt="aws_quicksight" width="auto" height="25">
   - Amazon Quantum Ledger Database (QLDB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_qldb.png" alt="aws_qldb" width="auto" height="25">
@@ -91,6 +97,7 @@
   - Amazon Virtual Private Cloud (VPC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_vpc.svg" alt="aws_vpc" width="auto" height="25">
   - Amazon WorkLink   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_worklink.jpg" alt="aws_worklink" width="auto" height="25">
   - Amazon WorkSpaces   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_workspaces.svg" alt="aws_workspaces" width="auto" height="25">
+  - AWS App Runner   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_app_runner.png" alt="aws_app_runner" width="auto" height="25">
   - AWS Application Auto Scaling  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.png" alt="aws_auto_scaling" width="auto" height="25">
   - AWS Application Composer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_application_composer.webp" alt="aws_application_composer" width="auto" height="25">
   - AWS Artifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact" width="auto" height="25">
@@ -105,9 +112,11 @@
   - AWS CloudFormation   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudformation.svg" alt="aws_cloudformation" width="auto" height="25">
   - AWS CloudShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudshell_jpeg" alt="aws_cloudshell" width="auto" height="25">
   - AWS CloudTrail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudtrail.svg" alt="aws_cloud_trail" width="auto" height="25">
+  - AWS CodeArtifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codeartifact.png" alt="aws_codeartifact" width="auto" height="25">
   - AWS CodeCommit  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codecommit.svg" alt="aws_codecommit" width="auto" height="25">
   - AWS CodeDeploy  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codedeploy.svg" alt="aws_codedeploy" width="auto" height="25">
   - AWS CodePipeline  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codepipeline.svg" alt="aws_codepipeline" width="auto" height="25">
+  - AWS CodeStar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codestar.svg" alt="aws_codestar" width="auto" height="25">
   - AWS Config   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_config.svg" alt="aws_config" width="auto" height="25">
   - AWS Console Mobile Application   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws_console_mobile" width="auto" height="25">
   - AWS Control Tower   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_control_tower.jpg" alt="aws_control_tower" width="auto" height="25">
@@ -115,6 +124,7 @@
   - AWS Cost Explorer  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cost_explorer.webp" alt="aws_cost_explorer" width="auto" height="25">
   - AWS Database Migration Service (DMS)  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codecommit.svg" alt="aws_dms" width="auto" height="25">
   - AWS DeepRacer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_deepracer.png" alt="aws_deepracer" width="auto" height="25">
+  - AWS Device Farm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws-device-farm.svg" alt="aws-device-farm" width="auto" height="25">
   - AWS Direct Connect   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_direct_connect.svg" alt="aws_direct_connect" width="auto" height="25">
   - AWS Elastic Beanstalk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_elastic_beanstalk.svg" alt="aws_elastic_beanstalk" width="auto" height="25">
   - AWS End User Computing (EUC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_euc.png" alt="aws_euc" width="auto" height="25">
@@ -144,6 +154,7 @@
   - AWS Schema Convertion Tool (SCT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sct.jpeg" alt="aws_sct" width="auto" height="25">
   - AWS Security Hub   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_security_hub.jpg" alt="aws_security_hub" width="auto" height="25">
   - AWS Shield   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_shield.svg" alt="aws_shield" width="auto" height="25">
+  - AWS Sign-In   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sign-in.png" alt="aws_sign-in" width="auto" height="25">
   - AWS Snowball  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowball.svg" alt="aws_snowball" width="auto" height="25">
   - AWS Snowcone  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowcone.webp" alt="aws_snowcone" width="auto" height="25">
   - AWS Snowmobille  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowmobile.png" alt="aws_snowmobile" width="auto" height="25">
@@ -158,6 +169,20 @@
   - AWS Web Application Firewall (WAF)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_waf.svg" alt="aws_waf" width="auto" height="25">
   - AWS Well-Architected  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_well_architected.png" alt="aws_well_architected" width="auto" height="25">
   - AWS Whitepaper   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_whitepaper.jpg" alt="aws_whitepaper" width="auto" height="25">
+  - Azure Active Directory   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_active_directory.svg" alt="azure_active_directory" width="auto" height="25">
+  - Azure Analysis Services   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_analysis_services.svg" alt="azure_analysis_services" width="auto" height="25">
+  - Azure App Service   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_app_service.png" alt="azure_app_service" width="auto" height="25">
+  - Azure Artifacts   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_artifacts.png" alt="azure_artifacts" width="auto" height="25">
+  - Azure Blob Storage   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_blob_storage.png" alt="azure_blob_storage" width="auto" height="25">
+  - Azure Boards   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_boards.png" alt="azure_boards" width="auto" height="25">
+  - Azure Container Registry (ACR)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_acr.png" alt="azure_acr" width="auto" height="25">
+  - Azure Cosmos DB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_cosmo_db.png" alt="azure_cosmo_db" width="auto" height="25">
+  - Azure DevOps Server   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_devops.webp" alt="azure_devops" width="auto" height="25">
+  - Azure Kubernetes Service (AKS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_aks.png" alt="azure_aks" width="auto" height="25">
+  - Azure Monitor   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_monitor.png" alt="azure_monitor" width="auto" height="25">
+  - Azure Pipelines   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_pipelines.png" alt="azure_pipelines" width="auto" height="25">
+  - Azure Repos   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_repos.jpg" alt="azure_repos" width="auto" height="25">
+  - Azure Test Plans   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/azure_test_plans.png" alt="azure_test_plans" width="auto" height="25">
   - EC2 ElasticIP Address   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2_elasticip_address.svg" alt="aws_ec2_elasticip_address" width="auto" height="25">
   - Google Cloud Monitoring <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/gc_monitoring.webp" alt="gc_monitoring" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
@@ -167,10 +192,16 @@
 - Containerization: 
   - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
   - Docker Compose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_compose.png" alt="docker_compose" width="auto" height="25">
+  - Docker Daemon (Dockerd)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+  - Docker Desktop   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+  - Docker Engine   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+  - Docker Machine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_machine.png" alt="docker_machine" width="auto" height="25">
   - Docker Playground; Play With Docker (PWD)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/docker_playground.jpg" alt="docker_playground" width="auto" height="25">
+  - DockerUI   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
   - Podman   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/podman/podman-original.svg" alt="podman" width="auto" height="25">
   - Portainer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/portainer.png" alt="portainer" width="auto" height="25">
 - Cluster Management Software:
+  - Azuki (Azk)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/azk.png" alt="azk" width="auto" height="25">
   - Docker Swarm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_swarm.png" alt="docker_swarm" width="auto" height="25">
   - Kubernetes   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes" width="auto" height="25">
   - K3D   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_k3d.png" alt="kubernetes_k3d" width="auto" height="25">
@@ -178,13 +209,19 @@
   - Kind   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_kind.png" alt="kubernetes_kind" width="auto" height="25">
   - Kubernetes K0S   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_k0s.png" alt="kubernetes_k0s" width="auto" height="25">
   - Kubeadm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubeadm.png" alt="kubeadm" width="auto" height="25">
+  - Nomad   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nomad/nomad-original.svg" alt="nomad" width="auto" height="25">
   - Micro Kubernetes K8S   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes_k8s" width="auto" height="25">
   - MiniKube   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/minikube.jpg" alt="minikube" width="auto" height="25">
   - Rancher Kubernetes Engine (RKE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_rke.jpeg" alt="kubernetes_rke" width="auto" height="25">
   - Rancher Kubernetes Engine 2 (RKE 2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kubernetes_rke.jpeg" alt="kubernetes_rke2" width="auto" height="25">
+  - Red Hat OpenShift   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openshift.png" alt="openshift" width="auto" height="25">
 - Observability:
-    - Prometheus   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="prometheus" width="auto" height="25">
+  - Data Dog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/data_dog.png" alt="data_dog" width="auto" height="25">
+  - Elastic Stack (ELK Stack)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/elastic_stack.png" alt="elastic_stack" width="auto" height="25">
+  - Nagios   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nagios.png" alt="nagios" width="auto" height="25">
+  - Prometheus   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="prometheus" width="auto" height="25">
 - Configuration Management (CM):
+  - Ansible   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg" alt="ansible" width="auto" height="25">
   - Terraform   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform" width="auto" height="25">
   - Terraform Cloud   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/terraform_cloud.png" alt="terraform_cloud" width="auto" height="25">
   - Vagrant   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
@@ -254,9 +291,11 @@
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
+  - Ansible Galaxy   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg" alt="ansible" width="auto" height="25">
   - Docker Hub   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_hub.png" alt="docker_hub" width="auto" height="25">
   - Docker Registry   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_registry.png" alt="docker_registry" width="auto" height="25">
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+  - GitLab   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="gitlab" width="auto" height="25">
   - Kaggle   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg" alt="kaggle" width="auto" height="25">
   - Terraform Registry   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform_registry" width="auto" height="25">
 - Command Line Interpreter (CLI):
@@ -291,16 +330,19 @@
   - MySQL Workbench   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mysql_workbench.png" alt="mysql_workbench" width="auto" height="25">
   - PHPMyAdmin   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/phpmyadmin.png" alt="phpmyadmin" width="auto" height="25">
   - Sequel Pro   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sequelpro.png" alt="sequel_pro" width="auto" height="25">
+  - SQLPro Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sqlpro_studio.png" alt="sqlpro_studio" width="auto" height="25">
   - Table Plus   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tableplus.png" alt="table_plus" width="auto" height="25">
 - Big Data:
+  - Apache Hadoop   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hadoop/hadoop-original.svg" alt="apache_hadoop" width="auto" height="25">
   - Apache Kafka   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="apache_kafka" width="auto" height="25">
   - Apache Spark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_spark.png" alt="apache_spark" width="auto" height="25">
   - Databricks <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/databricks.png" alt="databricks" width="auto" height="25">
 - Workflow Management System (WFMS):
   - Apache Airflow   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_airflow.png" alt="apache_airflow" width="auto" height="25">
   - GitHub Actions   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/github_actions.png" alt="github_actions" width="auto" height="25">
-- Observability:
-- Software Performance Testing:
+  - GitLab CI/CD   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab_cicd.png" alt="gitlab_cicd" width="auto" height="25">
+  - Jenkins   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" alt="jenkins" width="auto" height="25">
+  - Werf   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/werf.png" alt="werf" width="auto" height="25">
 - Tools:
   - Advanced Package Tool (Apt)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt.png" alt="apt" width="auto" height="25">
   - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
@@ -351,11 +393,14 @@
 
 - Network:
   - Cisco Packet Tracer <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_packet_tracer.webp" alt="cisco_packet_tracer" width="auto" height="25">
+  - DNS Checker   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/dns_checker.png" alt="dns_checker" width="auto" height="25">
   - Google Chrome   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" alt="google_chrome" width="auto" height="25">
   - Filezilla   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filezilla/filezilla-plain.svg" alt="filezilla" width="auto" height="25">
   - Internet Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/internet_explorer.png" alt="internet_explorer" width="auto" height="25">
+  - intoDNS   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/intodns.png" alt="intodns" width="auto" height="25">
   - JSON Web Token (JWT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/jwt.png" alt="jwt" width="auto" height="25">
   - Microsoft Edge   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_edge.png" alt="microsoft_edge" width="auto" height="25">
+  - MX Toolbox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/mx_toolbox.png" alt="mx_toolbox" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
   - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
   - Ping
@@ -363,18 +408,28 @@
   - PuTTY   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - PuTTYgen   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
   - PuTTY PSCP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty_pscp" width="auto" height="25">
+  - SSL Server Test   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/ssl_server_test.webp" alt="ssl_server_test" width="auto" height="25">
   - Registro .br   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/registro.br.png" alt="registro.br" width="auto" height="25">
   - V8 Engine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/v8_engine.png" alt="v8_engine" width="auto" height="25">
+  - Whatsmydns.net   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/whatsmydns_net.png" alt="whatsmydns_net" width="auto" height="25">
   - WeTransfer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/wetransfer.png" alt="wetransfer" width="auto" height="25">
   - WinSCP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/winscp.png" alt="winscp" width="auto" height="25">
 - Application Programming Interface:
   - Postman   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/postman.svg" alt="postman" width="auto" height="25">
 - Development:
   - DevOps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25">
-  - GitLab   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="gitlab" width="auto" height="25">
   - Microsoft Power Apps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_power_apps.png" alt="power_apps" width="auto" height="25">
+  - Sequelize   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg" alt="sequelize" width="auto" height="25">
+- Software Development Testing:
+  - Apache Bench (ab)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_bench.png" alt="apache_bench" width="auto" height="25">
+  - Loader.io   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
+  - Pytest   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytest/pytest-original.svg" alt="pytest" width="auto" height="25">
+  - Robot FrameWork   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/robot_framework.png" alt="robot_framework" width="auto" height="25">
+  - Selenium (Se)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg" alt="selenium" width="auto" height="25">
+  - Serverspec   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/serverspec.png" alt="serverspec" width="auto" height="25">
 - User Experience Design (UX):
   - Figma   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="figma" width="auto" height="25">
+  - GitKraken   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gitkraken.png" alt="gitkraken" width="auto" height="25">
 - Diagramming Software:
   - Draw.io   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/draw.io.png" alt="draw.io" width="auto" height="25">
 - Presentation Program:
@@ -402,7 +457,6 @@
   - Git Guardian   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/git_guardian.png" alt="git_guardian" width="auto" height="25">
   - Instant Eyedropper   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/instant_eyedropper.png" alt="instant_eyedropper" width="auto" height="25">
   - Invertexto.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/invertexto.jpeg" alt="inverttexto" width="auto" height="25">
-  - Loader.io   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
   - NonVisual Desktop Access (NVDA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nvda.jpg" alt="nvda" width="auto" height="25">
 
 
