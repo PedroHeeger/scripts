@@ -24,7 +24,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o cluster de nome $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", 0
+    $excludedStatus = "ACTIVE", "CREATING"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe o cluster de nome $clusterName"
@@ -79,7 +79,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o cluster de nome $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", 0
+    $excludedStatus = "ACTIVE", "CREATING"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os clusters criados"

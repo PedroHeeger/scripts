@@ -30,7 +30,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0
+    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe o node group de nome $nodeGroupName no cluster $clusterName"
@@ -85,7 +85,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0
+    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os node groups do cluster $clusterName"

@@ -35,7 +35,7 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o node group de nome {nodegroup_name} no cluster {cluster_name}")
-    excluded_status = ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0]
+    excluded_status = ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"]
     if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Já existe o node group de nome {nodegroup_name} no cluster {cluster_name}")
@@ -109,7 +109,7 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o node group de nome {nodegroup_name} no cluster {cluster_name}")
-    excluded_status = ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0]
+    excluded_status = ["ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"]
     if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Listando todos os node groups do cluster {cluster_name}")

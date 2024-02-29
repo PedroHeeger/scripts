@@ -33,7 +33,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    excludedStatus=("ACTIVE" "CREATING" "UPDATING" "DELETE_FAILED" "0")
+    excludedStatus=("ACTIVE" "CREATING" "UPDATING" "DELETE_FAILED")
     if [[ " ${excludedStatus[@]} " =~ " $condition " ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe o node group de nome $nodeGroupName no cluster $clusterName"
@@ -93,7 +93,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    excludedStatus=("ACTIVE" "CREATING" "UPDATING" "DELETE_FAILED" "0")
+    excludedStatus=("ACTIVE" "CREATING" "UPDATING" "DELETE_FAILED")
     if [[ " ${excludedStatus[@]} " =~ " $condition " ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os node groups do cluster $clusterName"

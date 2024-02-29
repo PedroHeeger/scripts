@@ -28,7 +28,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o cluster de nome $clusterName"
-    excludedStatus=("ACTIVE" "CREATING" "0")
+    excludedStatus=("ACTIVE" "CREATING")
     if [[ " ${excludedStatus[@]} " =~ " $condition " ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe o cluster de nome $clusterName"
@@ -88,7 +88,7 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o cluster de nome $clusterName"
-    excludedStatus=("ACTIVE" "CREATING" "0")
+    excludedStatus=("ACTIVE" "CREATING")
     if [[ " ${excludedStatus[@]} " =~ " $condition " ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os clusters criados"

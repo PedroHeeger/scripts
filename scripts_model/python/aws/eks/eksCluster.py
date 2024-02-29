@@ -29,7 +29,7 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o cluster de nome {cluster_name}")
-    excluded_status = ["ACTIVE", "CREATING", 0]
+    excluded_status = ["ACTIVE", "CREATING"]
     if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Já existe o cluster de nome {cluster_name}")
@@ -100,7 +100,7 @@ if resposta.lower() == 'y':
 
     print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe o cluster de nome {cluster_name}")
-    excluded_status = ["ACTIVE", "CREATING", 0]
+    excluded_status = ["ACTIVE", "CREATING"]
     if condition in excluded_status:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todos os clusters criados")
