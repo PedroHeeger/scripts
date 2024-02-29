@@ -299,7 +299,7 @@ variable "containerName1" {
 
 variable "dockerImage1" {
   description = "A imagem Docker para o primeiro contêiner"
-  default        = "docker.io/fabricioveronez/conversao-temperatura:latest"
+  default        = "docker.io/pedroheeger/curso116_kube-news:v2"
 }
 
 variable "containerName2" {
@@ -652,10 +652,10 @@ resource "aws_ecs_capacity_provider" "example" {
 resource "aws_ecs_cluster" "example" {
   name = var.clusterName
   
-  # setting {
-  #   name  = "containerInsights"
-  #   value = "enabled"
-  # }
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
 }
 
 # resource "aws_ecs_cluster_capacity_providers" "example" {
