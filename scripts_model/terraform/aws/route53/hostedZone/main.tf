@@ -40,7 +40,7 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_route53_zone" "main" {
+resource "aws_route53_zone" "example" {
   name              = var.hostedZoneName
   comment           = var.hostedZoneComment
 }
@@ -48,5 +48,5 @@ resource "aws_route53_zone" "main" {
 
 # Saída
 output "hosted_zone_id" {
-  value = aws_route53_zone.main.id
+  value = aws_route53_zone.example.id
 }

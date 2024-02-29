@@ -129,6 +129,9 @@ scripts_model/terraform/aws/rds/rdsDB/*
 scripts_model/terraform/aws/route53/hostedZone/*
 !scripts_model/terraform/aws/route53/hostedZone/main.tf
 
+scripts_model/terraform/aws/route53/hostedZoneAcm/*
+!scripts_model/terraform/aws/route53/hostedZoneAcm/main.tf
+
 scripts_model/terraform/aws/route53/recordLb/*
 !scripts_model/terraform/aws/route53/recordLb/main.tf
 

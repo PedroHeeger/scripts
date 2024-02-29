@@ -4,15 +4,27 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "hosted_zone_name" {
+# variable "hostedZoneName" {
+#   description = "Nome da Zona de Hospedagem"
+#   default = "hosted-zone-test1.com.br."
+# }
+
+# variable "domainName" {
+#   description = "Nome de Domínio"
+#   default = "hosted-zone-test1.com.br"
+# }
+
+variable "hostedZoneName" {
   description = "Nome da Zona de Hospedagem"
-  default = "hosted-zone-test1.com.br."
+  default = "pedroheeger.dev.br."
 }
 
-variable "domain_name" {
+variable "domainName" {
   description = "Nome de Domínio"
-  default = "hosted-zone-test1.com.br"
+  default = "pedroheeger.dev.br"
 }
+
+
 
 
 # Executando o código
@@ -21,7 +33,7 @@ provider "aws" {
 }
 
 resource "aws_acm_certificate" "example" {
-  domain_name       = var.domain_name
+  domain_name       = var.domainName
   validation_method = "DNS"
 
   lifecycle {
@@ -30,7 +42,7 @@ resource "aws_acm_certificate" "example" {
 }
 
 data "aws_route53_zone" "existing" {
-  name = var.hosted_zone_name
+  name = var.hostedZoneName
 }
 
 resource "aws_route53_record" "example" {
