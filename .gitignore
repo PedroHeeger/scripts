@@ -147,4 +147,3 @@ scripts_model/terraform/aws/vpc/sgRule/*
 scripts_model/power_shell/aws/sageMaker
 scripts_model/power_shell/aws/ecs/fargate/autoScaling/
 scripts_model/terraform/aws/ecs/fargate/
-scripts_model/power_shell/aws/elb/elbListenerRule.ps1

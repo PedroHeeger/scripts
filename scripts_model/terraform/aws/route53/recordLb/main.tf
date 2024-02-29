@@ -6,17 +6,17 @@ variable "region" {
 
 variable "hosted_zone_name" {
   description = "Nome da hosted zone no Route 53"
-  default     = "hosted-zone-test1.com.br."
+  default     = "pedroheeger.dev.br."
 }
 
 variable "domain_name" {
   description = "Nome de domínio associado à hosted zone"
-  default     = "hosted-zone-test1.com.br"
+  default     = "pedroheeger.dev.br"
 }
 
 variable "resource_record_name" {
   description = "Nome do registro CNAME a ser criado"
-  default     = "recordNameLbTest1"
+  default     = "recordnamelbtest1.pedroheeger.dev.br"
 }
 
 variable "alb_name" {
@@ -44,5 +44,5 @@ resource "aws_route53_record" "record" {
   name    = var.resource_record_name
   type    = "CNAME"
   ttl     = 300
-  records = [data.aws_lb.alb.dns_name]
+  records = [data.aws_lb.example.dns_name]
 }

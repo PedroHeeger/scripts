@@ -9,7 +9,10 @@ Write-Output "Definindo variáveis"
 $albName = "albTest1"
 $tgName = "tgTest1"
 $listenerProtocol = "HTTP"
+# $listenerProtocol = "HTTPS"
 $listenerPort = "80"
+# $listenerPort = "443"
+$fullDomainName = "www.pedroheeger.dev.br"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -32,10 +35,18 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os listeners do load balancer $albName"
         aws elbv2 describe-listeners --load-balancer-arn $lbArn --query "Listeners[].ListenerArn" --output text
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Extraindo a ARN do certificado $tgName"
+        $certificateArn = aws acm list-certificates --query "CertificateSummaryList[?DomainName=='$fullDomainName'].CertificateArn" --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando um listener para vincular o target group $tgName ao load balancer $albName na porta $listenerPort do protocolo $listenerProtocol"
         aws elbv2 create-listener --load-balancer-arn $lbArn --protocol $listenerProtocol --port $listenerPort --default-actions "Type=forward,TargetGroupArn=$tgArn" --no-cli-pager
+
+        Write-Output "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "Criando um listener para vincular o target group $tgName ao load balancer $albName na porta $listenerPort do protocolo $listenerProtocol"
+        aws elbv2 create-listener --load-balancer-arn $lbArn --protocol $listenerProtocol --port $listenerPort --default-actions "Type=forward,TargetGroupArn=$tgArn" --certificates CertificateArn=$certificateArn --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o listener que vincula o target group $tgName ao load balancer $albName na porta $listenerPort do protocolo $listenerProtocol"
@@ -57,7 +68,9 @@ Write-Output "Definindo variáveis"
 $albName = "albTest1"
 $tgName = "tgTest1"
 $listenerProtocol = "HTTP"
+# $listenerProtocol = "HTTPS"
 $listenerPort = "80"
+# $listenerPort = "443"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

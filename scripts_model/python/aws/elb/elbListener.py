@@ -10,8 +10,11 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 alb_name = "albTest1"
 tg_name = "tgTest1"
-listener_protocol = "HTTP"
-listener_port = "80"
+# listener_protocol = "HTTP"
+listener_protocol = "HTTPS"
+# listener_port = "80"
+listener_port = "443"
+full_domain_name = "www.pedroheeger.dev.br"
 
 resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
@@ -43,12 +46,32 @@ if resposta.lower() == 'y':
         print(all_listeners)
 
         print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Extraindo a ARN do certificado {tg_name}")
+        response = boto3.client('acm').list_certificates()
+        certificates = response.get('CertificateSummaryList', [])
+
+        for certificate in certificates:
+            if certificate.get('DomainName') == full_domain_name:
+                certificate_arn = certificate.get('CertificateArn')
+                break
+
+        # print("-----//-----//-----//-----//-----//-----//-----")
+        # print(f"Criando um listener para vincular o target group {tg_name} ao load balancer {alb_name} na porta {listener_port} do protocolo {listener_protocol}")
+        # elbv2_client.create_listener(
+        #     LoadBalancerArn=lbArn,
+        #     Protocol=listener_protocol,
+        #     Port=int(listener_port),
+        #     DefaultActions=[{'Type': 'forward', 'TargetGroupArn': tgArn}]
+        # )
+
+        print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Criando um listener para vincular o target group {tg_name} ao load balancer {alb_name} na porta {listener_port} do protocolo {listener_protocol}")
         elbv2_client.create_listener(
             LoadBalancerArn=lbArn,
             Protocol=listener_protocol,
             Port=int(listener_port),
-            DefaultActions=[{'Type': 'forward', 'TargetGroupArn': tgArn}]
+            DefaultActions=[{'Type': 'forward', 'TargetGroupArn': tgArn}],
+            Certificates=[{'CertificateArn': certificate_arn}]
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -74,8 +97,10 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 alb_name = "albTest1"
 tg_name = "tgTest1"
-listener_protocol = "HTTP"
-listener_port = "80"
+# listener_protocol = "HTTP"
+listener_protocol = "HTTPS"
+# listener_port = "80"
+listener_port = "443"
 
 resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':

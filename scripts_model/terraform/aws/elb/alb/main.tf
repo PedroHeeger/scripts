@@ -6,7 +6,7 @@ variable "region" {
 
 variable "lbName" {
   description = "Nome do Application Load Balancer"
-  default     = "lbTest1"
+  default     = "albTest1"
 }
 
 variable "aZ1" {
@@ -60,15 +60,47 @@ variable "tgHealthCheckPath" {
   default     = "/"
 }
 
-variable "listenerProtocol" {
+variable "listenerProtocol1" {
   description = "Protocolo do Listener"
   default     = "HTTP"
 }
 
-variable "listenerPort" {
+variable "listenerPort1" {
   description = "Porta do Listener"
   default     = 80
 }
+
+variable "listenerProtocol2" {
+  description = "Protocolo do Listener"
+  default     = "HTTPS"
+}
+
+variable "listenerPort2" {
+  description = "Porta do Listener"
+  default     = 443
+}
+
+variable "domainName" {
+  description = "Nome de Domínio"
+  default = "www.pedroheeger.dev.br"
+}
+
+variable "redirectProtocol" {
+  description = "Protocolo Redirecionado"
+  default = "HTTPS"
+}
+
+variable "redirectPort" {
+  description = "Porta Redirecionada"
+  default = 443
+}
+
+variable "listenerRuleName" {
+  description = "Nome da Regra do Listener"
+  default = "listenerRuleTest1"
+}
+
+
 
 
 # Executando o código
@@ -110,6 +142,7 @@ data "aws_subnet" "selected_default_subnet" {
 # }
 
 
+# ALB
 resource "aws_lb" "example" {
   name               = var.lbName
   internal           = false
@@ -120,6 +153,8 @@ resource "aws_lb" "example" {
   enable_deletion_protection = false // Define como true se você deseja proteção contra exclusão
 }
 
+
+# TARGET GROUP (TG)
 resource "aws_lb_target_group" "example" {
   name        = var.tgName
   port        = var.tgPort
@@ -141,10 +176,12 @@ resource "aws_lb_target_group" "example" {
   }
 }
 
-resource "aws_lb_listener" "example" {
+
+# LISTENER HTTP
+resource "aws_lb_listener" "example_1" {
   load_balancer_arn = aws_lb.example.arn
-  port              = var.listenerPort
-  protocol          = var.listenerProtocol
+  port              = var.listenerPort1
+  protocol          = var.listenerProtocol1
 
   # default_action {
   #   type             = "fixed-response"
@@ -161,5 +198,62 @@ resource "aws_lb_listener" "example" {
       type             = "forward"
       target_group_arn = aws_lb_target_group.example.arn
     }
+  }
+}
+
+
+# LISTENER HTTPS
+data "aws_acm_certificate" "example" {
+  domain       = var.domainName
+  statuses = ["ISSUED"]
+}
+
+resource "aws_lb_listener" "example_2" {
+  load_balancer_arn = aws_lb.example.arn
+  port              = var.listenerPort2
+  protocol          = var.listenerProtocol2
+  certificate_arn   = data.aws_acm_certificate.example.arn
+
+  # default_action {
+  #   type             = "fixed-response"
+  #   fixed_response {
+  #     content_type = "text/plain"
+  #     status_code  = "200"
+  #     message_body = "OK"
+  #   }
+  # }
+
+  dynamic "default_action" {
+    for_each = aws_lb_target_group.example.arn != null ? [1] : []
+    content {
+      type             = "forward"
+      target_group_arn = aws_lb_target_group.example.arn
+    }
+  }
+}
+
+
+# LISTENER RULE
+resource "aws_lb_listener_rule" "example" {
+  listener_arn = aws_lb_listener.example_1.arn
+  priority     = 1
+
+  action {
+    type = "redirect"
+    redirect {
+      protocol      = var.redirectProtocol
+      port          = var.redirectPort
+      status_code   = "HTTP_301"
+    }
+  }
+
+  condition {
+    path_pattern {
+      values = ["/"]
+    }
+  }
+
+  tags = {
+    Name = var.listenerRuleName
   }
 }

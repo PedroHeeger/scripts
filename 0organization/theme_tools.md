@@ -295,7 +295,7 @@
   - Docker Hub   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_hub.png" alt="docker_hub" width="auto" height="25">
   - Docker Registry   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_registry.png" alt="docker_registry" width="auto" height="25">
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
-  - GitLab CI/CD   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gitlab_cicd.png" alt="gitlab_cicd" width="auto" height="25">
+  - GitLab   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="gitlab" width="auto" height="25">
   - Kaggle   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg" alt="kaggle" width="auto" height="25">
   - Terraform Registry   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform_registry" width="auto" height="25">
 - Command Line Interpreter (CLI):
