@@ -9,6 +9,7 @@
 - Operating System (OS)
 - Programming
 - Programming Logic
+- Shell Script
 - Versioning
 - Virtualization
 - Web Devolopment
@@ -287,6 +288,7 @@
   - VI iMproved (Vim)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg" alt="vim" width="auto" height="25">
   - Visualg   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/visualg.png" alt="visualg" width="auto" height="25">
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+  - Windows PowerShell ISE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_powershell_ise.webp" alt="windows_powershell_ise" width="auto" height="25">
   - Xcode   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg" alt="xcode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
@@ -371,6 +373,8 @@
   - Unrar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unrar.png" alt="unrar" width="auto" height="25">
   - Unzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unzip.png" alt="unzip" width="auto" height="25">
   - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
+  - Windows Management Instrumentation (WMI)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wmi.webp" alt="wmi" width="auto" height="25">
+  - Windows Management Instrumentation Command-line (WMIC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wmic.webp" alt="wmic" width="auto" height="25">
   - Windows Terminal   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_terminal.png" alt="windows_terminal" width="auto" height="25">
   - XZ Utils/Unxz   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xz.png" alt="xz" width="auto" height="25">
   - Yarn   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" alt="yarn" width="auto" height="25">
@@ -408,15 +412,26 @@
   - PuTTY   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - PuTTYgen   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
   - PuTTY PSCP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty_pscp" width="auto" height="25">
-  - SSL Server Test   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ssl_server_test.webp" alt="ssl_server_test" width="auto" height="25">
   - Registro .br   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/registro.br.png" alt="registro.br" width="auto" height="25">
+  - Remote Desktop Protocol Client (RDP Client)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rdp_client.png" alt="rdp_client" width="auto" height="25">
+  - Server Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/server_manager.webp" alt="server_manager" width="auto" height="25">
+  - SSL Server Test   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ssl_server_test.webp" alt="ssl_server_test" width="auto" height="25">
   - V8 Engine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/v8_engine.png" alt="v8_engine" width="auto" height="25">
   - Whatsmydns.net   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/whatsmydns_net.png" alt="whatsmydns_net" width="auto" height="25">
   - WeTransfer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/wetransfer.png" alt="wetransfer" width="auto" height="25">
   - WinSCP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/winscp.png" alt="winscp" width="auto" height="25">
+- Remote Desktop Software:
+  - AnyDesk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/anydesk.png" alt="anydesk" width="auto" height="25">
+  - Chrome Remote Desktop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chrome_remote_desktop.png" alt="chrome_remote_desktop" width="auto" height="25">
+  - Logmein   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/logmein.png" alt="logmein" width="auto" height="25">
+  - Splashtop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/splashtop.png" alt="splashtop" width="auto" height="25">
+  - TeamViewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer.png" alt="team_viewer" width="auto" height="25">
+  - TeamViewer QuickSupport   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer_qs.png" alt="team_viewer_qs" width="auto" height="25">
+  - TeamViewer Universal Add-On   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer_universal_add-on.png" alt="team_viewer_universal_add-on" width="auto" height="25">
 - Application Programming Interface:
   - Postman   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/postman.svg" alt="postman" width="auto" height="25">
 - Development:
+  - ChromeDriver   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chrome_driver.png" alt="chrome_driver" width="auto" height="25">
   - DevOps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25">
   - Microsoft Power Apps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_power_apps.png" alt="power_apps" width="auto" height="25">
   - Sequelize   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg" alt="sequelize" width="auto" height="25">
@@ -427,6 +442,7 @@
   - Robot FrameWork   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/robot_framework.png" alt="robot_framework" width="auto" height="25">
   - Selenium (Se)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg" alt="selenium" width="auto" height="25">
   - Serverspec   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/serverspec.png" alt="serverspec" width="auto" height="25">
+  - Universal Windows Platform (UWP)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/uwp.webp" alt="uwp" width="auto" height="25">
 - User Experience Design (UX):
   - Figma   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="figma" width="auto" height="25">
   - GitKraken   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gitkraken.png" alt="gitkraken" width="auto" height="25">
