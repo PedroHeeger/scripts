@@ -313,6 +313,7 @@
   - MySQL Shell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mysql_shell.png" alt="mysql_shell" width="auto" height="25">
   - Oh My Zshell (Oh My ZSh)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/oh_my_zshell.png" alt="oh_my_zshell" width="auto" height="25">
   - Oracle Cloud CLI   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/oracle_cloud.jpg" alt="oracle_cloud_cli" width="auto" height="25">
+  - PowerShell Web Access   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
   - Prompt de Comando (cmd)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cmd_prompt.png" alt="cmd" width="auto" height="25">
   - Systemctl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/systemctl.png" alt="systemctl" width="auto" height="25">
   - Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
@@ -320,6 +321,7 @@
 - Server and Databases:
   - Apache HTTP Server (httpd)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_httpd" width="auto" height="25">
   - Gunicorn   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gunicorn.svg" alt="gunicorn" width="auto" height="25">
+  - Internet Information Services (IIS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iis.jpg" alt="iis" width="auto" height="25">
   - MariaDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mariadb.png" alt="mariadb" width="auto" height="25">
   - MySQL Server   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
   - Network File System (NFS Server)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nfs_server.jpeg" alt="nfs_server" width="auto" height="25">
@@ -401,10 +403,12 @@
   - Google Chrome   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" alt="google_chrome" width="auto" height="25">
   - Filezilla   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filezilla/filezilla-plain.svg" alt="filezilla" width="auto" height="25">
   - Internet Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/internet_explorer.png" alt="internet_explorer" width="auto" height="25">
+  - Internet Information Services Manager (IIS Manager)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iis_manager.png" alt="iis_manager" width="auto" height="25">
   - intoDNS   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/intodns.png" alt="intodns" width="auto" height="25">
   - JSON Web Token (JWT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/jwt.png" alt="jwt" width="auto" height="25">
   - Microsoft Edge   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_edge.png" alt="microsoft_edge" width="auto" height="25">
   - MX Toolbox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/mx_toolbox.png" alt="mx_toolbox" width="auto" height="25">
+  - NoMachine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nomachine.webp" alt="nomachine" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
   - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
   - Ping
@@ -416,9 +420,11 @@
   - Remote Desktop Protocol Client (RDP Client)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rdp_client.png" alt="rdp_client" width="auto" height="25">
   - Server Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/server_manager.webp" alt="server_manager" width="auto" height="25">
   - SSL Server Test   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ssl_server_test.webp" alt="ssl_server_test" width="auto" height="25">
+  - Telnet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/telnet.png" alt="telnet" width="auto" height="25">
   - V8 Engine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/v8_engine.png" alt="v8_engine" width="auto" height="25">
-  - Whatsmydns.net   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/whatsmydns_net.png" alt="whatsmydns_net" width="auto" height="25">
   - WeTransfer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/wetransfer.png" alt="wetransfer" width="auto" height="25">
+  - Whatsmydns.net   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/whatsmydns_net.png" alt="whatsmydns_net" width="auto" height="25">
+  - Windows Defender Firewall   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_windows_defender_firewall.png" alt="microsoft_windows_defender_firewall" width="auto" height="25">
   - WinSCP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/winscp.png" alt="winscp" width="auto" height="25">
 - Remote Desktop Software:
   - AnyDesk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/anydesk.png" alt="anydesk" width="auto" height="25">
@@ -428,6 +434,8 @@
   - TeamViewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer.png" alt="team_viewer" width="auto" height="25">
   - TeamViewer QuickSupport   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer_qs.png" alt="team_viewer_qs" width="auto" height="25">
   - TeamViewer Universal Add-On   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer_universal_add-on.png" alt="team_viewer_universal_add-on" width="auto" height="25">
+  - Virtual Network Computing (VNC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vnc.svg" alt="vnc" width="auto" height="25">
+  - X2Go   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/x2go.png" alt="x2go" width="auto" height="25">
 - Application Programming Interface:
   - Postman   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/postman.svg" alt="postman" width="auto" height="25">
 - Development:
@@ -435,6 +443,8 @@
   - DevOps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25">
   - Microsoft Power Apps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_power_apps.png" alt="power_apps" width="auto" height="25">
   - Sequelize   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg" alt="sequelize" width="auto" height="25">
+- Artifact Repository:
+  - PowerShell Gallery (PS Gallery)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
 - Software Development Testing:
   - Apache Bench (ab)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache.png" alt="apache_bench" width="auto" height="25">
   - Loader.io   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
