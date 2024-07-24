@@ -12,6 +12,7 @@ objectName="objTest.jpg"
 filePath="G:/Meu Drive/4_PROJ/scripts/scripts_model/power_shell/aws/s3"
 fileName="objTest.jpg"
 storageClass="STANDARD"
+contentType="image/jpg"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -36,7 +37,7 @@ if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
             
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Criando o objeto de nome $objectName no bucket $bucketName"
-            aws s3api put-object --bucket $bucketName --key $objectName --body "$filePath/$fileName" --storage-class $storageClass
+            aws s3api put-object --bucket $bucketName --key $objectName --body "$filePath/$fileName" --storage-class $storageClass --content-type $contentType
         
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Listando o objeto de nome $objectName no bucket $bucketName"

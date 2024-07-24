@@ -9,11 +9,10 @@ Write-Output "Definindo variáveis"
 $bucketName = "bucket-test1-ph"
 $region = "us-east-1"
 $objectName = "objTest.jpg"
-# $objectName = "objTest1.txt"
 $filePath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/power_shell/aws/s3"
 $fileName = "objTest.jpg"
-# $fileName = "objTest1.txt"
 $storageClass = "STANDARD"
+$contentType = "image/jpg"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -23,10 +22,10 @@ if ($resposta.ToLower() -eq 'y') {
     if ((aws s3api list-buckets --region $region --query "Buckets[?Name=='$bucketName'].Name").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se existe o objeto de nome $objectName no bucket $bucketName"
-        if ((aws s3api list-objects --bucket bucket-test1-ph --query "Contents[?Key=='$objectName'].Key").Count -gt 1) {
+        if ((aws s3api list-objects --bucket $bucketName --query "Contents[?Key=='$objectName'].Key").Count -gt 1) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Já existe o objeto de nome $objectName no bucket $bucketName"   
-            aws s3api list-objects --bucket bucket-test1-ph --query "Contents[?Key=='$objectName'].Key" --output text
+            aws s3api list-objects --bucket $bucketName --query "Contents[?Key=='$objectName'].Key" --output text
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando a URL do objeto de nome $objectName"
@@ -35,15 +34,14 @@ if ($resposta.ToLower() -eq 'y') {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando todos os objetos no bucket $bucketName"
             aws s3api list-objects --bucket $bucketName --query "Contents[].Key" --output text
-            aws s3api list-objects --bucket bucket-test1-ph --query "Contents[].Key" --output text
         
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Criando o objeto de nome $objectName no bucket $bucketName"
-            aws s3api put-object --bucket $bucketName --key $objectName --body "{$filePath}/{$fileName}" --storage-class $storageClass
+            aws s3api put-object --bucket $bucketName --key $objectName --body "$filePath/$fileName" --storage-class $storageClass --content-type $contentType
     
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando o objeto de nome $objectName no bucket $bucketName"
-            aws s3api list-objects --bucket bucket-test1-ph --query "Contents[?Key=='$objectName'].Key" --output text  
+            aws s3api list-objects --bucket $bucketName --query "Contents[?Key=='$objectName'].Key" --output text  
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando a URL do objeto de nome $objectName"
@@ -65,7 +63,7 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $bucketName = "bucket-test1-ph"
 $region = "us-east-1"
-$objectName = "objTest1.txt"
+$objectName = "objTest.jpg"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -75,7 +73,7 @@ if ($resposta.ToLower() -eq 'y') {
     if ((aws s3api list-buckets --region $region --query "Buckets[?Name=='$bucketName'].Name").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se existe o objeto de nome $objectName no bucket $bucketName"
-        if ((aws s3api list-objects --bucket bucket-test1-ph --query "Contents[?Key=='$objectName'].Key").Count -gt 1) {
+        if ((aws s3api list-objects --bucket $bucketName --query "Contents[?Key=='$objectName'].Key").Count -gt 1) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando todos os objetos no bucket $bucketName"
             aws s3api list-objects --bucket $bucketName --query "Contents[].Key" --output text

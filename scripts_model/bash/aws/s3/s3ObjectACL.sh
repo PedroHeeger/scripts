@@ -8,7 +8,7 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 bucketName="bucket-test1-ph"
 region="us-east-1"
-objectName="objTest1.txt"
+objectName="objTest.jpg"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
@@ -56,7 +56,7 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 bucketName="bucket-test1-ph"
 region="us-east-1"
-objectName="objTest1.txt"
+objectName="objTest.jpg"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta

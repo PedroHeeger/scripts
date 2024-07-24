@@ -126,6 +126,9 @@ scripts_model/terraform/aws/iam/iamUser/*
 scripts_model/terraform/aws/rds/rdsDB/*
 !scripts_model/terraform/aws/rds/rdsDB/main.tf
 
+scripts_model/terraform/aws/route53/healthCheck/*
+!scripts_model/terraform/aws/route53/healthCheck/main.tf
+
 scripts_model/terraform/aws/route53/hostedZone/*
 !scripts_model/terraform/aws/route53/hostedZone/main.tf
 
@@ -134,6 +137,15 @@ scripts_model/terraform/aws/route53/hostedZoneAcm/*
 
 scripts_model/terraform/aws/route53/recordLb/*
 !scripts_model/terraform/aws/route53/recordLb/main.tf
+
+scripts_model/terraform/aws/route53/recordRoutingPolicies/*
+!scripts_model/terraform/aws/route53/recordRoutingPolicies/main.tf
+
+scripts_model/terraform/aws/s3/bucket/*
+!scripts_model/terraform/aws/s3/bucket/main.tf
+
+scripts_model/terraform/aws/s3/object/*
+!scripts_model/terraform/aws/s3/object/main.tf
 
 scripts_model/terraform/aws/vpc/vpc/*
 !scripts_model/terraform/aws/vpc/vpc/main.tf

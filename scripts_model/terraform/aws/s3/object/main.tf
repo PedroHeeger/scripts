@@ -47,6 +47,7 @@ resource "aws_s3_object" "example" {
   source        = var.file_path
   storage_class = var.storage_class
   acl           = "public-read"
+  content_type  = "image/jpg"
 }
 
 

@@ -8,7 +8,7 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $bucketName = "bucket-test1-ph"
 $region = "us-east-1"
-$objectName = "objTest1.txt"
+$objectName = "objTest.jpg"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -29,7 +29,7 @@ if ($resposta.ToLower() -eq 'y') {
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Concedendo permissões de leitura para entidade everyone da ACL sobre o objeto de nome $objectName (Acesso Público)"
-            aws s3api put-bucket-acl --bucket $bucketName --key $objectName --acl public-read
+            aws s3api put-object-acl --bucket $bucketName --key $objectName --acl public-read
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando a configuração de permissões de leitura para entidade everyone da ACL sobre o objeto de nome $objectName (Acesso Público)"
@@ -51,7 +51,7 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $bucketName = "bucket-test1-ph"
 $region = "us-east-1"
-$objectName = "objTest1.txt"
+$objectName = "objTest.jpg"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

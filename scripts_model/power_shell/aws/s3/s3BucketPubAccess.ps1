@@ -17,7 +17,7 @@ if ($resposta.ToLower() -eq 'y') {
     if ((aws s3api list-buckets --region $region --query "Buckets[?Name=='$bucketName'].Name").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se a configuração de bloqueio de acesso público do bucket de nome $bucketName está desativada"
-        if ((aws s3api get-public-access-block --bucket bucket-test1-ph --query "PublicAccessBlockConfiguration.BlockPublicAcls && PublicAccessBlockConfiguration.IgnorePublicAcls && PublicAccessBlockConfiguration.RestrictPublicBuckets") -eq "false") {
+        if ((aws s3api get-public-access-block --bucket $bucketName --query "PublicAccessBlockConfiguration.BlockPublicAcls && PublicAccessBlockConfiguration.IgnorePublicAcls && PublicAccessBlockConfiguration.RestrictPublicBuckets") -eq "false") {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Já está desativada a configuração de bloqueio de acesso público do bucket de nome $bucketName"
             aws s3api get-public-access-block --bucket $bucketName --query "PublicAccessBlockConfiguration"       
@@ -28,12 +28,11 @@ if ($resposta.ToLower() -eq 'y') {
         
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Desativando a configuração de bloqueio de acesso público do bucket de nome $bucketName"
-            aws s3api put-public-access-block --bucket bucket-test1-ph --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=true,RestrictPublicBuckets=false"
+            aws s3api put-public-access-block --bucket $bucketName --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=true,RestrictPublicBuckets=false"
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando a configuração de bloqueio de acesso público do bucket de nome $bucketName"
             aws s3api get-public-access-block --bucket $bucketName --query "PublicAccessBlockConfiguration" 
-            aws s3api get-public-access-block --bucket bucket-test1-ph --query "PublicAccessBlockConfiguration" 
         }
     } else {Write-Output "Não existe o bucket de nome $bucketName"}
 } else {Write-Host "Código não executado"}
@@ -60,14 +59,14 @@ if ($resposta.ToLower() -eq 'y') {
     if ((aws s3api list-buckets --region $region --query "Buckets[?Name=='$bucketName'].Name").Count -gt 1) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se a configuração de bloqueio de acesso público do bucket de nome $bucketName está desativada"
-        if ((aws s3api get-public-access-block --bucket bucket-test1-ph --query "PublicAccessBlockConfiguration.BlockPublicAcls && PublicAccessBlockConfiguration.IgnorePublicAcls && PublicAccessBlockConfiguration.RestrictPublicBuckets") -eq "false") {
+        if ((aws s3api get-public-access-block --bucket $bucketName --query "PublicAccessBlockConfiguration.BlockPublicAcls && PublicAccessBlockConfiguration.IgnorePublicAcls && PublicAccessBlockConfiguration.RestrictPublicBuckets") -eq "false") {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando a configuração de bloqueio de acesso público do bucket de nome $bucketName"
             aws s3api get-public-access-block --bucket $bucketName --query "PublicAccessBlockConfiguration" 
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Ativando a configuração de bloqueio de acesso público do bucket de nome $bucketName"
-            aws s3api put-public-access-block --bucket bucket-test1-ph --public-access-block-configuration "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
+            aws s3api put-public-access-block --bucket $bucketName --public-access-block-configuration "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando a configuração de bloqueio de acesso público do bucket de nome $bucketName"

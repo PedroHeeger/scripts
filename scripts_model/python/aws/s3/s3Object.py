@@ -13,6 +13,7 @@ object_name = "objTest.jpg"
 file_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/python/aws/s3"
 file_name = "objTest.jpg"
 storage_class = "STANDARD"
+content_type = "image/jpg"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
@@ -49,7 +50,8 @@ if resposta == 'y':
                 Bucket=bucket_name,
                 Key=object_name,
                 Body=open(os.path.join(file_path, file_name), 'rb'),
-                StorageClass=storage_class
+                StorageClass=storage_class,
+                ContentType=content_type
             )
             
             print("-----//-----//-----//-----//-----//-----//-----")

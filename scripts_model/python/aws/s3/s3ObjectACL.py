@@ -8,7 +8,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 bucket_name = "bucket-test1-ph"
 region = "us-east-1"
-object_name = "objTest1.txt"
+object_name = "objTest.jpg"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
@@ -68,7 +68,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 bucket_name = "bucket-test1-ph"
 region = "us-east-1"
-object_name = "objTest1.txt"
+object_name = "objTest.jpg"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
