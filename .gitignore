@@ -147,6 +147,9 @@ scripts_model/terraform/aws/s3/bucket/*
 scripts_model/terraform/aws/s3/object/*
 !scripts_model/terraform/aws/s3/object/main.tf
 
+scripts_model/terraform/aws/sns/snsTopic/*
+!scripts_model/terraform/aws/sns/snsTopic/main.tf
+
 scripts_model/terraform/aws/vpc/vpc/*
 !scripts_model/terraform/aws/vpc/vpc/main.tf
 
