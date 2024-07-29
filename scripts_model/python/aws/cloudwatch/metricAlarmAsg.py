@@ -4,17 +4,21 @@ import boto3
 
 print("***********************************************")
 print("SERVIÇO: AMAZON CLOUDWATCH")
-print("METRIC ALARM CREATION")
+print("METRIC ALARM ASG CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-metric_alarm_name = "metricAlarm1"
-metric_alarm_description = "metricAlarmDescription1"
+metric_alarm_name = "asgMetricAlarm1"
+metric_alarm_description = "asgMetricAlarmDescription1"
 metric_name = "CPUUtilization"
 namespace = "AWS/EC2"
-statistic = "Average"
+statistic = "Average"      # Se a média dos resultados da métrica em 2 períodos no intervalo de tempo de 300 segundos for maior que o limite de 70%, o alarme é acionado
+period = 300
 threshold = 70
 comparison_operator = "GreaterThanThreshold"
+evaluation_periods = 2
+
+resource_key = "AutoScalingGroupName"
 asg_name = "asgTest1"
 as_scaling_policy_name = "asScalingPolicy1"  # SIMPLE SCALING POLICY
 # as_scaling_policy_name = "assScalingPolicy1"  # STEP SCALING POLICY
@@ -59,11 +63,11 @@ if response.lower() == 'y':
             MetricName=metric_name,
             Namespace=namespace,
             Statistic=statistic,
-            Period=300,
+            Period=period,
             Threshold=threshold,
             ComparisonOperator=comparison_operator,
-            Dimensions=[{'Name': 'AutoScalingGroupName', 'Value': asg_name}],
-            EvaluationPeriods=2,
+            EvaluationPeriods=evaluation_periods,
+            Dimensions=[{'Name': resource_key, 'Value': asg_name}],
             AlarmActions=[arn_scaling_policy]
         )
 
@@ -85,11 +89,11 @@ import boto3
 
 print("***********************************************")
 print("SERVIÇO: AMAZON CLOUDWATCH")
-print("METRIC ALARM EXCLUSION")
+print("METRIC ALARM ASG EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-metric_alarm_name = "metricAlarm1"
+metric_alarm_name = "asgMetricAlarm1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")

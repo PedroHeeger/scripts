@@ -20,8 +20,11 @@ scripts_model/terraform/aws/budget/*
 scripts_model/terraform/aws/cloudwatch/logGroup/*
 !scripts_model/terraform/aws/cloudwatch/logGroup/main.tf
 
-scripts_model/terraform/aws/cloudwatch/metricAlarm/*
-!scripts_model/terraform/aws/cloudwatch/metricAlarm/main.tf
+scripts_model/terraform/aws/cloudwatch/metricAlarmAsg/*
+!scripts_model/terraform/aws/cloudwatch/metricAlarmAsg/main.tf
+
+scripts_model/terraform/aws/cloudwatch/metricAlarmHc/*
+!scripts_model/terraform/aws/cloudwatch/metricAlarmHc/main.tf
 
 
 

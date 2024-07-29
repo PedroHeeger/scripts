@@ -2,27 +2,33 @@
 
 echo "***********************************************"
 echo "SERVIÇO: AMAZON CLOUDWATCH"
-echo "METRIC ALARM CREATION"
+echo "METRIC ALARM HEALTH CHECK CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-metricAlarmName="metricAlarm1"
+metricAlarmName="healthCheckMetricAlarm1"
 metricAlarmDescription="metricAlarmDescription1"
-metricName="CPUUtilization"
-namespace="AWS/EC2"
-statistic="Average"
-threshold=70
-comparisonOperator="GreaterThanThreshold"
-asgName="asgTest1"
-asScalingPolicyName="asScalingPolicy1"    # SIMPLE SCALING POLICY
-# asScalingPolicyName="assScalingPolicy1"    # STEP SCALING POLICY
+metricName="HealthCheckStatus"
+namespace="AWS/Route53"
+statistic="Average"           # Se a média dos resultados da métrica em apenas 1 período no intervalo de tempo de 60 segundos for menor que o limite de 1, o alarme é acionado
+period=60
+threshold=1
+comparisonOperator="LessThanThreshold"
+evaluationPeriods=1
+
+resourceKey="HealthCheckId"
+healthCheckName="healthCheckTest5"
+topicName="topicTest1"
+region="us-east-1"
+accountId="001727357081"
+topicArn="arn:aws:sns:${region}:${accountId}:${topicName}"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
-if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+if [[ $resposta =~ ^[Yy]$ ]]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o metric alarm de nome $metricAlarmName"
-    if [[ $(aws cloudwatch describe-alarms --query "MetricAlarms[?AlarmName=='$metricAlarmName'].AlarmName" --output text | wc -l) -gt 0 ]]; then
+    if [[ $(aws cloudwatch describe-alarms --query "MetricAlarms[?AlarmName=='$metricAlarmName'].AlarmName" --output text | wc -w) -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe o metric alarm de nome $metricAlarmName"
         aws cloudwatch describe-alarms --query "MetricAlarms[?AlarmName=='$metricAlarmName'].AlarmName" --output text
@@ -32,12 +38,12 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws cloudwatch describe-alarms --query "MetricAlarms[].AlarmName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo o ARN da scaling policy simples do grupo de auto scaling $asgName"
-        arnScalingPolicy=$(aws autoscaling describe-policies --auto-scaling-group-name $asgName --query "ScalingPolicies[?PolicyName=='$asScalingPolicyName'].PolicyARN" --output text)
-
+        echo "Extraindo o ID da verificação de integridade de nome $healthCheckName"
+        healthCheckId=$(aws route53 list-health-checks --query "HealthChecks[?CallerReference=='$healthCheckName'].Id" --output text)
+    
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o metric alarm de nome $metricAlarmName"
-        aws cloudwatch put-metric-alarm --alarm-name $metricAlarmName --alarm-description "$metricAlarmDescription" --metric-name $metricName --namespace $namespace --statistic $statistic --period 300 --threshold $threshold --comparison-operator $comparisonOperator --dimensions "Name=AutoScalingGroupName,Value=$asgName" --evaluation-periods 2 --alarm-actions $arnScalingPolicy
+        aws cloudwatch put-metric-alarm --alarm-name $metricAlarmName --alarm-description "$metricAlarmDescription" --metric-name $metricName --namespace $namespace --statistic $statistic --period $period --threshold $threshold --comparison-operator $comparisonOperator --evaluation-periods $evaluationPeriods --dimensions "Name=$resourceKey,Value=$healthCheckId" --alarm-actions $topicArn --ok-actions $topicArn
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o metric alarm de nome $metricAlarmName"
@@ -54,18 +60,18 @@ fi
 
 echo "***********************************************"
 echo "SERVIÇO: AMAZON CLOUDWATCH"
-echo "METRIC ALARM EXCLUSION"
+echo "METRIC ALARM HEALTH CHECK EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-metricAlarmName="metricAlarm1"
+metricAlarmName="healthCheckMetricAlarm1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
-if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
+if [[ $resposta =~ ^[Yy]$ ]]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o metric alarm de nome $metricAlarmName"
-    if [[ $(aws cloudwatch describe-alarms --query "MetricAlarms[?AlarmName=='$metricAlarmName'].AlarmName" --output text | wc -l) -gt 0 ]]; then
+    if [[ $(aws cloudwatch describe-alarms --query "MetricAlarms[?AlarmName=='$metricAlarmName'].AlarmName" --output text | wc -w) -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os metric alarms existentes"
         aws cloudwatch describe-alarms --query "MetricAlarms[].AlarmName" --output text
