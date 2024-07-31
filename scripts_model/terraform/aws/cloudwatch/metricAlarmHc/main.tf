@@ -67,7 +67,7 @@ variable "health_check_name" {
 variable "health_check_id" {
   description = "ID da verificação de integridade"
   type        = string
-  default     = "3f7c06ba-564f-4386-befe-83d873f8df38"
+  default     = "3e624507-3557-4ba9-bc50-eeff0645d740"
 }
 
 variable "topic_name" {
