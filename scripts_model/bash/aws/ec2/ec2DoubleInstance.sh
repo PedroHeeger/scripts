@@ -6,7 +6,7 @@ echo "EC2 DOUBLE CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-tagNameInstance="ec2ContainerInstanceTest"
+tagNameInstance="ec2Test"
 instanceA="1"
 instanceB="2"
 sgName="default"
@@ -99,7 +99,7 @@ echo "EC2 DOUBLE EXCLUSION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-tagNameInstance="ec2ContainerInstanceTest"
+tagNameInstance="ec2Test"
 instanceA="1"
 instanceB="2"
 

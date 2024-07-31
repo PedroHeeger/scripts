@@ -97,7 +97,7 @@ Write-Output "EC2 DOUBLE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2ContainerInstanceTest"
+$tagNameInstance = "ec2Test"
 $instanceA = "1"
 $instanceB = "2"
 

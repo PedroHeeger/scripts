@@ -144,9 +144,9 @@ print("EC2 DOUBLE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-tag_name_instance = "ec2ContainerInstanceTest"
-instanceA = "3"
-instanceB = "4"
+tag_name_instance = "ec2Test"
+instanceA = "1"
+instanceB = "2"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
