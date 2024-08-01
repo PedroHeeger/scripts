@@ -155,6 +155,9 @@ scripts_model/terraform/aws/s3/bucket/*
 scripts_model/terraform/aws/s3/object/*
 !scripts_model/terraform/aws/s3/object/main.tf
 
+scripts_model/terraform/aws/s3Glacier/vault/*
+!scripts_model/terraform/aws/s3Glacier/vault/main.tf
+
 scripts_model/terraform/aws/sns/snsTopic/*
 !scripts_model/terraform/aws/sns/snsTopic/main.tf
 
