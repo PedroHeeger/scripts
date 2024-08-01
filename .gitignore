@@ -27,6 +27,11 @@ scripts_model/terraform/aws/cloudwatch/metricAlarmAsg/*
 scripts_model/terraform/aws/cloudwatch/metricAlarmHc/*
 !scripts_model/terraform/aws/cloudwatch/metricAlarmHc/main.tf
 
+scripts_model/terraform/aws/ebs/volume/*
+!scripts_model/terraform/aws/ebs/volume/main.tf
+
+scripts_model/terraform/aws/ebs/snapshot/*
+!scripts_model/terraform/aws/ebs/snapshot/main.tf
 
 
 
@@ -94,12 +99,11 @@ scripts_model/terraform/aws/ecs/fargate/task/*
 
 
 
-
-
-
-
 scripts_model/terraform/aws/ecr/ecrRepository/*
 !scripts_model/terraform/aws/ecr/ecrRepository/main.tf
+
+scripts_model/terraform/aws/efs/fileSystem/*
+!scripts_model/terraform/aws/efs/fileSystem/main.tf
 
 scripts_model/terraform/aws/elb/alb/*
 !scripts_model/terraform/aws/elb/alb/main.tf
