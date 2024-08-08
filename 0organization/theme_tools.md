@@ -96,7 +96,6 @@
   - Amazon Macie   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_macie.svg" alt="aws_macie" width="auto" height="25">
   - Amazon Managed Blockchain   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_blockchain.jpeg" alt="aws_managed_blockchain" width="auto" height="25">
   - Amazon Managed Grafana   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_grafana.png" alt="aws_managed_grafana" width="auto" height="25">
-  - AWS Managed Services (AMS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_services.svg" alt="aws_managed_services" width="auto" height="25">
   - Amazon Managed Service for Prometheus   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_prometheus.png" alt="aws_managed_prometheus" width="auto" height="25">
   - Amazon Managed Streaming for Apache Kafka (Amazon MSK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_msk.png" alt="aws_msk" width="auto" height="25">
   - Amazon MemoryDB; Amazon MemoryDB for Redis   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_memorydb_for_redis.png" alt="aws_memorydb_for_redis" width="auto" height="25">
@@ -215,7 +214,7 @@
   - AWS Lambda@Edge   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lambda_edge.png" alt="aws_lambda_edge" width="auto" height="25">
   - AWS Launch Wizard   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_launch_wizard.png" alt="aws_launch_wizard" width="auto" height="25">
   - AWS License Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_license_manager.png" alt="aws_license_manager" width="auto" height="25">
-  - AWS Managed Services   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_services.svg" alt="aws_managed_services" width="auto" height="25">
+  - AWS Managed Services (AMS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_managed_services.svg" alt="aws_managed_services" width="auto" height="25">
   - AWS Management Console   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_management_console.svg" alt="aws_management_console" width="auto" height="25">
   - AWS Marketplace   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_marketplace.jpg" alt="aws_marketplace" width="auto" height="25">
   - AWS Media Services; AWS Elemental Media Services    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_media_services.png" alt="aws_media_services" width="auto" height="25">
