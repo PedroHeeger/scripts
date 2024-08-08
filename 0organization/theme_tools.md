@@ -47,6 +47,7 @@
   - Amazon AppStream 2.0   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_appstream_20.svg" alt="aws_appstream_20" width="auto" height="25">
   - Amazon Athena  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_athena.svg" alt="aws_athena" width="auto" height="25">
   - Amazon Augmented AI (A2I)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_a2i.png" alt="aws_a2i" width="auto" height="25">
+  - Amazon Aurora   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_aurora.png" alt="aws_aurora" width="auto" height="25">
   - Amazon Bedrock   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_bedrock.png" alt="aws_bedrock" width="auto" height="25">
   - Amazon Braket   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_braket.png" alt="aws_braket" width="auto" height="25">
   - Amazon Chime    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_chime.png" alt="aws_chime" width="auto" height="25">
@@ -101,17 +102,17 @@
   - Amazon MemoryDB; Amazon MemoryDB for Redis   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_memorydb_for_redis.png" alt="aws_memorydb_for_redis" width="auto" height="25">
   - Amazon MQ    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_mq.svg" alt="aws_mq" width="auto" height="25">
   - Amazon Neptune   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_neptune.svg" alt="aws_neptune" width="auto" height="25">
-  - Amazon Network Load Balancer (NLB)
+  - Amazon Network Load Balancer (NLB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_nlb.svg" alt="aws_nlb" width="auto" height="25">
   - Amazon OpenSearch Service (AOSS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_opensearch_service.jpg" alt="aws_opensearch_service" width="auto" height="25">
   - Amazon Q   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_q.png" alt="aws_q" width="auto" height="25">
   - Amazon QuickSight   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_quicksight.svg" alt="aws_quicksight" width="auto" height="25">
-  - Amazon QuickSight Q   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_quicksight_q.png" alt="aws_quicksight_q" width="auto" height="25">
+  - Amazon QuickSight Q   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_quicksight_q.jpg" alt="aws_quicksight_q" width="auto" height="25">
   - Amazon Quantum Ledger Database (QLDB)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_qldb.png" alt="aws_qldb" width="auto" height="25">
   - Amazon Personalize    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_personalize.png" alt="aws_personalize" width="auto" height="25">
   - Amazon Pinpoint    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_pinpoint.svg" alt="aws_pinpoint" width="auto" height="25">
   - Amazon Polly   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_polly.svg" alt="aws_polly" width="auto" height="25">
   - Amazon Redshift   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_redshift.svg" alt="aws_redshift" width="auto" height="25">
-  - Amazon Redshift Spectrum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_redshift_spectrum.jpeg" alt="aws_redshift_spectrum" width="auto" height="25">
+  - Amazon Redshift Spectrum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_redshift_spectrum.jpg" alt="aws_redshift_spectrum" width="auto" height="25">
   - Amazon Rekognition   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_rekognition.png" alt="aws_rekognition" width="auto" height="25">
   - Amazon Relational Database Service (RDS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_rds.svg" alt="aws_rds" width="auto" height="25">
   - Amazon Route 53   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_route_53.svg" alt="aws_route_53" width="auto" height="25">
@@ -129,7 +130,7 @@
   - Amazon WorkLink   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_worklink.jpg" alt="aws_worklink" width="auto" height="25">
   - Amazon WorkSpaces   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_workspaces.svg" alt="aws_workspaces" width="auto" height="25">
   - Amazon WorkSpaces Web   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_workspaces.svg" alt="aws_workspaces" width="auto" height="25">
-  - AWS Acceptable Use Policy   <img src="" alt="aws_aup" width="auto" height="25">
+  - AWS Acceptable Use Policy (AUP)   <img src="" alt="aws_aup" width="auto" height="25">
   - AWS Activate para startups   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_activate_startups.jpeg" alt="aws_activate_startups" width="auto" height="25">
   - AWS Amplify   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_amplify.svg" alt="aws_amplify" width="auto" height="25">
   - AWS App Runner   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_app_runner.png" alt="aws_app_runner" width="auto" height="25">
@@ -140,14 +141,17 @@
   - AWS Application Migration Service   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_application_migration_service.jpg" alt="aws_application_migration_service" width="auto" height="25">
   - AWS AppSync   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_appsync.svg" alt="aws_appsync" width="auto" height="25">
   - AWS Artifact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact" width="auto" height="25">
+  - AWS Artifact Agreements   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact_agreements" width="auto" height="25">
+  - AWS Artifact Reports   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_artifact.svg" alt="aws_artifact_reports" width="auto" height="25">
   - AWS Audit Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_audit_manager.jpg" alt="aws_audit_manager" width="auto" height="25">
   - AWS Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_auto_scaling.png" alt="aws_auto_scaling" width="auto" height="25">
+  - AWS Backup   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_backup.png" alt="aws_backup" width="auto" height="25">
   - AWS Batch   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_batch.svg" alt="aws_batch" width="auto" height="25">
   - AWS Billing and Cost Management; AWS Billing Console   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_billing.svg" alt="aws_billing_cost_management" width="auto" height="25">
   - AWS Billing Conductor   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_billing_conductor.png" alt="aws_billing_conductor" width="auto" height="25">
   - AWS Blog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_blog.jpg" alt="aws_blog" width="auto" height="25">
   - AWS Budgets  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_budgets.png" alt="aws_budget" width="auto" height="25">
-  - AWS Builder ID   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - AWS Builder ID   <img src="" alt="aws_builder_id" width="auto" height="25">
   - AWS Certificate Manager (ACM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_certificate_manager.svg" alt="aws_certificate_manager" width="auto" height="25">
   - AWS Client VPN   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_client_vpn.png" alt="aws_client_vpn" width="auto" height="25">
   - AWS Cloud9   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloud9.png" alt="aws_cloud9" width="auto" height="25">
@@ -166,7 +170,7 @@
   - AWS CodeStar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codestar.svg" alt="aws_codestar" width="auto" height="25">
   - AWS Compute Optimizer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_compute_optimizer.jpg" alt="aws_compute_optimizer" width="auto" height="25">
   - AWS Config   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_config.svg" alt="aws_config" width="auto" height="25">
-  - AWS Console Mobile Application   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws_console_mobile" width="auto" height="25">
+  - AWS Console Mobile Application   <img src="" alt="aws_console_mobile" width="auto" height="25">
   - AWS Control Tower   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_control_tower.jpg" alt="aws_control_tower" width="auto" height="25">
   - AWS Cost and Usage Reports (CUR)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cur.webp" alt="aws_cur" width="auto" height="25">
   - AWS Cost Explorer  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cost_explorer.webp" alt="aws_cost_explorer" width="auto" height="25">
@@ -192,6 +196,7 @@
   - AWS Global Accelerator   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_global_accelerator.jpg" alt="aws_global_accelerator" width="auto" height="25">
   - AWS Glossary   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_glossary.jpeg" alt="aws_glossary" width="auto" height="25">
   - AWS Glue   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_glue.svg" alt="aws_glue" width="auto" height="25">
+  - AWS Graviton   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_graviton.png" alt="aws_graviton" width="auto" height="25">
   - AWS Ground Station   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ground_station.png" alt="aws_ground_station" width="auto" height="25">
   - AWS Health   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_health.png" alt="aws_health" width="auto" height="25">
   - AWS IAM Access Analyzer    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_iam_access_analyzer.png" alt="aws_iam_access_analyzer" width="auto" height="25">
@@ -217,6 +222,7 @@
   - AWS Migration Evaluator   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_migration_evaluator.jpg" alt="aws_migration_evaluator" width="auto" height="25">
   - AWS Migration Hub   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_migration_hub.jpg" alt="aws_migration_hub" width="auto" height="25">
   - AWS Network Firewall    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_network_firewall.jpg" alt="aws_network_firewall" width="auto" height="25">
+  - AWS Nitro System   <img src="" alt="aws_nitro_system" width="auto" height="25">
   - AWS OpsWorks   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_partner_network.png" alt="aws_partner_network" width="auto" height="25">
   - AWS Organizations  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_organizations.svg" alt="aws_organizations" width="auto" height="25">
   - AWS Outposts   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_outposts.jpeg" alt="aws_outposts" width="auto" height="25">
@@ -230,6 +236,7 @@
   - AWS Resource Access Manager (RAM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ram.png" alt="aws_ram" width="auto" height="25">
   - AWS Resource Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_resource_explorer.png" alt="aws_resource_explorer" width="auto" height="25">
   - AWS Resource Groups e Tag Editor   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_resource_groups_and_tag_editor.webp" alt="aws_resource_groups_and_tag_editor" width="auto" height="25">
+  - AWS Saving Plans   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_savings_plans.png" alt="aws_savings_plans" width="auto" height="25">
   - AWS Schema Convertion Tool (SCT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sct.jpeg" alt="aws_sct" width="auto" height="25">
   - AWS Secrets Manager    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_secrets_manager.jpg" alt="aws_secrets_manager" width="auto" height="25">
   - AWS Security Hub   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_security_hub.jpg" alt="aws_security_hub" width="auto" height="25">
@@ -239,8 +246,9 @@
   - AWS Shield   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_shield.svg" alt="aws_shield" width="auto" height="25">
   - AWS Shield Advanced   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_shield_advanced.svg" alt="aws_shield_advanced" width="auto" height="25">
   - AWS Sign-In   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sign-in.png" alt="aws_sign-in" width="auto" height="25">
-  - AWS Site-to-Site VPN   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_site-to-site_vpn.jpeg" alt="aws_site-to-site_vpn" width="auto" height="25">
+  - AWS Site-to-Site VPN   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_site-to-site_vpn.jpg" alt="aws_site-to-site_vpn" width="auto" height="25">
   - AWS Skill Builder; AWS Training and Certification   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_skill_builder.webp" alt="aws_skill_builder" width="auto" height="25">   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_skill_builder.webp" alt="aws_skill_builder" width="auto" height="25">
+  - AWS Snow; AWS Snow Family   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snow.png" alt="aws_snow" width="auto" height="25">
   - AWS Snowball  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowball.svg" alt="aws_snowball" width="auto" height="25">
   - AWS Snowcone  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowcone.webp" alt="aws_snowcone" width="auto" height="25">
   - AWS Snowmobille  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_snowmobile.png" alt="aws_snowmobile" width="auto" height="25">
@@ -253,6 +261,7 @@
   - AWS Support Center    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_support_center.png" alt="aws_support_center" width="auto" height="25">
   - AWS Systems Manager (SSM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ssm.png" alt="aws_ssm" width="auto" height="25">
   - AWS Tech Talks    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_tech_talks.jpg" alt="aws_tech_talks" width="auto" height="25">
+  - AWS Toolkit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_toolkit.png" alt="aws_toolkit" width="auto" height="25">
   - AWS Tools for PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_partner_network.png" alt="aws_partner_network" width="auto" height="25">
   - AWS Trainium   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_trainium.jpeg" alt="aws_trainium" width="auto" height="25">
   - AWS Transfer Family   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_transfer_family.png" alt="aws_transfer_family" width="auto" height="25">
