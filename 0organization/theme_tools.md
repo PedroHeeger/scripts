@@ -1,4 +1,5 @@
 ### Theme:
+- Blockchain
 - Business Intelligence (BI)
 - Cloud Computing
 - Data
@@ -116,6 +117,7 @@
   - Amazon Relational Database Service (RDS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_rds.svg" alt="aws_rds" width="auto" height="25">
   - Amazon Route 53   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_route_53.svg" alt="aws_route_53" width="auto" height="25">
   - Amazon SageMaker   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sagemaker.png" alt="aws_sage_maker" width="auto" height="25">
+  - Amazon SageMaker Canvas   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sagemaker_canvas.png" alt="aws_sagemaker_canvas" width="auto" height="25">
   - Amazon Simple Email Service (Amazon SES)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ses.svg" alt="aws_ses" width="auto" height="25">
   - Amazon Simple Notification Service (SNS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sns.svg" alt="aws_sns" width="auto" height="25">
   - Amazon Simple Queue Service (SQS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sqs.svg" alt="aws_sqs" width="auto" height="25">
@@ -176,7 +178,7 @@
   - AWS Data Exchange   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_data_exchange.jpeg" alt="aws_data_exchange" width="auto" height="25">
   - AWS Data Export    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_data_export.png" alt="aws_data_export" width="auto" height="25">
   - AWS Data Pipeline    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_data_pipeline.svg" alt="aws_data_pipeline" width="auto" height="25">
-  = AWS Data Transfer Service (DTS); AWS DataSync   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_datasync.png" alt="aws_datasync" width="auto" height="25">
+  - AWS Data Transfer Service (DTS); AWS DataSync   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_datasync.png" alt="aws_datasync" width="auto" height="25">
   - AWS Database Migration Service (DMS)  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_codecommit.svg" alt="aws_dms" width="auto" height="25">
   - AWS DeepLens    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_deeplens.png" alt="aws_deeplens" width="auto" height="25">
   - AWS DeepRacer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_deepracer.png" alt="aws_deepracer" width="auto" height="25">
@@ -343,12 +345,15 @@
   - JavaScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="auto" height="25">
   - Linguagem M e Expressões DAX
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
-  - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
   - PHP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
   - Python   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" width="auto" height="25">
+  - Solidity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/solidity.svg" alt="solidity" width="auto" height="25">
   - TypeScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="typescript" width="auto" height="25">
   - Visual Basic for Applications (VBA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_vba.png" alt="vba" width="auto" height="25">
   - YAML   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/yaml.png" alt="yaml" width="auto" height="25">
+- Runtime Environment:
+  - Ethereum Virtual Machine (EVM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/evm.png" alt="evm" width="auto" height="25">
+  - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
 - Pseudocode:
   - Portugol   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portugol.png" alt="portugol" width="auto" height="25">
 - BI Tool:
@@ -494,11 +499,15 @@
   - Spring   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="spring" width="auto" height="25">
   - The Grinder   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/the_grinder.webp" alt="the_grinder" width="auto" height="25">
 - Library:
+  - Bitcoin Improvement Proposal 39 (bip39)   <img src="" alt="bip39" width="auto" height="25">
+  - Bitcoin Improvement Proposal 32 (bip32)   <img src="" alt="bip32" width="auto" height="25">
+  - bitcoinjs-lib   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/bitcoinjs-lib.png" alt="bitcoinjs-lib" width="auto" height="25">
   - Gdown   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
   - Mathplotlib   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/matplotlib.png" alt="mathplotlib" width="auto" height="25">
   - NumPy   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="numpy" width="auto" height="25">
   - Openai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/openai.png" alt="openai" width="auto" height="25">
   - Pandas   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="pandas" width="auto" height="25">
+  - Web3.js   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/web3js.png" alt="web3js" width="auto" height="25">
   - WerkZeug   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/werkzeug.webp" alt="werkzeug" width="auto" height="25">
 
 
@@ -545,6 +554,31 @@
   - Xrdp   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xrdp.png" alt="xrdp" width="auto" height="25">
 - Application Programming Interface:
   - Postman   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/postman.svg" alt="postman" width="auto" height="25">
+- Blockchain:
+  - Bitcoin (BTC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/btc.webp" alt="btc" width="auto" height="25">
+  - Bitcoin Testnet Faucet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/btc.webp" alt="bitcoin_testnet_faucet" width="auto" height="25">
+  - Blockchain.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/blockchain_com.png" alt="blockchain_com" width="auto" height="25">
+  - Blockstream Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/blockstream_explorer.webp" alt="blockstream_explorer" width="auto" height="25">
+  - Decentraland DAO (MANA e LAND)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/decentraland_dao.png" alt="decentraland_dao" width="auto" height="25">
+  - Electrum Bitcoin Wallet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/electrum_bitcoin_wallet.png" alt="electrum_bitcoin_wallet" width="auto" height="25">
+  - Ether (ETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ethereum.png" alt="eth" width="auto" height="25">
+  - Ethereum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ethereum.png" alt="ethereum" width="auto" height="25">
+  - Etherscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/etherscan.png" alt="etherscan" width="auto" height="25">
+  - Ganache   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ganache.png" alt="ganache" width="auto" height="25">
+  - Giga-Wei (Gwei)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gwei.png" alt="gwei" width="auto" height="25">
+  - Goerli; Goerli Ether (GoerliETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/goerli_eth.png" alt="goerli_eth" width="auto" height="25">
+  - Google Ethereum Sepolia Faucet   <img src="" alt="google_sepolia_faucet" width="auto" height="25">
+  - Hardhat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/hardhat.png" alt="hardhat" width="auto" height="25">
+  - IRISnet (IRIS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iris.png" alt="iris" width="auto" height="25">
+  - Keplr   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/keplr.png" alt="keplr" width="auto" height="25">
+  - MetaMask   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meta_mask.png" alt="meta_mask" width="auto" height="25">
+  - OpenSea   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/opensea.png" alt="opensea" width="auto" height="25">
+  - Polygon (MATIC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/polygon.png" alt="polygon" width="auto" height="25">
+  - PolygonScan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/polygonscan.svg" alt="polygonscan" width="auto" height="25">
+  - Remix IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/remix_ide.png" alt="remix_ide" width="auto" height="25">
+  - Sepolia; Sepolia Ether (SepoliaETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sepolia_eth.png" alt="sepolia_eth" width="auto" height="25">
+  - Truffle Framework   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/truffle_framework.png" alt="truffle_framework" width="auto" height="25">
+  - Uptick (UPTK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/uptk.jpeg" alt="uptk" width="auto" height="25">
 - Development:
   - ChromeDriver   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chrome_driver.png" alt="chrome_driver" width="auto" height="25">
   - DevOps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25">
@@ -573,6 +607,7 @@
   - Brandmark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ai_brandmark.png" alt="brandmark" width="auto" height="25">
   - ChatGPT   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chatgpt.png" alt="chatgpt" width="auto" height="25">
   - DALL-E   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dall-e.jpg" alt="dall-e" width="auto" height="25">
+  - D-iD   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/d-id.png" alt="d-id" width="auto" height="25">
   - Framer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/framer.png" alt="framer" width="auto" height="25">
   - Looka   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ai_looka.svg" alt="looka" width="auto" height="25">
   - Microsoft Bing   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/microsoft_bing.png" alt="microsoft_bing" width="auto" height="25">
