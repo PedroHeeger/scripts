@@ -573,6 +573,7 @@
   - Keplr   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/keplr.png" alt="keplr" width="auto" height="25">
   - MetaMask   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meta_mask.png" alt="meta_mask" width="auto" height="25">
   - OpenSea   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/opensea.png" alt="opensea" width="auto" height="25">
+  - OpenSea Testnet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/opensea.png" alt="opensea_testnet" width="auto" height="25">
   - Polygon (MATIC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/polygon.png" alt="polygon" width="auto" height="25">
   - PolygonScan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/polygonscan.svg" alt="polygonscan" width="auto" height="25">
   - Remix IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/remix_ide.png" alt="remix_ide" width="auto" height="25">
@@ -606,11 +607,13 @@
 - Artificial Intelligence:
   - Brandmark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ai_brandmark.png" alt="brandmark" width="auto" height="25">
   - ChatGPT   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chatgpt.png" alt="chatgpt" width="auto" height="25">
-  - DALL-E   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dall-e.jpg" alt="dall-e" width="auto" height="25">
+  - Claude   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/claude.png" alt="claude" width="auto" height="25">
+  - DALL-E   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dall-e.png" alt="dall-e" width="auto" height="25">
   - D-iD   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/d-id.png" alt="d-id" width="auto" height="25">
   - Framer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/framer.png" alt="framer" width="auto" height="25">
   - Looka   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ai_looka.svg" alt="looka" width="auto" height="25">
   - Microsoft Bing   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/microsoft_bing.png" alt="microsoft_bing" width="auto" height="25">
+  - Microsoft Copilot   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_copilot.png" alt="microsoft_copilot" width="auto" height="25">
   - Midjourney   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/midjourney.png" alt="midjourney" width="auto" height="25">
   - Platform for Open Exploration (Poe)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/poe.png" alt="poe" width="auto" height="25">
 - Social Media Platform:
