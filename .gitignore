@@ -1,23 +1,38 @@
 others/
+soft/
+
+
+aws/.default
+soft/docker/.default/secrets
+soft/git/.default/secrets
 
 
 
-aws/.default/secrets
 
-
+aws/compute/ec2/as
 aws/compute/ec2/transferFile
 aws/compute/ec2/userData
 aws/compute/ecs
+aws/compute/ecr
+aws/compute/eks
+
+
 aws/network
 aws/data
 aws/ssm
 aws/storage
+aws/ml
+aws/management
+aws/identity
+aws/cost
+aws/appIntegration
 
 
+aws/compute/ec2/instance/ec2Instance/*
+!aws/compute/ec2/instance/ec2Instance/main.tf
 
-
-
-
+aws/compute/ec2/keyPair/ec2KeyPair/*
+!aws/compute/ec2/keyPair/ec2KeyPair/main.tf
 
 
 
