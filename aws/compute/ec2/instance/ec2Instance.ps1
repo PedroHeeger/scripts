@@ -27,20 +27,20 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "Verificando se existe uma instância ativa de nome de tag $tagNameInstance"
+    Write-Output "Verificando se existe uma instância ativa $tagNameInstance"
     $condition = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
     if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Já existe uma instância ativa de nome de tag $tagNameInstance"
+        Write-Output "Já existe uma instância ativa $tagNameInstance"
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name' && Value=='$tagNameInstance'].Value" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando o IP público da instância ativa de nome de tag $tagNameInstance"
+        Write-Output "Listando o IP público da instância ativa $tagNameInstance"
         $instanceIp = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         Write-Output $instanceIp
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o Id da instância ativa de nome de tag $tagNameInstance"
+        Write-Output "Extraindo o Id da instância ativa $tagNameInstance"
         $instanceId = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -58,11 +58,11 @@ if ($resposta.ToLower() -eq 'y') {
         $subnetId = aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$az'].SubnetId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Criando a instância de nome de tag $tagNameInstance"
+        Write-Output "Criando a instância $tagNameInstance"
         $instanceId = aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --block-device-mappings "[{`"DeviceName`":`"$deviceName`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":`"$volumeType`"}}]" --no-cli-pager --query "Instances[0].InstanceId" --output text
 
         # Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        # Write-Output "Criando a instância de nome de tag $tagNameInstance"
+        # Write-Output "Criando a instância $tagNameInstance"
         # $instanceId = aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --block-device-mappings "[{`"DeviceName`":`"$deviceName`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":`"$volumeType`"}}]" --iam-instance-profile Name=$instanceProfileName --no-cli-pager --query "Instances[0].InstanceId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -79,7 +79,7 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando o IP público da instância ativa de nome de tag $tagNameInstance"
+        Write-Output "Listando o IP público da instância ativa $tagNameInstance"
         $instanceIp = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         Write-Output $instanceIp
 
@@ -107,7 +107,7 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "Verificando se existe uma instância ativa de nome de tag $tagNameInstance"
+    Write-Output "Verificando se existe uma instância ativa $tagNameInstance"
     $condition = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
     if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -115,11 +115,11 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
         
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o Id da instância de nome de tag $tagNameInstance"
+        Write-Output "Extraindo o Id da instância $tagNameInstance"
         $instanceId = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Removendo a instância de nome de tag $tagNameInstance"
+        Write-Output "Removendo a instância $tagNameInstance"
         aws ec2 terminate-instances --instance-ids $instanceId --no-dry-run --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -134,5 +134,5 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome de tag de todas as instâncias criadas ativas"
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
-    } else {Write-Output "Não existe uma instância ativa com o nome de tag $tagNameInstance"}
+    } else {Write-Output "Não existe uma instância ativa $tagNameInstance"}
 } else {Write-Host "Código não executado"}

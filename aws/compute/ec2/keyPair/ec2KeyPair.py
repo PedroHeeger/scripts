@@ -16,17 +16,17 @@ resposta = input("Deseja executar o código? (y/n): ")
 if resposta.lower() == 'y':
     try:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o par de chaves de nome {key_pair_name}")
+        print(f"Verificando se existe o par de chaves {key_pair_name}")
         ec2 = boto3.client('ec2')
         existing_key_pairs = ec2.describe_key_pairs(KeyNames=[key_pair_name])
         
         if existing_key_pairs["KeyPairs"]:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Já existe o par de chaves de nome {key_pair_name}")
+            print(f"Já existe o par de chaves {key_pair_name}")
             print(f"Chave Pública:\n{existing_key_pairs['KeyPairs'][0]['KeyName']}")
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando o par de chaves de nome {key_pair_name}")
+            print(f"Criando o par de chaves {key_pair_name}")
             key_pair = ec2.create_key_pair(KeyName=key_pair_name)
 
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -42,7 +42,7 @@ if resposta.lower() == 'y':
     except ec2.exceptions.ClientError as e:
         if e.response['Error']['Code'] == 'InvalidKeyPair.NotFound':
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando o par de chaves de nome {key_pair_name}")
+            print(f"Criando o par de chaves {key_pair_name}")
             key_pair = ec2.create_key_pair(KeyName=key_pair_name)
 
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -51,7 +51,7 @@ if resposta.lower() == 'y':
                 pem_file.write(key_pair['KeyMaterial'])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Par de chaves de nome {key_pair_name} criado com sucesso")
+            print(f"Par de chaves {key_pair_name} criado com sucesso")
             print(f"Chave Pública:\n{key_pair['KeyMaterial']}")
 else:
     print("Código não executado")
@@ -78,37 +78,37 @@ response = input("Deseja executar o código? (y/n) ").lower()
 if response == 'y':   
     try:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o par de chaves de nome {key_pair_name}")
+        print(f"Verificando se existe o par de chaves {key_pair_name}")
         ec2 = boto3.client('ec2')
         existing_key_pairs = ec2.describe_key_pairs(KeyNames=[key_pair_name])
 
         if existing_key_pairs.get("KeyPairs"):
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Removendo o par de chaves de nome {key_pair_name}")
+            print(f"Removendo o par de chaves {key_pair_name}")
             ec2.delete_key_pair(KeyName=key_pair_name)          
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Removendo o arquivo de chave privada de nome {key_pair_name}.pem se existir")
+            print(f"Removendo o arquivo de chave privada {key_pair_name}.pem se existir")
             pem_path = os.path.join(key_pair_path, f"{key_pair_name}.pem")
             if os.path.exists(pem_path):
                 os.remove(pem_path)
             else:
-                print(f"Não existe o arquivo de chave privada de nome {key_pair_name}.pem")
+                print(f"Não existe o arquivo de chave privada {key_pair_name}.pem")
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Removendo o arquivo de chave privada de nome {key_pair_name}.ppk se existir")
+            print(f"Removendo o arquivo de chave privada {key_pair_name}.ppk se existir")
             ppk_path = os.path.join(key_pair_path, f"{key_pair_name}.ppk")
             if os.path.exists(ppk_path):
                 os.remove(ppk_path)
             else:
-                print(f"Não existe o arquivo de chave privada de nome {key_pair_name}.ppk")
+                print(f"Não existe o arquivo de chave privada {key_pair_name}.ppk")
 
         else:
-            print(f"Não existe o par de chaves de nome {key_pair_name}!")
+            print(f"Não existe o par de chaves {key_pair_name}!")
 
     except ec2.exceptions.ClientError as e:
         if e.response['Error']['Code'] == 'InvalidKeyPair.NotFound':
-            print(f"Não existe o par de chaves de nome {key_pair_name}!")
+            print(f"Não existe o par de chaves {key_pair_name}!")
 
 else:
     print("Código não executado")

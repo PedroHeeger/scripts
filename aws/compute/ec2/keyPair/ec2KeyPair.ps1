@@ -13,11 +13,11 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "Verificando se existe o par de chaves de nome $keyPairName"
+    Write-Output "Verificando se existe o par de chaves $keyPairName"
     $condition = aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
     if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Já existe o par de chaves de nome $keyPairName"
+        Write-Output "Já existe o par de chaves $keyPairName"
         aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
     } else {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -25,11 +25,11 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Criando o par de chaves de nome $keyPairName e salvado o arquivo de chave privada"
+        Write-Output "Criando o par de chaves $keyPairName e salvado o arquivo de chave privada"
         aws ec2 create-key-pair --key-name $keyPairName --query 'KeyMaterial' --output text > "$keyPairPath\$keyPairName.pem"
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando apenas o par de chave de nome $keyPairName"
+        Write-Output "Listando apenas o par de chave $keyPairName"
         aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
     }
 } else {Write-Host "Código não executado"}
@@ -52,7 +52,7 @@ Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "Verificando se existe o par de chaves de nome $keyPairName"
+    Write-Output "Verificando se existe o par de chaves $keyPairName"
     $condition = aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
     if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -60,27 +60,27 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Removendo o par de chaves de nome $keyPairName"
+        Write-Output "Removendo o par de chaves $keyPairName"
         aws ec2 delete-key-pair --key-name $keyPairName
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Verificando se existe o arquivo de chave privada de nome $keyPairName.pem"
+        Write-Output "Verificando se existe o arquivo de chave privada $keyPairName.pem"
         if (Test-Path "$keyPairPath\$keyPairName.pem" -PathType Leaf) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Host "Removendo o arquivo de chave privada de nome $keyPairName.pem"
+            Write-Host "Removendo o arquivo de chave privada $keyPairName.pem"
             Remove-Item "$keyPairPath\$keyPairName.pem"
-        } else {Write-Host "Não existe o arquivo de chave privada de nome $keyPairName.pem"}
+        } else {Write-Host "Não existe o arquivo de chave privada $keyPairName.pem"}
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Verificando se existe o arquivo de chave privada de nome $keyPairName.ppk"
+        Write-Output "Verificando se existe o arquivo de chave privada $keyPairName.ppk"
         if (Test-Path "$keyPairPath\$keyPairName.ppk" -PathType Leaf) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Host "Removendo o arquivo de chave privada de nome $keyPairName.ppk"
+            Write-Host "Removendo o arquivo de chave privada $keyPairName.ppk"
             Remove-Item "$keyPairPath\$keyPairName.ppk"
-        } else {Write-Host "Não existe o arquivo de chave privada de nome $keyPairName.ppk"}
+        } else {Write-Host "Não existe o arquivo de chave privada $keyPairName.ppk"}
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os pares de chaves criados"
         aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
-    } else {Write-Output "Não existe o par de chaves de nome $keyPairName"}
+    } else {Write-Output "Não existe o par de chaves $keyPairName"}
 } else {Write-Host "Código não executado"}

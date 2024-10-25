@@ -13,11 +13,11 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o par de chaves de nome $keyPairName"
+    echo "Verificando se existe o par de chaves $keyPairName"
     condition=$(aws ec2 describe-key-pairs --output text | grep "$keyPairName" | wc -l)
     if [[ $condition -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Já existe o par de chaves de nome $keyPairName"
+        echo "Já existe o par de chaves $keyPairName"
         aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -25,11 +25,11 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando o par de chaves de nome $keyPairName e salvado o arquivo de chave privada"
+        echo "Criando o par de chaves $keyPairName e salvado o arquivo de chave privada"
         aws ec2 create-key-pair --key-name "$keyPairName" --query 'KeyMaterial' --output text > "$keyPairPath/$keyPairName.pem"
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando apenas o par de chave de nome $keyPairName"
+        echo "Listando apenas o par de chave $keyPairName"
         aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
     fi
 else
@@ -54,7 +54,7 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "${resposta,,}" == 'y' ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o par de chaves de nome $keyPairName"
+    echo "Verificando se existe o par de chaves $keyPairName"
     condition=$(aws ec2 describe-key-pairs --output text | grep "$keyPairName" | wc -l)
     if [[ $condition -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -62,34 +62,34 @@ if [ "${resposta,,}" == 'y' ]; then
         aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Removendo o par de chaves de nome $keyPairName"
+        echo "Removendo o par de chaves $keyPairName"
         aws ec2 delete-key-pair --key-name "$keyPairName"
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existe o arquivo de chave privada de nome $keyPairName.pem"
+        echo "Verificando se existe o arquivo de chave privada $keyPairName.pem"
         if [ -e "$keyPairPath/$keyPairName.pem" ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Removendo o arquivo de chave privada de nome $keyPairName.pem"
+            echo "Removendo o arquivo de chave privada $keyPairName.pem"
             rm "$keyPairPath/$keyPairName.pem"
         else
-            echo "Não existe o arquivo de chave privada de nome $keyPairName.pem"
+            echo "Não existe o arquivo de chave privada $keyPairName.pem"
         fi
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existe o arquivo de chave privada de nome $keyPairName.ppk"
+        echo "Verificando se existe o arquivo de chave privada $keyPairName.ppk"
         if [ -e "$keyPairPath/$keyPairName.ppk" ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Removendo o arquivo de chave privada de nome $keyPairName.ppk"
+            echo "Removendo o arquivo de chave privada $keyPairName.ppk"
             rm "$keyPairPath/$keyPairName.ppk"
         else
-            echo "Não existe o arquivo de chave privada de nome $keyPairName.ppk"
+            echo "Não existe o arquivo de chave privada $keyPairName.ppk"
         fi
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os pares de chaves criados"
         aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
     else
-        echo "Não existe o par de chaves de nome $keyPairName"
+        echo "Não existe o par de chaves $keyPairName"
     fi
 else
     echo "Código não executado"

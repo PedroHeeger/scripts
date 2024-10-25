@@ -32,19 +32,19 @@ if ($resposta.ToLower() -eq 'y') {
     $condition = aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[?(Tags[?Key=='Name' && (Value=='${tagNameInstance}${instanceA}' || Value=='${tagNameInstance}${instanceB}')])].[Tags[?Key=='Name'].Value | [0]]" --output text
     if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Já existe as instâncias ativas de nome de tag ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
+        Write-Output "Já existe as instâncias ativas ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name' && Value=='${tagNameInstance}${instanceA}'].Value" --output text
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name' && Value=='${tagNameInstance}${instanceB}'].Value" --output text
         
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando o IP público das instâncias ativas de nome de tag ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
+        Write-Output "Listando o IP público das instâncias ativas ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         $instanceIpA = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         $instanceIpB = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         Write-Output $instanceIpA
         Write-Output $instanceIpB
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o Id das instâncias ativas de nome de tag ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
+        Write-Output "Extraindo o Id das instâncias ativas ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         $instanceIdA = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
         $instanceIdB = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
 
@@ -68,11 +68,11 @@ if ($resposta.ToLower() -eq 'y') {
         $subnetId = aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$az'].SubnetId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Criando a instância de nome de tag ${tagNameInstance}${instanceA}"
+        Write-Output "Criando a instância ${tagNameInstance}${instanceA}"
         $instanceIdA = aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${tagNameInstance}${instanceA}}]" --block-device-mappings "[{`"DeviceName`":`"$deviceName`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":`"$volumeType`"}}]" --no-cli-pager --query "Instances[0].InstanceId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Criando a instância de nome de tag ${tagNameInstance}${instanceB}"
+        Write-Output "Criando a instância ${tagNameInstance}${instanceB}"
         $instanceIdB = aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${tagNameInstance}${instanceB}}]" --block-device-mappings "[{`"DeviceName`":`"$deviceName`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":`"$volumeType`"}}]" --no-cli-pager --query "Instances[0].InstanceId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -92,14 +92,14 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Listando o IP público das instâncias ativas de nome de tag ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
+        Write-Output "Listando o IP público das instâncias ativas ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         $instanceIpA = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         $instanceIpB = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         Write-Output $instanceIpA
         Write-Output $instanceIpB
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o Id das instâncias ativas de nome de tag ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
+        Write-Output "Extraindo o Id das instâncias ativas ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         $instanceIdA = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
         $instanceIdB = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text
 
@@ -142,12 +142,12 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
         
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o Id das instâncias ativas de nome de tag ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
+        Write-Output "Extraindo o Id das instâncias ativas ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         $instanceIdA = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceA}" --query "Reservations[].Instances[].InstanceId" --output text
         $instanceIdB = aws ec2 describe-instances --filters "Name=tag:Name,Values=${tagNameInstance}${instanceB}" --query "Reservations[].Instances[].InstanceId" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Removendo as instâncias de nome de tag ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
+        Write-Output "Removendo as instâncias ${tagNameInstance}${instanceA} e ${tagNameInstance}${instanceB}"
         aws ec2 terminate-instances --instance-ids $instanceIdA $instanceIdB --no-dry-run --no-cli-pager
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -165,5 +165,5 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome de tag de todas as instâncias criadas ativas"
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
-    } else {Write-Output "Não existe instâncias ativas com o nome de tag ${tagNameInstance}${instanceA} ou ${tagNameInstance}${instanceB}"}
+    } else {Write-Output "Não existem instâncias ativas ${tagNameInstance}${instanceA} ou ${tagNameInstance}${instanceB}"}
 } else {Write-Host "Código não executado"}
