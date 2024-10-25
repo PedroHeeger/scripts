@@ -23,7 +23,7 @@ aws/ssm
 aws/storage
 aws/ml
 aws/management
-aws/identity
+aws/identity/acm
 aws/cost
 aws/appIntegration
 
@@ -35,8 +35,17 @@ aws/compute/ec2/keyPair/ec2KeyPair/*
 !aws/compute/ec2/keyPair/ec2KeyPair/main.tf
 
 
+aws/identity/iam/group/iamGroup/*
+!aws/identity/iam/group/iamGroup/main.tf
 
+aws/identity/iam/instanceProfile/iamInstanceProfile/*
+!aws/identity/iam/instanceProfile/iamInstanceProfile/main.tf
 
+aws/identity/iam/role/iamRole/*
+!aws/identity/iam/role/iamRole/main.tf
+
+aws/identity/iam/user/iamUser/*
+!aws/identity/iam/user/iamUser/main.tf
 
 
 
