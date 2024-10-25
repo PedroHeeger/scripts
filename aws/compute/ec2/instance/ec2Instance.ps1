@@ -21,7 +21,7 @@ $userDataFile = "udFile.sh"
 $deviceName = "/dev/sda1" 
 $volumeSize = 8
 $volumeType = "gp2"
-$instanceProfileName = "instanceProfileTest"
+# $instanceProfileName = "instanceProfileTest"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "

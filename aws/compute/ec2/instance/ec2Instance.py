@@ -25,7 +25,7 @@ user_data_file = "udFile.sh"
 device_name = "/dev/sda1"
 volume_size = 8
 volume_type = "gp2"
-instance_profile_name = "instanceProfileTest"
+# instance_profile_name = "instanceProfileTest"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
