@@ -30,6 +30,7 @@ principal_name = "ec2.amazonaws.com"
 # iam_role_name2 = "iamGroupTest2"
 # principal_name = f"arn:aws:iam::{account_id}:role/{iam_role_name2}"
 
+print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
 if response.lower() == 'y':
     iam_client = boto3.client('iam')
@@ -55,7 +56,7 @@ if response.lower() == 'y':
     def vincular_policy_a_role(policy_name, iam_role_name):
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Extraindo o ARN da policy {policy_name}")
-        policies = iam_client.list_policies(Scope='All')
+        policies = iam_client.list_policies(Scope='All', MaxItems=1000)
         policy_arn = next((policy['Arn'] for policy in policies['Policies'] if policy['PolicyName'] == policy_name), None)
         if policy_arn:
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -93,7 +94,7 @@ if response.lower() == 'y':
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe a policy {policy_name}")
-        policies = iam_client.list_policies(Scope='All')
+        policies = iam_client.list_policies(Scope='All', MaxItems=1000)
         if any(policy['PolicyName'] == policy_name for policy in policies['Policies']):
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Verificando se existe a policy {policy_name} anexada à role {iam_role_name}")

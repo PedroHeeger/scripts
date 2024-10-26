@@ -49,6 +49,21 @@ aws/identity/iam/user/iamUser/*
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 scripts_model/.default/awsAccountCreation
 scripts_model/.default/secrets
 scripts_model/.default/aws/ec2_ud_app
