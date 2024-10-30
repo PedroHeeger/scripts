@@ -20,7 +20,9 @@ aws/compute/eks
 aws/network
 aws/data
 aws/ssm
-aws/storage
+aws/storage/efs
+aws/storage/glacier
+aws/storage/s3
 aws/ml
 aws/management
 aws/identity/acm
@@ -50,8 +52,11 @@ aws/identity/iam/user/iamUser/*
 
 
 
+aws/storage/ebs/snapshot/snapshot/*
+!aws/storage/ebs/snapshot/snapshot/main.tf
 
-
+aws/storage/ebs/volumeEBS/*
+!aws/storage/ebs/volumeEBS/main.tf
 
 
 

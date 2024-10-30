@@ -26,7 +26,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Data source: Obter ID do volume EBS
+# Obtendo ID do volume EBS
 data "aws_ebs_volume" "example" {
   filter {
     name   = "tag:Name"
@@ -34,7 +34,7 @@ data "aws_ebs_volume" "example" {
   }
 }
 
-# # Data source: Obter ID do volume vinculado ao snapshot baseado na tag (Caso o volume já tenha sido excluído)
+# Obtendo o ID do volume vinculado ao snapshot baseado na tag (Caso o volume já tenha sido excluído)
 # data "aws_ebs_snapshot" "example" {
 #   filter {
 #     name   = "tag:Name"
@@ -42,7 +42,7 @@ data "aws_ebs_volume" "example" {
 #   }
 # }
 
-# Recurso: Criar o snapshot se não existir
+# Criando o snapshot se não existir
 resource "aws_ebs_snapshot" "example" {
 #   volume_id         = data.aws_ebs_snapshot.example.volume_id  # Caso o volume já tenha sido excluído
   volume_id         = data.aws_ebs_volume.example.id         # Caso o volume não tenha sido excluído

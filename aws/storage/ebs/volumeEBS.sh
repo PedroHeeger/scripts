@@ -7,7 +7,7 @@ echo "VOLUME CREATION"
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 size=10
-aZ="us-east-1a"
+az="us-east-1a"
 volumeType="gp2"
 tagNameVolume="volumeEBSTest1"
 awsAccountId="001727357081"
@@ -17,10 +17,11 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o volume do EBS de tag de nome $tagNameVolume"
-    if [[ $(aws ec2 describe-volumes --query "Volumes[].Tags[?Key=='Name' && Value=='$tagNameVolume'].Value[]" --output text) ]]; then
+    echo "Verificando se existe o volume do EBS $tagNameVolume"
+    condition=$(aws ec2 describe-volumes --query "Volumes[].Tags[?Key=='Name' && Value=='$tagNameVolume'].Value[]" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Já existe o volume do EBS de tag de nome $tagNameVolume"
+        echo "Já existe o volume do EBS $tagNameVolume"
         aws ec2 describe-volumes --query "Volumes[].Tags[?Key=='Name' && Value=='$tagNameVolume'].Value[]" --output text
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -28,19 +29,27 @@ if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
         aws ec2 describe-volumes --query "Volumes[].VolumeId" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando um volume do EBS de tag de nome $tagNameVolume"
-        aws ec2 create-volume --size $size --availability-zone $aZ --volume-type $volumeType --tag-specifications "ResourceType=volume,Tags=[{Key=Name,Value=$tagNameVolume}]" --no-cli-pager
+        echo "Criando o volume do EBS $tagNameVolume"
+        aws ec2 create-volume --size $size --availability-zone $az --volume-type $volumeType --tag-specifications "ResourceType=volume,Tags=[{Key=Name,Value=$tagNameVolume}]" --encrypted --no-cli-pager
 
+        # Descomente as linhas abaixo se precisar criar um volume a partir de um snapshot e comente a linha de criação acima
         # echo "-----//-----//-----//-----//-----//-----//-----"
-        # echo "Extraindo o ID do snapshot do EBS de tag de nome $tagNameSnapshot"
-        # snapshotId=$(aws ec2 describe-snapshots --owner-ids $awsAccountId --query "Snapshots[?Tags[?Key=='Name' && Value=='$tagNameSnapshot']].SnapshotId" --output text)
+        # echo "Verificando se existe o snapshot $tagNameSnapshot"
+        # condition=$(aws ec2 describe-snapshots --owner-ids $awsAccountId --query "Snapshots[].Tags[?Key=='Name' && Value=='$tagNameSnapshot'].Value[]" --output text | wc -l)
+        # if [[ "$condition" -gt 0 ]]; then
+            # echo "-----//-----//-----//-----//-----//-----//-----"
+            # echo "Extraindo o ID do snapshot do EBS $tagNameSnapshot"
+            # snapshotId=$(aws ec2 describe-snapshots --owner-ids $awsAccountId --query "Snapshots[?Tags[?Key=='Name' && Value=='$tagNameSnapshot']].SnapshotId" --output text)
 
-        # echo "-----//-----//-----//-----//-----//-----//-----"
-        # echo "Criando um volume do EBS de tag de nome $tagNameVolume a partir do snapshot de tag de nome $tagNameSnapshot"
-        # aws ec2 create-volume --snapshot-id $snapshotId --size $size --availability-zone $aZ --volume-type $volumeType --tag-specifications "ResourceType=volume,Tags=[{Key=Name,Value=$tagNameVolume}]" --no-cli-pager
+            # echo "-----//-----//-----//-----//-----//-----//-----"
+            # echo "Criando o volume do EBS $tagNameVolume a partir do snapshot $tagNameSnapshot"
+            # aws ec2 create-volume --snapshot-id $snapshotId --size $size --availability-zone $az --volume-type $volumeType --tag-specifications "ResourceType=volume,Tags=[{Key=Name,Value=$tagNameVolume}]" --encrypted --no-cli-pager
+        # else
+        #     echo "Não existe o volume do EBS $tagNameVolume"
+        # fi
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando apenas o volume do EBS de tag de nome $tagNameVolume"
+        echo "Listando apenas o volume do EBS $tagNameVolume"
         aws ec2 describe-volumes --query "Volumes[].Tags[?Key=='Name' && Value=='$tagNameVolume'].Value[]" --output text
     fi
 else
@@ -64,28 +73,29 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o volume do EBS de tag de nome $tagNameVolume"
-    if [[ $(aws ec2 describe-volumes --query "Volumes[].Tags[?Key=='Name' && Value=='$tagNameVolume'].Value[]" --output text) ]]; then
+    echo "Verificando se existe o volume do EBS $tagNameVolume"
+    condition=$(aws ec2 describe-volumes --query "Volumes[].Tags[?Key=='Name' && Value=='$tagNameVolume'].Value[]" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os volumes do EBS criado"
         aws ec2 describe-volumes --query "Volumes[].VolumeId" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo o ID do volume do EBS de tag de nome $tagNameVolume"
+        echo "Extraindo o ID do volume do EBS $tagNameVolume"
         volumeId=$(aws ec2 describe-volumes --query "Volumes[?Tags[?Key=='Name' && Value=='$tagNameVolume']].VolumeId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existe instâncias anexadas ao volume do EBS de tag de nome $tagNameVolume"
+        echo "Verificando se existe instâncias anexadas ao volume do EBS $tagNameVolume"
         if [[ $(aws ec2 describe-volumes --query "Volumes[?Tags[?Key=='Name' && Value=='$tagNameVolume']].Attachments[]" --output text) ]]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Desanexando o volume do EBS de tag de nome $tagNameVolume da instância"
+            echo "Desanexando o volume do EBS $tagNameVolume da instância"
             aws ec2 detach-volume --volume-id $volumeId
         else
-            echo "Não existe instâncias anexadas ao volume do EBS de tag de nome $tagNameVolume"
+            echo "Não existe instâncias anexadas ao volume do EBS $tagNameVolume"
         fi
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Aguardando o volume do EBS de tag de nome $tagNameVolume ficar disponivel"
+        echo "Aguardando o volume do EBS $tagNameVolume ficar disponivel"
         state=""
         while [[ "$state" != "available" ]]; do
             sleep 5
@@ -94,14 +104,14 @@ if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
         done
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Removendo o volume do EBS de tag de nome $tagNameVolume"
+        echo "Removendo o volume do EBS $tagNameVolume"
         aws ec2 delete-volume --volume-id $volumeId
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os volumes do EBS criado"
         aws ec2 describe-volumes --query "Volumes[].VolumeId" --output text
     else
-        echo "Não existe o volume do EBS de tag de nome $tagNameVolume"
+        echo "Não existe o volume do EBS $tagNameVolume"
     fi
 else
     echo "Código não executado"

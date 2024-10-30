@@ -46,38 +46,38 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# # Recurso: Criar o volume EBS se não existir
-# resource "aws_ebs_volume" "example" {
-#   availability_zone = var.availability_zone
-#   size              = var.size
-#   type              = var.volume_type
-
-#   tags = {
-#     Name = var.tag_name_volume
-#   }
-# }
-
-# Recurso: Obter o ID do snapshot
-data "aws_ebs_snapshot" "example" {
-  filter {
-    name   = "tag:Name"
-    values = [var.tag_name_snapshot]
-  }
-}
-
-# Recurso: Criar o volume EBS a partir do snapshot
+# Criando o volume EBS se não existir
 resource "aws_ebs_volume" "example" {
   availability_zone = var.availability_zone
   size              = var.size
   type              = var.volume_type
-  snapshot_id       = data.aws_ebs_snapshot.example.id
 
   tags = {
     Name = var.tag_name_volume
   }
 }
 
-# Recurso: Obter o ID da instância EC2
+# # Obtendo o ID do snapshot
+# data "aws_ebs_snapshot" "example" {
+#   filter {
+#     name   = "tag:Name"
+#     values = [var.tag_name_snapshot]
+#   }
+# }
+
+# # Criando o volume EBS a partir do snapshot
+# resource "aws_ebs_volume" "example" {
+#   availability_zone = var.availability_zone
+#   size              = var.size
+#   type              = var.volume_type
+#   snapshot_id       = data.aws_ebs_snapshot.example.id
+
+#   tags = {
+#     Name = var.tag_name_volume
+#   }
+# }
+
+# Obtendo o ID da instância EC2
 data "aws_instance" "example" {
   filter {
     name   = "tag:Name"
@@ -85,7 +85,7 @@ data "aws_instance" "example" {
   }
 }
 
-# Recurso: Anexar o volume EBS à instância EC2
+# Anexando o volume EBS à instância EC2
 resource "aws_volume_attachment" "example" {
   device_name = var.device_name
   volume_id   = aws_ebs_volume.example.id

@@ -1,4 +1,5 @@
 import boto3
+import time
 
 print("***********************************************")
 print("SERVIÇO: AWS EBS")
@@ -17,15 +18,14 @@ print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o volume do EBS de tag de nome {tag_name_volume}")
+    print(f"Verificando se existe o volume do EBS {tag_name_volume}")
     ec2_client = boto3.client('ec2')
-
     response = ec2_client.describe_volumes()
     volumes = [vol for vol in response['Volumes'] if any(tag['Key'] == 'Name' and tag['Value'] == tag_name_volume for tag in vol.get('Tags', []))]
 
     if volumes:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe o volume do EBS de tag de nome {tag_name_volume}")
+        print(f"Já existe o volume do EBS {tag_name_volume}")
         for vol in volumes:
             for tag in vol.get('Tags', []):
                 if tag['Key'] == 'Name':
@@ -37,8 +37,8 @@ if resposta == 'y':
         for vol in response['Volumes']:
             print(vol['VolumeId'])
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando um volume do EBS de tag de nome {tag_name_volume}")
+        # print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Criando o volume do EBS {tag_name_volume}")
         ec2_client.create_volume(
             Size=size,
             AvailabilityZone=az,
@@ -48,18 +48,23 @@ if resposta == 'y':
                     'ResourceType': 'volume',
                     'Tags': [{'Key': 'Name', 'Value': tag_name_volume}]
                 }
-            ]
+            ],
+            Encrypted=True
         )
 
-        # Descomente as linhas abaixo se precisar criar um volume a partir de um snapshot
+        # Descomente as linhas abaixo se precisar criar um volume a partir de um snapshot e comente a linha de criação acima
         # print("-----//-----//-----//-----//-----//-----//-----")
-        # print(f"Extraindo o ID do snapshot do EBS de tag de nome {tag_name_snapshot}")
+        # print(f"Verificando se existe o snapshot {tag_name_snapshot}")
         # response = ec2_client.describe_snapshots(OwnerIds=[aws_account_id])
-        # snapshot_id = next((snap['SnapshotId'] for snap in response['Snapshots'] if any(tag['Key'] == 'Name' and tag['Value'] == tag_name_snapshot for tag in snap.get('Tags', []))), None)
-        
-        # if snapshot_id:
+        # snapshots = [snap for snap in response['Snapshots'] if any(tag['Key'] == 'Name' and tag['Value'] == tag_name_snapshot for tag in snap.get('Tags', []))]
+        # if snapshots:
         #     print("-----//-----//-----//-----//-----//-----//-----")
-        #     print(f"Criando um volume do EBS de tag de nome {tag_name_volume} a partir do snapshot de tag de nome {tag_name_snapshot}")
+        #     print(f"Extraindo o ID do snapshot do EBS {tag_name_snapshot}")
+        #     response = ec2_client.describe_snapshots(OwnerIds=[aws_account_id])
+        #     snapshot_id = next((snap['SnapshotId'] for snap in response['Snapshots'] if any(tag['Key'] == 'Name' and tag['Value'] == tag_name_snapshot for tag in snap.get('Tags', []))), None)
+            
+        #     print("-----//-----//-----//-----//-----//-----//-----")
+        #     print(f"Criando o volume do EBS {tag_name_volume} a partir do snapshot {tag_name_snapshot}")
         #     ec2_client.create_volume(
         #         SnapshotId=snapshot_id,
         #         Size=size,
@@ -70,11 +75,18 @@ if resposta == 'y':
         #                 'ResourceType': 'volume',
         #                 'Tags': [{'Key': 'Name', 'Value': tag_name_volume}]
         #             }
-        #         ]
+        #         ],
+        #         Encrypted=True
         #     )
+        # else:
+        #     print(f"Não existe o snapshot do EBS {tag_name_snapshot}")
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando apenas o volume do EBS de tag de nome {tag_name_volume}")
+        print(f"Aguardando o volume do EBS {tag_name_volume} ficar disponível")
+        time.sleep(5)
+
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Listando apenas o volume do EBS {tag_name_volume}")
         ec2_client = boto3.client('ec2')
         response = ec2_client.describe_volumes()
         volumes = [vol for vol in response['Volumes'] if any(tag['Key'] == 'Name' and tag['Value'] == tag_name_volume for tag in vol.get('Tags', []))]
@@ -102,9 +114,8 @@ tag_name_volume = "volumeEBSTest1"
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o volume do EBS de tag de nome {tag_name_volume}")
+    print(f"Verificando se existe o volume do EBS {tag_name_volume}")
     ec2_client = boto3.client('ec2')
-
     response = ec2_client.describe_volumes()
     volumes = [vol for vol in response['Volumes'] if any(tag['Key'] == 'Name' and tag['Value'] == tag_name_volume for tag in vol.get('Tags', []))]
 
@@ -114,21 +125,22 @@ if resposta == 'y':
         for vol in response['Volumes']:
             print(vol['VolumeId'])
 
-        volume_id = volumes[0]['VolumeId']
+        
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo o ID do volume do EBS de tag de nome {tag_name_volume}")
+        print(f"Extraindo o ID do volume do EBS {tag_name_volume}")
+        volume_id = volumes[0]['VolumeId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe instâncias anexadas ao volume do EBS de tag de nome {tag_name_volume}")
+        print(f"Verificando se existe instâncias anexadas ao volume do EBS {tag_name_volume}")
         if 'Attachments' in volumes[0] and volumes[0]['Attachments']:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Desanexando o volume do EBS de tag de nome {tag_name_volume} da instância")
+            print(f"Desanexando o volume do EBS {tag_name_volume} da instância")
             ec2_client.detach_volume(VolumeId=volume_id)
         else:
-            print(f"Não existe instâncias anexadas ao volume do EBS de tag de nome {tag_name_volume}")
+            print(f"Não existe instâncias anexadas ao volume do EBS {tag_name_volume}")
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Aguardando o volume do EBS de tag de nome {tag_name_volume} ficar disponível")
+        print(f"Aguardando o volume do EBS {tag_name_volume} ficar disponível")
         state = ""
         while state != "available":
             time.sleep(5)
@@ -137,7 +149,7 @@ if resposta == 'y':
             print(f"Current state: {state}")
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo o volume do EBS de tag de nome {tag_name_volume}")
+        print(f"Removendo o volume do EBS {tag_name_volume}")
         ec2_client.delete_volume(VolumeId=volume_id)
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -146,6 +158,6 @@ if resposta == 'y':
         for vol in response['Volumes']:
             print(vol['VolumeId'])
     else:
-        print(f"Não existe o volume do EBS de tag de nome {tag_name_volume}")
+        print(f"Não existe o volume do EBS {tag_name_volume}")
 else:
     print("Código não executado")
