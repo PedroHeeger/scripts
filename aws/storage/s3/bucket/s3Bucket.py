@@ -10,17 +10,17 @@ bucket_name = "bucket-test1-ph"
 region = "us-east-1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
-resposta = input("Deseja executar o código? (y/n) ").strip().lower()
+resposta = input("Deseja executar o códigon? (y/n) ").strip().lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o bucket de nome {bucket_name}")
+    print(f"Verificando se existe o bucket {bucket_name}")
     s3 = boto3.client('s3', region_name=region)
     buckets = s3.list_buckets()
     bucket_names = [bucket['Name'] for bucket in buckets['Buckets']]
     
     if bucket_name in bucket_names:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe o bucket de nome {bucket_name}")
+        print(f"Já existe o bucket {bucket_name}")
         print(bucket_name)
     else:
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -29,14 +29,14 @@ if resposta == 'y':
             print(bucket)
         
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando o bucket de nome {bucket_name}")
+        print(f"Criando o bucket {bucket_name}")
         if region == 'us-east-1':
             s3.create_bucket(Bucket=bucket_name)
         else:
             s3.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': region})
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o bucket de nome {bucket_name}")
+        print(f"Listando o bucket {bucket_name}")
         bucket_names = [bucket['Name'] for bucket in s3.list_buckets()['Buckets']]
         print(bucket_name)
 else:
@@ -60,7 +60,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o bucket de nome {bucket_name}")
+    print(f"Verificando se existe o bucket {bucket_name}")
     s3 = boto3.client('s3', region_name=region)
     buckets = s3.list_buckets()
     bucket_names = [bucket['Name'] for bucket in buckets['Buckets']]
@@ -72,7 +72,7 @@ if resposta == 'y':
             print(bucket)
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se há objetos no bucket de nome {bucket_name} e removendo caso haja")
+        print(f"Verificando se há objetos no bucket {bucket_name} e removendo caso haja")
         objects = s3.list_object_versions(Bucket=bucket_name)
         for version in objects.get('Versions', []):
             key = version['Key']
@@ -80,7 +80,7 @@ if resposta == 'y':
             s3.delete_object(Bucket=bucket_name, Key=key, VersionId=version_id)
         
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo o bucket de nome {bucket_name}")
+        print(f"Removendo o bucket {bucket_name}")
         s3.delete_bucket(Bucket=bucket_name)
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -90,6 +90,6 @@ if resposta == 'y':
         for bucket in bucket_names:
             print(bucket)
     else:
-        print(f"Não existe o bucket de nome {bucket_name}")
+        print(f"Não existe o bucket {bucket_name}")
 else:
     print("Código não executado")
