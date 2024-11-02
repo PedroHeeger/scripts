@@ -13,7 +13,7 @@ $region = "us-east-1"
 # LogDelivery = Permissões para serviços da AWS depositarem logs diretamente no bucket, como CloudTrail ou S3 Server Access Logs.
 # AllUsers = Acesso público que permite qualquer pessoa na internet interagir com o bucket (Everyone).
 
-# Permissões originais
+# Permissões totais
 # $canonicalUserPermissions = @("READ", "WRITE", "READ_ACP", "WRITE_ACP", "FULL_CONTROL")
 # $authenticatedUsersPermissions = @("READ", "WRITE", "READ_ACP", "WRITE_ACP", "FULL_CONTROL")
 # $logDeliveryPermissions = @("READ", "WRITE", "READ_ACP", "WRITE_ACP", "FULL_CONTROL")

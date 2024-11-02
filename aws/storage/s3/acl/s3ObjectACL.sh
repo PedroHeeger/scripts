@@ -13,7 +13,7 @@ objectName="objTest.jpg"
 # AuthenticatedUsers = Usuários com contas AWS que recebem permissões concedidas, permitindo ações limitadas no bucket.
 # AllUsers = Acesso público que permite qualquer pessoa na internet interagir com o bucket (Everyone).
 
-# Permissões originais
+# Permissões totais
 # canonicalUserPermissions=("READ" "READ_ACP" "WRITE_ACP" "FULL_CONTROL")
 # authenticatedUsersPermissions=("READ" "READ_ACP" "WRITE_ACP" "FULL_CONTROL")
 # allUsersPermissions=("READ" "READ_ACP" "WRITE_ACP" "FULL_CONTROL")
