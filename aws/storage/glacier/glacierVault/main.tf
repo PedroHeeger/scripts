@@ -6,7 +6,7 @@ variable "region" {
 
 variable "vault_name" {
   description = "Nome do Cofre"
-  default = "vaultTest2"
+  default = "vaultTest1"
 }
 
 variable "account_id" {
