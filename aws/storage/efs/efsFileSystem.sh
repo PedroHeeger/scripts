@@ -8,34 +8,37 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 efsToken="fsTokenEFSTest1"
 tagNameFS="fsEFSTest1"
-performanceMode="generalPurpose"
-throughputMode="bursting"
+performanceMode="generalPurpose"   # Modo padrão adequado para a maioria das cargas de trabalho, oferecendo latência moderada e desempenho equilibrado.
+# performanceMode="maxIO"            # Otimizado para cargas de trabalho de alta taxa de I/O, oferecendo maior throughput e latência mais consistente para aplicações que demandam alto desempenho.
+throughputMode="bursting"          # Modo padrão que permite picos de throughput acima do nível base usando créditos acumulados, adequado para cargas de trabalho com variação no uso.
+# throughputMode="provisioned"       # Permite configurar um nível fixo de throughput, garantindo capacidade constante para cargas de trabalho com requisitos de I/O consistentes.
 aZ="us-east-1a"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "${resposta,,}" = "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o sistema de arquivos de tag de nome $tagNameFS"
-    if [ $(aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text | wc -l) -gt 0 ]; then
+    echo "Verificando se existe o sistema de arquivos $tagNameFS"
+    condition=$(aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Já existe o sistema de arquivos de tag de nome $tagNameFS"
+        echo "Já existe o sistema de arquivos $tagNameFS"
         aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando a tag de nome de todos os sistemas de arquivos"
+        echo "Listando todos os sistemas de arquivos"
         aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name'].Value" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando o sistema de arquivos de tag de nome $tagNameFS"
+        echo "Criando o sistema de arquivos $tagNameFS"
         aws efs create-file-system --creation-token $efsToken --performance-mode $performanceMode --throughput-mode $throughputMode --tags Key=Name,Value=$tagNameFS --no-cli-pager
 
         # echo "-----//-----//-----//-----//-----//-----//-----"
-        # echo "Criando o sistema de arquivos de tag de nome $tagNameFS"
+        # echo "Criando o sistema de arquivos $tagNameFS em uma AZ determinada"
         # aws efs create-file-system --creation-token $efsToken --performance-mode $performanceMode --throughput-mode $throughputMode --availability-zone-name $aZ --tags Key=Name,Value=$tagNameFS --no-cli-pager
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando apenas o sistema de arquivos de tag de nome $tagNameFS"
+        echo "Listando apenas o sistema de arquivos $tagNameFS"
         aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text
     fi
 else
@@ -59,23 +62,24 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o sistema de arquivos de tag de nome $tagNameFS"
-    if [[ $(aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text) ]]; then
+    echo "Verificando se existe o sistema de arquivos $tagNameFS"
+    condition=$(aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando a tag de nome de todos os sistemas de arquivos"
+        echo "Listando todos os sistemas de arquivos"
         aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name'].Value" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo o ID do sistema de arquivos de tag de nome $tagNameFS"
+        echo "Extraindo o ID do sistema de arquivos $tagNameFS"
         fsId=$(aws efs describe-file-systems --query "FileSystems[?Tags[?Key=='Name' && Value=='$tagNameFS']].FileSystemId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existem pontos de montagem no sistema de arquivos de tag de nome $tagNameFS"
+        echo "Verificando se existem pontos de montagem no sistema de arquivos $tagNameFS"
         mountTargetIds=$(aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[].MountTargetId[]" --output text | tr '\t' '\n')
 
         if [[ $mountTargetIds ]]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Removendo todos os pontos de montagem no sistema de arquivos de tag de nome $tagNameFS"
+            echo "Removendo todos os pontos de montagem no sistema de arquivos $tagNameFS"
             for mountTargetId in $mountTargetIds; do
                 echo "-----//-----//-----//-----//-----//-----//-----"
                 echo "Removendo ponto de montagem $mountTargetId"
@@ -91,18 +95,18 @@ if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
                 done
             done
         else
-            echo "Não existem pontos de montagem no sistema de arquivos de tag de nome $tagNameFS"
+            echo "Não existem pontos de montagem no sistema de arquivos $tagNameFS"
         fi
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Removendo o sistema de arquivos de tag de nome $tagNameFS"
+        echo "Removendo o sistema de arquivos $tagNameFS"
         aws efs delete-file-system --file-system-id $fsId
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando a tag de nome de todos os sistemas de arquivos"
+        echo "Listando todos os sistemas de arquivos"
         aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name'].Value" --output text
     else
-        echo "Não existe o sistema de arquivos de tag de nome $tagNameFS"
+        echo "Não existe o sistema de arquivos $tagNameFS"
     fi
 else
     echo "Código não executado"

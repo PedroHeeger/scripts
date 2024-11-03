@@ -15,10 +15,10 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "${resposta,,}" = "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o sistema de arquivos de tag de nome $tagNameFS"
+    echo "Verificando se existe o sistema de arquivos $tagNameFS"
     if [ $(aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text | wc -l) -gt 0 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo o ID do sistema de arquivos de tag de nome $tagNameFS"
+        echo "Extraindo o ID do sistema de arquivos $tagNameFS"
         fsId=$(aws efs describe-file-systems --query "FileSystems[?Tags[?Key=='Name' && Value=='$tagNameFS']].FileSystemId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -27,22 +27,22 @@ if [ "${resposta,,}" = "y" ]; then
         subnetId=$(aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existe um ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+        echo "Verificando se existe um ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ"
         if [ $(aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$aZ'].MountTargetId[]" --output text | wc -l) -gt 0 ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Já existe um ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+            echo "Já existe um ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ"
             aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$aZ'].MountTargetId[]" --output text
         else
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Listando todos os pontos de montagem existentes no sistema de arquivo de tag de nome $tagNameFS"
+            echo "Listando todos os pontos de montagem existentes no sistema de arquivo $tagNameFS"
             aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[].MountTargetId[]" --output text
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Criando um ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+            echo "Criando um ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ"
             aws efs create-mount-target --file-system-id $fsId --subnet-id $subnetId --security-groups $sgId --no-cli-pager
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Aguardando o ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ ficar disponível"
+            echo "Aguardando o ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ ficar disponível"
             state=""
             while [ "$state" != "available" ]; do
                 sleep 8
@@ -51,11 +51,11 @@ if [ "${resposta,,}" = "y" ]; then
             done
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Listando apenas o ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+            echo "Listando apenas o ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ"
             aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$aZ'].MountTargetId[]" --output text
         fi
     else
-        echo "Não existe o sistema de arquivos de tag de nome $tagNameFS"
+        echo "Não existe o sistema de arquivos $tagNameFS"
     fi
 else
     echo "Código não executado"
@@ -81,10 +81,10 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "${resposta,,}" = "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o sistema de arquivos de tag de nome $tagNameFS"
+    echo "Verificando se existe o sistema de arquivos $tagNameFS"
     if [ $(aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text | wc -l) -gt 0 ]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Extraindo o ID do sistema de arquivos de tag de nome $tagNameFS"
+        echo "Extraindo o ID do sistema de arquivos $tagNameFS"
         fsId=$(aws efs describe-file-systems --query "FileSystems[?Tags[?Key=='Name' && Value=='$tagNameFS']].FileSystemId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -93,22 +93,22 @@ if [ "${resposta,,}" = "y" ]; then
         subnetId=$(aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existe um ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+        echo "Verificando se existe um ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ"
         if [ $(aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$aZ'].MountTargetId[]" --output text | wc -l) -gt 0 ]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Listando todos os pontos de montagem existentes no sistema de arquivo de tag de nome $tagNameFS"
+            echo "Listando todos os pontos de montagem existentes no sistema de arquivo $tagNameFS"
             aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[].MountTargetId[]" --output text
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Extraindo o ID do ponto de montagem do sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+            echo "Extraindo o ID do ponto de montagem do sistema de arquivos $tagNameFS na AZ $aZ"
             mountTargetId=$(aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$aZ'].MountTargetId[]" --output text)
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Removendo o ponto de montagem do sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+            echo "Removendo o ponto de montagem do sistema de arquivos $tagNameFS na AZ $aZ"
             aws efs delete-mount-target --mount-target-id $mountTargetId
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Aguardando o ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ ser deletado"
+            echo "Aguardando o ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ ser deletado"
             state="deleting"
             while [ "$state" == "creating" ] || [ "$state" == "available" ] || [ "$state" == "deleting" ]; do
                 sleep 5
@@ -117,13 +117,13 @@ if [ "${resposta,,}" = "y" ]; then
             done
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Listando todos os pontos de montagem existentes no sistema de arquivo de tag de nome $tagNameFS"
+            echo "Listando todos os pontos de montagem existentes no sistema de arquivo $tagNameFS"
             aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[].MountTargetId[]" --output text
         else
-            echo "Não existe nenhum ponto de montagem no sistema de arquivos de tag de nome $tagNameFS na AZ $aZ"
+            echo "Não existe nenhum ponto de montagem no sistema de arquivos $tagNameFS na AZ $aZ"
         fi
     else
-        echo "Não existe o sistema de arquivos de tag de nome $tagNameFS"
+        echo "Não existe o sistema de arquivos $tagNameFS"
     fi
 else
     echo "Código não executado"

@@ -15,7 +15,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o sistema de arquivos de tag de nome {tag_name_fs}")
+    print(f"Verificando se existe o sistema de arquivos {tag_name_fs}")
     efs_client = boto3.client('efs')
     ec2_client = boto3.client('ec2')
 
@@ -24,7 +24,7 @@ if resposta == 'y':
     
     if file_systems:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo o ID do sistema de arquivos de tag de nome {tag_name_fs}")
+        print(f"Extraindo o ID do sistema de arquivos {tag_name_fs}")
         fs_id = file_systems[0]['FileSystemId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -35,27 +35,27 @@ if resposta == 'y':
         subnet_id = subnet_response['Subnets'][0]['SubnetId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe um ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+        print(f"Verificando se existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
         mount_targets_response = efs_client.describe_mount_targets(FileSystemId=fs_id)
         mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == a_z]
         
         if mount_targets:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Já existe um ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+            print(f"Já existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
             for mt in mount_targets:
                 print(mt['MountTargetId'])
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando todos os pontos de montagem existentes no sistema de arquivo de tag de nome {tag_name_fs}")
+            print(f"Listando todos os pontos de montagem existentes no sistema de arquivo {tag_name_fs}")
             for mt in mount_targets_response['MountTargets']:
                 print(mt['MountTargetId'])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando um ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+            print(f"Criando um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
             efs_client.create_mount_target(FileSystemId=fs_id, SubnetId=subnet_id, SecurityGroups=[sg_id])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Aguardando o ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z} ficar disponível")
+            print(f"Aguardando o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z} ficar disponível")
 
             state = ""
             while state != "available":
@@ -67,12 +67,12 @@ if resposta == 'y':
                 print(f"Current state: {state}")
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando apenas o ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+            print(f"Listando apenas o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
             for mt in mount_targets_response['MountTargets']:
                 if mt['AvailabilityZoneName'] == a_z:
                     print(mt['MountTargetId'])
     else:
-        print(f"Não existe o sistema de arquivos de tag de nome {tag_name_fs}")
+        print(f"Não existe o sistema de arquivos {tag_name_fs}")
 else:
     print("Código não executado")
 
@@ -96,7 +96,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o sistema de arquivos de tag de nome {tag_name_fs}")
+    print(f"Verificando se existe o sistema de arquivos {tag_name_fs}")
     efs_client = boto3.client('efs')
     ec2_client = boto3.client('ec2')
 
@@ -105,7 +105,7 @@ if resposta == 'y':
     
     if file_systems:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo o ID do sistema de arquivos de tag de nome {tag_name_fs}")
+        print(f"Extraindo o ID do sistema de arquivos {tag_name_fs}")
         fs_id = file_systems[0]['FileSystemId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -116,29 +116,29 @@ if resposta == 'y':
         subnet_id = subnet_response['Subnets'][0]['SubnetId']
         
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe um ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+        print(f"Verificando se existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
         mount_targets_response = efs_client.describe_mount_targets(FileSystemId=fs_id)
         mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == a_z]
         
         if mount_targets:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando todos os pontos de montagem existentes no sistema de arquivo de tag de nome {tag_name_fs}")
+            print(f"Listando todos os pontos de montagem existentes no sistema de arquivo {tag_name_fs}")
             for mt in mount_targets_response['MountTargets']:
                 print(mt['MountTargetId'])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Extraindo o ID do ponto de montagem do sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+            print(f"Extraindo o ID do ponto de montagem do sistema de arquivos {tag_name_fs} na AZ {a_z}")
             mount_target_id = [mt['MountTargetId'] for mt in mount_targets if mt['AvailabilityZoneName'] == a_z]
             
             if mount_target_id:
                 mount_target_id = mount_target_id[0]
 
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print(f"Removendo o ponto de montagem do sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+                print(f"Removendo o ponto de montagem do sistema de arquivos {tag_name_fs} na AZ {a_z}")
                 efs_client.delete_mount_target(MountTargetId=mount_target_id)
 
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print(f"Aguardando o ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z} ser deletado")
+                print(f"Aguardando o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z} ser deletado")
                 state = "deleting"
                 while state in ["creating", "available", "deleting"]:
                     time.sleep(5)
@@ -148,12 +148,12 @@ if resposta == 'y':
                     print(f"Current state: {state}")                
 
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print(f"Listando todos os pontos de montagem existentes no sistema de arquivo de tag de nome {tag_name_fs}")
+                print(f"Listando todos os pontos de montagem existentes no sistema de arquivo {tag_name_fs}")
                 for mt in mount_targets_response['MountTargets']:
                     print(mt['MountTargetId'])
         else:
-            print(f"Não existe nenhum ponto de montagem no sistema de arquivos de tag de nome {tag_name_fs} na AZ {a_z}")
+            print(f"Não existe nenhum ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
     else:
-        print(f"Não existe o sistema de arquivos de tag de nome {tag_name_fs}")
+        print(f"Não existe o sistema de arquivos {tag_name_fs}")
 else:
     print("Código não executado")
