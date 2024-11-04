@@ -18,7 +18,6 @@ if resposta == 'y':
     print(f"Verificando se existe o sistema de arquivos {tag_name_fs}")
     efs_client = boto3.client('efs')
     ec2_client = boto3.client('ec2')
-
     response = efs_client.describe_file_systems()
     file_systems = [fs for fs in response['FileSystems'] if any(tag['Key'] == 'Name' and tag['Value'] == tag_name_fs for tag in fs.get('Tags', []))]
     
