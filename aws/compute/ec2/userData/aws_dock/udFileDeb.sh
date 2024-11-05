@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "LINUX TOOLS INSTALLATION"
+echo "LINUX TOOLS AND GIT INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Atualizando os pacotes"
@@ -12,8 +12,8 @@ echo "Atualizando o sistema"
 sudo apt-get upgrade -y
 
 echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Baixando o pacote"
-sudo apt-get install -y nano vim curl wget unzip zip
+echo "Baixando os pacotes"
+sudo apt-get install -y nano vim curl wget unzip zip git
 
 
 

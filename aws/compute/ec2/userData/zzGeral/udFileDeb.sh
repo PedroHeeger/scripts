@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "LINUX TOOLS INSTALLATION"
+echo "LINUX TOOLS AND GIT INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Atualizando os pacotes"
@@ -12,18 +12,8 @@ echo "Atualizando o sistema"
 sudo apt-get upgrade -y
 
 echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Baixando o pacote"
-sudo apt-get install -y nano vim curl wget unzip zip
-
-
-
-
-echo "***********************************************"
-echo "GIT INSTALLATION"
-
-echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Instalando o pacote"
-sudo apt-get install -y git
+echo "Baixando os pacotes"
+sudo apt-get install -y nano vim curl wget unzip zip git
 
 
 
@@ -82,7 +72,7 @@ sudo -E echo "typeset -g POWERLEVEL9K_INSTANT_PROMPT=off" | sudo -E tee -a ${ZDO
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Verificando se existe o arquivo de configuração do Zsh"
-$rc_file = "$HOME/.zshrc"
+rc_file="$HOME/.zshrc"
 if [ -f "$rc_file" ]; then
   echo "-----//-----//-----//-----//-----//-----//-----"
   echo "Fazendo a alteração do tema no arquivo de configuração do Zsh"
@@ -90,6 +80,8 @@ if [ -f "$rc_file" ]; then
 else
   echo "O arquivo $rc_file não existe."
 fi
+
+# Executar o comando "p10k configure" para configurar o layout do Oh My Zshell
 
 
 
@@ -206,17 +198,17 @@ sudo systemctl restart docker
 
 
 
-# echo "***********************************************"
-# echo "DOCKER AUTHENTICATION WITH AWS ECR"
+echo "***********************************************"
+echo "DOCKER AUTHENTICATION WITH AWS ECR"
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Definindo variáveis"
-# region="us-east-1"
-# accountId="001727357081"
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Definindo variáveis"
+region="us-east-1"
+accountId="001727357081"
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Autenticando o Docker com AWS ECR"
-# aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Autenticando o Docker com AWS ECR"
+aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountId.dkr.ecr.$region.amazonaws.com
 
 
 
@@ -269,3 +261,43 @@ kubectl version --client
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Alterando o proprietario e grupo da pasta .kube para o usuario ubuntu"
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
+
+
+
+
+echo "***********************************************"
+echo "MINIKUBE INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Definindo variáveis"
+link="https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Baixando o pacote"
+curl -LO $link
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando o pacote"
+sudo dpkg -i minikube_latest_amd64.deb
+
+
+
+
+echo "***********************************************"
+echo "ORACLE VM VIRTUAL BOX INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando os pacotes"
+sudo apt-get update -y
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Autorizando os termos"
+echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando o pacote"
+sudo apt install -y virtualbox virtualbox-ext-pack
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Adicionando o usuário ao grupo"
+sudo usermod -aG vboxusers $USER
