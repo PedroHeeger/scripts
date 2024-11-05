@@ -16,7 +16,8 @@ $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o sistema de arquivos $tagNameFS"
-    if ((aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]").Count -gt 1) {
+    $condition = aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text
+    if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ID do sistema de arquivos $tagNameFS"
         $fsId = aws efs describe-file-systems --query "FileSystems[?Tags[?Key=='Name' && Value=='$tagNameFS']].FileSystemId" --output text
@@ -28,7 +29,8 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se existe um ponto de montagem no sistema de arquivos $tagNameFS na AZ $az"
-        if ((aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$az'].MountTargetId[]").Count -gt 1) {
+        $condition = aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$az'].MountTargetId[]" --output text
+        if (($condition).Count -gt 0) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Já existe um ponto de montagem no sistema de arquivos $tagNameFS na AZ $az"
             aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$az'].MountTargetId[]" --output text
@@ -74,7 +76,8 @@ $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o sistema de arquivos $tagNameFS"
-    if ((aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]").Count -gt 1) {
+    $condition = aws efs describe-file-systems --query "FileSystems[].Tags[?Key=='Name' && Value=='$tagNameFS'].Value[]" --output text
+    if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o ID do sistema de arquivos $tagNameFS"
         $fsId = aws efs describe-file-systems --query "FileSystems[?Tags[?Key=='Name' && Value=='$tagNameFS']].FileSystemId" --output text
@@ -86,7 +89,8 @@ if ($resposta.ToLower() -eq 'y') {
         
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Verificando se existe um ponto de montagem no sistema de arquivos $tagNameFS na AZ $az"
-        if ((aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$az'].MountTargetId[]").Count -gt 1) {     
+        $condition = aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[?AvailabilityZoneName=='$az'].MountTargetId[]" --output text
+        if (($condition).Count -gt 0) {   
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando todos os pontos de montagem existentes no sistema de arquivo $tagNameFS"
             aws efs describe-mount-targets --file-system-id $fsId --query "MountTargets[].MountTargetId[]" --output text

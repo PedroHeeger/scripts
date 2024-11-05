@@ -31,7 +31,7 @@ if [ "${resposta,,}" = "y" ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o sistema de arquivos $tagNameFS"
-        aws efs create-file-system --creation-token $efsToken --performance-mode $performanceMode --throughput-mode $throughputMode --tags Key=Name,Value=$tagNameFS --no-cli-pager
+        aws efs create-file-system --creation-token $efsToken --performance-mode $performanceMode --throughput-mode $throughputMode --tags Key=Name,Value=$tagNameFS --encrypted --no-cli-pager
 
         # echo "-----//-----//-----//-----//-----//-----//-----"
         # echo "Criando o sistema de arquivos $tagNameFS em uma AZ determinada"

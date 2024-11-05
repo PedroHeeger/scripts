@@ -45,7 +45,8 @@ if resposta == 'y':
             CreationToken=efs_token,
             PerformanceMode=performance_mode,
             ThroughputMode=throughput_mode,
-            Tags=[{'Key': 'Name', 'Value': tag_name_fs}]
+            Tags=[{'Key': 'Name', 'Value': tag_name_fs}],
+            Encrypted=True
         )
 
         # Descomentar este bloco se desejar usar o parâmetro de zona de disponibilidade

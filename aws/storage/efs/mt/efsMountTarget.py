@@ -9,7 +9,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 tag_name_fs = "fsEFSTest1"
 sg_name = "default"
-a_z = "us-east-1a"
+az = "us-east-1a"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
@@ -30,17 +30,17 @@ if resposta == 'y':
         print("Extraindo o Id dos elementos de rede")
         sg_response = ec2_client.describe_security_groups(GroupNames=[sg_name])
         sg_id = sg_response['SecurityGroups'][0]['GroupId']
-        subnet_response = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [a_z]}])
+        subnet_response = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az]}])
         subnet_id = subnet_response['Subnets'][0]['SubnetId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
+        print(f"Verificando se existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az}")
         mount_targets_response = efs_client.describe_mount_targets(FileSystemId=fs_id)
-        mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == a_z]
+        mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == az]
         
         if mount_targets:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Já existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
+            print(f"Já existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az}")
             for mt in mount_targets:
                 print(mt['MountTargetId'])
         else:
@@ -50,25 +50,25 @@ if resposta == 'y':
                 print(mt['MountTargetId'])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
+            print(f"Criando um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az}")
             efs_client.create_mount_target(FileSystemId=fs_id, SubnetId=subnet_id, SecurityGroups=[sg_id])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Aguardando o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z} ficar disponível")
+            print(f"Aguardando o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az} ficar disponível")
 
             state = ""
             while state != "available":
                 time.sleep(8)
                 mount_targets_response = efs_client.describe_mount_targets(FileSystemId=fs_id)
-                mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == a_z]
+                mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == az]
                 if mount_targets:
                     state = mount_targets[0]['LifeCycleState']
                 print(f"Current state: {state}")
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando apenas o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
+            print(f"Listando apenas o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az}")
             for mt in mount_targets_response['MountTargets']:
-                if mt['AvailabilityZoneName'] == a_z:
+                if mt['AvailabilityZoneName'] == az:
                     print(mt['MountTargetId'])
     else:
         print(f"Não existe o sistema de arquivos {tag_name_fs}")
@@ -89,7 +89,7 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 tag_name_fs = "fsEFSTest1"
 sg_name = "default"
-a_z = "us-east-1a"
+az = "us-east-1a"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").strip().lower()
@@ -111,13 +111,13 @@ if resposta == 'y':
         print("Extraindo o Id dos elementos de rede")
         sg_response = ec2_client.describe_security_groups(GroupNames=[sg_name])
         sg_id = sg_response['SecurityGroups'][0]['GroupId']
-        subnet_response = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [a_z]}])
+        subnet_response = ec2_client.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': [az]}])
         subnet_id = subnet_response['Subnets'][0]['SubnetId']
         
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
+        print(f"Verificando se existe um ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az}")
         mount_targets_response = efs_client.describe_mount_targets(FileSystemId=fs_id)
-        mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == a_z]
+        mount_targets = [mt for mt in mount_targets_response['MountTargets'] if mt['AvailabilityZoneName'] == az]
         
         if mount_targets:
             print("-----//-----//-----//-----//-----//-----//-----")
@@ -126,18 +126,18 @@ if resposta == 'y':
                 print(mt['MountTargetId'])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Extraindo o ID do ponto de montagem do sistema de arquivos {tag_name_fs} na AZ {a_z}")
-            mount_target_id = [mt['MountTargetId'] for mt in mount_targets if mt['AvailabilityZoneName'] == a_z]
+            print(f"Extraindo o ID do ponto de montagem do sistema de arquivos {tag_name_fs} na AZ {az}")
+            mount_target_id = [mt['MountTargetId'] for mt in mount_targets if mt['AvailabilityZoneName'] == az]
             
             if mount_target_id:
                 mount_target_id = mount_target_id[0]
 
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print(f"Removendo o ponto de montagem do sistema de arquivos {tag_name_fs} na AZ {a_z}")
+                print(f"Removendo o ponto de montagem do sistema de arquivos {tag_name_fs} na AZ {az}")
                 efs_client.delete_mount_target(MountTargetId=mount_target_id)
 
                 print("-----//-----//-----//-----//-----//-----//-----")
-                print(f"Aguardando o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z} ser deletado")
+                print(f"Aguardando o ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az} ser deletado")
                 state = "deleting"
                 while state in ["creating", "available", "deleting"]:
                     time.sleep(5)
@@ -151,7 +151,7 @@ if resposta == 'y':
                 for mt in mount_targets_response['MountTargets']:
                     print(mt['MountTargetId'])
         else:
-            print(f"Não existe nenhum ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {a_z}")
+            print(f"Não existe nenhum ponto de montagem no sistema de arquivos {tag_name_fs} na AZ {az}")
     else:
         print(f"Não existe o sistema de arquivos {tag_name_fs}")
 else:

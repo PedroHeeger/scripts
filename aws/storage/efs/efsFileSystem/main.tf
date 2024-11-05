@@ -50,16 +50,19 @@ data "aws_subnet" "example" {
   }
 }
 
+# Criando o sistema de arquivos
 resource "aws_efs_file_system" "example" {
   creation_token    = var.efs_token
   performance_mode  = var.performance_mode
   throughput_mode   = var.throughput_mode
+  encrypted         = true
 
   tags = {
     Name = var.tag_name_fs
   }
 }
 
+# Criando o ponto de montagem do sistema de arquivos
 resource "aws_efs_mount_target" "example" {
   file_system_id    = aws_efs_file_system.example.id
   subnet_id         = data.aws_subnet.example.id
