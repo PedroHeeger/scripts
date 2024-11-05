@@ -35,13 +35,13 @@ provider "aws" {
   region = var.region
 }
 
-# TÓPICO SNS
+# Criando o tópico SNS
 resource "aws_sns_topic" "example" {
   name        = var.topic_name
   display_name = var.display_name
 }
 
-# SUBSCRIPTION
+# Adicionando uma subscrição ao tópico SNS
 resource "aws_sns_topic_subscription" "example" {
   topic_arn = aws_sns_topic.example.arn
   protocol  = var.protocol
