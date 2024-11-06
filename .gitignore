@@ -5,29 +5,32 @@ soft/
 aws/.default
 soft/docker/.default/secrets
 soft/git/.default/secrets
-
-
+aws/compute/ec2/userData/0App
 
 
 aws/compute/ec2/as
 aws/compute/ec2/transferFile
-aws/compute/ec2/userData
+
+aws/compute/ec2/userData/ecs_agent
 aws/compute/ecs
 aws/compute/ecr
 aws/compute/eks
-
-
 aws/network
-aws/data
+aws/data/dynamodb
+
+
 aws/ssm
-aws/storage/efs
-aws/storage/glacier
-aws/storage/s3
 aws/ml
 aws/management
 aws/identity/acm
 aws/cost
-aws/appIntegration
+
+
+
+
+
+aws/appIntegration/sns/snsTopic/*
+!aws/appIntegration/sns/snsTopic/main.tf
 
 
 aws/compute/ec2/instance/ec2Instance/*
@@ -35,6 +38,9 @@ aws/compute/ec2/instance/ec2Instance/*
 
 aws/compute/ec2/keyPair/ec2KeyPair/*
 !aws/compute/ec2/keyPair/ec2KeyPair/main.tf
+
+aws/data/rds/instance/rdsDB/*
+!aws/data/rds/instance/rdsDB/main.tf
 
 
 aws/identity/iam/group/iamGroup/*
@@ -58,6 +64,17 @@ aws/storage/ebs/snapshot/snapshot/*
 aws/storage/ebs/volumeEBS/*
 !aws/storage/ebs/volumeEBS/main.tf
 
+aws/storage/efs/efsFileSystem/*
+!aws/storage/efs/efsFileSystem/main.tf
+
+aws/storage/glacier/glacierVault/*
+!aws/storage/glacier/glacierVault/main.tf
+
+aws/storage/s3/bucket/s3Bucket/*
+!aws/storage/s3/bucket/s3Bucket/main.tf
+
+aws/storage/s3/object/s3Object/*
+!aws/storage/s3/object/s3Object/main.tf
 
 
 
