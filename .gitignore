@@ -15,7 +15,8 @@ aws/compute/ec2/userData/ecs_agent
 aws/compute/ecs
 aws/compute/ecr
 aws/compute/eks
-aws/network
+aws/network/elb
+aws/network/route53
 aws/data/dynamodb
 
 
@@ -56,7 +57,11 @@ aws/identity/iam/user/iamUser/*
 !aws/identity/iam/user/iamUser/main.tf
 
 
+aws/network/vpc/vpc/*
+!aws/network/vpc/vpc/main.tf
 
+aws/network/vpc/sgRule/vpcSgRule/*
+!aws/network/vpc/sgRule/vpcSgRule/main.tf
 
 aws/storage/ebs/snapshot/snapshot/*
 !aws/storage/ebs/snapshot/snapshot/main.tf

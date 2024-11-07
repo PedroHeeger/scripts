@@ -21,19 +21,16 @@ if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print("Verificando se a VPC é a padrão ou não")
     if vpc_name == "default":
-        condition = "isDefault"
+        key = "isDefault"
         vpc_name_control = "true"
     else:
-        condition = "tag:Name"
+        key = "tag:Name"
         vpc_name_control = vpc_name
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço EC2")
-    ec2_client = boto3.client('ec2')
-
-    print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a VPC {vpc_name}")
-    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': condition, 'Values': [vpc_name_control]}])['Vpcs']
+    ec2_client = boto3.client('ec2')
+    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': key, 'Values': [vpc_name_control]}])['Vpcs']
 
     if len(vpcs) > 0:
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -41,7 +38,7 @@ if resposta.lower() == 'y':
         vpc_id = vpcs[0]['VpcId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o security group de nome {sg_name} na VPC {vpc_name}")
+        print(f"Verificando se existe o security group {sg_name} na VPC {vpc_name}")
         sg_groups = ec2_client.describe_security_groups(Filters=[
             {'Name': 'vpc-id', 'Values': [vpc_id]},
             {'Name': 'group-name', 'Values': [sg_name]}
@@ -49,21 +46,23 @@ if resposta.lower() == 'y':
 
         if len(sg_groups) > 0:
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Já existe o security group de nome {sg_name} na VPC {vpc_name}")
+            print(f"Já existe o security group {sg_name} na VPC {vpc_name}")
             print(sg_groups[0]['GroupName'])
         else:
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando todos os security groups criados na VPC {vpc_name}")
             all_sgs = ec2_client.describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpc_id]}])['SecurityGroups']
-            print([sg['GroupName'] for sg in all_sgs])
+            for sg in all_sgs:
+                print(sg['GroupName'])
+            # print([sg['GroupName'] for sg in all_sgs])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Criando o security group de nome {sg_name} na VPC {vpc_name}")
+            print(f"Criando o security group {sg_name} na VPC {vpc_name}")
             created_sg = ec2_client.create_security_group(GroupName=sg_name, Description=sg_description, VpcId=vpc_id)
             sg_id = created_sg['GroupId']
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Listando o security group de nome {sg_name} na VPC {vpc_name}")
+            print(f"Listando o security group {sg_name} na VPC {vpc_name}")
             sg_info = ec2_client.describe_security_groups(GroupIds=[sg_id])['SecurityGroups']
             print(sg_info[0]['GroupName'])
     else:
@@ -95,19 +94,16 @@ if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
     print("Verificando se a VPC é a padrão ou não")
     if vpc_name == "default":
-        condition = "isDefault"
+        key = "isDefault"
         vpc_name_control = "true"
     else:
-        condition = "tag:Name"
+        key = "tag:Name"
         vpc_name_control = vpc_name
 
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço EC2")
-    ec2_client = boto3.client('ec2')
-
-    print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a VPC {vpc_name}")
-    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': condition, 'Values': [vpc_name_control]}])['Vpcs']
+    ec2_client = boto3.client('ec2')
+    vpcs = ec2_client.describe_vpcs(Filters=[{'Name': key, 'Values': [vpc_name_control]}])['Vpcs']
 
     if len(vpcs) > 0:
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -115,7 +111,7 @@ if resposta.lower() == 'y':
         vpc_id = vpcs[0]['VpcId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o security group de nome {sg_name} na VPC {vpc_name}")
+        print(f"Verificando se existe o security group {sg_name} na VPC {vpc_name}")
         sg_groups = ec2_client.describe_security_groups(Filters=[
             {'Name': 'vpc-id', 'Values': [vpc_id]},
             {'Name': 'group-name', 'Values': [sg_name]}
@@ -125,22 +121,24 @@ if resposta.lower() == 'y':
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando todos os security groups criados na VPC {vpc_name}")
             all_sgs = ec2_client.describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpc_id]}])['SecurityGroups']
-            print([sg['GroupName'] for sg in all_sgs])
+            for sg in all_sgs:
+                print(sg['GroupName'])
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Extraindo o Id do security group de nome {sg_name} da VPC {vpc_name}")
+            print(f"Extraindo o Id do security group {sg_name} da VPC {vpc_name}")
             sg_id = sg_groups[0]['GroupId']
 
             print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Removendo o security group de nome {sg_name} da VPC {vpc_name}")
+            print(f"Removendo o security group {sg_name} da VPC {vpc_name}")
             ec2_client.delete_security_group(GroupId=sg_id)
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print(f"Listando todos os security groups criados na VPC {vpc_name}")
             all_sgs = ec2_client.describe_security_groups(Filters=[{'Name': 'vpc-id', 'Values': [vpc_id]}])['SecurityGroups']
-            print([sg['GroupName'] for sg in all_sgs])
+            for sg in all_sgs:
+                print(sg['GroupName'])
         else:
-            print(f"Não existe o security group de nome {sg_name} na VPC {vpc_name}")
+            print(f"Não existe o security group {sg_name} na VPC {vpc_name}")
     else:
         print(f"Não existe a VPC {vpc_name}")
 else:

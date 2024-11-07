@@ -19,25 +19,27 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se a VPC é a padrão ou não"
     if [ "$vpcName" == "default" ]; then
-        condition="isDefault"
+        key="isDefault"
         vpcNameControl="true"
     else
-        condition="tag:Name"
+        key="tag:Name"
         vpcNameControl="$vpcName"
     fi
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe a VPC $vpcName"
-    if [ $(aws ec2 describe-vpcs --filters "Name=$condition,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text | wc -l) -gt 1 ]; then
+    condition=$(aws ec2 describe-vpcs --filters "Name=$key,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo o Id da VPC $vpcName"
-        vpcId=$(aws ec2 describe-vpcs --filters "Name=$condition,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text)
+        vpcId=$(aws ec2 describe-vpcs --filters "Name=$key,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existe o security group de nome $sgName na VPC $vpcName"
-        if [ $(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text | wc -l) -gt 1 ]; then
+        echo "Verificando se existe o security group $sgName na VPC $vpcName"
+        condition=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text | wc -l)
+        if [[ "$condition" -gt 0 ]]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Já existe o security group de nome $sgName na VPC $vpcName"
+            echo "Já existe o security group $sgName na VPC $vpcName"
             aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text
         else
             echo "-----//-----//-----//-----//-----//-----//-----"
@@ -45,11 +47,11 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
             aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" --query "SecurityGroups[].GroupName" --output text
         
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Criando o security group de nome $sgName na VPC $vpcName"
+            echo "Criando o security group $sgName na VPC $vpcName"
             aws ec2 create-security-group --group-name $sgName --description "$sgDescription" --vpc-id $vpcId --tag-specifications "ResourceType=security-group,Tags=[{Key=Name,Value=$sgTagName}]"
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Listando o security group de nome $sgName na VPC $vpcName"
+            echo "Listando o security group $sgName na VPC $vpcName"
             aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text
         fi
     else
@@ -81,40 +83,42 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se a VPC é a padrão ou não"
     if [ "$vpcName" == "default" ]; then
-        condition="isDefault"
+        key="isDefault"
         vpcNameControl="true"
     else
-        condition="tag:Name"
+        key="tag:Name"
         vpcNameControl="$vpcName"
     fi
 
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe a VPC $vpcName"
-    if [ $(aws ec2 describe-vpcs --filters "Name=$condition,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text | wc -l) -gt 1 ]; then
+    condition=$(aws ec2 describe-vpcs --filters "Name=$key,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Extraindo o Id da VPC $vpcName"
-        vpcId=$(aws ec2 describe-vpcs --filters "Name=$condition,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text)
+        vpcId=$(aws ec2 describe-vpcs --filters "Name=$key,Values=$vpcNameControl" --query "Vpcs[].VpcId" --output text)
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Verificando se existe o security group de nome $sgName na VPC $vpcName"
-        if [ $(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text | wc -l) -gt 1 ]; then
+        echo "Verificando se existe o security group $sgName na VPC $vpcName"
+        condition=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupName" --output text | wc -l)
+        if [[ "$condition" -gt 0 ]]; then
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Listando todos os security groups criados na VPC $vpcName"
             aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" --query "SecurityGroups[].GroupName" --output text
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Extraindo o Id do security group de nome $sgName da VPC $vpcName"
+            echo "Extraindo o Id do security group $sgName da VPC $vpcName"
             sgId=$(aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" "Name=group-name,Values=$sgName" --query "SecurityGroups[].GroupId" --output text)
 
             echo "-----//-----//-----//-----//-----//-----//-----"
-            echo "Removendo o security group de nome $sgName da VPC $vpcName"
+            echo "Removendo o security group $sgName da VPC $vpcName"
             aws ec2 delete-security-group --group-id $sgId
 
             echo "-----//-----//-----//-----//-----//-----//-----"
             echo "Listando todos os security groups criados na VPC $vpcName"
             aws ec2 describe-security-groups --filters "Name=vpc-id,Values=$vpcId" --query "SecurityGroups[].GroupName" --output text
         else
-            echo "Não existe o security group de nome $sgName na VPC $vpcName"
+            echo "Não existe o security group $sgName na VPC $vpcName"
         fi
     else
         echo "Não existe a VPC $vpcName"
