@@ -4,22 +4,22 @@ variable "region" {
   default     = "us-east-1"
 }
 
-# variable "hostedZoneName" {
+# variable "hosted_zone_name" {
 #   description = "Nome da Zona de Hospedagem"
 #   default = "hosted-zone-test1.com.br."
 # }
 
-# variable "domainName" {
+# variable "domain_name" {
 #   description = "Nome de Domínio"
 #   default = "hosted-zone-test1.com.br"
 # }
 
-variable "hostedZoneName" {
+variable "hosted_zone_name" {
   description = "Nome da Zona de Hospedagem"
   default = "pedroheeger.dev.br."
 }
 
-variable "domainName" {
+variable "domain_name" {
   description = "Nome de Domínio"
   default = "pedroheeger.dev.br"
 }
@@ -32,8 +32,9 @@ provider "aws" {
   region = var.region
 }
 
+# Criando o certificado
 resource "aws_acm_certificate" "example" {
-  domain_name       = var.domainName
+  domain_name       = var.domain_name
   validation_method = "DNS"
 
   lifecycle {
@@ -41,10 +42,12 @@ resource "aws_acm_certificate" "example" {
   }
 }
 
+# Extraindo a Hosted Zone
 data "aws_route53_zone" "existing" {
-  name = var.hostedZoneName
+  name = var.hosted_zone_name
 }
 
+# Criando um record na Hosted Zone para o domínio com o certificado criado
 resource "aws_route53_record" "example" {
   for_each = {
     for dvo in aws_acm_certificate.example.domain_validation_options : dvo.domain_name => {

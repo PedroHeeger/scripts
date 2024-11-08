@@ -8,25 +8,21 @@ print("CERTIFICATE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-# domain_name = "hosted-zone-test2.com.br"
-domain_name = "pedroheeger.dev.br"
+domain_name = "hosted-zone-test1.com.br"
+# domain_name = "pedroheeger.dev.br"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço ACM")
+    print(f"Verificando se existe um certificado para o domínio {domain_name}")
     acm = boto3.client('acm', region_name='us-east-1')
-    
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe um certificado para o domínio de nome {domain_name}")
     response = acm.list_certificates(CertificateStatuses=['ISSUED', 'PENDING_VALIDATION'])
-    
     existing_certificates = [cert['DomainName'] for cert in response['CertificateSummaryList']]
     
     if domain_name in existing_certificates:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe um certificado para o domínio de nome {domain_name}")
+        print(f"Já existe um certificado para o domínio {domain_name}")
         print(domain_name)
     else:
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -35,17 +31,14 @@ if resposta.lower() == 'y':
             print(cert)
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando um certificado para o domínio de nome {domain_name}")
-        
+        print(f"Criando um certificado para o domínio {domain_name}")
         response = acm.request_certificate(
             DomainName=domain_name,
             ValidationMethod='DNS'
         )
 
-        certificate_arn = response['CertificateArn']
-
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando um certificado para o domínio de nome {domain_name}")
+        print(f"Listando um certificado para o domínio {domain_name}")
         print(domain_name)
 else:
     print("Código não executado")
@@ -64,20 +57,16 @@ print("CERTIFICATE EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-# domain_name = "hosted-zone-test2.com.br"
-domain_name = "pedroheeger.dev.br"
+domain_name = "hosted-zone-test1.com.br"
+# domain_name = "pedroheeger.dev.br"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço ACM")
+    print(f"Verificando se existe um certificado para o domínio {domain_name}")
     acm = boto3.client('acm', region_name='us-east-1')
-
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe um certificado para o domínio de nome {domain_name}")
     response = acm.list_certificates(CertificateStatuses=['ISSUED', 'PENDING_VALIDATION'])
-
     existing_certificates = [cert['DomainName'] for cert in response['CertificateSummaryList']]
 
     if domain_name in existing_certificates:
@@ -87,11 +76,11 @@ if resposta.lower() == 'y':
             print(cert)
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo o ARN do certificado para o domínio de nome {domain_name}")
+        print(f"Extraindo o ARN do certificado para o domínio {domain_name}")
         certificate_arn = response['CertificateSummaryList'][existing_certificates.index(domain_name)]['CertificateArn']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo o certificado para o domínio de nome {domain_name}")
+        print(f"Removendo o certificado para o domínio {domain_name}")
         acm.delete_certificate(CertificateArn=certificate_arn)
         time.sleep(5)
 
@@ -101,6 +90,6 @@ if resposta.lower() == 'y':
         for cert in response['CertificateSummaryList']:
             print(cert['DomainName'])
     else:
-        print(f"Não existe o certificado para o domínio de nome {domain_name}")
+        print(f"Não existe o certificado para o domínio {domain_name}")
 else:
     print("Código não executado")
