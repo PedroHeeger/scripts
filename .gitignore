@@ -16,14 +16,15 @@ aws/compute/ecs
 aws/compute/ecr
 aws/compute/eks
 aws/network/elb
-aws/network/route53
+aws/network/route53/record
+aws/network/route53/hc
 aws/data/dynamodb
 
 
 aws/ssm
 aws/ml
 aws/management
-aws/identity/acm
+
 aws/cost
 
 
@@ -44,6 +45,10 @@ aws/data/rds/instance/rdsDB/*
 !aws/data/rds/instance/rdsDB/main.tf
 
 
+
+aws/identity/acm/certificate/*
+!aws/identity/acm/certificate/main.tf
+
 aws/identity/iam/group/iamGroup/*
 !aws/identity/iam/group/iamGroup/main.tf
 
@@ -55,6 +60,9 @@ aws/identity/iam/role/iamRole/*
 
 aws/identity/iam/user/iamUser/*
 !aws/identity/iam/user/iamUser/main.tf
+
+aws/network/route53/hostedZone/r53HostedZone/*
+!aws/network/route53/hostedZone/r53HostedZone/main.tf
 
 
 aws/network/vpc/vpc/*
