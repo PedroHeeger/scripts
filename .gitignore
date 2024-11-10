@@ -15,7 +15,16 @@ aws/compute/ec2/userData/ecs_agent
 aws/compute/ecs
 aws/compute/ecr
 aws/compute/eks
-aws/network/elb
+aws/network/elb/alb
+aws/network/elb/albSuport
+aws/network/elb/instanceAdd
+aws/network/elb/listener
+aws/network/elb/listenerRule
+aws/network/elb/tg
+
+
+
+
 aws/network/route53/record
 aws/network/route53/hc
 aws/data/dynamodb
@@ -60,6 +69,19 @@ aws/identity/iam/role/iamRole/*
 
 aws/identity/iam/user/iamUser/*
 !aws/identity/iam/user/iamUser/main.tf
+
+
+
+
+aws/network/elb/alb/elbAlb/*
+!aws/network/elb/alb/elbAlb/main.tf
+
+aws/network/elb/clb/elbClb/*
+!aws/network/elb/clb/elbClb/main.tf
+
+aws/network/elb/instanceAdd/ec2TwoInst/*
+!aws/network/elb/instanceAdd/ec2TwoInst/main.tf
+
 
 aws/network/route53/hostedZone/r53HostedZone/*
 !aws/network/route53/hostedZone/r53HostedZone/main.tf

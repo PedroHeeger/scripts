@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 import boto3
+from botocore.exceptions import ClientError
 
 print("***********************************************")
-print("SERVIÇO: AWS EC2-ELB")
+print("SERVIÇO: AWS ELB")
 print("CLASSIC LOAD BALANCER (CLB) CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -13,28 +14,36 @@ listener_protocol = "HTTP"
 listener_port = 80
 instance_protocol = "HTTP"
 instance_port = 80
-aZ1 = "us-east-1a"
-aZ2 = "us-east-1b"
+az1 = "us-east-1a"
+az2 = "us-east-1b"
 sg_name = "default"
+hc_protocol = "HTTP"
+hc_port = "80"
+hc_path = "index.html"
+hc_interval_seconds = 15
+unhealthy_threshold = 2
+healthy_threshold = 5
+hc_timeout_seconds = 5
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
 if response.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço EC2 e outro para o ELB")
+    print(f"Verificando se existe o classic load balancer {clb_name}")
     elb_client = boto3.client('elb')
-    ec2_client = boto3.client('ec2')
 
     try:
+        response = elb_client.describe_load_balancers(LoadBalancerNames=[clb_name])['LoadBalancerDescriptions']
+        lb_found = len(response) > 0 and 'LoadBalancerName' in response[0]
+    except ClientError as e:
+        lb_found = False
+
+    if lb_found:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Verificando se existe o classic load balancer de nome {clb_name}")
+        print(f"Já existe o classic load balancer {clb_name}")
         elbs = elb_client.describe_load_balancers(LoadBalancerNames=[clb_name])['LoadBalancerDescriptions']
-
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe o classic load balancer de nome {clb_name}")
         print(elbs[0]['LoadBalancerName'])
-
-    except Exception as e:
+    else:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todos os classic load balancers criados")
         elbs = elb_client.describe_load_balancers()['LoadBalancerDescriptions']
@@ -42,7 +51,8 @@ if response.lower() == 'y':
             print(elb['LoadBalancerName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print("Extraindo o ID do grupo de segurança")
+        print("Extraindo o ID dos elementos de rede")
+        ec2_client = boto3.client('ec2')
         vpc_id = ec2_client.describe_vpcs()['Vpcs'][0]['VpcId']
         sg_id = ec2_client.describe_security_groups(
             Filters=[
@@ -52,7 +62,7 @@ if response.lower() == 'y':
         )['SecurityGroups'][0]['GroupId']
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando o classic load balancer de nome {clb_name}")
+        print(f"Criando o classic load balancer {clb_name}")
         elb_client.create_load_balancer(
             LoadBalancerName=clb_name,
             Listeners=[
@@ -63,25 +73,25 @@ if response.lower() == 'y':
                     'InstancePort': instance_port
                 }
             ],
-            AvailabilityZones=[aZ1, aZ2],
+            AvailabilityZones=[az1, az2],
             SecurityGroups=[sg_id]
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando a verificação de integridade do classic load balancer de nome {clb_name}")
+        print(f"Criando a verificação de integridade do classic load balancer {clb_name}")
         elb_client.configure_health_check(
             LoadBalancerName=clb_name,
             HealthCheck={
-                'Target': f'{listener_protocol}:{listener_port}/index.html',
-                'Interval': 15,
-                'UnhealthyThreshold': 2,
-                'HealthyThreshold': 5,
-                'Timeout': 5
+                'Target': f'{hc_protocol}:{hc_protocol}/{hc_path}',
+                'Interval': hc_interval_seconds,
+                'UnhealthyThreshold': unhealthy_threshold,
+                'HealthyThreshold': healthy_threshold,
+                'Timeout': hc_timeout_seconds
             }
         )
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o classic load balancer de nome {clb_name}")
+        print(f"Listando o classic load balancer {clb_name}")
         elbs = elb_client.describe_load_balancers(LoadBalancerNames=[clb_name])['LoadBalancerDescriptions']
         print(elbs[0]['LoadBalancerName'])
 else:
@@ -93,9 +103,10 @@ else:
 #!/usr/bin/env python
     
 import boto3
+from botocore.exceptions import ClientError
 
 print("***********************************************")
-print("SERVIÇO: AWS EC2-ELB")
+print("SERVIÇO: AWS ELB")
 print("CLASSIC LOAD BALANCER (CLB) EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -106,30 +117,32 @@ print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
 if response.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço ELB")
+    print(f"Verificando se existe o classic load balancer {clb_name}")
     elb_client = boto3.client('elb')
 
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o classic load balancer de nome {clb_name}")
-    elbs = elb_client.describe_load_balancers(LoadBalancerNames=[clb_name])['LoadBalancerDescriptions']
+    try:
+        response = elb_client.describe_load_balancers(LoadBalancerNames=[clb_name])['LoadBalancerDescriptions']
+        lb_found = len(response) > 0 and 'LoadBalancerName' in response[0]
+    except ClientError as e:
+        lb_found = False
 
-    if elbs:
-            print("-----//-----//-----//-----//-----//-----//-----")
-            print("Listando todos os classic load balancers criados")
-            all_elbs = elb_client.describe_load_balancers()['LoadBalancerDescriptions']
-            for elb in all_elbs:
-                print(elb['LoadBalancerName'])
+    if lb_found:
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print("Listando todos os classic load balancers criados")
+        all_elbs = elb_client.describe_load_balancers()['LoadBalancerDescriptions']
+        for elb in all_elbs:
+            print(elb['LoadBalancerName'])
 
-            print("-----//-----//-----//-----//-----//-----//-----")
-            print(f"Removendo o classic load balancer de nome {clb_name}")
-            elb_client.delete_load_balancer(LoadBalancerName=clb_name)
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print(f"Removendo o classic load balancer {clb_name}")
+        elb_client.delete_load_balancer(LoadBalancerName=clb_name)
 
-            print("-----//-----//-----//-----//-----//-----//-----")
-            print("Listando todos os classic load balancers criados")
-            all_elbs = elb_client.describe_load_balancers()['LoadBalancerDescriptions']
-            for elb in all_elbs:
-                print(elb['LoadBalancerName'])
+        print("-----//-----//-----//-----//-----//-----//-----")
+        print("Listando todos os classic load balancers criados")
+        all_elbs = elb_client.describe_load_balancers()['LoadBalancerDescriptions']
+        for elb in all_elbs:
+            print(elb['LoadBalancerName'])
     else:
-        print(f"Não existe o classic load balancer de nome {clb_name}")
+        print(f"Não existe o classic load balancer {clb_name}")
 else:
     print("Código não executado") 
