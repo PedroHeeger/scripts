@@ -25,7 +25,8 @@ aws/network/elb/tg
 
 
 
-aws/network/route53/record
+aws/network/route53/record/recAcm
+aws/network/route53/record/recRoutePolicies
 aws/network/route53/hc
 aws/data/dynamodb
 
@@ -85,6 +86,14 @@ aws/network/elb/instanceAdd/ec2TwoInst/*
 
 aws/network/route53/hostedZone/r53HostedZone/*
 !aws/network/route53/hostedZone/r53HostedZone/main.tf
+
+
+aws/network/route53/record/recLb/recLb/*
+!aws/network/route53/record/recLb/recLb/main.tf
+
+
+
+
 
 
 aws/network/vpc/vpc/*

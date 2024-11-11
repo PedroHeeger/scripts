@@ -6,32 +6,46 @@ Write-Output "RECORD LOAD BALANCER-HOSTED ZONE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-# $hostedZoneName = "hosted-zone-test1.com.br."
-# $domainName = "hosted-zone-test1.com.br"
-$hostedZoneName = "pedroheeger.dev.br."
+# $domainName = "hosted-zone-test1.com.br"     # Um domínio é o nome de um site ou serviço na internet
 $domainName = "pedroheeger.dev.br"
-$resourceRecordName = "recordnamelbtest1.pedroheeger.dev.br"
-$albName = "albTest1"
+$hostedZoneName = "$domainName."             # Hosted Zone é um container para esse domínio. Programaticamente ela aparece como o nome do domínio concatenado com um ponto
+$elbName = "albTest1"
+# $elbName = "clbTest1"
+# $subdomain = "ralb."
+$subdomain = "www."
+$resourceRecordName = "$subdomain$domainName"
+$ttl = "300"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a hosted zone $hostedZoneName"
-    if ((aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Name").Count -gt 1) {
+    $condition = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Name" --output text
+    if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o Id da hosted zone $hostedZoneName"
         $hostedZoneId = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Id" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o DNS do load balancer $albName"
-        $lbDNS = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].DNSName" --output text
+        Write-Output "Verificando se existe o load balancer $elbName"
+        $condition = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$elbName'].LoadBalancerName" --output text
+        if (($condition).Count -gt 0) {
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "Extraindo o DNS do load balancer $elbName"
+            $lbDNS = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$elbName'].DNSName" --output text
+        } else {
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "Extraindo o DNS do load balancer $elbName configurado no registro de nome $resourceRecordName"
+            $lbDNS = aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='${resourceRecordName}.'].ResourceRecords[].Value" --output text
+        }
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Verificando se existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
-        if ((aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name").Count -gt 1) {
+        Write-Output "Verificando se existe o registro do tipo CNAME $resourceRecordName na hosted zone $hostedZoneName"
+        $condition = aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text
+        if (($condition).Count -gt 0) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Já existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
+            Write-Output "Já existe o registro CNAME $resourceRecordName na hosted zone $hostedZoneName"
             aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text
         } else {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -39,7 +53,7 @@ if ($resposta.ToLower() -eq 'y') {
             aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[].Name" --output text
         
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Criando o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
+            Write-Output "Criando o registro CNAME $resourceRecordName na hosted zone $hostedZoneName"
             aws route53 change-resource-record-sets --hosted-zone-id $hostedZoneId --change-batch "{
                 `"Changes`": [
                 {
@@ -47,7 +61,7 @@ if ($resposta.ToLower() -eq 'y') {
                     `"ResourceRecordSet`": {
                     `"Name`": `"${resourceRecordName}`",
                     `"Type`": `"CNAME`",
-                    `"TTL`": 300,
+                    `"TTL`": `"${ttl}`",
                     `"ResourceRecords`": [
                         {`"Value`": `"${lbDNS}`"}
                     ]
@@ -57,10 +71,10 @@ if ($resposta.ToLower() -eq 'y') {
             }"
     
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Listando o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
+            Write-Output "Listando o registro CNAME $resourceRecordName na hosted zone $hostedZoneName"
             aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text
         }
-    } else {Write-Output "Não existe a hosted zone de nome $hostedZoneName"}
+    } else {Write-Output "Não existe a hosted zone $hostedZoneName"}
 } else {Write-Host "Código não executado"}
 
 
@@ -74,36 +88,49 @@ Write-Output "RECORD LOAD BALANCER-HOSTED ZONE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-# $hostedZoneName = "hosted-zone-test1.com.br."
-# $domainName = "hosted-zone-test1.com.br"
-$hostedZoneName = "pedroheeger.dev.br."
+# $domainName = "hosted-zone-test1.com.br"     # Um domínio é o nome de um site ou serviço na internet
 $domainName = "pedroheeger.dev.br"
-$resourceRecordName = "recordnamelbtest1.pedroheeger.dev.br"
-$albName = "albTest1"
+$hostedZoneName = "$domainName."             # Hosted Zone é um container para esse domínio. Programaticamente ela aparece como o nome do domínio concatenado com um ponto
+$elbName = "albTest1"
+# $elbName = "clbTest1"
+# $subdomain = "ralb."
+$subdomain = "www."
+$resourceRecordName = "$subdomain$domainName"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a hosted zone $hostedZoneName"
-    if ((aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Name").Count -gt 1) {
+    $condition = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Name" --output text
+    if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Extraindo o Id da hosted zone $hostedZoneName"
         $hostedZoneId = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Id" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o DNS do load balancer $albName"
-        $lbDNS = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$albName'].DNSName" --output text
+        Write-Output "Verificando se existe o load balancer $elbName"
+        $condition = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$elbName'].LoadBalancerName" --output text
+        if (($condition).Count -gt 0) {
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "Extraindo o DNS do load balancer $elbName"
+            $lbDNS = aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='$elbName'].DNSName" --output text
+        } else {
+            Write-Output "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "Extraindo o DNS do load balancer $elbName configurado no registro de nome $resourceRecordName"
+            $lbDNS = aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='${resourceRecordName}.'].ResourceRecords[].Value" --output text
+        }
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Verificando se existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
-        if ((aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name").Count -gt 1) {
+        Write-Output "Verificando se existe o registro do tipo CNAME $resourceRecordName na hosted zone $hostedZoneName"
+        $condition = aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[?Name=='$resourceRecordName.'].Name" --output text
+        if (($condition).Count -gt 0) {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Listando todos os registros da hosted zone $hostedZoneName"
             aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[].Name" --output text
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "Removendo o registro de nome $resourceRecordName na hosted zone $hostedZoneName"
+            Write-Output "Removendo o registro CNAME $resourceRecordName na hosted zone $hostedZoneName"
             aws route53 change-resource-record-sets --hosted-zone-id $hostedZoneId --change-batch "{
                 `"Changes`": [
                 {
@@ -124,6 +151,6 @@ if ($resposta.ToLower() -eq 'y') {
             Write-Output "Listando todos os registros da hosted zone $hostedZoneName"
             aws route53 list-resource-record-sets --hosted-zone-id $hostedZoneId --query "ResourceRecordSets[].Name" --output text
 
-        } else {Write-Output "Não existe o registro de nome $resourceRecordName na hosted zone $hostedZoneName"}    
+        } else {Write-Output "Não existe o registro CNAME $resourceRecordName na hosted zone $hostedZoneName"}    
     } else {Write-Output "Não existe a hosted zone $hostedZoneName"}
 } else {Write-Host "Código não executado"}
