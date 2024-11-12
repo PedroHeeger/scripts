@@ -16,7 +16,7 @@ aws/compute/ecs
 aws/compute/ecr
 aws/compute/eks
 
-aws/network/elb/albSuport
+
 aws/network/elb/instanceAdd
 aws/network/elb/listener
 aws/network/elb/listenerRule
