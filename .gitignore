@@ -17,11 +17,6 @@ aws/compute/ecr
 aws/compute/eks
 
 
-aws/network/elb/instanceAdd
-aws/network/elb/listener
-aws/network/elb/listenerRule
-aws/network/elb/tg
-
 aws/network/route53/record/recRoutePolicies
 aws/network/route53/hc
 aws/data/dynamodb

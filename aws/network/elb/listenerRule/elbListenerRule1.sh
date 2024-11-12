@@ -1,8 +1,9 @@
 #!/bin/bash
 
 echo "***********************************************"
-echo "SERVIÇO: AWS EC2-ELB"
-echo "LISTENER RULE CREATION"
+echo "SERVIÇO: AWS ELB"
+echo "LISTENER RULE 1 CREATION"
+echo "Regra de redirecionamento de portas: 80 (HTTP) -> 443 (HTTPS)"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
@@ -63,8 +64,9 @@ fi
 #!/bin/bash
 
 echo "***********************************************"
-echo "SERVIÇO: AWS EC2-ELB"
-echo "LISTENER RULE EXCLUSION"
+echo "SERVIÇO: AWS ELB"
+echo "LISTENER RULE 1 EXCLUSION"
+echo "Regra de redirecionamento de portas: 80 (HTTP) -> 443 (HTTPS)"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
