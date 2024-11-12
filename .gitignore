@@ -25,7 +25,7 @@ aws/network/elb/tg
 
 
 
-aws/network/route53/record/recAcm
+
 aws/network/route53/record/recRoutePolicies
 aws/network/route53/hc
 aws/data/dynamodb
@@ -91,6 +91,8 @@ aws/network/route53/hostedZone/r53HostedZone/*
 aws/network/route53/record/recLb/recLb/*
 !aws/network/route53/record/recLb/recLb/main.tf
 
+aws/network/route53/record/recAcm/recAcmCertifc/*
+!aws/network/route53/record/recAcm/recAcmCertifc/main.tf
 
 
 
