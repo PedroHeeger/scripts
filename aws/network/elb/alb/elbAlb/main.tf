@@ -4,88 +4,136 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "lbName" {
+variable "elb_name" {
   description = "Nome do Application Load Balancer"
   default     = "albTest1"
 }
 
-variable "aZ1" {
+variable "az1" {
   description = "Nome da zona de disponibilidade 1"
   default     = "us-east-1a"
 }
 
-variable "aZ2" {
+variable "az2" {
   description = "Nome da zona de disponibilidade 2"
   default     = "us-east-1b"
 }
 
-variable "tgName" {
+variable "elb_type" {
+  description = "Define o tipo de load balancer (exemplo: application, network, etc.)"
+  type        = string
+  default     = "application"
+}
+
+variable "scheme" {
+  description = "Define o esquema do load balancer (exemplo: internet-facing, internal)"
+  type        = string
+  default     = "internet-facing"
+}
+
+variable "ip_address_type" {
+  description = "Define o tipo de endereço IP para o load balancer (exemplo: ipv4)"
+  type        = string
+  default     = "ipv4"
+}
+
+variable "tg_name" {
   description = "Nome do Target Group"
   default     = "tgTest1"
 }
 
-variable "tgType" {
+variable "tg_type" {
   description = "Tipo de Target Group"
   default     = "instance"
 #   default     = "ip"
 }
 
-variable "tgProtocol" {
+variable "tg_protocol" {
   description = "Protocolo de Rede"
   default     = "HTTP"
 }
 
-variable "tgProtocolVersion" {
+variable "tg_protocol_version" {
   description = "Versão do Protocolo de Rede"
   default     = "HTTP1"
 }
 
-variable "tgPort" {
+variable "tg_port" {
   description = "Porta"
   default     = "80"
 }
 
-variable "tgHealthCheckProtocol" {
+variable "tg_health_check_protocol" {
   description = "Protocolo da verificação de integridade"
   default     = "HTTP"
 }
 
-variable "tgHealthCheckPort" {
+variable "tg_health_check_port" {
   description = "Porta da verificação de integridade"
   default     = "traffic-port"
 }
 
-variable "tgHealthCheckPath" {
+variable "tg_health_check_path" {
   description = "Path da verificação de integridade"
   default     = "/"
 }
 
-variable "listenerProtocol1" {
+variable "healthy_threshold" {
+  description = "O número de verificações bem-sucedidas necessárias para considerar o recurso saudável."
+  type        = number
+  default     = 5
+}
+
+variable "unhealthy_threshold" {
+  description = "O número de verificações malsucedidas necessárias para considerar o recurso não saudável."
+  type        = number
+  default     = 2
+}
+
+variable "hc_timeout_seconds" {
+  description = "O tempo limite (em segundos) para cada verificação de saúde."
+  type        = number
+  default     = 5
+}
+
+variable "hc_interval_seconds" {
+  description = "O intervalo (em segundos) entre as verificações de saúde."
+  type        = number
+  default     = 15
+}
+
+variable "hc_matcher" {
+  description = "O código HTTP ou intervalo de códigos HTTP que indica uma verificação bem-sucedida."
+  type        = string
+  default     = "200"
+}
+
+variable "listener_protocol1" {
   description = "Protocolo do Listener"
   default     = "HTTP"
 }
 
-variable "listenerPort1" {
+variable "listener_port1" {
   description = "Porta do Listener"
   default     = 80
 }
 
-variable "listenerProtocol2" {
+variable "listener_protocol2" {
   description = "Protocolo do Listener"
   default     = "HTTPS"
 }
 
-variable "listenerPort2" {
+variable "listener_port2" {
   description = "Porta do Listener"
   default     = 443
 }
 
-variable "domainName" {
+variable "domain_name" {
   description = "Nome de Domínio"
   default = "www.pedroheeger.dev.br"
 }
 
-variable "redirectProtocol" {
+variable "redirect_protocol" {
   description = "Protocolo Redirecionado"
   default = "HTTPS"
 }
@@ -95,7 +143,7 @@ variable "redirectPort" {
   default = 443
 }
 
-variable "listenerRuleName" {
+variable "listener_rule_name" {
   description = "Nome da Regra do Listener"
   default = "listenerRuleTest1"
 }
@@ -108,6 +156,7 @@ provider "aws" {
   region = var.region
 }
 
+# Extraindo a VPC padrão
 data "aws_vpcs" "default" {
   filter {
     name   = "isDefault"
@@ -115,11 +164,13 @@ data "aws_vpcs" "default" {
   }
 }
 
+# Extraindo o grupo de segurança padrão
 data "aws_security_group" "default" {
   name        = "default"
   vpc_id      = data.aws_vpcs.default.ids[0]
 }
 
+# Extraindo as sub-redes padrões
 data "aws_subnets" "default" {
   filter {
     name   = "vpc-id"
@@ -128,7 +179,7 @@ data "aws_subnets" "default" {
 
   filter {
     name   = "availability-zone"
-    values = [var.aZ1, var.aZ2]
+    values = [var.az1, var.az2]
   }
 }
 
@@ -142,11 +193,11 @@ data "aws_subnet" "selected_default_subnet" {
 # }
 
 
-# ALB
+# Criando o load balancer ALB
 resource "aws_lb" "example" {
-  name               = var.lbName
+  name               = var.elb_name
   internal           = false
-  load_balancer_type = "application"
+  load_balancer_type = var.elb_type
   security_groups    = [data.aws_security_group.default.id]
   subnets            = [for s in data.aws_subnet.selected_default_subnet : s.id]
 
@@ -154,34 +205,34 @@ resource "aws_lb" "example" {
 }
 
 
-# TARGET GROUP (TG)
+# Criando o target group
 resource "aws_lb_target_group" "example" {
-  name        = var.tgName
-  port        = var.tgPort
-  protocol    = var.tgProtocol
-  target_type = var.tgType
-  protocol_version = var.tgProtocolVersion
+  name        = var.tg_name
+  port        = var.tg_port
+  protocol    = var.tg_protocol
+  target_type = var.tg_type
+  protocol_version = var.tg_protocol_version
   vpc_id      = data.aws_vpcs.default.ids[0]
   
   health_check {
     enabled             = true
-    interval            = 15
-    path                = var.tgHealthCheckPath
-    port                = var.tgHealthCheckPort
-    protocol            = var.tgHealthCheckProtocol
-    timeout             = 5
-    healthy_threshold   = 5
-    unhealthy_threshold = 2
-    matcher             = "200"
+    path                = var.tg_health_check_path
+    port                = var.tg_health_check_port
+    protocol            = var.tg_health_check_protocol
+    timeout             = var.hc_timeout_seconds
+    healthy_threshold   = var.healthy_threshold
+    unhealthy_threshold = var.unhealthy_threshold
+    interval            = var.hc_interval_seconds
+    matcher             = var.hc_matcher
   }
 }
 
 
-# LISTENER HTTP
+# Criando um listener HTTP
 resource "aws_lb_listener" "example_1" {
   load_balancer_arn = aws_lb.example.arn
-  port              = var.listenerPort1
-  protocol          = var.listenerProtocol1
+  port              = var.listener_port1
+  protocol          = var.listener_protocol1
 
   # default_action {
   #   type             = "fixed-response"
@@ -202,16 +253,18 @@ resource "aws_lb_listener" "example_1" {
 }
 
 
-# LISTENER HTTPS
+# Extraindo a ARN do certificado do domínio
 data "aws_acm_certificate" "example" {
-  domain       = var.domainName
+  domain       = var.domain_name
   statuses = ["ISSUED"]
 }
 
+
+# Criando um listener HTTPS
 resource "aws_lb_listener" "example_2" {
   load_balancer_arn = aws_lb.example.arn
-  port              = var.listenerPort2
-  protocol          = var.listenerProtocol2
+  port              = var.listener_port2
+  protocol          = var.listener_protocol2
   certificate_arn   = data.aws_acm_certificate.example.arn
 
   # default_action {
@@ -233,7 +286,8 @@ resource "aws_lb_listener" "example_2" {
 }
 
 
-# LISTENER RULE
+# Criando uma regra de redirecionamento no listener do HTTP
+# Redirecionamento da porta 80 (HTTP) para a porta 443 (HTTPS)
 resource "aws_lb_listener_rule" "example" {
   listener_arn = aws_lb_listener.example_1.arn
   priority     = 1
@@ -241,7 +295,7 @@ resource "aws_lb_listener_rule" "example" {
   action {
     type = "redirect"
     redirect {
-      protocol      = var.redirectProtocol
+      protocol      = var.redirect_protocol
       port          = var.redirectPort
       status_code   = "HTTP_301"
     }
@@ -254,6 +308,6 @@ resource "aws_lb_listener_rule" "example" {
   }
 
   tags = {
-    Name = var.listenerRuleName
+    Name = var.listener_rule_name
   }
 }

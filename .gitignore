@@ -15,7 +15,7 @@ aws/compute/ec2/userData/ecs_agent
 aws/compute/ecs
 aws/compute/ecr
 aws/compute/eks
-aws/network/elb/alb
+
 aws/network/elb/albSuport
 aws/network/elb/instanceAdd
 aws/network/elb/listener
@@ -32,8 +32,11 @@ aws/ml
 aws/management
 
 aws/cost
-
 aws/storage/dataSync
+
+
+
+
 
 
 
@@ -41,6 +44,7 @@ aws/storage/dataSync
 
 aws/appIntegration/sns/snsTopic/*
 !aws/appIntegration/sns/snsTopic/main.tf
+
 
 
 aws/compute/ec2/instance/ec2Instance/*
@@ -51,6 +55,8 @@ aws/compute/ec2/keyPair/ec2KeyPair/*
 
 aws/data/rds/instance/rdsDB/*
 !aws/data/rds/instance/rdsDB/main.tf
+
+
 
 
 
@@ -82,9 +88,11 @@ aws/network/elb/instanceAdd/ec2TwoInst/*
 !aws/network/elb/instanceAdd/ec2TwoInst/main.tf
 
 
+aws/network/route53/hc/r53HealthCheck/*
+!aws/network/route53/hc/r53HealthCheck/main.tf
+
 aws/network/route53/hostedZone/r53HostedZone/*
 !aws/network/route53/hostedZone/r53HostedZone/main.tf
-
 
 aws/network/route53/record/recLb/recLb/*
 !aws/network/route53/record/recLb/recLb/main.tf
@@ -92,7 +100,8 @@ aws/network/route53/record/recLb/recLb/*
 aws/network/route53/record/recAcm/recAcmCertifc/*
 !aws/network/route53/record/recAcm/recAcmCertifc/main.tf
 
-
+aws/network/route53/record/recRoutePolicies/recRoutePolicies/*
+!aws/network/route53/record/recRoutePolicies/recRoutePolicies/main.tf
 
 
 
