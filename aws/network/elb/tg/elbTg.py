@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 import boto3
+from botocore.exceptions import ClientError
 
 print("***********************************************")
-print("SERVIÇO: AWS EC2-ELB")
+print("SERVIÇO: AWS ELB")
 print("TARGET GROUP CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -17,22 +18,30 @@ tg_port = 80
 tg_health_check_protocol = "HTTP"
 tg_health_check_port = "traffic-port"
 tg_health_check_path = "/"
+healthy_threshold = 5
+unhealthy_threshold = 2
+hc_timeout_seconds = 5
+hc_interval_seconds = 15
+hc_matcher = "200-299"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço ELB")
+    print(f"Verificando se existe o target group {tg_name}")
     elbv2_client = boto3.client('elbv2')
 
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o target group de nome {tg_name}")
     try:
         response = elbv2_client.describe_target_groups(Names=[tg_name])
+        target_group_found = len(response['TargetGroups']) > 0
+    except ClientError as e:
+        target_group_found = False
+
+    if target_group_found:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe o target group de nome {tg_name}")
+        print(f"Já existe o target group {tg_name}")
         print(response['TargetGroups'][0]['TargetGroupName'])
-    except elbv2_client.exceptions.TargetGroupNotFoundException:
+    else:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todos os target groups criados")
         response = elbv2_client.describe_target_groups()
@@ -46,7 +55,7 @@ if resposta.lower() == 'y':
         vpc_id = vpcs['Vpcs'][0]['VpcId']
     
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando o target group de nome {tg_name}")
+        print(f"Criando o target group {tg_name}")
         response = elbv2_client.create_target_group(
             Name=tg_name,
             TargetType=tg_type,
@@ -57,14 +66,14 @@ if resposta.lower() == 'y':
             HealthCheckProtocol=tg_health_check_protocol,
             HealthCheckPort=tg_health_check_port,
             HealthCheckPath=tg_health_check_path,
-            HealthyThresholdCount=5,
-            UnhealthyThresholdCount=2,
-            HealthCheckTimeoutSeconds=5,
-            HealthCheckIntervalSeconds=15,
-            Matcher={'HttpCode': '200-299'}
+            HealthyThresholdCount=healthy_threshold,
+            UnhealthyThresholdCount=unhealthy_threshold,
+            HealthCheckTimeoutSeconds=hc_timeout_seconds,
+            HealthCheckIntervalSeconds=hc_interval_seconds,
+            Matcher={'HttpCode': hc_matcher}
         )
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o target group de nome {tg_name}")
+        print(f"Listando o target group {tg_name}")
         print(response['TargetGroups'][0]['TargetGroupName'])
 else:
     print("Código não executado")
@@ -74,29 +83,31 @@ else:
 #!/usr/bin/env python
 
 import boto3
+from botocore.exceptions import ClientError
 
 print("***********************************************")
-print("SERVIÇO: AWS EC2-ELB")
+print("SERVIÇO: AWS ELB")
 print("TARGET GROUP EXCLUSION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 tg_name = "tgTest1"
+alb_name = "albTest1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ")
 if resposta.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço ELB")
+    print(f"Verificando se existe o target group {tg_name}")
     elbv2_client = boto3.client('elbv2')
+    
+    try:
+        response = elbv2_client.describe_target_groups(Names=[tg_name])
+        target_group_found = len(response['TargetGroups']) > 0
+    except ClientError as e:
+        target_group_found = False
 
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o target group de nome {tg_name}")
-    response = elbv2_client.describe_target_groups(
-        Names=[tg_name]
-    )
-
-    if len(response['TargetGroups']) > 0:
+    if target_group_found:
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todos os target groups criados")
         response = elbv2_client.describe_target_groups()
@@ -104,12 +115,24 @@ if resposta.lower() == 'y':
             print(tg['TargetGroupName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Extraindo a ARN do target group de nome {tg_name}")
-        tg_arn = response['TargetGroups'][0]['TargetGroupArn']
+        print(f"Verificando se existe o load balancer {alb_name}")
+        try:
+            response = elbv2_client.describe_load_balancers(Names=[alb_name])
+            lb_found = len(response['LoadBalancers']) > 0
+        except ClientError as e:
+            lb_found = False
 
-        print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo o target group de nome {tg_name}")
-        elbv2_client.delete_target_group(TargetGroupArn=tg_arn)
+        if lb_found:         
+            print(f"Necessário excluir o load balancer {alb_name} antes de excluir o target group {tg_name}")
+        else:
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Extraindo a ARN do target group {tg_name}")
+            response = elbv2_client.describe_target_groups(Names=[tg_name])
+            tg_arn = response['TargetGroups'][0]['TargetGroupArn']
+
+            print("-----//-----//-----//-----//-----//-----//-----")
+            print(f"Removendo o target group {tg_name}")
+            elbv2_client.delete_target_group(TargetGroupArn=tg_arn)
 
         print("-----//-----//-----//-----//-----//-----//-----")
         print("Listando todos os target groups criados")
@@ -117,6 +140,6 @@ if resposta.lower() == 'y':
         for tg in response['TargetGroups']:
             print(tg['TargetGroupName'])
     else:
-        print(f"Não existe o target group de nome {tg_name}")
+        print(f"Não existe o target group {tg_name}")
 else:
     print("Código não executado")
