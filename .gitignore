@@ -22,10 +22,6 @@ aws/network/elb/listener
 aws/network/elb/listenerRule
 aws/network/elb/tg
 
-
-
-
-
 aws/network/route53/record/recRoutePolicies
 aws/network/route53/hc
 aws/data/dynamodb
@@ -36,6 +32,8 @@ aws/ml
 aws/management
 
 aws/cost
+
+aws/storage/dataSync
 
 
 

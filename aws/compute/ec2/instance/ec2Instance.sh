@@ -15,8 +15,8 @@ so="ubuntu"
 instanceType="t2.micro"
 keyPairPath="G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/universal"
 keyPairName="keyPairUniversal"
-userDataPath="G:/Meu Drive/4_PROJ/scripts/aws/compute/ec2/userData/basic/"
-userDataFile="udFile.sh"
+userDataPath="G:/Meu Drive/4_PROJ/scripts/aws/compute/ec2/userData/0linuxTools_git/"
+userDataFile="udFileDeb.sh"
 # deviceName="/dev/xvda" 
 deviceName="/dev/sda1" 
 volumeSize=8
@@ -28,8 +28,8 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [[ $resposta == [yY] ]]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe uma instância ativa $tagNameInstance"
-    condition=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text)
-    if [[ $(echo "$condition" | wc -l) -gt 0 ]]; then
+    condition=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe uma instância ativa $tagNameInstance"
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name' && Value=='$tagNameInstance'].Value" --output text
@@ -110,9 +110,8 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [[ "$resposta" == "y" || "$resposta" == "Y" ]]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe uma instância ativa $tagNameInstance"
-    condition=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text)
-
-    if [[ $(echo "$condition" | wc -w) -gt 1 ]]; then
+    condition=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].InstanceId" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando o nome de tag de todas as instâncias criadas ativas"
         aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
