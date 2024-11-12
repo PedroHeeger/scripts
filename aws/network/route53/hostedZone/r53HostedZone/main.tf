@@ -22,15 +22,18 @@ variable "hosted_zone_comment" {
 }
 
 
+
 # Executando o código
 provider "aws" {
   region = var.region
 }
 
+# Criando a Zona de Hospedagem
 resource "aws_route53_zone" "example" {
   name              = var.hosted_zone_name
   comment           = var.hosted_zone_comment
 }
+
 
 
 # Saída
