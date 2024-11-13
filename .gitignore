@@ -25,8 +25,6 @@ aws/data/dynamodb
 aws/ssm
 aws/ml
 aws/management
-
-aws/cost
 aws/storage/dataSync
 
 
@@ -47,6 +45,14 @@ aws/compute/ec2/instance/ec2Instance/*
 
 aws/compute/ec2/keyPair/ec2KeyPair/*
 !aws/compute/ec2/keyPair/ec2KeyPair/main.tf
+
+
+
+
+aws/cost/budget/budget/*
+!aws/cost/budget/budget/main.tf
+
+
 
 aws/data/rds/instance/rdsDB/*
 !aws/data/rds/instance/rdsDB/main.tf
