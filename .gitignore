@@ -23,7 +23,7 @@ aws/data/dynamodb
 
 
 aws/ssm
-aws/ml
+aws/ml/sageMaker
 aws/management
 aws/storage/dataSync
 
