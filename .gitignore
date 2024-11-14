@@ -18,13 +18,16 @@ aws/compute/eks
 
 
 aws/network/route53/record/recRoutePolicies
-aws/network/route53/hc
+
 aws/data/dynamodb
 
 
-aws/ssm
+
+aws/management/as
+aws/management/cloudWatch
+aws/management/ssm
+
 aws/ml/sageMaker
-aws/management
 aws/storage/dataSync
 
 
