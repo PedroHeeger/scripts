@@ -49,6 +49,8 @@ aws/compute/ec2/instance/ec2Instance/*
 aws/compute/ec2/keyPair/ec2KeyPair/*
 !aws/compute/ec2/keyPair/ec2KeyPair/main.tf
 
+aws/compute/ec2/launchTemp/launchTemp/*
+!aws/compute/ec2/launchTemp/launchTemp/main.tf
 
 
 
