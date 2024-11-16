@@ -106,31 +106,31 @@ provider "aws" {
   region = var.region
 }
 
-# Verificando se existe um launch template com mesmo nome
-data "aws_launch_template" "existing" {
-  # count = length(try([for launch_template in data.aws_launch_template.existing : launch_template], [])) > 0 ? 1 : 0
-  # count = length(try(data.aws_launch_template.existing, [])) > 0 ? 1 : 0
-  # count = length(try(var.launch_temp_name, "")) > 0 || length(try([for lt in data.aws_launch_template.existing : lt], [])) > 0 ? 1 : 0
-  # count = try(length(var.launch_temp_name), 0) > 0 ? 1 : 0
-  count = length(try(var.launch_temp_name, "")) > 0 ? 1 : 0
-  # name = var.launch_temp_name
+
+
+
+# Verificando se existe algum launch template. Caso não exista, o try irá prevenir erro.
+data "aws_launch_template" "example" {
+  count = length(try([for launch_template in data.aws_launch_template.example : launch_template], [])) > 0 ? 1 : 0     # Para quando não existir o lt
+  # count = length(try(var.launch_temp_name, [])) > 0 ? 1 : 0                                                              # Para quando existir o lt e só quiser mudar a versão
+  name = var.launch_temp_name
 }
 
-# Verificando se a versão do launch template. Caso ele não exista, indicando como versão 0.
+# Verificando se existe o launch template de nome procurado. Em seguida, definindo a versão.
 locals {
-  existing_version = length(data.aws_launch_template.existing) > 0 ? tonumber(data.aws_launch_template.existing[0].latest_version) : 0
-  next_version     = local.existing_version + 1
+  launch_template_exists = length([for lt in data.aws_launch_template.example : lt.name if lt.name == var.launch_temp_name]) > 0 ? data.aws_launch_template.example[0].name : "Não existe o launch template ${var.launch_temp_name}"
+  latest_version = length([for lt in data.aws_launch_template.example : lt if lt.name == var.launch_temp_name]) > 0 ? data.aws_launch_template.example[0].latest_version : 0
+  next_version = local.latest_version + 1
 }
 
-# # Output para mostrar a variável local.next_version
-output "next_version" {
-  value = local.next_version
+# Output para mostrar o resultado da verificação do nome e versão
+output "launch_template_exists" {
+  value = {
+    lt_name = local.launch_template_exists
+    lt_version = local.latest_version
+    lt_next_version = local.next_version
+  }
 }
-
-# Output para mostrar a variável local.next_version
-# output "test" {
-#   value = data.aws_launch_template.existing
-# }
 
 
 # VPC DEFAULT
@@ -159,60 +159,15 @@ data "aws_security_group" "example" {
 
 # # LAUNCH TEMPLATE 1
 # # Criando o Launch Template do tipo 1
-resource "aws_launch_template" "example" {
-  name                   = var.launch_temp_name
-  description            = "${var.version_description} - v${local.next_version}"
-  image_id               = var.image_id
-  instance_type          = var.instance_type
-  key_name               = var.key_pair_name
-  user_data              = file(pathexpand("${var.user_data_path}/${var.user_data_file}"))
-  vpc_security_group_ids = [data.aws_security_group.example.id]
-  default_version        = local.next_version
-
-  block_device_mappings {
-    device_name = var.device_name
-
-    ebs {
-      volume_size = var.volume_size
-      volume_type = var.volume_type
-    }
-  }
-
-  iam_instance_profile {
-    name = var.instance_profile_name
-  }
-}
-
-
-
-# # LAUNCH TEMPLATE 2
-# # Extraindo as sub-redes padrões
-# data "aws_subnets" "example" {
-#   filter {
-#     name   = "vpc-id"
-#     values = [data.aws_vpcs.example.ids[0]]
-#   }
-
-#   filter {
-#     name   = "availability-zone"
-#     values = [var.az1]
-#   }
-# }
-
-# data "aws_subnet" "example" {
-#   for_each = toset(data.aws_subnets.example.ids)
-#   id       = each.value
-# }
-
-# # Criando o Launch Template do tipo 2
 # resource "aws_launch_template" "example" {
-#   name            = var.launch_temp_name
-#   description     = "${var.version_description} - v${local.next_version}"
-#   image_id        = var.image_id
-#   instance_type   = var.instance_type
-#   key_name        = var.key_pair_name
-#   user_data       = file(pathexpand("${var.user_data_path}/${var.user_data_file}"))
-#   default_version = local.next_version
+#   name                   = var.launch_temp_name
+#   description            = "${var.version_description} - v${local.next_version}"
+#   image_id               = var.image_id
+#   instance_type          = var.instance_type
+#   key_name               = var.key_pair_name
+#   user_data              = file(pathexpand("${var.user_data_path}/${var.user_data_file}"))
+#   vpc_security_group_ids = [data.aws_security_group.example.id]
+#   default_version        = local.next_version
 
 #   block_device_mappings {
 #     device_name = var.device_name
@@ -223,20 +178,65 @@ resource "aws_launch_template" "example" {
 #     }
 #   }
 
-#   dynamic network_interfaces {
-#     for_each = data.aws_subnet.example
-
-#     content {
-#       associate_public_ip_address = true
-#       subnet_id                   = network_interfaces.value.id
-#       security_groups             = [data.aws_security_group.example.id]
-#     }
-#   }
-
-#   tag_specifications {
-#     resource_type = "instance"
-#     tags = {
-#       Name = var.tag_name_instance
-#     }
+#   iam_instance_profile {
+#     name = var.instance_profile_name
 #   }
 # }
+
+
+
+# LAUNCH TEMPLATE 2
+# Extraindo as sub-redes padrões
+data "aws_subnets" "example" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpcs.example.ids[0]]
+  }
+
+  filter {
+    name   = "availability-zone"
+    values = [var.az1]
+  }
+}
+
+data "aws_subnet" "example" {
+  for_each = toset(data.aws_subnets.example.ids)
+  id       = each.value
+}
+
+# Criando o Launch Template do tipo 2
+resource "aws_launch_template" "example" {
+  name            = var.launch_temp_name
+  description     = "${var.version_description} - v${local.next_version}"
+  image_id        = var.image_id
+  instance_type   = var.instance_type
+  key_name        = var.key_pair_name
+  user_data       = file(pathexpand("${var.user_data_path}/${var.user_data_file}"))
+  default_version = local.next_version
+
+  block_device_mappings {
+    device_name = var.device_name
+
+    ebs {
+      volume_size = var.volume_size
+      volume_type = var.volume_type
+    }
+  }
+
+  dynamic network_interfaces {
+    for_each = data.aws_subnet.example
+
+    content {
+      associate_public_ip_address = true
+      subnet_id                   = network_interfaces.value.id
+      security_groups             = [data.aws_security_group.example.id]
+    }
+  }
+
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name = var.tag_name_instance
+    }
+  }
+}
