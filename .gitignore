@@ -8,7 +8,9 @@ soft/git/.default/secrets
 aws/compute/ec2/userData/0App
 
 
-aws/compute/ec2/as
+aws/compute/ec2/as/asg
+aws/compute/ec2/as/policy
+
 aws/compute/ec2/transferFile
 
 aws/compute/ec2/userData/ecs_agent
