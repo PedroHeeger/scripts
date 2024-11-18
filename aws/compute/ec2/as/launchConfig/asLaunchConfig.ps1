@@ -19,7 +19,8 @@ $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a configuração de inicialização de nome $launchConfigName"
-    if ((aws autoscaling describe-launch-configurations --query "LaunchConfigurations[?LaunchConfigurationName=='$launchConfigName'].LaunchConfigurationName").Count -gt 1) {
+    $condition = aws autoscaling describe-launch-configurations --query "LaunchConfigurations[?LaunchConfigurationName=='$launchConfigName'].LaunchConfigurationName" --output text
+    if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe a configuração de inicialização de nome $launchConfigName"
         aws autoscaling describe-launch-configurations --query "LaunchConfigurations[?LaunchConfigurationName=='$launchConfigName'].LaunchConfigurationName" --output text
@@ -60,7 +61,8 @@ $resposta = Read-Host "Deseja executar o código? (y/n) "
 if ($resposta.ToLower() -eq 'y') {
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe a configuração de inicialização de nome $launchConfigName"
-    if ((aws autoscaling describe-launch-configurations --query "LaunchConfigurations[?LaunchConfigurationName=='$launchConfigName'].LaunchConfigurationName").Count -gt 1) {
+    $condition = aws autoscaling describe-launch-configurations --query "LaunchConfigurations[?LaunchConfigurationName=='$launchConfigName'].LaunchConfigurationName" --output text
+    if (($condition).Count -gt 0) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todas as configurações de inicialiação"
         aws autoscaling describe-launch-configurations --query "LaunchConfigurations[].LaunchConfigurationName" --output text
