@@ -63,7 +63,8 @@ read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe a configuração de inicialização de nome $launchConfigName"
-    if [[ $(aws autoscaling describe-launch-configurations --query "LaunchConfigurations[?LaunchConfigurationName=='$launchConfigName'].LaunchConfigurationName" --output text | wc -l) -gt 0 ]]; then
+    condition=$(ws autoscaling describe-launch-configurations --query "LaunchConfigurations[?LaunchConfigurationName=='$launchConfigName'].LaunchConfigurationName" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todas as configurações de inicialiação"
         aws autoscaling describe-launch-configurations --query "LaunchConfigurations[].LaunchConfigurationName" --output text
