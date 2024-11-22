@@ -91,13 +91,10 @@ launch_config_name = "launchConfigTest1"
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
 if response.lower() == 'y':
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço Auto Scaling")
-    autoscaling_client = boto3.client('autoscaling')
-
     try:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe a configuração de inicialização de nome {launch_config_name}")
+        autoscaling_client = boto3.client('autoscaling')
         response = autoscaling_client.describe_launch_configurations(
             LaunchConfigurationNames=[launch_config_name]
         )
