@@ -20,11 +20,8 @@ print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ")
 if response.lower() == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço Auto Scaling")
-    autoscaling_client = boto3.client('autoscaling')
-
-    print("-----//-----//-----//-----//-----//-----//-----")
     print(f"Verificando se existe a configuração de inicialização de nome {launch_config_name}")
+    autoscaling_client = boto3.client('autoscaling')
     ec2_client = boto3.client('ec2')
 
     try:
