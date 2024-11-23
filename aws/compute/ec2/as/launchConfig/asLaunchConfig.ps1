@@ -10,8 +10,8 @@ $launchConfigName = "launchConfigTest1"
 $amiId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 $instanceType = "t2.micro"
 $keyPair = "keyPairUniversal"
-$userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
-$userDataFile = "udFile.sh"
+$userDataPath = "G:/Meu Drive/4_PROJ/scripts/aws/compute/ec2/userData/httpd"
+$userDataFile = "udFileDeb.sh"
 $sgName = "default"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
