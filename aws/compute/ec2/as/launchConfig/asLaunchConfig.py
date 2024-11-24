@@ -12,8 +12,8 @@ launch_config_name = "launchConfigTest1"
 ami_id = "ami-0c7217cdde317cfec"  # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instance_type = "t2.micro"
 key_pair = "keyPairUniversal"
-user_data_path = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/httpd_stress"
-user_data_file = "udFile.sh"
+user_data_path = "G:/Meu Drive/4_PROJ/scripts/aws/compute/ec2/userData/httpd"
+user_data_file = "udFileDeb.sh"
 sg_name = "default"
 
 print("-----//-----//-----//-----//-----//-----//-----")
@@ -42,10 +42,10 @@ if response.lower() == 'y':
 
             print("-----//-----//-----//-----//-----//-----//-----")
             print("Extraindo o Id do grupo de segurança padrão")
-            vpc_id = ec2_client.describe_vpcs()['Vpcs'][0]['VpcId']
+            # vpc_id = ec2_client.describe_vpcs()['Vpcs'][0]['VpcId']
             sg_id = ec2_client.describe_security_groups(
                 Filters=[
-                    {'Name': 'vpc-id', 'Values': [vpc_id]},
+                    # {'Name': 'vpc-id', 'Values': [vpc_id]},
                     {'Name': 'group-name', 'Values': [sg_name]}
                 ]
             )['SecurityGroups'][0]['GroupId']
