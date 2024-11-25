@@ -202,7 +202,7 @@ Write-Output "LAUNCH TEMPLATE EXCLUSION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $launchTempName = "launchTempTest1"
-$versionNumber = 2
+$versionNumber = 1
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
