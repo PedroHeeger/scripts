@@ -19,7 +19,11 @@ aws/compute/ecr
 aws/compute/eks
 
 
-aws/network/route53/record/recRoutePolicies
+aws/network/route53/record/recRoutePolicies/*
+!aws/network/route53/record/recRoutePolicies/recRP.ps1
+!aws/network/route53/record/recRoutePolicies/recRP.sh
+!aws/network/route53/record/recRoutePolicies/recRP.py
+
 
 aws/data/dynamodb
 
