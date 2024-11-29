@@ -8,7 +8,7 @@ soft/git/.default/secrets
 aws/compute/ec2/userData/0App
 
 
-aws/compute/ec2/as/asg
+
 aws/compute/ec2/as/policy
 
 aws/compute/ec2/transferFile
@@ -49,6 +49,13 @@ aws/storage/dataSync
 
 aws/appIntegration/sns/snsTopic/*
 !aws/appIntegration/sns/snsTopic/main.tf
+
+
+aws/compute/ec2/as/asg/lixo
+
+aws/compute/ec2/as/asg/asg/*
+!aws/compute/ec2/as/asg/asg/main.tf
+
 
 
 
