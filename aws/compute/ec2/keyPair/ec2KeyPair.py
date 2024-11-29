@@ -10,6 +10,8 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 key_pair_name = "keyPairTest"
 key_pair_path = "G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/test"
+region = "us-east-1"
+# region = "sa-east-1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n): ")
@@ -17,7 +19,7 @@ if resposta.lower() == 'y':
     try:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe o par de chaves {key_pair_name}")
-        ec2 = boto3.client('ec2')
+        ec2 = boto3.client('ec2', region=region)
         existing_key_pairs = ec2.describe_key_pairs(KeyNames=[key_pair_name])
         
         if existing_key_pairs["KeyPairs"]:
@@ -72,6 +74,8 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 key_pair_name = "keyPairTest"
 key_pair_path = "G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/test"
+region = "us-east-1"
+# region = "sa-east-1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 response = input("Deseja executar o código? (y/n) ").lower()
@@ -79,7 +83,7 @@ if response == 'y':
     try:
         print("-----//-----//-----//-----//-----//-----//-----")
         print(f"Verificando se existe o par de chaves {key_pair_name}")
-        ec2 = boto3.client('ec2')
+        ec2 = boto3.client('ec2', region=region)
         existing_key_pairs = ec2.describe_key_pairs(KeyNames=[key_pair_name])
 
         if existing_key_pairs.get("KeyPairs"):

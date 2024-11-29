@@ -8,29 +8,30 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 keyPairName="keyPairTest"
 keyPairPath="G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/test"
+region="us-east-1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o par de chaves $keyPairName"
-    condition=$(aws ec2 describe-key-pairs --output text | grep "$keyPairName" | wc -l)
+    condition=$(aws ec2 describe-key-pairs --region $region --output text | grep "$keyPairName" | wc -l)
     if [[ $condition -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Já existe o par de chaves $keyPairName"
-        aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
+        aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --region $region --output text
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os pares de chaves criados"
-        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --region $region --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Criando o par de chaves $keyPairName e salvado o arquivo de chave privada"
-        aws ec2 create-key-pair --key-name "$keyPairName" --query 'KeyMaterial' --output text > "$keyPairPath/$keyPairName.pem"
+        aws ec2 create-key-pair --key-name "$keyPairName" --query 'KeyMaterial' --region $region --output text > "$keyPairPath/$keyPairName.pem"
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando apenas o par de chave $keyPairName"
-        aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --output text
+        aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName'].KeyName" --region $region --output text
     fi
 else
     echo "Código não executado"
@@ -49,21 +50,22 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
 keyPairName="keyPairTest"
 keyPairPath="G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/test"
+region="us-east-1"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "${resposta,,}" == 'y' ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
     echo "Verificando se existe o par de chaves $keyPairName"
-    condition=$(aws ec2 describe-key-pairs --output text | grep "$keyPairName" | wc -l)
+    condition=$(aws ec2 describe-key-pairs --region $region --output text | grep "$keyPairName" | wc -l)
     if [[ $condition -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os pares de chaves criados"
-        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --region $region --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Removendo o par de chaves $keyPairName"
-        aws ec2 delete-key-pair --key-name "$keyPairName"
+        aws ec2 delete-key-pair --key-name "$keyPairName" --region $region 
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Verificando se existe o arquivo de chave privada $keyPairName.pem"
@@ -87,7 +89,7 @@ if [ "${resposta,,}" == 'y' ]; then
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os pares de chaves criados"
-        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --output text
+        aws ec2 describe-key-pairs --query "KeyPairs[].KeyName" --region $region --output text
     else
         echo "Não existe o par de chaves $keyPairName"
     fi
