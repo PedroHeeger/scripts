@@ -6,8 +6,8 @@ echo "LAUNCH TEMPLATE CREATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variáveis"
-# launchTempType="Type1"
-launchTempType="Type2"
+# launchTempType="Type1"          # launchTemp type 1 (User Data, Instance Profile e SG)
+launchTempType="Type2"            # launchTemp type 2 (User Data, VPC, AZ, SG, Tag Name Instance)
 launchTempName="launchTempTest1"
 versionNumber=""
 # versionNumber=6

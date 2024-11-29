@@ -9,7 +9,7 @@ print("Definindo variáveis")
 # domain_name = "hosted-zone-test1.com.br"  # Um domínio é o nome de um site ou serviço na internet
 domain_name = "pedroheeger.dev.br"
 hosted_zone_name = domain_name + "."  # Hosted Zone é um container para esse domínio. Programaticamente ela aparece como o nome do domínio concatenado com um ponto
-health_check_name = "healthCheckTest3"
+health_check_name = "healthCheckTest1"
 tag_health_check = health_check_name
 tag_name_instance = "ec2Test1"
 ip_address = "175.184.182.193"
@@ -121,7 +121,7 @@ print("Definindo variáveis")
 # domain_name = "hosted-zone-test1.com.br"  # Um domínio é o nome de um site ou serviço na internet
 domain_name = "pedroheeger.dev.br"
 hosted_zone_name = domain_name + "."  # Hosted Zone é um container para esse domínio. Programaticamente ela aparece como o nome do domínio concatenado com um ponto
-health_check_name = "healthCheckTest3"
+health_check_name = "healthCheckTest1"
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n): ")

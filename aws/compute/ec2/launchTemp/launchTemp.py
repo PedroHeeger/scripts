@@ -9,11 +9,11 @@ print("LAUNCH TEMPLATE CREATION")
 
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
-launch_temp_type = "Type1"
-# launch_temp_type = "Type2"
+# launch_temp_type = "Type1"           # launchTemp type 1 (User Data, Instance Profile e SG)
+launch_temp_type = "Type2"             # launchTemp type 2 (User Data, VPC, AZ, SG, Tag Name Instance)
 launch_temp_name = "launchTempTest1"
 # version_number = ""
-version_number = 9
+version_number = 1
 version_description = "My version "
 ami_id = "ami-0c7217cdde317cfec"  # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 instance_type = "t2.micro"
@@ -252,7 +252,7 @@ print("LAUNCH TEMPLATE EXCLUSION")
 print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 launch_template_name = "launchTempTest1"
-version_number = 9
+version_number = 1
 
 print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").lower()

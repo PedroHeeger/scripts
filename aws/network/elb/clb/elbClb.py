@@ -82,7 +82,7 @@ if response.lower() == 'y':
         elb_client.configure_health_check(
             LoadBalancerName=clb_name,
             HealthCheck={
-                'Target': f'{hc_protocol}:{hc_protocol}/{hc_path}',
+                'Target': f'{hc_protocol}:{hc_port}/{hc_path}',
                 'Interval': hc_interval_seconds,
                 'UnhealthyThreshold': unhealthy_threshold,
                 'HealthyThreshold': healthy_threshold,
