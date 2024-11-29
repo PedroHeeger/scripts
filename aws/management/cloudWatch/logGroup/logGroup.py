@@ -10,18 +10,16 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 log_group_name = "logGroupTest1"
 
+print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço CloudWatch")
+    print(f"Verificando se existe o log group {log_group_name}")
     client = boto3.client('logs')
-
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o log group de nome {log_group_name}")
     log_groups = client.describe_log_groups(logGroupNamePrefix=log_group_name)['logGroups']
     if log_groups:
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Já existe o log group de nome {log_group_name}")
+        print(f"Já existe o log group {log_group_name}")
         print(log_groups[0]['logGroupName'])
     else:
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -31,11 +29,11 @@ if resposta == 'y':
             print(group['logGroupName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Criando o log group de nome {log_group_name}")
+        print(f"Criando o log group {log_group_name}")
         client.create_log_group(logGroupName=log_group_name)
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Listando o log group de nome {log_group_name}")
+        print(f"Listando o log group {log_group_name}")
         print(client.describe_log_groups(logGroupNamePrefix=log_group_name)['logGroups'][0]['logGroupName'])
 else:
     print("Código não executado")
@@ -55,14 +53,12 @@ print("-----//-----//-----//-----//-----//-----//-----")
 print("Definindo variáveis")
 log_group_name = "logGroupTest1"
 
+print("-----//-----//-----//-----//-----//-----//-----")
 resposta = input("Deseja executar o código? (y/n) ").lower()
 if resposta == 'y':
     print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Criando um cliente para o serviço CloudWatch")
+    print(f"Verificando se existe o log group {log_group_name}")
     client = boto3.client('logs')
-
-    print("-----//-----//-----//-----//-----//-----//-----")
-    print(f"Verificando se existe o log group de nome {log_group_name}")
     log_groups = client.describe_log_groups(logGroupNamePrefix=log_group_name)['logGroups']
     if log_groups:
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -72,7 +68,7 @@ if resposta == 'y':
             print(group['logGroupName'])
 
         print("-----//-----//-----//-----//-----//-----//-----")
-        print(f"Removendo o log group de nome {log_group_name}")
+        print(f"Removendo o log group {log_group_name}")
         client.delete_log_group(logGroupName=log_group_name)
 
         print("-----//-----//-----//-----//-----//-----//-----")
@@ -81,6 +77,6 @@ if resposta == 'y':
         for group in all_log_groups:
             print(group['logGroupName'])
     else:
-        print(f"Não existe o log group de nome {log_group_name}")
+        print(f"Não existe o log group {log_group_name}")
 else:
     print("Código não executado")

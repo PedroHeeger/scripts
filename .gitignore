@@ -30,7 +30,10 @@ aws/data/dynamodb
 
 
 aws/management/as
-aws/management/cloudWatch
+aws/management/cloudWatch/metricAlarm/*
+!aws/management/cloudWatch/metricAlarm/metricAlarmHc.*
+
+
 aws/management/ssm
 
 aws/ml/sageMaker
@@ -87,6 +90,10 @@ aws/identity/iam/role/iamRole/*
 aws/identity/iam/user/iamUser/*
 !aws/identity/iam/user/iamUser/main.tf
 
+
+
+aws/management/cloudWatch/logGroup/logGroup/*
+!aws/management/cloudWatch/logGroup/logGroup/main.tf
 
 
 

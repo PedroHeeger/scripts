@@ -12,10 +12,11 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o log group de nome $logGroupName"
-    if [ "$(aws logs describe-log-groups --query "logGroups[?logGroupName=='$logGroupName'].logGroupName" --output text | wc -l)" -gt 1 ]; then
+    echo "Verificando se existe o log group $logGroupName"
+    condition=$(aws logs describe-log-groups --query "logGroups[?logGroupName=='$logGroupName'].logGroupName" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Já existe o log group de nome $logGroupName"
+        echo "Já existe o log group $logGroupName"
         aws logs describe-log-groups --query "logGroups[?logGroupName=='$logGroupName'].logGroupName" --output text
     else
         echo "-----//-----//-----//-----//-----//-----//-----"
@@ -23,11 +24,11 @@ if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
         aws logs describe-log-groups --query "logGroups[].logGroupName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Criando o log group de nome $logGroupName"
+        echo "Criando o log group $logGroupName"
         aws logs create-log-group --log-group-name "$logGroupName"
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Listando o log group de nome $logGroupName"
+        echo "Listando o log group $logGroupName"
         aws logs describe-log-groups --query "logGroups[?logGroupName=='$logGroupName'].logGroupName" --output text
     fi
 else
@@ -51,21 +52,21 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 read -p "Deseja executar o código? (y/n) " resposta
 if [ "$(echo "$resposta" | tr '[:upper:]' '[:lower:]')" == "y" ]; then
     echo "-----//-----//-----//-----//-----//-----//-----"
-    echo "Verificando se existe o log group de nome $logGroupName"
-    if [ "$(aws logs describe-log-groups --query "logGroups[?logGroupName=='$logGroupName'].logGroupName" --output text | wc -l)" -gt 1 ]; then
+    condition=$(aws logs describe-log-groups --query "logGroups[?logGroupName=='$logGroupName'].logGroupName" --output text | wc -l)
+    if [[ "$condition" -gt 0 ]]; then
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os log groups existentes"
         aws logs describe-log-groups --query "logGroups[].logGroupName" --output text
 
         echo "-----//-----//-----//-----//-----//-----//-----"
-        echo "Removendo o log group de nome $logGroupName"
+        echo "Removendo o log group $logGroupName"
         aws logs delete-log-group --log-group-name "$logGroupName"
 
         echo "-----//-----//-----//-----//-----//-----//-----"
         echo "Listando todos os log groups existentes"
         aws logs describe-log-groups --query "logGroups[].logGroupName" --output text
     else
-        echo "Não existe o log group de nome $logGroupName"
+        echo "Não existe o log group $logGroupName"
     fi
 else
     echo "Código não executado"
