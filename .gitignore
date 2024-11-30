@@ -9,38 +9,14 @@ aws/compute/ec2/userData/0App
 
 
 
-aws/compute/ec2/as/policy
-
-aws/compute/ec2/transferFile
-
-aws/compute/ec2/userData/ecs_agent
 aws/compute/ecs
 aws/compute/ecr
 aws/compute/eks
 
-
-aws/network/route53/record/recRoutePolicies/*
-!aws/network/route53/record/recRoutePolicies/recRP.ps1
-!aws/network/route53/record/recRoutePolicies/recRP.sh
-!aws/network/route53/record/recRoutePolicies/recRP.py
-
-
 aws/data/dynamodb
-
-
-
-aws/management/as
-aws/management/cloudWatch/metricAlarm/*
-!aws/management/cloudWatch/metricAlarm/metricAlarmHc.*
-
-
-aws/management/ssm
 
 aws/ml/sageMaker
 aws/storage/dataSync
-
-
-
 
 
 
@@ -51,11 +27,10 @@ aws/appIntegration/sns/snsTopic/*
 !aws/appIntegration/sns/snsTopic/main.tf
 
 
-aws/compute/ec2/as/asg/lixo
 
 aws/compute/ec2/as/asg/asg/*
 !aws/compute/ec2/as/asg/asg/main.tf
-
+aws/compute/ec2/as/policy
 
 
 
@@ -67,7 +42,8 @@ aws/compute/ec2/keyPair/ec2KeyPair/*
 
 aws/compute/ec2/launchTemp/launchTemp/*
 !aws/compute/ec2/launchTemp/launchTemp/main.tf
-
+aws/compute/ec2/transferFile
+aws/compute/ec2/userData/ecs_agent
 
 
 aws/cost/budget/budget/*
@@ -98,9 +74,20 @@ aws/identity/iam/user/iamUser/*
 !aws/identity/iam/user/iamUser/main.tf
 
 
-
+aws/management/as
 aws/management/cloudWatch/logGroup/logGroup/*
 !aws/management/cloudWatch/logGroup/logGroup/main.tf
+
+
+aws/management/cloudWatch/metricAlarm/metricAlarmAsg
+aws/management/cloudWatch/metricAlarm/metricAlarmAsg.*
+aws/management/cloudWatch/metricAlarm/metricAlarmDouble.*
+
+aws/management/cloudWatch/metricAlarm/metricAlarmHc/*
+!aws/management/cloudWatch/metricAlarm/metricAlarmHc/main.tf
+
+aws/management/ssm
+
 
 
 
@@ -120,14 +107,17 @@ aws/network/route53/hc/r53HealthCheck/*
 aws/network/route53/hostedZone/r53HostedZone/*
 !aws/network/route53/hostedZone/r53HostedZone/main.tf
 
-aws/network/route53/record/recLb/recLb/*
-!aws/network/route53/record/recLb/recLb/main.tf
+aws/network/route53/instanceAdd/ec2TwoInst/*
+!aws/network/route53/instanceAdd/ec2TwoInst/main.tf
 
 aws/network/route53/record/recAcm/recAcmCertifc/*
 !aws/network/route53/record/recAcm/recAcmCertifc/main.tf
 
-aws/network/route53/record/recRoutePolicies/recRoutePolicies/*
-!aws/network/route53/record/recRoutePolicies/recRoutePolicies/main.tf
+aws/network/route53/record/recLb/recLb/*
+!aws/network/route53/record/recLb/recLb/main.tf
+
+aws/network/route53/record/recRoutePolicies/recRP/*
+!aws/network/route53/record/recRoutePolicies/recRP/main.tf
 
 
 

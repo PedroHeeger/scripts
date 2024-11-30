@@ -61,20 +61,21 @@ variable "evaluation_periods" {
 variable "health_check_name" {
   description = "Nome da verificação de integridade"
   type        = string
-  default     = "healthCheckTest5"
+  default     = "healthCheckTest1"
 }
 
 variable "health_check_id" {
   description = "ID da verificação de integridade"
   type        = string
-  default     = "3e624507-3557-4ba9-bc50-eeff0645d740"
+  default     = "9b9f0447-fdb0-4041-9562-b605db238f40"
 }
 
 variable "topic_name" {
   description = "Nome do tópico SNS"
   type        = string
-  default     = "topicTest1"
+  default     = "snsTopicTest1"
 }
+
 
 
 
@@ -83,12 +84,12 @@ provider "aws" {
   region = var.region
 }
 
-# TÓPICO SNS
+# Extraindo o tópico SNS
 data "aws_sns_topic" "example" {
   name = var.topic_name
 }
 
-# MÉTRICA ALARM
+# Criando o alarme de métrica
 resource "aws_cloudwatch_metric_alarm" "example" {
   alarm_name                = var.metric_alarm_name
   alarm_description         = var.metric_alarm_description
@@ -105,6 +106,7 @@ resource "aws_cloudwatch_metric_alarm" "example" {
   alarm_actions             = [data.aws_sns_topic.example.arn]
   ok_actions                = [data.aws_sns_topic.example.arn]
 }
+
 
 
 
