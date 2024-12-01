@@ -10,7 +10,7 @@ Write-Output "Definindo variáveis"
 $launchTempType = "Type2"            # launchTemp type 2 (User Data, VPC, AZ, SG, Tag Name Instance)
 $launchTempName = "launchTempTest1"
 $versionNumber = ""
-# $versionNumber = 6
+# $versionNumber = 1
 $versionDescription = "My version "
 $amiId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
 $instanceType = "t2.micro"
@@ -202,7 +202,7 @@ Write-Output "LAUNCH TEMPLATE EXCLUSION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $launchTempName = "launchTempTest1"
-$versionNumber = 1
+$versionNumber = 2
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
