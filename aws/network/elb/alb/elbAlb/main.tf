@@ -1,21 +1,25 @@
 # Definindo Variáveis
 variable "region" {
   description = "Região da AWS"
+  type        = string
   default     = "us-east-1"
 }
 
 variable "elb_name" {
   description = "Nome do Application Load Balancer"
+  type        = string
   default     = "albTest1"
 }
 
 variable "az1" {
   description = "Nome da zona de disponibilidade 1"
+  type        = string
   default     = "us-east-1a"
 }
 
 variable "az2" {
   description = "Nome da zona de disponibilidade 2"
+  type        = string
   default     = "us-east-1b"
 }
 
@@ -39,42 +43,50 @@ variable "ip_address_type" {
 
 variable "tg_name" {
   description = "Nome do Target Group"
+  type        = string
   default     = "tgTest1"
 }
 
 variable "tg_type" {
   description = "Tipo de Target Group"
+  type        = string
   default     = "instance"
 #   default     = "ip"
 }
 
 variable "tg_protocol" {
   description = "Protocolo de Rede"
+  type        = string
   default     = "HTTP"
 }
 
 variable "tg_protocol_version" {
   description = "Versão do Protocolo de Rede"
+  type        = string
   default     = "HTTP1"
 }
 
 variable "tg_port" {
   description = "Porta"
+  type        = string
   default     = "80"
 }
 
 variable "tg_health_check_protocol" {
   description = "Protocolo da verificação de integridade"
+  type        = string
   default     = "HTTP"
 }
 
 variable "tg_health_check_port" {
   description = "Porta da verificação de integridade"
+  type        = string
   default     = "traffic-port"
 }
 
 variable "tg_health_check_path" {
   description = "Path da verificação de integridade"
+  type        = string
   default     = "/"
 }
 
@@ -110,42 +122,50 @@ variable "hc_matcher" {
 
 variable "listener_protocol1" {
   description = "Protocolo do Listener"
+  type        = string
   default     = "HTTP"
 }
 
 variable "listener_port1" {
   description = "Porta do Listener"
+  type        = number
   default     = 80
 }
 
 variable "listener_protocol2" {
   description = "Protocolo do Listener"
+  type        = string
   default     = "HTTPS"
 }
 
 variable "listener_port2" {
   description = "Porta do Listener"
+  type        = number
   default     = 443
 }
 
 variable "domain_name" {
   description = "Nome de Domínio"
-  default = "www.pedroheeger.dev.br"
+  type        = string
+  default     = "www.pedroheeger.dev.br"
 }
 
 variable "redirect_protocol" {
   description = "Protocolo Redirecionado"
-  default = "HTTPS"
+  type        = string
+  default     = "HTTPS"
 }
 
 variable "redirectPort" {
   description = "Porta Redirecionada"
-  default = 443
+  type        = number
+  default     = 443
 }
 
 variable "listener_rule_name" {
   description = "Nome da Regra do Listener"
-  default = "listenerRuleTest1"
+  type        = string
+  default     = "listenerRuleTest1"
 }
 
 
