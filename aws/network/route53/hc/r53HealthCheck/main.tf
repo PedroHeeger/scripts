@@ -15,7 +15,7 @@ variable "hosted_zone_name" {
 variable "health_check_name" {
   description = "Nome da verificação de integridade"
   type        = string
-  default     = "healthCheckTest4"
+  default     = "healthCheckTest1"
 }
 
 variable "ip_address" {
@@ -57,13 +57,14 @@ variable "failure_threshold" {
 variable "tag_health_check" {
   description = "Nome da tag do health check"
   type        = string
-  default     = "healthCheckTest4"
+  default     = "healthCheckTest1"
 }
 
 variable "tag_name_instance" {
   description = "Nome da tag da instância"
   type        = string
-  default     = "ec2Test1"
+  # default     = "ec2Test1"
+  default     = "ec2R53Test1"
 }
 
 
