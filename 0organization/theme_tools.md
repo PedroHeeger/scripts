@@ -3,11 +3,13 @@
 - Blockchain
 - Business Intelligence (BI)
 - Cloud Computing
+- Cybersecurity
 - Data
 - Data Analysis
 - Developement
 - DevOps
 - Distributed Computing
+- Internet of Things (IoT)
 - Network
 - Operating System (OS)
 - Programming
@@ -20,18 +22,36 @@
 
 ### Used Tools:
 - Operating System (OS): 
+  - Cisco Internetwork Operating System (Cisco IOS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_ios.jpg" alt="cisco_ios" width="auto" height="25">
+  - Cisco Nexus Operating System (Cisco NX-OS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_nx-os.png" alt="cisco_nx-os" width="auto" height="25">
   - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
+  - Windows 1.0   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_1.png" alt="windows_1" width="auto" height="25">
+  - Windows 3.0   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_3.png" alt="windows_3" width="auto" height="25">
+  - Windows 7   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_7.png" alt="windows_7" width="auto" height="25">
+  - Windows 8   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_8.png" alt="windows_8" width="auto" height="25">
+  - Windows 10   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_10.png" alt="windows_10" width="auto" height="25">
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
+  - Windows 95   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_95.png" alt="windows_95" width="auto" height="25">
+  - Windows 98   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_98.png" alt="windows_98" width="auto" height="25">
+  - Windows Millennium Edition (Windows ME)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_me.png" alt="windows_me" width="auto" height="25">
+  - Windows NT   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_nt.png" alt="windows_nt" width="auto" height="25">
   - Windows Server   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_server.png" alt="windows_server" width="auto" height="25">
+  - Windows Vista   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_vista.png" alt="windows_vista" width="auto" height="25">
+  - Windows XP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_xp.jpg" alt="windows_xp" width="auto" height="25">
 - Linux Distribution:
   - Alpine Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/alpine.png" alt="alpine" width="auto" height="25">
   - Amazon Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/amazon_linux.png" alt="amazon_linux" width="auto" height="25">
+  - Arch Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/arch_linux.png" alt="arch_linux" width="auto" height="25">
   - Debian   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg" alt="debian" width="auto" height="25">
+  - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
   - RedHat   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg" alt="redhat" width="auto" height="25">
+  - The Amnesic Incognito Live System (Tails)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tails.png" alt="tails" width="auto" height="25">
   - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
 - Virtualization: 
+  - Copy.sh   <img src="" alt="copy_sh" width="auto" height="25">
   - Microsoft Hyper-V   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_hyper-v.png" alt="microsoft_hyper-v" width="auto" height="25">
   - Oracle VM VirtualBox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
+  - VBoxManage   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vboxmanage" width="auto" height="25">
   - Vmware   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vmware.png" alt="vmware" width="auto" height="25">
   - VMware ESXi   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vmware_esxi.png" alt="vmware_esxi" width="auto" height="25">
   - Vocareum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/vocareum.png" alt="vocareum" width="auto" height="25">
@@ -191,6 +211,7 @@
   - AWS DeepLens    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_deeplens.png" alt="aws_deeplens" width="auto" height="25">
   - AWS DeepRacer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_deepracer.png" alt="aws_deepracer" width="auto" height="25">
   - AWS Device Farm   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws-device-farm.svg" alt="aws-device-farm" width="auto" height="25">
+  - AWS Digital Sovereignty   <img src="" alt="aws_digital_sovereignty" width="auto" height="25">
   - AWS Direct Connect   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_direct_connect.svg" alt="aws_direct_connect" width="auto" height="25">
   - AWS Direct Connect plus VPN   <img src="" alt="aws_direct_connect_plus_vpn" width="auto" height="25">
   - AWS Directory Service; AWS Managed Microsoft AD   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_directory_service.svg" alt="aws_directory_service" width="auto" height="25">
@@ -273,7 +294,7 @@
   - AWS Systems Manager (SSM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ssm.png" alt="aws_ssm" width="auto" height="25">
   - AWS Tech Talks    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_tech_talks.jpg" alt="aws_tech_talks" width="auto" height="25">
   - AWS Toolkit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_toolkit.png" alt="aws_toolkit" width="auto" height="25">
-  - AWS Tools for PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_partner_network.png" alt="aws_partner_network" width="auto" height="25">
+  - AWS Tools for Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_tools_for_ps1.png" alt="aws_tools_for_ps1" width="auto" height="25">
   - AWS Trainium   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_trainium.jpeg" alt="aws_trainium" width="auto" height="25">
   - AWS Transfer Family   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_transfer_family.png" alt="aws_transfer_family" width="auto" height="25">
   - AWS Transit Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_transit_gateway.png" alt="aws_transit_gateway" width="auto" height="25">
@@ -334,35 +355,53 @@
   - Red Hat OpenShift   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openshift.png" alt="openshift" width="auto" height="25">
 - Observability:
   - Data Dog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/data_dog.png" alt="data_dog" width="auto" height="25">
+  - Dozzle   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dozzle.svg" alt="dozzle" width="auto" height="25">
   - Elastic Stack (ELK Stack)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/elastic_stack.png" alt="elastic_stack" width="auto" height="25">
+  - Filebeat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/filebeat.png" alt="filebeat" width="auto" height="25">
+  - Graylog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/graylog.png" alt="graylog" width="auto" height="25">
   - Nagios   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nagios.png" alt="nagios" width="auto" height="25">
   - OpenSearch   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_search.png" alt="open_search" width="auto" height="25">
   - OpenSearch Dashboards   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_search.png" alt="open_search_dashboards" width="auto" height="25">
   - Prometheus   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="prometheus" width="auto" height="25">
+  - rsyslog   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rsyslog.png" alt="rsyslog" width="auto" height="25">
+  - SigNoz   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/signoz.png" alt="signoz" width="auto" height="25">
+  - syslog-ng   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/syslog-ng.png" alt="syslog-ng" width="auto" height="25">
+  - Windows Event Forwarding (WEF)   <img src="" alt="wef" width="auto" height="25">
 - Configuration Management (CM):
-  - Ansible   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg" alt="ansible" width="auto" height="25">
+  - Ansible   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ansible.png" alt="ansible" width="auto" height="25">
+  - Chef Inspec   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chef_inspec.png" alt="chef_inspec" width="auto" height="25">
+  - Progress Chef; Chef   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chef.png" alt="chef" width="auto" height="25">
+  - Puppet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puppet.png" alt="puppet" width="auto" height="25">
+  - SaltStack   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/salt_stack.png" alt="salt_stack" width="auto" height="25">
   - Terraform   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="terraform" width="auto" height="25">
   - Terraform Cloud   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/terraform_cloud.png" alt="terraform_cloud" width="auto" height="25">
   - Vagrant   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
 - Build Automation:
   - Apache Maven   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_maven.png" alt="apache_maven" width="auto" height="25">
   - Gradle   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gradle/gradle-original.svg" alt="gradle" width="auto" height="25">
+  - Make   <img src="" alt="make" width="auto" height="25">
 - Web Developement:
   - Heroku   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain.svg" alt="heroku" width="auto" height="25">
 - Language:
   - Apache Hive Query Language (Apache HiveQL)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_hive.png" alt="apache_hiveql" width="auto" height="25">
+  - Blockly   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/blockly.png" alt="blockly" width="auto" height="25">
   - C Sharp (C#)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/c_sharp.png" alt="c_sharp" width="auto" height="25">
   - Comma-Separated Values (CSV)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/csv.png" alt="csv" width="auto" height="25">
   - CSS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="css" width="auto" height="25">
+  - Extensible Markup Language (XML)
   - Golang   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" alt="golang" width="auto" height="25">
+  - Gremlin   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gremlin.png" alt="gremlin" width="auto" height="25">
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Java   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="auto" height="25"></a>
   - JavaScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="auto" height="25">
+  - Kotlin   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kotlin.png" alt="kotlin" width="auto" height="25">
   - Linguagem M e Expressões DAX
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
   - PHP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
   - Python   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" width="auto" height="25">
+  - Rust   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rust.jpg" alt="rust" width="auto" height="25">
   - Solidity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/solidity.svg" alt="solidity" width="auto" height="25">
+  - SPARQL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sparql.svg" alt="sparql" width="auto" height="25">
   - Trino   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/trino.jpg" alt="trino" width="auto" height="25">
   - TypeScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="typescript" width="auto" height="25">
   - Visual Basic for Applications (VBA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_vba.png" alt="vba" width="auto" height="25">
@@ -375,6 +414,7 @@
 - BI Tool:
   - Excel   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_excel.png" alt="excel" width="auto" height="25">
   - Grafana   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" alt="grafana" width="auto" height="25">
+  - Kibana   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kibana.svg" alt="kibana" width="auto" height="25">
   - Power BI   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_powerbi.png" alt="powerbi" width="auto" height="25">
   - Power Query   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_power_query.png" alt="power_query" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
@@ -391,6 +431,7 @@
   - GNU Editor MAC ro S (GNU Emacs)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gnu_emacs.png" alt="gnu_emacs" width="auto" height="25">
   - Google Android Studio   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="google_android_studio" width="auto" height="25">
   - Google Colaboratory (Google Colab)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_colab.png" alt="google_colab" width="auto" height="25">
+  - Integrated Development and Learning Environment (IDLE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/idle.jpg" alt="idle" width="auto" height="25">
   - IntelliJ IDEA   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" alt="intellij_idea" width="auto" height="25">
   - Jdoodle   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/jdoodle.jpeg" alt="jdoodle" width="auto" height="25">
   - JED   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/jed.png" alt="jed" width="auto" height="25">
@@ -456,6 +497,7 @@
   - ZShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zshell.png" alt="zshell" width="auto" height="25">
 - Server and Databases:
   - Apache HTTP Server (httpd)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_httpd" width="auto" height="25">
+  - Elasticsearch   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/elasticsearch.svg" alt="elasticsearch" width="auto" height="25">
   - Gunicorn   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gunicorn.svg" alt="gunicorn" width="auto" height="25">
   - Internet Information Services (IIS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iis.jpg" alt="iis" width="auto" height="25">
   - MariaDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mariadb.png" alt="mariadb" width="auto" height="25">
@@ -480,6 +522,9 @@
   - SQLPro Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sqlpro_studio.png" alt="sqlpro_studio" width="auto" height="25">
   - Redis Desktop Manager (RDM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/redis.svg" alt="rdm" width="auto" height="25">
   - Table Plus   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tableplus.png" alt="table_plus" width="auto" height="25">
+- Data Model:
+  - JavaScript Object Notation (JSON)
+  - Resource Description Framework (RDF)
 - Data Migration:
   - MySQLDump   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mysql_dump.webp" alt="the_grinder=" width="auto" height="25">
 - Big Data:
@@ -489,6 +534,8 @@
   - Apache Kafka   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="apache_kafka" width="auto" height="25">
   - Apache Spark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_spark.png" alt="apache_spark" width="auto" height="25">
   - Databricks <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/databricks.png" alt="databricks" width="auto" height="25">
+  - Logstash   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/logstash.png" alt="logstash" width="auto" height="25">
+  - Spark History Server   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_spark.png" alt="spark_history_server" width="auto" height="25">
 - Workflow Management System (WFMS):
   - Apache Airflow   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_airflow.png" alt="apache_airflow" width="auto" height="25">
   - GitHub Actions   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/github_actions.png" alt="github_actions" width="auto" height="25">
@@ -549,62 +596,296 @@
   - Mathplotlib   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/matplotlib.png" alt="mathplotlib" width="auto" height="25">
   - NumPy   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="numpy" width="auto" height="25">
   - Openai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/openai.png" alt="openai" width="auto" height="25">
+  - os   <img src="" alt="os" width="auto" height="25">
   - Pandas   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="pandas" width="auto" height="25">
   - PyMongo   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/pymongo.png" alt="pymongo" width="auto" height="25">
   - PySpark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/pyspark.webp" alt="pyspark" width="auto" height="25">
+  - virtualenv (venv)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/virtualenv.jpeg" alt="virtualenv" width="auto" height="25">
   - Web3.js   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/web3js.png" alt="web3js" width="auto" height="25">
   - WerkZeug   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/werkzeug.webp" alt="werkzeug" width="auto" height="25">
 
 
 
 - Network:
+  - arp   <img src="" alt="arp" width="auto" height="25">
+  - Avant Browser   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/avant_browser.png" alt="avant_browser" width="auto" height="25">
+  - Brave   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/brave.png" alt="brave" width="auto" height="25">
+  - Chromium   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chromium.svg" alt="chromium" width="auto" height="25">
+  - Cisco Digital Network Architecture (Cisco DNA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_dna.png" alt="cisco_dna" width="auto" height="25">
   - Cisco Packet Tracer <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_packet_tracer.webp" alt="cisco_packet_tracer" width="auto" height="25">
   - DNS Checker   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dns_checker.png" alt="dns_checker" width="auto" height="25">
-  - Google Chrome   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" alt="google_chrome" width="auto" height="25">
+  - Domain Information Groper (dig)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dig.jpeg" alt="dig" width="auto" height="25">
+  - dumpcap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dumpcap.webp" alt="dumpcap" width="auto" height="25">
+  - EtherApe   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ether_ape.jpeg" alt="ether_ape" width="auto" height="25">
+  - Google Chrome   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_chrome.jpg" alt="google_chrome" width="auto" height="25">
+  - Google Mail (Gmail)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gmail.webp" alt="gmail" width="auto" height="25">
   - Filezilla   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filezilla/filezilla-plain.svg" alt="filezilla" width="auto" height="25">
-  - firewalld   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/firewalld.png" alt="firewalld" width="auto" height="25">
-  - Internet Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/internet_explorer.png" alt="internet_explorer" width="auto" height="25">
+  - Freenet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/freenet.jpg" alt="freenet" width="auto" height="25">
+  - Free Proxy   <img src="" alt="free_proxy" width="auto" height="25">
+  - ftp   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ftp.png" alt="ftp" width="auto" height="25">
+  - ifconfig   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ifconfig.png" alt="ifconfig" width="auto" height="25">
+  - inetutils-ping   <img src="" alt="inetutils-ping" width="auto" height="25">
+  - Internet Explorer (IE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/internet_explorer.png" alt="internet_explorer" width="auto" height="25">
   - Internet Information Services Manager (IIS Manager)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iis_manager.png" alt="iis_manager" width="auto" height="25">
   - intoDNS   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/intodns.png" alt="intodns" width="auto" height="25">
+  - Invisible Internet Project (I2P)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/i2p.png" alt="i2p" width="auto" height="25">
+  - ip   <img src="" alt="ip" width="auto" height="25">
+  - ipconfig   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ipconfig.jpeg" alt="ipconfig" width="auto" height="25">
+  - iproute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iproute.png" alt="iproute" width="auto" height="25">
+  - iputils-ping; Iputils   <img src="" alt="iputils" width="auto" height="25">
   - JSON Web Token (JWT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/jwt.png" alt="jwt" width="auto" height="25">
   - Microsoft Edge   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_edge.png" alt="microsoft_edge" width="auto" height="25">
-  - Mozila Firefox; Firefox   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firefox/firefox-original.svg" alt="firefox" width="auto" height="25">
+  - Mosaic   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mosaic.png" alt="mosaic" width="auto" height="25">
+  - Mozilla Firefox; Firefox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mozilla_firefox.png" alt="mozilla_firefox" width="auto" height="25">
   - MX Toolbox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/mx_toolbox.png" alt="mx_toolbox" width="auto" height="25">
-  - NoMachine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nomachine.webp" alt="nomachine" width="auto" height="25">
+  - NBTScan   <img src="" alt="ntbscan" width="auto" height="25">
+  - Netcat (nc)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netcat.jpg" alt="netcat" width="auto" height="25">
+  - NetFlow   <img src="" alt="netflow" width="auto" height="25">
+  - Netscape Navigator   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netscape_navigator.png" alt="netscape_navigator" width="auto" height="25">
+  - netstat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netstat.webp" alt="netstat" width="auto" height="25">
+  - net-tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net-tools.svg" alt="net-tools" width="auto" height="25">
+  - network grep (ngrep)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ngrep.png" alt="ngrep" width="auto" height="25">
+  - NetworkManager CLI (nmcli)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmcli.png" alt="nmcli" width="auto" height="25">
+  - Npcap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/npcap.webp" alt="npcap" width="auto" height="25">
+  - nslookup   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nslookup.webp" alt="nslookup" width="auto" height="25">
+  - ntop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ntop.jpeg" alt="ntop" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
-  - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
-  - Ping
+  - Ópera   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/opera.png" alt="opera" width="auto" height="25">
+  - OWASP ModSecurity Core Rule Set (OWASP ModSecurity CRS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/owasp_modesecurity_crs.png" alt="owasp_modesecurity_crs" width="auto" height="25">
+  - PCPdump   <img src="" alt="pcp_dump" width="auto" height="25">
+  - ping   <img src="" alt="iputils" width="auto" height="25">
   - Proton Mail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/proton_mail.png" alt="proton_mail" width="auto" height="25"> 
+  - Proton VPN   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/proton_vpn.png" alt="proton_vpn" width="auto" height="25">
   - PuTTY   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - PuTTYgen   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
   - PuTTY PSCP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty_pscp" width="auto" height="25">
+  - GNU Inetutils   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gnu_inetutils.svg" alt="gnu_inetutils" width="auto" height="25">
   - Registro .br   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/registro.br.png" alt="registro.br" width="auto" height="25">
-  - Server Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/server_manager.webp" alt="server_manager" width="auto" height="25">
+  - Safari   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/safari.png" alt="safari" width="auto" height="25">
+  - Selenoid   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/selenoid.png" alt="selenoid" width="auto" height="25">
+  - smbclient   <img src="" alt="smbclient" width="auto" height="25">
+  - Socat   <img src="" alt="socat" width="auto" height="25">
+  - SpamCop   <img src="" alt="spam_cop" width="auto" height="25">
+  - spys.one   <img src="" alt="spys.one" width="auto" height="25">
   - SSL Server Test   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ssl_server_test.webp" alt="ssl_server_test" width="auto" height="25">
+  - tcpdump   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tcpdump.jpg" alt="tcpdump" width="auto" height="25">
   - Telnet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/telnet.png" alt="telnet" width="auto" height="25">
+  - The Onion Router (Tor)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tor.png" alt="tor" width="auto" height="25">
+  - Tor Browser   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tor_browser.png" alt="tor_browser" width="auto" height="25">
+  - traceroute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/traceroute.png" alt="traceroute" width="auto" height="25">
+  - Trace Route (tracert)   <img src="" alt="tracert" width="auto" height="25">
+  - tshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tshark.png" alt="tshark" width="auto" height="25">
   - V8 Engine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/v8_engine.png" alt="v8_engine" width="auto" height="25">
   - WeTransfer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/wetransfer.png" alt="wetransfer" width="auto" height="25">
   - Whatsmydns.net   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/whatsmydns_net.png" alt="whatsmydns_net" width="auto" height="25">
-  - Windows Defender Firewall   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_windows_defender_firewall.png" alt="microsoft_windows_defender_firewall" width="auto" height="25">
+  - Windows Server Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_server_manager.png" alt="windows_server_manager" width="auto" height="25">
+  - Windscribe   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windscribe.jpg" alt="windscribe" width="auto" height="25">
   - WinSCP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/winscp.png" alt="winscp" width="auto" height="25">
-- Remote Desktop Software:
+  - Wireshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wireshark.png" alt="wireshark" width="auto" height="25">
+  - X-NetStat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/x-netstat.png" alt="X-NetStat" width="auto" height="25">
+  - Zeek   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zeek.png" alt="zeek" width="auto" height="25">
+
+- Remote Desktop:
   - AnyDesk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/anydesk.png" alt="anydesk" width="auto" height="25">
   - Chrome Remote Desktop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/chrome_remote_desktop.png" alt="chrome_remote_desktop" width="auto" height="25">
-  - Logmein   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/logmein.png" alt="logmein" width="auto" height="25">
+  - LogMeIn   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/logmeln.png" alt="logmeln" width="auto" height="25">
+  - NoMachine   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nomachine.webp" alt="nomachine" width="auto" height="25">
+  - noVNC   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/novnc.png" alt="novnc" width="auto" height="25">
+  - RealVNC   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/realvnc.png" alt="realvnc" width="auto" height="25">
+  - RealVNC Viewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/realvnc.png" alt="realvnc_viewer" width="auto" height="25">
   - Remote Desktop Connection (RDC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rdc.png" alt="rdc" width="auto" height="25">
   - Splashtop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/splashtop.png" alt="splashtop" width="auto" height="25">
   - TeamViewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer.png" alt="team_viewer" width="auto" height="25">
   - TeamViewer QuickSupport   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer_qs.png" alt="team_viewer_qs" width="auto" height="25">
   - TeamViewer Universal Add-On   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/team_viewer_universal_add-on.png" alt="team_viewer_universal_add-on" width="auto" height="25">
-  - Virtual Network Computing (VNC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vnc.svg" alt="vnc" width="auto" height="25">
+  - TigerVNC   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tigervnc.png" alt="tigervnc" width="auto" height="25">
+  - TightVNC   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tightvnc.png" alt="tightvnc" width="auto" height="25">
+  - TightVNC Server   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tightvnc.png" alt="tightvnc_server" width="auto" height="25">
   - X2Go   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/x2go.png" alt="x2go" width="auto" height="25">
   - Xrdp   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xrdp.png" alt="xrdp" width="auto" height="25">
+  - X Window System (X11)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/x_window_system.png" alt="x_window_system" width="auto" height="25">
+- Cibersecurity:
+  - Amass   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/amass.png" alt="amass" width="auto" height="25">
+  - ArcSight   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/arcsight.svg" alt="arcsight" width="auto" height="25">
+  - Arp-scan   <img src="" alt="arp-scan" width="auto" height="25">
+  - Automated Indicator Sharing (AIS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ais.webp" alt="ais" width="auto" height="25">
+  - Base64 Decode   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/base64_decode.jpeg" alt="base64_decode" width="auto" height="25">
+  - Base64 Guru   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/base64_guru.png" alt="base64_guru" width="auto" height="25">
+  - Bettercap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/bettercap.jpg" alt="bettercap" width="auto" height="25">
+  - BreachForums   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/breach_forums.png" alt="breach_forums" width="auto" height="25">
+  - Burp Suite   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/burp_suite.jpg" alt="burp_suite" width="auto" height="25">
+  - buggy Web Application (bWAPP)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/bwapp.jpg" alt="bwapp" width="auto" height="25">
+  - Cain & Abel   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cain_e_abel.png" alt="cain_e_abel" width="auto" height="25">
+  - Censys   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/censys.png" alt="censys" width="auto" height="25">
+  - Cisco Firepower   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_firepower.png" alt="cisco_firepower" width="auto" height="25">
+  - Cisco Identity Services Engine (ISE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cisco_ise.jpeg" alt="cisco_ise" width="auto" height="25">
+  - Cisco Talos   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/cisco_talos.webp" alt="cisco_talos" width="auto" height="25">
+  - Cisco Talos Threat Intelligence Group   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/cisco_talos.webp" alt="cisco_talos_threat" width="auto" height="25">
+  - Clair   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/clair.svg" alt="clair" width="auto" height="25">
+  - ClamAV   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/clamav.png" alt="clamav" width="auto" height="25">
+  - Common Vulnerabilities and Exposures (CVE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/cve.jpeg" alt="cve" width="auto" height="25">
+  - Common Vulnerability Scoring System (CVSS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/cvss.png" alt="cvss" width="auto" height="25">
+  - Core Impact   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/core_impact.png" alt="core_impact" width="auto" height="25">
+  - CrowdStrike   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/crowd_strike.png" alt="crowd_strike" width="auto" height="25">
+  - crt.sh   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/crtsh.png" alt="crt.sh" width="auto" height="25">
+  - CyberChef   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/cyber_chef.png" alt="cyber_chef" width="auto" height="25">
+  - Cyber Hygiene Services   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/cyber_hygiene_services.jpg" alt="cyber_hygiene_services" width="auto" height="25">
+  - Damn Vulnerable Web Application (DVWA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dvwa.png" alt="dvwa" width="auto" height="25">
+  - defender lab (dfndr lab)   <img src="" alt="dfndr_lab" width="auto" height="25">
+  - DeHashed   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/de_hashed.png" alt="de_hashed" width="auto" height="25">
+  - DNS Dumpster   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dns_dumpster.webp" alt="dns_dumpster" width="auto" height="25">
+  - dnsx   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dnsx.png" alt="dnsx" width="auto" height="25">
+  - Docker Bench for Security   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_bench_for_security.png" alt="docker_bench_for_security" width="auto" height="25">
+  - DumpSec   <img src="" alt="dumpsec" width="auto" height="25">
+  - Elastic SIEM; Elastic Security   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/elastic_siem.png" alt="elastic_siem" width="auto" height="25">
+  - enum4linux   <img src="" alt="enum4linux" width="auto" height="25">
+  - Ettercap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ettercap.png" alt="ettercap" width="auto" height="25">
+  - Exploit Database (Exploit-db)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/exploit-db.png" alt="exploit-db" width="auto" height="25">
+  - Fingerprinting & Organisation with Collected Archives (FOCA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/foca.png" alt="foca" width="auto" height="25">
+  - FireEye Helix Security Platform; Helix   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/helix.png" alt="helix" width="auto" height="25">
+  - FireEye Mandiant Services; Mandiant   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mandiant.png" alt="mandiant" width="auto" height="25">
+  - FireEye Security System   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/fireeye.png" alt="fireeye_security_system" width="auto" height="25">
+  - firewalld   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/firewalld.png" alt="firewalld" width="auto" height="25">
+  - FullHunt   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/full_hunt.png" alt="full_hunt" width="auto" height="25">
+  - GFI Languard   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gfi_languard.webp" alt="gfi_languard" width="auto" height="25">
+  - Gitleaks   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gitleaks.png" alt="gitleaks" width="auto" height="25">
+  - gobuster   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gobuster.svg" alt="gobuster" width="auto" height="25">
+  - Google Hacking   <img src="" alt="google_hacking" width="auto" height="25">
+  - Greenbone Community Edition (GCE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gce.png" alt="gce" width="auto" height="25">
+  - Greenbone Security Assistant (GSA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gsa.png" alt="gsa" width="auto" height="25">
+  - GreyNoise   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/greynoise.png" alt="greynoise" width="auto" height="25">
+  - Hakrawler   <img src="" alt="hakrawler" width="auto" height="25">
+  - Hashcat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/hashcat.png" alt="hashcat" width="auto" height="25">
+  - hping   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/hping.svg" alt="hping" width="auto" height="25">
+  - httpx   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/httpx.png" alt="httpx" width="auto" height="25">
+  - Internet Storm Center (ISC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/isc.jpeg" alt="isc" width="auto" height="25">
+  - iptables   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iptables.jpg" alt="iptables" width="auto" height="25">
+  - John the Ripper (john)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/john.png" alt="john" width="auto" height="25">
+  - Kismet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kismet.svg" alt="kismet" width="auto" height="25">
+  - Leak - Lookup   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/leak_lookup.png" alt="leak_lookup" width="auto" height="25">
+  - L0phtcrack   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/l0phtcrack.png" alt="l0phtcrack" width="auto" height="25">
+  - Maltego CE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/maltego_ce.png" alt="maltego_ce" width="auto" height="25">
+  - Malware Information Sharing Platform (MISP)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/misp.png" alt="misp" width="auto" height="25">
+  - Metasploit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="metasploit" width="auto" height="25">
+  - Metasploitable   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="metasploitable" width="auto" height="25">
+  - Meterpreter; Meta-Interpreter   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meterpreter.jpg" alt="meterpreter" width="auto" height="25">
+  - Microsoft Baseline Security Analyzer (MBSA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mbsa.webp" alt="mbsa" width="auto" height="25">
+  - Microsoft Event Viewer; Windows Event Viewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_event_viewer.png" alt="microsoft_event_viewer" width="auto" height="25">
+  - Microsoft Sentinel   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_sentinel.png" alt="microsoft_sentinel" width="auto" height="25">
+  - MITRE Adversarial Tactics, Techniques & Common Knowledge Framework (MITRE ATT&CK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/mitre_attack.png" alt="mitre_attack" width="auto" height="25">
+  - ModSecurity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/modsecurity.png" alt="modsecurity" width="auto" height="25">
+  - msfcli   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="msfcli" width="auto" height="25">
+  - msfconsole   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="msfconsole" width="auto" height="25">
+  - msfencode   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="msfencode" width="auto" height="25">
+  - msflogdump   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="msflogdump" width="auto" height="25">
+  - msfpayload   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="msfplayload" width="auto" height="25">
+  - msfvenom   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="msfvenom" width="auto" height="25">
+  - msfweb   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="msfweb" width="auto" height="25">
+  - Mutillidae   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mutillidae.webp" alt="mutillidae" width="auto" height="25">
+  - MXToolbox DNS Lookup   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/mxtoolbox_dns_lookup.png" alt="mxtoolbox_dns_lookup" width="auto" height="25">
+  - National Cybersecurity Assessment and Technical Services (NCATS)   <img src="" alt="ncats" width="auto" height="25">
+  - National Vulnerability Database (NVD)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/nvd.png" alt="nvd" width="auto" height="25">
+  - nbtstat   <img src="" alt="nbtstat" width="auto" height="25">
+  - Nessus   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nessus.webp" alt="nessus" width="auto" height="25">
+  - Netcraft Site Report   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/netcraft_site_report.png" alt="netcraft_site_report" width="auto" height="25">
+  - Netdiscover   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netdiscover.png" alt="netdiscover" width="auto" height="25">
+  - NetStumbler   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net_stumbler.jpeg" alt="net_stumbler" width="auto" height="25">
+  - Network Mapper (Nmap)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
+  - NewsBites   <img src="" alt="news_bites" width="auto" height="25">
+  - nftables   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nftables.png" alt="nftables" width="auto" height="25">
+  - Nikto   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nikto.jpg" alt="nikto" width="auto" height="25">
+  - Nmap Scripting Engine (NSE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nse" width="auto" height="25">
+  - Nslookup.io   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/nslookup_io.jpeg" alt="nslookup_io" width="auto" height="25">
+  - Nuclei   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nuclei.png" alt="nuclei" width="auto" height="25">
+  - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
+  - Open Vulnerability Assessment System (OpenVAS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_vas.png" alt="open_vas" width="auto" height="25">
+  - OSINT Framework   <img src="" alt="osint_framework" width="auto" height="25">
+  - OWASP Juice Shop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/owasp_juice_shop.png" alt="owasp_juice_shop" width="auto" height="25">
+  - Palo Alto Threat Prevention   <img src="" alt="palo_alto_threat_prevention" width="auto" height="25">
+  - pfSense   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pfsense.jpg" alt="pfsense" width="auto" height="25">
+  - Phishing Campaign Assessment (PCA)   <img src="" alt="pca" width="auto" height="25">
+  - QRadar   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/qradar.jpg" alt="qradar" width="auto" height="25">
+  - Qualys   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/qualys.png" alt="qualys" width="auto" height="25">
+  - Remote Penetration Test (RPT)   <img src="" alt="rpt" width="auto" height="25">
+  - Retina   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/retina.svg" alt="retina" width="auto" height="25">
+  - Risk and Vulnerability Assessment (RVA)   <img src="" alt="rva" width="auto" height="25">
+  - Rustscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rustscan.png" alt="rustscan" width="auto" height="25">
+  - SecurityNewsWire   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/security_news_wire.png" alt="security_news_wire" width="auto" height="25">
+  - SentinelOne   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sentinel_one.png" alt="sentinel_one" width="auto" height="25">
+  - Shodan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/site/shodan.png" alt="shodan" width="auto" height="25">
+  - Site24x7 DNS Lookup   <img src="" alt="site24x7_dns_lookup" width="auto" height="25">
+  - SMBScanner   <img src="" alt="smbscanner" width="auto" height="25">
+  - snmpwalk   <img src="" alt="snmpwalk" width="auto" height="25">
+  - Snort   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/snort.png" alt="snort" width="auto" height="25">
+  - Social Engineer Toolkit (SET)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/set.jpg" alt="set" width="auto" height="25">
+  - SpiderFoot   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/spider_foot.png" alt="spider_foot" width="auto" height="25">
+  - Splunk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/splunk.png" alt="splunk" width="auto" height="25">
+  - Sqlmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sqlmap.png" alt="sqlmap" width="auto" height="25">
+  - Subfinder   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/subfinder.svg" alt="subfinder" width="auto" height="25">
+  - Sublist3r   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sublist3r.png" alt="sublist3r" width="auto" height="25">
+  - SuperScan   <img src="" alt="super_scan" width="auto" height="25">
+  - Suricata   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/suricata.png" alt="suricata" width="auto" height="25">
+  - Uncomplicated Firewall (UFW)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ufw.webp" alt="ufw" width="auto" height="25">
+  - Validated Architecture Design Review (VADR)   <img src="" alt="vdar" width="auto" height="25">
+  - ViewDNS.info   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/viewdns_info.jpeg" alt="viewdns_info" width="auto" height="25">
+  - vírusTotal   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/virus_total.png" alt="virus_total" width="auto" height="25">
+  - Tenable   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/tenable.png" alt="tenable" width="auto" height="25">
+  - Trellix   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/trellix.png" alt="trellix" width="auto" height="25">
+  - TripWire   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tripwire.png" alt="tripwire" width="auto" height="25">
+  - Trivy   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/trivy.png" alt="trivy" width="auto" height="25">
+  - theHarvester   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/theHarvester.svg" alt="theHarvester" width="auto" height="25">
+  - Wazuh   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wazuh.png" alt="wazuh" width="auto" height="25">
+  - WhatWeb   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/whatweb.png" alt="whatweb" width="auto" height="25">
+  - Webroot   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/webroot.jpg" alt="webroot" width="auto" height="25">
+  - Webroot BrightCloud® Threat Intelligence Services   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/webroot_brightcloud.jpg" alt="webroot_brightcloud" width="auto" height="25">
+  - WHOIS   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/whois.png" alt="whois" width="auto" height="25">
+  - Windows Defender Firewall   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_windows_defender_firewall.png" alt="microsoft_windows_defender_firewall" width="auto" height="25">
+  - Zenmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zenmap.webp" alt="zenmap" width="auto" height="25">
+- Cryptography:
+  - GNU Privacy Guard (GPG)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gpg.png" alt="gpg" width="auto" height="25">
+  - GNU Privacy Guard (GnuPG)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gnupg.png" alt="gnupg" width="auto" height="25">
+  - GPG Suite   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gpg_suite.jpeg" alt="gpg_suite" width="auto" height="25">
+  - HashTab   <img src="" alt="hash_tab" width="auto" height="25">
+  - keys.openpgp   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/keys_openpgp.svg" alt="keys_openpgp" width="auto" height="25">
+  - Kleopatra   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kleopatra.png" alt="kleopatra" width="auto" height="25">
+  - Online Tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/online_tools.svg" alt="online_tools" width="auto" height="25">
+  - Pretty Good Privacy (PGP)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pgp.jpg" alt="pgp" width="auto" height="25">
+  - PGP Desktop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pgp_desktop.jpg" alt="pgp_desktop" width="auto" height="25">
+  - sha256sum   <img src="" alt="sha256sum" width="auto" height="25">
+  - WinHasher   <img src="" alt="win_hasher" width="auto" height="25">
+- Information Security:
+  - CIS-CAT Pro   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cis-cat_pro.png" alt="cis-cat_pro" width="auto" height="25">
+  - OpenSCAP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_scap.png" alt="open_scap" width="auto" height="25">
+  - OpenText   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_text.png" alt="open_text" width="auto" height="25">
+  - STIG Viewer   <img src="" alt="stig_viewer" width="auto" height="25">
+
+- IT Management:
+  - Cisco Meraki Systems Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/cisco_meraki_system_manager.png" alt="cisco_meraki_system_manager" width="auto" height="25">
+  - Cisco Meraki Systems Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/cisco_security_advisories.webp" alt="cisco_security_advisories" width="auto" height="25">
+- SysAdm:
+  - 7-Zip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/7-zip.png" alt="7-zip" width="auto" height="25">
+  - Cargo   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cargo.png" alt="cargo" width="auto" height="25">
+
+  - dnf-automatic   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dnf-automatic.png" alt="dnf-automatic" width="auto" height="25">
+  - GNOME Shell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gnome_shell.png" alt="gnome_shell" width="auto" height="25">
+  - KDE Plasma   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kde_plasma.png" alt="kde_plasma" width="auto" height="25">
+  - LANDesk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/landesk.png" alt="landesk" width="auto" height="25">
+  - Microsoft Endpoint Configuration Manager (MECM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mecm.png" alt="mecm" width="auto" height="25">
+  - Microsoft Endpoint Configuration Manager (SCCM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sccm.png" alt="sccm" width="auto" height="25">
+  - Microsoft Intune   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_intune.png" alt="microsoft_intune" width="auto" height="25">
+  - unattended-upgrades   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unattended-upgrades.jpeg" alt="unattended-upgrades" width="auto" height="25">
+  - vmstat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vmstat.png" alt="vmstat" width="auto" height="25">
+  - Windows Server Update Services (WSUS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wsus.jpg" alt="wsus" width="auto" height="25">
+  - Xfce   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xfce.svg" alt="xfce" width="auto" height="25">
+  - yum-cron   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/yum-cron.jpeg" alt="yum-cron" width="auto" height="25">
 - Application Programming Interface:
   - Postman   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/postman.svg" alt="postman" width="auto" height="25">
 - Blockchain:
   - Bitcoin (BTC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/btc.webp" alt="btc" width="auto" height="25">
   - Bitcoin Testnet Faucet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/btc.webp" alt="bitcoin_testnet_faucet" width="auto" height="25">
   - Blockchain.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/blockchain_com.png" alt="blockchain_com" width="auto" height="25">
+  - Blockchain Demo   <img src="" alt="blockchain_demo" width="auto" height="25">
+  - Blockchain Demo: Public / Private Keys & Signing   <img src="" alt="blockchain_demo_keys" width="auto" height="25">
   - Blockstream Explorer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/blockstream_explorer.webp" alt="blockstream_explorer" width="auto" height="25">
   - Decentraland DAO (MANA e LAND)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/decentraland_dao.png" alt="decentraland_dao" width="auto" height="25">
   - Electrum Bitcoin Wallet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/electrum_bitcoin_wallet.png" alt="electrum_bitcoin_wallet" width="auto" height="25">
@@ -632,6 +913,8 @@
   - DevOps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25">
   - Microsoft Power Apps   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_power_apps.png" alt="power_apps" width="auto" height="25">
   - Sequelize   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg" alt="sequelize" width="auto" height="25">
+  - Snyk   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/synk.webp" alt="synk" width="auto" height="25">
+  - SonarQube   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sonarqube.svg" alt="sonarqube" width="auto" height="25">
 - Artifact Repository:
   - PowerShell Gallery (PS Gallery)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
 - Software Development Testing:
@@ -645,6 +928,9 @@
   - Selenium (Se)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg" alt="selenium" width="auto" height="25">
   - Serverspec   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/serverspec.png" alt="serverspec" width="auto" height="25">
   - Universal Windows Platform (UWP)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/uwp.webp" alt="uwp" width="auto" height="25">
+- Search Engine:
+  - DuckDuckGo   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/duckduckgo.png" alt="duckduckgo" width="auto" height="25">
+  - Google Search Console   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/google_search_console.svg" alt="google_search_console" width="auto" height="25">
 - User Experience Design (UX):
   - Figma   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="figma" width="auto" height="25">
   - GitKraken   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gitkraken.png" alt="gitkraken" width="auto" height="25">
@@ -673,6 +959,8 @@
   - balenaEtcher   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/balenaetcher.png" alt="balenaetcher" width="auto" height="25">
   - LiLi   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/lili.png" alt="lili" width="auto" height="25">
   - Rufus   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rufus.jpeg" alt="rufus" width="auto" height="25">
+- Collaboration:
+  - Notion   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/notion.png" alt="notion" width="auto" height="25">
 - Others:
   - Capitalize My Title   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/capitalize_my_title.png" alt="capitalize_my_title" width="auto" height="25">
   - Explainshell.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/explainshell.webp" alt="explainshell" width="auto" height="25">
